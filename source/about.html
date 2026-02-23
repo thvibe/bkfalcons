@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Us — Brooklyn Falcons</title>
+<meta name="description" content="The Brooklyn Falcons Baseball Organization is a 501(c)(3) nonprofit youth baseball organization located in Brooklyn, New York. Learn about our mission and programs.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="site-wrapper">
+
+<!-- ============================================
+     STICKY HEADER
+     ============================================ -->
+<header class="site-header">
+  <div class="header-inner">
+    <a href="index.html" class="logo-area">
+      <img src="../design/assets/falcons_logo1.avif" alt="Brooklyn Falcons" class="logo-mark">
+      <span class="logo-text">BROOKLYN FALCONS</span>
+    </a>
+    <nav class="desktop-nav">
+      <ul class="desktop-nav-links">
+        <li><a href="community.html">Community</a></li>
+        <li><a href="travel.html">Travel Ball</a></li>
+        <li><a href="alumni.html">Alumni</a></li>
+        <li><a href="newsletter.html">News</a></li>
+        <li class="has-dropdown">
+          <a href="about.html">About</a>
+          <ul class="dropdown-menu">
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="coaches.html">Coaches &amp; Staff</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+    <div class="header-right">
+      <a href="store.html" class="store-link">STORE</a>
+      <a href="store.html" class="cart-link" id="cart-link" aria-label="Shopping cart">
+        <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+        <span class="cart-count" id="cart-count">0</span>
+      </a>
+      <button class="hamburger" aria-label="Open menu" id="menu-open">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ============================================
+     SEASONAL BANNER
+     ============================================ -->
+<div class="seasonal-banner" id="seasonal-banner">
+  <div class="seasonal-banner-inner">
+    <span class="seasonal-banner-text">Tryouts Open — <a href="#">Register Now</a></span>
+    <button class="seasonal-banner-close" id="banner-close" aria-label="Close banner">&times;</button>
+  </div>
+</div>
+
+<!-- ============================================
+     PAGE HERO
+     ============================================ -->
+<section class="page-hero">
+  <div class="page-hero-inner">
+    <h1 class="page-hero-title">About Us</h1>
+    <p class="page-hero-desc">Building champions on and off the field since 2014.</p>
+  </div>
+</section>
+
+<!-- ============================================
+     MISSION STATEMENT
+     ============================================ -->
+<section class="section">
+  <span class="section-label">Our Mission</span>
+  <h2 class="section-title">Mission Statement</h2>
+
+  <div class="about-layout">
+    <div class="about-text">
+      <p>The Brooklyn Falcons Baseball Organization is a 501(c)(3) nonprofit youth baseball organization located in Brooklyn, New York. The Brooklyn Falcons was established in 2014 by a group of local coaches and parents who wanted to provide a competitive and affordable baseball program for the youth of Brooklyn.</p>
+      <p>Our mission is to develop young athletes through the game of baseball, focusing on character development, academic excellence, and athletic skill building. We strive to provide a positive environment where players can grow both on and off the field, preparing them for success at the high school, collegiate, and professional levels.</p>
+      <p>The Falcons offer both recreational and travel baseball programs for players ages 8 through 18, along with academic tutoring, college advisory services, and community outreach. We are committed to making baseball accessible to all families regardless of economic background.</p>
+    </div>
+    <div class="about-photos">
+      <div class="about-photo" style="background:var(--falcon-50);aspect-ratio:4/3;border-radius:var(--radius-md);display:flex;align-items:center;justify-content:center;font-size:var(--text-xs);color:var(--neutral-400);">Photo</div>
+      <div class="about-photo" style="background:var(--falcon-50);aspect-ratio:4/3;border-radius:var(--radius-md);display:flex;align-items:center;justify-content:center;font-size:var(--text-xs);color:var(--neutral-400);">Photo</div>
+    </div>
+  </div>
+
+  <a href="coaches.html" class="btn btn-secondary" style="margin-top:var(--space-6);">Meet the Coaches</a>
+</section>
+
+<!-- ============================================
+     WHAT WE OFFER
+     ============================================ -->
+<section class="section">
+  <span class="section-label">Programs</span>
+  <h2 class="section-title">What We Offer</h2>
+  <div style="display:flex;flex-direction:column;gap:var(--space-3);">
+    <a href="community.html" class="card program-card">
+      <div>
+        <div class="program-card-title">Community Baseball</div>
+        <div class="program-card-desc">Recreational programs for ages 8U through 14U+</div>
+      </div>
+      <span class="list-arrow">&rarr;</span>
+    </a>
+    <a href="travel.html" class="card program-card">
+      <div>
+        <div class="program-card-title">Travel Ball</div>
+        <div class="program-card-desc">Competitive travel teams, showcases &amp; tournaments</div>
+      </div>
+      <span class="list-arrow">&rarr;</span>
+    </a>
+    <a href="alumni.html" class="card program-card">
+      <div>
+        <div class="program-card-title">College Advisory</div>
+        <div class="program-card-desc">Recruiting guidance, prep school placements &amp; academic support</div>
+      </div>
+      <span class="list-arrow">&rarr;</span>
+    </a>
+  </div>
+</section>
+
+<!-- ============================================
+     CTA
+     ============================================ -->
+<section class="section">
+  <div class="cta-block">
+    <h2 class="cta-block-title">Join the Falcons</h2>
+    <p class="cta-block-desc">Registration is open for all programs. Be part of Brooklyn's baseball family.</p>
+    <a href="#" class="btn btn-white">Register Now</a>
+  </div>
+</section>
+
+<!-- ============================================
+     FOOTER
+     ============================================ -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <img src="../design/assets/circle logo.avif" alt="Brooklyn Falcons" class="footer-logo">
+    <nav class="footer-links">
+      <a href="community.html" class="footer-link">Community</a>
+      <a href="travel.html" class="footer-link">Travel Ball</a>
+      <a href="alumni.html" class="footer-link">Alumni</a>
+      <a href="newsletter.html" class="footer-link">News</a>
+      <a href="about.html" class="footer-link">About</a>
+    </nav>
+    <div class="footer-socials">
+      <a href="https://instagram.com/bkfalcons" class="footer-social-icon" aria-label="Instagram" target="_blank" rel="noopener">IG</a>
+      <a href="https://facebook.com/Bkfalcons" class="footer-social-icon" aria-label="Facebook" target="_blank" rel="noopener">FB</a>
+    </div>
+    <div class="footer-legal">501(c)(3) Nonprofit &middot; Brooklyn, NY &middot; &copy; 2026 Brooklyn Falcons</div>
+  </div>
+</footer>
+
+</div><!-- /.site-wrapper -->
+
+<!-- ============================================
+     MOBILE NAV OVERLAY
+     ============================================ -->
+<nav class="mobile-nav" id="mobile-nav">
+  <div class="mobile-nav-panel">
+    <button class="mobile-nav-close" id="menu-close" aria-label="Close menu">&times;</button>
+    <ul class="mobile-nav-links">
+      <li><a href="community.html">Community Programs</a></li>
+      <li><a href="travel.html">Travel Ball</a></li>
+      <li><a href="alumni.html">Alumni &amp; Success</a></li>
+      <li><a href="newsletter.html">News</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="coaches.html">Coaches &amp; Staff</a></li>
+      <li><a href="store.html">Store</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ============================================
+     SCRIPTS
+     ============================================ -->
+<script>
+// Mobile nav toggle
+const menuOpen = document.getElementById('menu-open');
+const menuClose = document.getElementById('menu-close');
+const mobileNav = document.getElementById('mobile-nav');
+
+menuOpen.addEventListener('click', () => mobileNav.classList.add('is-open'));
+menuClose.addEventListener('click', () => mobileNav.classList.remove('is-open'));
+mobileNav.addEventListener('click', (e) => {
+  if (e.target === mobileNav) mobileNav.classList.remove('is-open');
+});
+
+// Seasonal banner dismiss
+const bannerClose = document.getElementById('banner-close');
+const banner = document.getElementById('seasonal-banner');
+bannerClose.addEventListener('click', () => banner.style.display = 'none');
+
+// Cart badge — read count from localStorage
+(function() {
+  const count = parseInt(localStorage.getItem('falcons-cart-count') || '0', 10);
+  const badge = document.getElementById('cart-count');
+  if (!badge) return;
+  badge.textContent = count;
+  if (count > 0) badge.classList.add('is-visible');
+})();
+</script>
+
+</body>
+</html>

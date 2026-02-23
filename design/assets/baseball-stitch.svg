@@ -1,0 +1,121 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="60" height="500" viewBox="0 0 60 500">
+  <!--
+    Baseball stitching — realistic leaf/teardrop arcs
+    Thin dark seam line with curved red stitches arcing outward
+  -->
+
+  <!-- Center seam thread (dark) -->
+  <line x1="30" y1="0" x2="30" y2="500" stroke="#1a1a1a" stroke-width="1.5"/>
+
+  <!-- Red stitches — curved arcs alternating left and right -->
+  <g fill="none" stroke="#cc0000" stroke-width="2.5" stroke-linecap="round">
+    <!-- Each stitch is a quadratic bezier arc from near the seam outward -->
+    <!-- Left stitches curve left, right stitches curve right -->
+
+    <!-- Row 1 -->
+    <path d="M29,4 Q14,8 20,18"/>
+    <path d="M31,11 Q46,15 40,25"/>
+    <!-- Row 2 -->
+    <path d="M29,18 Q14,22 20,32"/>
+    <path d="M31,25 Q46,29 40,39"/>
+    <!-- Row 3 -->
+    <path d="M29,32 Q14,36 20,46"/>
+    <path d="M31,39 Q46,43 40,53"/>
+    <!-- Row 4 -->
+    <path d="M29,46 Q14,50 20,60"/>
+    <path d="M31,53 Q46,57 40,67"/>
+    <!-- Row 5 -->
+    <path d="M29,60 Q14,64 20,74"/>
+    <path d="M31,67 Q46,71 40,81"/>
+    <!-- Row 6 -->
+    <path d="M29,74 Q14,78 20,88"/>
+    <path d="M31,81 Q46,85 40,95"/>
+    <!-- Row 7 -->
+    <path d="M29,88 Q14,92 20,102"/>
+    <path d="M31,95 Q46,99 40,109"/>
+    <!-- Row 8 -->
+    <path d="M29,102 Q14,106 20,116"/>
+    <path d="M31,109 Q46,113 40,123"/>
+    <!-- Row 9 -->
+    <path d="M29,116 Q14,120 20,130"/>
+    <path d="M31,123 Q46,127 40,137"/>
+    <!-- Row 10 -->
+    <path d="M29,130 Q14,134 20,144"/>
+    <path d="M31,137 Q46,141 40,151"/>
+    <!-- Row 11 -->
+    <path d="M29,144 Q14,148 20,158"/>
+    <path d="M31,151 Q46,155 40,165"/>
+    <!-- Row 12 -->
+    <path d="M29,158 Q14,162 20,172"/>
+    <path d="M31,165 Q46,169 40,179"/>
+    <!-- Row 13 -->
+    <path d="M29,172 Q14,176 20,186"/>
+    <path d="M31,179 Q46,183 40,193"/>
+    <!-- Row 14 -->
+    <path d="M29,186 Q14,190 20,200"/>
+    <path d="M31,193 Q46,197 40,207"/>
+    <!-- Row 15 -->
+    <path d="M29,200 Q14,204 20,214"/>
+    <path d="M31,207 Q46,211 40,221"/>
+    <!-- Row 16 -->
+    <path d="M29,214 Q14,218 20,228"/>
+    <path d="M31,221 Q46,225 40,235"/>
+    <!-- Row 17 -->
+    <path d="M29,228 Q14,232 20,242"/>
+    <path d="M31,235 Q46,239 40,249"/>
+    <!-- Row 18 -->
+    <path d="M29,242 Q14,246 20,256"/>
+    <path d="M31,249 Q46,253 40,263"/>
+    <!-- Row 19 -->
+    <path d="M29,256 Q14,260 20,270"/>
+    <path d="M31,263 Q46,267 40,277"/>
+    <!-- Row 20 -->
+    <path d="M29,270 Q14,274 20,284"/>
+    <path d="M31,277 Q46,281 40,291"/>
+    <!-- Row 21 -->
+    <path d="M29,284 Q14,288 20,298"/>
+    <path d="M31,291 Q46,295 40,305"/>
+    <!-- Row 22 -->
+    <path d="M29,298 Q14,302 20,312"/>
+    <path d="M31,305 Q46,309 40,319"/>
+    <!-- Row 23 -->
+    <path d="M29,312 Q14,316 20,326"/>
+    <path d="M31,319 Q46,323 40,333"/>
+    <!-- Row 24 -->
+    <path d="M29,326 Q14,330 20,340"/>
+    <path d="M31,333 Q46,337 40,347"/>
+    <!-- Row 25 -->
+    <path d="M29,340 Q14,344 20,354"/>
+    <path d="M31,347 Q46,351 40,361"/>
+    <!-- Row 26 -->
+    <path d="M29,354 Q14,358 20,368"/>
+    <path d="M31,361 Q46,365 40,375"/>
+    <!-- Row 27 -->
+    <path d="M29,368 Q14,372 20,382"/>
+    <path d="M31,375 Q46,379 40,389"/>
+    <!-- Row 28 -->
+    <path d="M29,382 Q14,386 20,396"/>
+    <path d="M31,389 Q46,393 40,403"/>
+    <!-- Row 29 -->
+    <path d="M29,396 Q14,400 20,410"/>
+    <path d="M31,403 Q46,407 40,417"/>
+    <!-- Row 30 -->
+    <path d="M29,410 Q14,414 20,424"/>
+    <path d="M31,417 Q46,421 40,431"/>
+    <!-- Row 31 -->
+    <path d="M29,424 Q14,428 20,438"/>
+    <path d="M31,431 Q46,435 40,445"/>
+    <!-- Row 32 -->
+    <path d="M29,438 Q14,442 20,452"/>
+    <path d="M31,445 Q46,449 40,459"/>
+    <!-- Row 33 -->
+    <path d="M29,452 Q14,456 20,466"/>
+    <path d="M31,459 Q46,463 40,473"/>
+    <!-- Row 34 -->
+    <path d="M29,466 Q14,470 20,480"/>
+    <path d="M31,473 Q46,477 40,487"/>
+    <!-- Row 35 -->
+    <path d="M29,480 Q14,484 20,494"/>
+    <path d="M31,487 Q46,491 40,501"/>
+  </g>
+</svg>

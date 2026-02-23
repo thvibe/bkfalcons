@@ -1,0 +1,1349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brooklyn Falcons — Themed Wireframes</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  /* ====================================
+     DESIGN SYSTEM TOKENS
+     Brooklyn Falcons · v1.0 · Feb 2026
+     ==================================== */
+  :root {
+    /* Backward-compatible mappings (old wireframe vars → design system) */
+    --black: #212529;
+    --d1: #343A40;
+    --d2: #495057;
+    --d3: #6C757D;
+    --mid: #868E96;
+    --m2: #ADB5BD;
+    --m3: #CED4DA;
+    --light: #ADB5BD;
+    --l2: #CED4DA;
+    --l3: #DEE2E6;
+    --l4: #E9ECEF;
+    --l5: #F1F3F5;
+    --l6: #F8F9FA;
+    --l7: #FFFFFF;
+    --white: #FFFFFF;
+    --bg: #141618;
+
+    /* Primary — Falcon Blue */
+    --falcon-50:  #EBF5FB;
+    --falcon-100: #D0E9F6;
+    --falcon-200: #A3D3ED;
+    --falcon-300: #74BDE4;
+    --falcon-400: #4EA0D0;
+    --falcon-500: #3A8BBD;
+    --falcon-600: #2E6F97;
+    --falcon-700: #235472;
+    --falcon-800: #193A4E;
+    --falcon-900: #0F212D;
+
+    /* Accent — Field Gold */
+    --gold-400: #FFCC33;
+    --gold-500: #E6B800;
+
+    /* Semantic */
+    --success: #2B9348;
+    --warning: #E6A817;
+    --error:   #D32F2F;
+  }
+
+  body {
+    font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--bg);
+    color: white;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 24px 16px 40px;
+  }
+
+  .masthead { text-align: center; margin-bottom: 20px; }
+  .masthead h1 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 15px; font-weight: 800; letter-spacing: 2px; color: white;
+  }
+  .masthead p { font-size: 11px; color: #6C757D; margin-top: 4px; }
+
+  .tabs { display: flex; gap: 6px; margin-bottom: 18px; flex-wrap: wrap; justify-content: center; max-width: 440px; }
+  .tab {
+    padding: 6px 14px; border-radius: 20px; border: 1px solid rgba(163,211,237,0.4); cursor: pointer;
+    font-size: 11px; font-weight: 600; font-family: inherit;
+    background: rgba(163,211,237,0.12); color: rgba(163,211,237,0.9);
+    transition: all 0.2s;
+  }
+  .tab:hover { background: rgba(163,211,237,0.25); color: #A3D3ED; border-color: rgba(163,211,237,0.6); }
+  .tab.active { background: var(--falcon-200); color: var(--falcon-900); border-color: var(--falcon-200); }
+
+  .phone {
+    width: 320px; height: 640px; background: var(--l7); border-radius: 32px;
+    border: 3px solid #343A40; overflow: hidden;
+    box-shadow: 0 25px 80px rgba(0,0,0,0.5), 0 0 0 1px rgba(163,211,237,0.15);
+    display: flex; flex-direction: column;
+  }
+  .status-bar {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 5px 18px; background: var(--black); font-size: 9px; color: #495057; flex-shrink: 0;
+  }
+  .notch { width: 56px; height: 18px; border-radius: 10px; background: #1a1a1a; border: 1px solid #343A40; }
+  .phone-scroll { flex: 1; overflow-y: auto; overflow-x: hidden; }
+  .phone-scroll::-webkit-scrollbar { width: 3px; }
+  .phone-scroll::-webkit-scrollbar-thumb { background: rgba(163,211,237,0.25); border-radius: 3px; }
+
+  .page { display: none; }
+  .page.active { display: block; }
+
+  /* ====================================
+     HEADER — Sticky Nav
+     ==================================== */
+  .wire-header {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 10px 14px; background: var(--black);
+    border-bottom: 1px solid rgba(163,211,237,0.12);
+  }
+  .wire-header .logo-area { display: flex; align-items: center; gap: 8px; }
+  .wire-header .logo-box { width: 22px; height: 22px; border-radius: 5px; background: var(--falcon-200); border: none; }
+  .wire-header .logo-text {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 10px; font-weight: 800; color: #E9ECEF; letter-spacing: 0.5px;
+  }
+  .wire-header .right { display: flex; align-items: center; gap: 12px; }
+  .wire-header .cart {
+    font-size: 11px; font-weight: 800; color: #E9ECEF;
+    border: 1px solid rgba(163,211,237,0.4); border-radius: 4px; padding: 2px 5px;
+  }
+  .wire-header .burger span { display: block; width: 17px; height: 2px; background: #ADB5BD; border-radius: 1px; margin-bottom: 3px; }
+  .wire-header .burger span:last-child { margin-bottom: 0; }
+
+  /* ====================================
+     FOOTER
+     ==================================== */
+  .wire-footer {
+    background: var(--black); padding: 14px 14px 20px; margin-top: 8px;
+    border-top: 1px solid rgba(163,211,237,0.12);
+  }
+  .wire-footer .links { display: flex; gap: 14px; margin-bottom: 10px; flex-wrap: wrap; }
+  .wire-footer .links span { font-size: 8px; color: var(--mid); }
+  .wire-footer .socials { display: flex; gap: 10px; margin-bottom: 8px; }
+  .wire-footer .social-icon {
+    width: 32px; height: 32px; border-radius: 16px; background: rgba(163,211,237,0.2);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 9px; font-weight: 800; color: var(--falcon-200); letter-spacing: 0.5px;
+  }
+  .wire-footer .legal { font-size: 7px; color: var(--d3); }
+
+  /* ====================================
+     SECTION SYSTEM
+     ==================================== */
+  .label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 7px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.2px;
+    color: var(--falcon-600); margin-bottom: 4px;
+    border-bottom: 1.5px solid var(--falcon-200);
+    display: inline-block; padding-bottom: 1px;
+  }
+
+  .section { padding: 14px; }
+  .section-flush { padding: 0 14px 14px; }
+  .section-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 12px; font-weight: 800; color: var(--black); margin-bottom: 8px;
+    letter-spacing: -0.01em;
+  }
+
+  .placeholder {
+    display: flex; align-items: center; justify-content: center;
+    background: var(--l4); border-radius: 6px; font-size: 9px; color: var(--m2);
+  }
+
+  /* ====================================
+     CARDS
+     ==================================== */
+  .card {
+    border: 1px solid var(--l3); border-radius: 10px; background: var(--white);
+    box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+  }
+  .card-highlight {
+    border: 2px dashed var(--falcon-200); border-radius: 10px; background: var(--falcon-50);
+  }
+
+  /* ====================================
+     BUTTONS
+     ==================================== */
+  .btn-primary {
+    background: var(--falcon-200); border-radius: 6px; padding: 10px 0;
+    text-align: center; font-size: 10px; font-weight: 700; color: var(--falcon-900);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    letter-spacing: 0.02em;
+  }
+  .btn-outline {
+    border: 1.5px solid var(--falcon-200); border-radius: 6px; padding: 10px 0;
+    text-align: center; font-size: 10px; font-weight: 700; color: var(--falcon-600);
+    background: var(--white);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+  }
+  .btn-small {
+    background: var(--falcon-200); border-radius: 5px; padding: 6px 12px;
+    font-size: 9px; font-weight: 700; color: var(--falcon-900); display: inline-block;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+  }
+
+  .divider { border-bottom: 1px solid var(--l4); }
+
+  .anno {
+    position: absolute; top: 6px; left: 8px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 7px; font-weight: 700; color: rgba(255,255,255,0.5);
+    letter-spacing: 1px; text-transform: uppercase; z-index: 2;
+  }
+
+  .hint { margin-top: 14px; font-size: 10px; color: rgba(255,255,255,0.22); text-align: center; max-width: 340px; line-height: 1.6; }
+
+  /* ====================================
+     STATS BAR
+     ==================================== */
+  .stats-bar {
+    padding: 11px 14px; background: var(--falcon-50);
+    display: flex; justify-content: space-around;
+    border-bottom: 1px solid var(--l4);
+  }
+  .stat-num {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 15px; font-weight: 800; color: var(--falcon-700);
+  }
+  .stat-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 7px; color: var(--m2); font-weight: 600; text-transform: uppercase;
+  }
+
+  /* ====================================
+     LIST ROWS
+     ==================================== */
+  .list-row {
+    display: flex; align-items: center; gap: 10px; padding: 11px 0;
+    border-bottom: 1px solid var(--l5);
+  }
+  .list-row:last-child { border-bottom: none; }
+  .list-icon {
+    width: 34px; height: 34px; border-radius: 8px; background: var(--falcon-50);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px; font-weight: 800; color: var(--falcon-600); flex-shrink: 0;
+  }
+  .list-icon-highlight { background: var(--falcon-200); color: var(--falcon-900); }
+
+  .arrow { font-size: 12px; color: var(--falcon-200); }
+
+.falcon-logo {
+  width: 16px; height: 16px;
+  background: var(--falcon-200);
+  border-radius: 3px;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-display);
+  font-size: 11px; font-weight: 800;
+  color: var(--falcon-900);
+  line-height: 1;
+}
+.falcon-logo::after { content: 'F'; }
+</style>
+</head>
+<body>
+
+<div class="masthead">
+  <h1>BROOKLYN FALCONS — WIREFRAMES</h1>
+  <p>Mobile-First · Themed · UX &amp; Content Hierarchy</p>
+</div>
+
+<div class="tabs" id="tabs">
+  <button class="tab active" data-page="home">Homepage</button>
+  <button class="tab" data-page="community">Community Programs</button>
+  <button class="tab" data-page="travel">Travel Ball</button>
+  <button class="tab" data-page="alumni">Alumni &amp; Success</button>
+  <button class="tab" data-page="detail">10U Detail Page</button>
+  <button class="tab" data-page="newsletter">Newsletter</button>
+  <button class="tab" data-page="archive">Archive</button>
+</div>
+
+<div class="phone">
+  <div class="status-bar">
+    <span>9:41</span>
+    <div class="notch"></div>
+    <span>100%</span>
+  </div>
+  <div class="phone-scroll" id="phone-scroll">
+
+    <!-- ==================== HOMEPAGE ==================== -->
+    <div class="page active" id="page-home">
+      <div class="wire-header">
+        <div class="logo-area"><div class="falcon-logo" style="width:16px;height:16px;"></div><span class="logo-text">BROOKLYN FALCONS</span></div>
+        <div class="right"><span class="cart">STORE</span><div class="burger"><span></span><span></span><span></span></div></div>
+      </div>
+
+      <!-- Seasonal Banner -->
+      <div style="background:var(--d2);padding:7px 14px;display:flex;justify-content:space-between;align-items:center;">
+        <span style="font-size:10px;font-weight:700;color:white;">TRYOUTS OPEN — REGISTER NOW</span>
+        <span style="font-size:9px;color:rgba(255,255,255,0.5);">&#10005;</span>
+      </div>
+
+      <!-- GameChanger Score Ticker -->
+      <div style="background:var(--black);padding:0;border-bottom:1px solid var(--d2);">
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:4px 14px 3px;">
+          <div class="label" style="margin-bottom:0;font-size:6px;color:#ADB5BD;letter-spacing:1.5px;">SCORES</div>
+          <div style="font-size:6px;color:#495057;font-weight:600;">Powered by GameChanger</div>
+        </div>
+        <div style="overflow-x:auto;white-space:nowrap;padding:0 10px 8px;-webkit-overflow-scrolling:touch;">
+          <div style="display:inline-flex;gap:6px;">
+
+            <!-- Game 1: Final -->
+            <div style="background:var(--d1);border:1px solid var(--d2);border-radius:6px;padding:7px 10px;min-width:130px;display:inline-block;">
+              <div style="font-size:6px;color:#6C757D;font-weight:700;text-transform:uppercase;margin-bottom:4px;">Final · Apr 12</div>
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:2px;">
+                <span style="font-size:8px;font-weight:700;color:white;">Falcons 14U</span>
+                <span style="font-size:9px;font-weight:800;color:white;">6</span>
+              </div>
+              <div style="display:flex;justify-content:space-between;align-items:center;">
+                <span style="font-size:8px;color:#ADB5BD;">EEP Bandits</span>
+                <span style="font-size:9px;font-weight:700;color:#ADB5BD;">3</span>
+              </div>
+            </div>
+
+            <!-- Game 2: Live -->
+            <div style="background:var(--d1);border:1px solid var(--d3);border-radius:6px;padding:7px 10px;min-width:130px;display:inline-block;">
+              <div style="display:flex;align-items:center;gap:4px;margin-bottom:4px;">
+                <div style="width:5px;height:5px;border-radius:3px;background:#FFCC33;"></div>
+                <span style="font-size:6px;color:#FFCC33;font-weight:700;text-transform:uppercase;">LIVE · Bot 5th</span>
+              </div>
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:2px;">
+                <span style="font-size:8px;font-weight:700;color:white;">Falcons 12U</span>
+                <span style="font-size:9px;font-weight:800;color:white;">4</span>
+              </div>
+              <div style="display:flex;justify-content:space-between;align-items:center;">
+                <span style="font-size:8px;color:#ADB5BD;">MVP National</span>
+                <span style="font-size:9px;font-weight:700;color:#ADB5BD;">2</span>
+              </div>
+            </div>
+
+            <!-- Game 3: Final -->
+            <div style="background:var(--d1);border:1px solid var(--d2);border-radius:6px;padding:7px 10px;min-width:130px;display:inline-block;">
+              <div style="font-size:6px;color:#6C757D;font-weight:700;text-transform:uppercase;margin-bottom:4px;">Final · Apr 11</div>
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:2px;">
+                <span style="font-size:8px;font-weight:700;color:white;">Falcons 10U</span>
+                <span style="font-size:9px;font-weight:800;color:white;">8</span>
+              </div>
+              <div style="display:flex;justify-content:space-between;align-items:center;">
+                <span style="font-size:8px;color:#ADB5BD;">Beast Mode</span>
+                <span style="font-size:9px;font-weight:700;color:#ADB5BD;">5</span>
+              </div>
+            </div>
+
+            <!-- Game 4: Upcoming -->
+            <div style="background:var(--d1);border:1px solid var(--d2);border-radius:6px;padding:7px 10px;min-width:130px;display:inline-block;">
+              <div style="font-size:6px;color:#6C757D;font-weight:700;text-transform:uppercase;margin-bottom:4px;">Apr 14 · 10:00 AM</div>
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:2px;">
+                <span style="font-size:8px;font-weight:700;color:white;">Falcons 14U</span>
+                <span style="font-size:8px;color:#495057;">—</span>
+              </div>
+              <div style="display:flex;justify-content:space-between;align-items:center;">
+                <span style="font-size:8px;color:#ADB5BD;">Notorious 9</span>
+                <span style="font-size:8px;color:#495057;">—</span>
+              </div>
+            </div>
+
+            <!-- Game 5: Upcoming -->
+            <div style="background:var(--d1);border:1px solid var(--d2);border-radius:6px;padding:7px 10px;min-width:130px;display:inline-block;">
+              <div style="font-size:6px;color:#6C757D;font-weight:700;text-transform:uppercase;margin-bottom:4px;">Apr 14 · 1:00 PM</div>
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:2px;">
+                <span style="font-size:8px;font-weight:700;color:white;">Falcons 8U</span>
+                <span style="font-size:8px;color:#495057;">—</span>
+              </div>
+              <div style="display:flex;justify-content:space-between;align-items:center;">
+                <span style="font-size:8px;color:#ADB5BD;">TBD</span>
+                <span style="font-size:8px;color:#495057;">—</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- Hero + Fork -->
+      <div style="position:relative;">
+        <div class="anno">BLOCK 1: HERO + FORK</div>
+        <div style="height:175px;background:linear-gradient(135deg,#444,#222);display:flex;align-items:center;justify-content:center;">
+          <span style="font-size:11px;color:#6C757D;font-weight:600;">[ Hero Image / Video ]</span>
+        </div>
+        <div style="position:absolute;bottom:0;left:0;right:0;padding:0 14px 16px;background:linear-gradient(transparent,rgba(0,0,0,0.8));">
+          <div style="font-size:16px;font-weight:800;color:white;margin-bottom:3px;">Brooklyn Falcons</div>
+          <div style="font-size:9px;color:rgba(255,255,255,0.6);margin-bottom:12px;">Baseball. Community. Future.</div>
+          <div style="display:flex;gap:8px;">
+            <div class="btn-primary" style="flex:1;">Community Programs</div>
+            <div class="btn-primary" style="flex:1;">Travel Ball</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Alumni Spotlight -->
+      <div class="section">
+        <div class="label">BLOCK 2: ALUMNI SPOTLIGHT</div>
+        <div class="section-title">Where Falcons Land</div>
+        <div style="display:flex;gap:6px;">
+          <div class="card" style="flex:1;padding:8px;text-align:center;">
+            <div style="width:32px;height:32px;border-radius:16px;background:var(--l3);margin:0 auto 5px;"></div>
+            <div style="font-size:8px;font-weight:700;color:var(--d1);">Player Name</div>
+            <div style="font-size:7px;color:var(--mid);font-weight:600;">University</div>
+          </div>
+          <div class="card" style="flex:1;padding:8px;text-align:center;">
+            <div style="width:32px;height:32px;border-radius:16px;background:var(--l3);margin:0 auto 5px;"></div>
+            <div style="font-size:8px;font-weight:700;color:var(--d1);">Player Name</div>
+            <div style="font-size:7px;color:var(--mid);font-weight:600;">University</div>
+          </div>
+          <div class="card" style="flex:1;padding:8px;text-align:center;">
+            <div style="width:32px;height:32px;border-radius:16px;background:var(--l3);margin:0 auto 5px;"></div>
+            <div style="font-size:8px;font-weight:700;color:var(--d1);">Player Name</div>
+            <div style="font-size:7px;color:var(--mid);font-weight:600;">University</div>
+          </div>
+        </div>
+        <div style="text-align:center;margin-top:7px;"><span style="font-size:9px;color:var(--d3);font-weight:600;text-decoration:underline;">See All Alumni &rarr;</span></div>
+      </div>
+
+      <!-- Tryout CTA -->
+      <div class="section-flush">
+        <div class="label">BLOCK 3: TRYOUT / EVENT CTA</div>
+        <div style="background:var(--d1);border-radius:8px;padding:13px 14px;display:flex;justify-content:space-between;align-items:center;">
+          <div>
+            <div style="font-size:11px;font-weight:800;color:white;">Spring Tryouts</div>
+            <div style="font-size:8px;color:rgba(255,255,255,0.6);">March 15–22 · Ages 8U–14U</div>
+          </div>
+          <div style="background:white;border-radius:5px;padding:6px 11px;font-size:9px;font-weight:700;color:var(--d1);">Register</div>
+        </div>
+      </div>
+
+      <!-- Latest News -->
+      <div class="section">
+        <div class="label">BLOCK 4: LATEST NEWS</div>
+        <div class="section-title">Latest News</div>
+        <div style="display:flex;gap:8px;margin-bottom:8px;padding-bottom:8px;" class="divider">
+          <div class="placeholder" style="width:56px;height:44px;flex-shrink:0;border-radius:4px;"></div>
+          <div>
+            <div style="font-size:9px;font-weight:700;color:var(--d1);">Game Recap: Falcons Win 6-3</div>
+            <div style="font-size:8px;color:var(--m2);margin-top:2px;">14U squad wins tournament opener against EEP...</div>
+          </div>
+        </div>
+        <div style="display:flex;gap:8px;padding-bottom:4px;">
+          <div class="placeholder" style="width:56px;height:44px;flex-shrink:0;border-radius:4px;"></div>
+          <div>
+            <div style="font-size:9px;font-weight:700;color:var(--d1);">Spring Registration Now Open</div>
+            <div style="font-size:8px;color:var(--m2);margin-top:2px;">Community programs for all ages begin March 1...</div>
+          </div>
+        </div>
+        <div style="text-align:center;margin-top:6px;"><span style="font-size:9px;color:var(--d3);font-weight:600;text-decoration:underline;">All News &rarr;</span></div>
+      </div>
+
+      <!-- Follow Us -->
+      <div class="section">
+        <div class="label">BLOCK 5: FOLLOW US</div>
+        <div style="background:var(--black);border-radius:10px;padding:18px 16px;text-align:center;">
+          <div style="font-size:13px;font-weight:800;color:white;margin-bottom:4px;">Follow the Falcons</div>
+          <div style="font-size:9px;color:rgba(255,255,255,0.6);margin-bottom:14px;">Stay connected — highlights, scores, game day photos & community updates</div>
+          <div style="display:flex;gap:12px;justify-content:center;">
+            <div style="flex:1;max-width:120px;height:44px;background:linear-gradient(135deg,#833AB4,#E1306C,#F77737);border-radius:8px;display:flex;align-items:center;justify-content:center;gap:6px;">
+              <div style="font-size:14px;font-weight:900;color:white;">IG</div>
+              <div style="font-size:8px;font-weight:600;color:rgba(255,255,255,0.9);line-height:1.2;">Instagram<br><span style="font-size:7px;opacity:0.7;">@bkfalcons</span></div>
+            </div>
+            <div style="flex:1;max-width:120px;height:44px;background:#1877F2;border-radius:8px;display:flex;align-items:center;justify-content:center;gap:6px;">
+              <div style="font-size:14px;font-weight:900;color:white;">FB</div>
+              <div style="font-size:8px;font-weight:600;color:rgba(255,255,255,0.9);line-height:1.2;">Facebook<br><span style="font-size:7px;opacity:0.7;">Brooklyn Falcons</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mission -->
+      <div class="section-flush">
+        <div class="label">BLOCK 6: MISSION</div>
+        <div style="background:var(--l6);border-radius:8px;padding:12px 14px;border-left:3px solid var(--d3);">
+          <div style="font-size:10px;font-weight:700;color:var(--d1);margin-bottom:3px;">501(c)(3) Nonprofit</div>
+          <div style="font-size:9px;color:var(--d3);line-height:1.5;">Building champions on and off the field. From community programs to college commitments and the MLB draft.</div>
+        </div>
+      </div>
+
+
+      <!-- Merch / Store -->
+      <div class="section">
+        <div class="label">BLOCK 7: MERCH / STORE</div>
+        <div style="border-radius:8px;overflow:hidden;position:relative;">
+          <div style="height:140px;background:linear-gradient(135deg,#1B2F4D 0%,#2A4A7F 50%,#4EA0D0 100%);display:flex;align-items:center;justify-content:center;border-radius:8px;border:2px dashed #A3D3ED;"><span style="color:white;font-size:18px;font-weight:700;letter-spacing:2px;text-transform:uppercase;text-shadow:0 2px 4px rgba(0,0,0,0.3);">FALCONS STORE BANNER</span></div>
+          <div style="padding:10px 12px;background:var(--d1);">
+            <div style="font-size:11px;font-weight:800;color:white;margin-bottom:3px;">Falcons Gear</div>
+            <div style="font-size:9px;color:rgba(255,255,255,0.7);margin-bottom:8px;">Rep your team — hats, jerseys, hoodies & more.</div>
+            <div class="btn-primary" style="text-align:center;">Shop Now</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sponsors -->
+      <div class="section">
+        <div class="label">BLOCK 8: SPONSORS</div>
+        <div style="background:var(--l6);border-radius:10px;padding:16px 14px;text-align:center;">
+          <div style="font-size:10px;font-weight:700;color:var(--d2);margin-bottom:4px;">Our Sponsors</div>
+          <div style="display:flex;gap:10px;justify-content:center;padding:8px 0;margin-bottom:10px;">
+            <div class="placeholder" style="width:52px;height:24px;border-radius:3px;">Logo</div>
+            <div class="placeholder" style="width:52px;height:24px;border-radius:3px;">Logo</div>
+            <div class="placeholder" style="width:52px;height:24px;border-radius:3px;">Logo</div>
+            <div class="placeholder" style="width:52px;height:24px;border-radius:3px;">Logo</div>
+          </div>
+          <div style="border-top:1px solid var(--mid);padding-top:12px;">
+            <div style="font-size:12px;font-weight:800;color:var(--d1);margin-bottom:3px;">Become a Sponsor</div>
+            <div style="font-size:8px;color:var(--d3);line-height:1.5;margin-bottom:10px;">Support youth baseball in Brooklyn. Your sponsorship covers fees, equipment, and field time for kids who need it most.</div>
+            <div class="btn-primary" style="text-align:center;">Sponsor Inquiry →</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="wire-footer">
+        <div class="links"><span>Community</span><span>Travel Ball</span><span>Alumni</span><span>News</span><span>About</span></div>
+        <div class="socials"><div class="social-icon">IG</div><div class="social-icon">FB</div></div>
+        <div class="legal">501(c)(3) Nonprofit · Brooklyn, NY · © 2026 Brooklyn Falcons</div>
+      </div>
+    </div>
+
+    <!-- ==================== COMMUNITY PROGRAMS ==================== -->
+    <div class="page" id="page-community">
+      <div class="wire-header">
+        <div class="logo-area"><div class="falcon-logo" style="width:16px;height:16px;"></div><span class="logo-text">BROOKLYN FALCONS</span></div>
+        <div class="right"><span class="cart">STORE</span><div class="burger"><span></span><span></span><span></span></div></div>
+      </div>
+
+      <div style="background:var(--d2);padding:18px 14px;">
+        <div style="font-size:17px;font-weight:800;color:white;margin-bottom:3px;">Community Programs</div>
+        <div style="font-size:9px;color:rgba(255,255,255,0.7);line-height:1.5;">Recreational baseball, clinics, camps, and academic support for every age and skill level.</div>
+      </div>
+
+      <div class="section">
+        <div class="label">AGE TIER NAVIGATION</div>
+        <div class="section-title">Find Your Program</div>
+
+        <div class="card" style="display:flex;align-items:center;justify-content:space-between;padding:12px 14px;margin-bottom:6px;border-left:3px solid var(--d3);">
+          <div>
+            <div style="font-size:11px;font-weight:700;color:var(--d1);">8U Programs</div>
+            <div style="font-size:8px;color:var(--m2);margin-top:1px;">Ages 8 &amp; under · Introductory baseball</div>
+          </div>
+          <span class="arrow">&rarr;</span>
+        </div>
+
+        <div class="card-highlight" style="display:flex;align-items:center;justify-content:space-between;padding:12px 14px;margin-bottom:6px;border-left:3px solid var(--d3);">
+          <div>
+            <div style="font-size:11px;font-weight:700;color:var(--d1);">10U Programs</div>
+            <div style="font-size:8px;color:var(--m2);margin-top:1px;">Ages 10 &amp; under · Recreational &amp; developmental</div>
+          </div>
+          <span class="arrow">&rarr;</span>
+        </div>
+
+        <div class="card" style="display:flex;align-items:center;justify-content:space-between;padding:12px 14px;margin-bottom:6px;border-left:3px solid var(--d3);">
+          <div>
+            <div style="font-size:11px;font-weight:700;color:var(--d1);">12U Programs</div>
+            <div style="font-size:8px;color:var(--m2);margin-top:1px;">Ages 12 &amp; under · Bridge to competitive</div>
+          </div>
+          <span class="arrow">&rarr;</span>
+        </div>
+
+        <div class="card" style="display:flex;align-items:center;justify-content:space-between;padding:12px 14px;margin-bottom:6px;border-left:3px solid var(--d3);">
+          <div>
+            <div style="font-size:11px;font-weight:700;color:var(--d1);">14U+ Programs</div>
+            <div style="font-size:8px;color:var(--m2);margin-top:1px;">Ages 14 &amp; older · Developmental</div>
+          </div>
+          <span class="arrow">&rarr;</span>
+        </div>
+      </div>
+
+      <div class="section-flush">
+        <div class="label">ADDITIONAL PROGRAMS</div>
+        <div style="display:flex;gap:8px;">
+          <div class="card" style="flex:1;padding:10px;text-align:center;">
+            <div class="placeholder" style="height:28px;border-radius:4px;margin-bottom:6px;">&#9918;</div>
+            <div style="font-size:9px;font-weight:700;color:var(--d1);">Clinics &amp; Camps</div>
+          </div>
+          <div class="card" style="flex:1;padding:10px;text-align:center;">
+            <div class="placeholder" style="height:28px;border-radius:4px;margin-bottom:6px;">&#128218;</div>
+            <div style="font-size:9px;font-weight:700;color:var(--d1);">Tutoring &amp; Academics</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="label">REGISTRATION CTA</div>
+        <div style="background:var(--black);border-radius:10px;padding:14px;text-align:center;">
+          <div style="font-size:12px;font-weight:700;color:white;margin-bottom:3px;">Ready to Join?</div>
+          <div style="font-size:8px;color:rgba(255,255,255,0.6);margin-bottom:10px;">Registration is open for all community programs</div>
+          <div style="background:white;border-radius:6px;padding:9px 0;font-size:10px;font-weight:700;color:var(--d1);">Register Now</div>
+        </div>
+      </div>
+
+      <div class="wire-footer">
+        <div class="links"><span>Community</span><span>Travel Ball</span><span>Alumni</span><span>News</span><span>About</span></div>
+        <div class="socials"><div class="social-icon">IG</div><div class="social-icon">FB</div></div>
+        <div class="legal">501(c)(3) Nonprofit · Brooklyn, NY · © 2026 Brooklyn Falcons</div>
+      </div>
+    </div>
+
+    <!-- ==================== TRAVEL BALL ==================== -->
+    <div class="page" id="page-travel">
+      <div class="wire-header">
+        <div class="logo-area"><div class="falcon-logo" style="width:16px;height:16px;"></div><span class="logo-text">BROOKLYN FALCONS</span></div>
+        <div class="right"><span class="cart">STORE</span><div class="burger"><span></span><span></span><span></span></div></div>
+      </div>
+
+      <div style="background:linear-gradient(135deg,#333,#1a1a1a);padding:18px 14px;">
+        <div style="font-size:17px;font-weight:800;color:white;margin-bottom:3px;">Travel Ball</div>
+        <div style="font-size:9px;color:rgba(255,255,255,0.65);line-height:1.5;">Competitive travel baseball with a proven track record of college commitments and professional players.</div>
+        <div style="display:flex;gap:8px;margin-top:12px;">
+          <div class="btn-small">Tryout Info</div>
+          <div style="border:1px solid #666;border-radius:5px;padding:6px 12px;font-size:9px;font-weight:600;color:#868E96;">View Teams</div>
+        </div>
+      </div>
+
+      <div class="stats-bar">
+        <div style="text-align:center;"><div class="stat-num">50+</div><div class="stat-label">College Commits</div></div>
+        <div style="text-align:center;"><div class="stat-num">3</div><div class="stat-label">MLB Draft Picks</div></div>
+        <div style="text-align:center;"><div class="stat-num">100+</div><div class="stat-label">Championships</div></div>
+      </div>
+
+      <div class="section">
+        <div class="label">TRAVEL BALL SUB-PAGES</div>
+
+        <div class="list-row">
+          <div class="list-icon list-icon-highlight">01</div>
+          <div style="flex:1;"><div style="font-size:10px;font-weight:700;color:var(--d1);">Tryout Information</div><div style="font-size:8px;color:var(--m2);">Dates, locations, ages, registration</div></div>
+          <span class="arrow">&rarr;</span>
+        </div>
+        <div class="list-row">
+          <div class="list-icon">02</div>
+          <div style="flex:1;"><div style="font-size:10px;font-weight:700;color:var(--d1);">Teams &amp; Rosters</div><div style="font-size:8px;color:var(--m2);">Team listings by age group</div></div>
+          <span class="arrow">&rarr;</span>
+        </div>
+        <div class="list-row">
+          <div class="list-icon">03</div>
+          <div style="flex:1;"><div style="font-size:10px;font-weight:700;color:var(--d1);">Coaching Staff</div><div style="font-size:8px;color:var(--m2);">Credentials, bios, philosophy</div></div>
+          <span class="arrow">&rarr;</span>
+        </div>
+        <div class="list-row">
+          <div class="list-icon">04</div>
+          <div style="flex:1;"><div style="font-size:10px;font-weight:700;color:var(--d1);">Schedule &amp; Results</div><div style="font-size:8px;color:var(--m2);">Season calendar and game results</div></div>
+          <span class="arrow">&rarr;</span>
+        </div>
+        <div class="list-row">
+          <div class="list-icon">05</div>
+          <div style="flex:1;"><div style="font-size:10px;font-weight:700;color:var(--d1);">Team Apps</div><div style="font-size:8px;color:var(--m2);">GameChanger, TeamSnap, Heja links</div></div>
+          <span class="arrow">&rarr;</span>
+        </div>
+        <div class="list-row">
+          <div class="list-icon">06</div>
+          <div style="flex:1;"><div style="font-size:10px;font-weight:700;color:var(--d1);">Coach Resources</div><div style="font-size:8px;color:var(--m2);">Posting tools &amp; guidelines</div></div>
+          <span class="arrow">&rarr;</span>
+        </div>
+      </div>
+
+      <div class="section-flush">
+        <div class="label">CROSS-LINK: ALUMNI</div>
+        <div style="background:var(--d3);border-radius:8px;padding:13px 14px;">
+          <div style="font-size:11px;font-weight:700;color:white;margin-bottom:3px;">Where Our Players Go</div>
+          <div style="font-size:8px;color:rgba(255,255,255,0.6);margin-bottom:8px;">College commitments, MLB draft picks, and player success stories</div>
+          <span style="font-size:9px;color:rgba(255,255,255,0.8);font-weight:600;text-decoration:underline;">View Alumni &amp; Success &rarr;</span>
+        </div>
+      </div>
+
+      <div class="wire-footer">
+        <div class="links"><span>Community</span><span>Travel Ball</span><span>Alumni</span><span>News</span><span>About</span></div>
+        <div class="socials"><div class="social-icon">IG</div><div class="social-icon">FB</div></div>
+        <div class="legal">501(c)(3) Nonprofit · Brooklyn, NY · © 2026 Brooklyn Falcons</div>
+      </div>
+    </div>
+
+    <!-- ==================== ALUMNI & SUCCESS ==================== -->
+    <div class="page" id="page-alumni">
+      <div class="wire-header">
+        <div class="logo-area"><div class="falcon-logo" style="width:16px;height:16px;"></div><span class="logo-text">BROOKLYN FALCONS</span></div>
+        <div class="right"><span class="cart">STORE</span><div class="burger"><span></span><span></span><span></span></div></div>
+      </div>
+
+      <div style="background:var(--d2);padding:18px 14px;">
+        <div style="font-size:17px;font-weight:800;color:white;margin-bottom:3px;">Alumni &amp; Success</div>
+        <div style="font-size:9px;color:rgba(255,255,255,0.7);line-height:1.5;">From Brooklyn fields to college diamonds and professional baseball.</div>
+      </div>
+
+      <div class="stats-bar">
+        <div style="text-align:center;"><div class="stat-num">50+</div><div class="stat-label">College Commits</div></div>
+        <div style="text-align:center;"><div class="stat-num">30+</div><div class="stat-label">HS Placements</div></div>
+        <div style="text-align:center;"><div class="stat-num">3</div><div class="stat-label">Draft Picks</div></div>
+      </div>
+
+      <div class="section">
+        <div class="label">COLLEGE COMMITMENTS GALLERY</div>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+          <div class="section-title" style="margin-bottom:0;">College Commitments</div>
+          <span style="font-size:8px;color:var(--d3);font-weight:600;text-decoration:underline;">View All &rarr;</span>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;">
+          <div class="card" style="overflow:hidden;">
+            <div style="height:62px;background:var(--l3);display:flex;align-items:center;justify-content:center;font-size:8px;color:var(--m2);">[ Player Photo ]</div>
+            <div style="padding:6px 8px;">
+              <div style="font-size:9px;font-weight:700;color:var(--d1);">Player Name</div>
+              <div style="font-size:8px;color:var(--d3);font-weight:600;">University Name</div>
+              <div style="font-size:7px;color:var(--m2);">INF · Class of 2025</div>
+            </div>
+          </div>
+          <div class="card" style="overflow:hidden;">
+            <div style="height:62px;background:var(--l3);display:flex;align-items:center;justify-content:center;font-size:8px;color:var(--m2);">[ Player Photo ]</div>
+            <div style="padding:6px 8px;">
+              <div style="font-size:9px;font-weight:700;color:var(--d1);">Player Name</div>
+              <div style="font-size:8px;color:var(--d3);font-weight:600;">University Name</div>
+              <div style="font-size:7px;color:var(--m2);">RHP · Class of 2024</div>
+            </div>
+          </div>
+          <div class="card" style="overflow:hidden;">
+            <div style="height:62px;background:var(--l3);display:flex;align-items:center;justify-content:center;font-size:8px;color:var(--m2);">[ Player Photo ]</div>
+            <div style="padding:6px 8px;">
+              <div style="font-size:9px;font-weight:700;color:var(--d1);">Player Name</div>
+              <div style="font-size:8px;color:var(--d3);font-weight:600;">University Name</div>
+              <div style="font-size:7px;color:var(--m2);">OF · Class of 2026</div>
+            </div>
+          </div>
+          <div class="card" style="overflow:hidden;">
+            <div style="height:62px;background:var(--l3);display:flex;align-items:center;justify-content:center;font-size:8px;color:var(--m2);">[ Player Photo ]</div>
+            <div style="padding:6px 8px;">
+              <div style="font-size:9px;font-weight:700;color:var(--d1);">Player Name</div>
+              <div style="font-size:8px;color:var(--d3);font-weight:600;">University Name</div>
+              <div style="font-size:7px;color:var(--m2);">C · Class of 2025</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- HS Prep / Boarding School Commitments -->
+      <div class="section">
+        <div class="label">HS PREP / BOARDING SCHOOL COMMITMENTS</div>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+          <div class="section-title" style="margin-bottom:0;">HS Prep &amp; Boarding School</div>
+          <span style="font-size:8px;color:var(--d3);font-weight:600;text-decoration:underline;">View All &rarr;</span>
+        </div>
+        <div style="font-size:8px;color:var(--mid);line-height:1.5;margin-bottom:10px;">Falcons players earning placements at top private and boarding school programs.</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;">
+          <div class="card" style="overflow:hidden;">
+            <div style="height:62px;background:var(--l3);display:flex;align-items:center;justify-content:center;font-size:8px;color:var(--m2);">[ Player Photo ]</div>
+            <div style="padding:6px 8px;">
+              <div style="font-size:9px;font-weight:700;color:var(--d1);">Player Name</div>
+              <div style="font-size:8px;color:var(--d3);font-weight:600;">School Name</div>
+              <div style="font-size:7px;color:var(--m2);">Position · Class of 2028</div>
+            </div>
+          </div>
+          <div class="card" style="overflow:hidden;">
+            <div style="height:62px;background:var(--l3);display:flex;align-items:center;justify-content:center;font-size:8px;color:var(--m2);">[ Player Photo ]</div>
+            <div style="padding:6px 8px;">
+              <div style="font-size:9px;font-weight:700;color:var(--d1);">Player Name</div>
+              <div style="font-size:8px;color:var(--d3);font-weight:600;">School Name</div>
+              <div style="font-size:7px;color:var(--m2);">Position · Class of 2029</div>
+            </div>
+          </div>
+          <div class="card" style="overflow:hidden;">
+            <div style="height:62px;background:var(--l3);display:flex;align-items:center;justify-content:center;font-size:8px;color:var(--m2);">[ Player Photo ]</div>
+            <div style="padding:6px 8px;">
+              <div style="font-size:9px;font-weight:700;color:var(--d1);">Player Name</div>
+              <div style="font-size:8px;color:var(--d3);font-weight:600;">School Name</div>
+              <div style="font-size:7px;color:var(--m2);">Position · Class of 2028</div>
+            </div>
+          </div>
+          <div class="card" style="overflow:hidden;">
+            <div style="height:62px;background:var(--l3);display:flex;align-items:center;justify-content:center;font-size:8px;color:var(--m2);">[ Player Photo ]</div>
+            <div style="padding:6px 8px;">
+              <div style="font-size:9px;font-weight:700;color:var(--d1);">Player Name</div>
+              <div style="font-size:8px;color:var(--d3);font-weight:600;">School Name</div>
+              <div style="font-size:7px;color:var(--m2);">Position · Class of 2029</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-flush">
+        <div class="label">PROFESSIONAL PLAYERS</div>
+        <div class="section-title">Professional Players</div>
+        <div style="background:var(--d1);border-radius:8px;padding:13px 14px;display:flex;gap:10px;align-items:center;">
+          <div style="width:44px;height:44px;border-radius:22px;background:var(--d3);flex-shrink:0;"></div>
+          <div>
+            <div style="font-size:10px;font-weight:700;color:white;">Player Name</div>
+            <div style="font-size:8px;color:#ADB5BD;">MLB Draft Pick · Year</div>
+            <span style="font-size:8px;color:#CED4DA;font-weight:600;text-decoration:underline;">Read Full Story &rarr;</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="label">PLAYER JOURNEY STORIES</div>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+          <div class="section-title" style="margin-bottom:0;">Player Journeys</div>
+          <span style="font-size:8px;color:var(--d3);font-weight:600;text-decoration:underline;">View All &rarr;</span>
+        </div>
+        <div style="background:var(--l6);border-radius:8px;padding:12px 14px;border-left:3px solid var(--d3);">
+          <div style="font-size:9px;font-weight:700;color:var(--d1);margin-bottom:2px;">"The Falcons gave me everything I needed"</div>
+          <div style="font-size:8px;color:var(--mid);line-height:1.5;margin-bottom:5px;">From 8U community league to a D1 scholarship — how one player's journey through the Falcons changed his life.</div>
+          <span style="font-size:8px;color:var(--d3);font-weight:600;text-decoration:underline;">Read Story &rarr;</span>
+        </div>
+      </div>
+
+      <div class="section-flush">
+        <div class="label">FAMILY TESTIMONIALS</div>
+        <div class="section-title">What Families Say</div>
+        <div style="padding:10px 14px;background:var(--l7);border-radius:8px;border-left:3px solid var(--light);">
+          <div style="font-size:9px;font-style:italic;color:var(--d3);line-height:1.5;margin-bottom:5px;">"We started in community rec ball and now my son is committed to play D2. The coaching staff here is family."</div>
+          <div style="font-size:8px;font-weight:700;color:var(--mid);">— Parent, Class of 2025</div>
+        </div>
+      </div>
+
+      <div style="height:14px;"></div>
+      <div class="wire-footer">
+        <div class="links"><span>Community</span><span>Travel Ball</span><span>Alumni</span><span>News</span><span>About</span></div>
+        <div class="socials"><div class="social-icon">IG</div><div class="social-icon">FB</div></div>
+        <div class="legal">501(c)(3) Nonprofit · Brooklyn, NY · © 2026 Brooklyn Falcons</div>
+      </div>
+    </div>
+
+    <!-- ==================== 10U DETAIL PAGE ==================== -->
+    <div class="page" id="page-detail">
+      <div class="wire-header">
+        <div class="logo-area"><div class="falcon-logo" style="width:16px;height:16px;"></div><span class="logo-text">BROOKLYN FALCONS</span></div>
+        <div class="right"><span class="cart">STORE</span><div class="burger"><span></span><span></span><span></span></div></div>
+      </div>
+
+      <div style="padding:7px 14px;background:var(--l5);font-size:8px;color:var(--m2);">
+        <span style="color:var(--d3);text-decoration:underline;">Home</span> &rsaquo; <span style="color:var(--d3);text-decoration:underline;">Community Programs</span> &rsaquo; 10U Programs
+      </div>
+
+      <div style="background:var(--d2);padding:14px;">
+        <div style="font-size:15px;font-weight:800;color:white;margin-bottom:2px;">10U Programs</div>
+        <div style="font-size:9px;color:rgba(255,255,255,0.7);">Ages 9–10 · Recreational &amp; Developmental Baseball</div>
+      </div>
+
+      <div class="section">
+        <div class="label">PROGRAM OVERVIEW</div>
+        <div class="section-title">About This Program</div>
+        <div style="font-size:9px;color:var(--d3);line-height:1.6;margin-bottom:10px;">
+          Our 10U program focuses on fundamental skill development in a supportive, team-oriented environment. Players build on basic mechanics while being introduced to competitive game situations.
+        </div>
+        <div class="placeholder" style="height:90px;border-radius:6px;">[ Program Photo ]</div>
+      </div>
+
+      <div class="section-flush">
+        <div class="label">PROGRAM DETAILS</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;">
+          <div class="card" style="padding:9px 10px;">
+            <div style="font-size:7px;color:var(--m2);font-weight:600;text-transform:uppercase;margin-bottom:2px;">Season</div>
+            <div style="font-size:9px;font-weight:700;color:var(--d1);">Mar – Jun 2026</div>
+          </div>
+          <div class="card" style="padding:9px 10px;">
+            <div style="font-size:7px;color:var(--m2);font-weight:600;text-transform:uppercase;margin-bottom:2px;">Location</div>
+            <div style="font-size:9px;font-weight:700;color:var(--d1);">Prospect Park Field 3</div>
+          </div>
+          <div class="card" style="padding:9px 10px;">
+            <div style="font-size:7px;color:var(--m2);font-weight:600;text-transform:uppercase;margin-bottom:2px;">Schedule</div>
+            <div style="font-size:9px;font-weight:700;color:var(--d1);">Sat 9am–12pm</div>
+          </div>
+          <div class="card" style="padding:9px 10px;">
+            <div style="font-size:7px;color:var(--m2);font-weight:600;text-transform:uppercase;margin-bottom:2px;">Cost</div>
+            <div style="font-size:9px;font-weight:700;color:var(--d1);">$XXX / season</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="label">CURRICULUM</div>
+        <div class="section-title">What Players Learn</div>
+        <div style="display:flex;gap:6px;align-items:flex-start;margin-bottom:5px;">
+          <span style="color:var(--d3);font-size:10px;">&#10003;</span>
+          <span style="font-size:9px;color:var(--d3);line-height:1.4;">Hitting mechanics &amp; batting practice</span>
+        </div>
+        <div style="display:flex;gap:6px;align-items:flex-start;margin-bottom:5px;">
+          <span style="color:var(--d3);font-size:10px;">&#10003;</span>
+          <span style="font-size:9px;color:var(--d3);line-height:1.4;">Fielding fundamentals (ground balls, fly balls)</span>
+        </div>
+        <div style="display:flex;gap:6px;align-items:flex-start;margin-bottom:5px;">
+          <span style="color:var(--d3);font-size:10px;">&#10003;</span>
+          <span style="font-size:9px;color:var(--d3);line-height:1.4;">Base running &amp; game awareness</span>
+        </div>
+        <div style="display:flex;gap:6px;align-items:flex-start;margin-bottom:5px;">
+          <span style="color:var(--d3);font-size:10px;">&#10003;</span>
+          <span style="font-size:9px;color:var(--d3);line-height:1.4;">Introduction to pitching mechanics</span>
+        </div>
+        <div style="display:flex;gap:6px;align-items:flex-start;margin-bottom:5px;">
+          <span style="color:var(--d3);font-size:10px;">&#10003;</span>
+          <span style="font-size:9px;color:var(--d3);line-height:1.4;">Teamwork, sportsmanship &amp; discipline</span>
+        </div>
+      </div>
+
+      <div class="section-flush">
+        <div class="label">COACHING</div>
+        <div style="display:flex;gap:8px;align-items:center;padding:9px 10px;background:var(--l6);border-radius:7px;border:1px solid var(--l3);">
+          <div style="width:36px;height:36px;border-radius:18px;background:var(--l3);flex-shrink:0;"></div>
+          <div>
+            <div style="font-size:9px;font-weight:700;color:var(--d1);">Coach Name</div>
+            <div style="font-size:8px;color:var(--m2);">10+ years coaching experience</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SEASON SCHEDULE WITH CALENDAR SYNC -->
+      <div class="section">
+        <div class="label">SEASON SCHEDULE + CALENDAR SYNC</div>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+          <div class="section-title" style="margin-bottom:0;">Upcoming Games &amp; Practices</div>
+          <div style="background:var(--d1);border-radius:5px;padding:4px 10px;display:flex;align-items:center;gap:4px;">
+            <span style="font-size:9px;color:white;">&#128197;</span>
+            <span style="font-size:7px;font-weight:700;color:white;">SYNC ALL</span>
+          </div>
+        </div>
+        <div style="font-size:7px;color:var(--m2);margin-bottom:8px;">Add individual events or sync the full season to your personal calendar (iCal / Google Calendar)</div>
+
+        <!-- Game 1 -->
+        <div class="card" style="margin-bottom:6px;padding:8px 10px;">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;">
+            <div style="flex:1;">
+              <div style="display:flex;align-items:center;gap:5px;margin-bottom:3px;">
+                <div style="width:6px;height:6px;border-radius:3px;background:var(--mid);"></div>
+                <span style="font-size:8px;font-weight:700;color:var(--d1);">vs. Park Slope Panthers</span>
+              </div>
+              <div style="font-size:7px;color:var(--m2);margin-bottom:1px;">Sat, Mar 14 &middot; 10:00 AM</div>
+              <div style="font-size:7px;color:var(--mid);">Prospect Park Field 3</div>
+            </div>
+            <div style="background:var(--l5);border-radius:4px;padding:4px 8px;display:flex;align-items:center;gap:3px;flex-shrink:0;">
+              <span style="font-size:8px;">&#128197;</span>
+              <span style="font-size:6px;font-weight:700;color:var(--d3);">ADD</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Game 2 -->
+        <div class="card" style="margin-bottom:6px;padding:8px 10px;">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;">
+            <div style="flex:1;">
+              <div style="display:flex;align-items:center;gap:5px;margin-bottom:3px;">
+                <div style="width:6px;height:6px;border-radius:3px;background:var(--mid);"></div>
+                <span style="font-size:8px;font-weight:700;color:var(--d1);">@ Bay Ridge Bombers</span>
+              </div>
+              <div style="font-size:7px;color:var(--m2);margin-bottom:1px;">Sat, Mar 21 &middot; 11:00 AM</div>
+              <div style="font-size:7px;color:var(--mid);">Owl's Head Park, Bay Ridge</div>
+            </div>
+            <div style="background:var(--l5);border-radius:4px;padding:4px 8px;display:flex;align-items:center;gap:3px;flex-shrink:0;">
+              <span style="font-size:8px;">&#128197;</span>
+              <span style="font-size:6px;font-weight:700;color:var(--d3);">ADD</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Practice -->
+        <div class="card" style="margin-bottom:6px;padding:8px 10px;border-left:3px solid var(--l3);">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;">
+            <div style="flex:1;">
+              <div style="display:flex;align-items:center;gap:5px;margin-bottom:3px;">
+                <div style="width:6px;height:6px;border-radius:3px;background:var(--l3);"></div>
+                <span style="font-size:8px;font-weight:700;color:var(--d1);">Practice</span>
+                <span style="font-size:6px;background:var(--l4);color:var(--m2);border-radius:3px;padding:1px 4px;font-weight:600;">WEEKLY</span>
+              </div>
+              <div style="font-size:7px;color:var(--m2);margin-bottom:1px;">Every Wed &middot; 5:00 PM &ndash; 6:30 PM</div>
+              <div style="font-size:7px;color:var(--mid);">Prospect Park Field 3</div>
+            </div>
+            <div style="background:var(--l5);border-radius:4px;padding:4px 8px;display:flex;align-items:center;gap:3px;flex-shrink:0;">
+              <span style="font-size:8px;">&#128197;</span>
+              <span style="font-size:6px;font-weight:700;color:var(--d3);">ADD</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Game 3 -->
+        <div class="card" style="margin-bottom:6px;padding:8px 10px;">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;">
+            <div style="flex:1;">
+              <div style="display:flex;align-items:center;gap:5px;margin-bottom:3px;">
+                <div style="width:6px;height:6px;border-radius:3px;background:var(--mid);"></div>
+                <span style="font-size:8px;font-weight:700;color:var(--d1);">vs. Flatbush Flyers</span>
+              </div>
+              <div style="font-size:7px;color:var(--m2);margin-bottom:1px;">Sat, Mar 28 &middot; 10:00 AM</div>
+              <div style="font-size:7px;color:var(--mid);">Prospect Park Field 3</div>
+            </div>
+            <div style="background:var(--l5);border-radius:4px;padding:4px 8px;display:flex;align-items:center;gap:3px;flex-shrink:0;">
+              <span style="font-size:8px;">&#128197;</span>
+              <span style="font-size:6px;font-weight:700;color:var(--d3);">ADD</span>
+            </div>
+          </div>
+        </div>
+
+        <div style="text-align:center;padding:6px 0;">
+          <span style="font-size:8px;color:var(--d3);font-weight:600;text-decoration:underline;">View Full Season Schedule &rarr;</span>
+        </div>
+      </div>
+
+      <!-- VIDEO HIGHLIGHTS -->
+      <div class="section-flush">
+        <div class="label">VIDEO HIGHLIGHTS</div>
+        <div class="section-title">Highlights &amp; Media</div>
+
+        <!-- Featured Video -->
+        <div style="margin-bottom:8px;">
+          <div style="background:var(--d2);border-radius:8px;overflow:hidden;">
+            <div style="height:120px;display:flex;align-items:center;justify-content:center;position:relative;">
+              <div style="font-size:8px;color:#6C757D;text-transform:uppercase;letter-spacing:1px;">[ Video Embed ]</div>
+              <div style="position:absolute;width:36px;height:36px;border-radius:18px;background:rgba(255,255,255,0.9);display:flex;align-items:center;justify-content:center;">
+                <div style="width:0;height:0;border-top:8px solid transparent;border-bottom:8px solid transparent;border-left:14px solid var(--d1);margin-left:3px;"></div>
+              </div>
+            </div>
+            <div style="padding:8px 10px;">
+              <div style="font-size:9px;font-weight:700;color:white;margin-bottom:2px;">10U Season Opener Highlights</div>
+              <div style="font-size:7px;color:rgba(255,255,255,0.6);">Mar 14, 2026 &middot; vs. Park Slope Panthers</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Video Thumbnail Row -->
+        <div style="display:flex;gap:6px;margin-bottom:8px;">
+          <div style="flex:1;">
+            <div style="background:var(--l4);border-radius:5px;height:58px;display:flex;align-items:center;justify-content:center;position:relative;margin-bottom:4px;">
+              <div style="font-size:6px;color:#868E96;">[ Thumb ]</div>
+              <div style="position:absolute;width:20px;height:20px;border-radius:10px;background:rgba(255,255,255,0.85);display:flex;align-items:center;justify-content:center;">
+                <div style="width:0;height:0;border-top:4px solid transparent;border-bottom:4px solid transparent;border-left:7px solid var(--d1);margin-left:2px;"></div>
+              </div>
+            </div>
+            <div style="font-size:7px;font-weight:700;color:var(--d1);line-height:1.3;">Practice Day Reel</div>
+            <div style="font-size:6px;color:var(--m2);">2:14</div>
+          </div>
+          <div style="flex:1;">
+            <div style="background:var(--l4);border-radius:5px;height:58px;display:flex;align-items:center;justify-content:center;position:relative;margin-bottom:4px;">
+              <div style="font-size:6px;color:#868E96;">[ Thumb ]</div>
+              <div style="position:absolute;width:20px;height:20px;border-radius:10px;background:rgba(255,255,255,0.85);display:flex;align-items:center;justify-content:center;">
+                <div style="width:0;height:0;border-top:4px solid transparent;border-bottom:4px solid transparent;border-left:7px solid var(--d1);margin-left:2px;"></div>
+              </div>
+            </div>
+            <div style="font-size:7px;font-weight:700;color:var(--d1);line-height:1.3;">Walk-Off Double!</div>
+            <div style="font-size:6px;color:var(--m2);">0:47</div>
+          </div>
+          <div style="flex:1;">
+            <div style="background:var(--l4);border-radius:5px;height:58px;display:flex;align-items:center;justify-content:center;position:relative;margin-bottom:4px;">
+              <div style="font-size:6px;color:#868E96;">[ Thumb ]</div>
+              <div style="position:absolute;width:20px;height:20px;border-radius:10px;background:rgba(255,255,255,0.85);display:flex;align-items:center;justify-content:center;">
+                <div style="width:0;height:0;border-top:4px solid transparent;border-bottom:4px solid transparent;border-left:7px solid var(--d1);margin-left:2px;"></div>
+              </div>
+            </div>
+            <div style="font-size:7px;font-weight:700;color:var(--d1);line-height:1.3;">Skills Challenge</div>
+            <div style="font-size:6px;color:var(--m2);">1:32</div>
+          </div>
+        </div>
+
+        <!-- GameChanger + YouTube Links -->
+        <div style="display:flex;gap:6px;">
+          <div style="flex:1;background:var(--l6);border-radius:6px;padding:8px;text-align:center;border:1px solid var(--l3);">
+            <div style="font-size:7px;font-weight:700;color:var(--d1);margin-bottom:2px;">GameChanger</div>
+            <div style="font-size:6px;color:var(--m2);">Live stats &amp; play-by-play</div>
+          </div>
+          <div style="flex:1;background:var(--l6);border-radius:6px;padding:8px;text-align:center;border:1px solid var(--l3);">
+            <div style="font-size:7px;font-weight:700;color:var(--d1);margin-bottom:2px;">YouTube Channel</div>
+            <div style="font-size:6px;color:var(--m2);">Full game videos</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="label">REGISTRATION CTA</div>
+        <div style="background:var(--d1);border-radius:8px;padding:15px;text-align:center;">
+          <div style="font-size:13px;font-weight:800;color:white;margin-bottom:3px;">Register for 10U</div>
+          <div style="font-size:8px;color:rgba(255,255,255,0.6);margin-bottom:10px;">Spots are limited · Registration closes March 1</div>
+          <div style="background:white;border-radius:6px;padding:9px 0;font-size:10px;font-weight:700;color:var(--d1);">Register Now</div>
+        </div>
+      </div>
+
+      <div class="section-flush">
+        <div class="label">PIPELINE NUDGE</div>
+        <div style="background:var(--l6);border-radius:8px;padding:11px 13px;border-left:3px solid var(--mid);">
+          <div style="font-size:9px;font-weight:700;color:var(--d1);margin-bottom:2px;">Ready for the next level?</div>
+          <div style="font-size:8px;color:var(--mid);line-height:1.5;margin-bottom:5px;">Players who excel in community programs may be invited to try out for our competitive travel ball teams.</div>
+          <span style="font-size:8px;color:var(--d3);font-weight:600;text-decoration:underline;">Learn About Travel Ball &rarr;</span>
+        </div>
+      </div>
+
+      <div style="height:8px;"></div>
+      <div class="wire-footer">
+        <div class="links"><span>Community</span><span>Travel Ball</span><span>Alumni</span><span>News</span><span>About</span></div>
+        <div class="socials"><div class="social-icon">IG</div><div class="social-icon">FB</div></div>
+        <div class="legal">501(c)(3) Nonprofit · Brooklyn, NY · © 2026 Brooklyn Falcons</div>
+      </div>
+    </div>
+
+    <!-- ==================== NEWSLETTER (CURRENT EDITION) ==================== -->
+    <div class="page" id="page-newsletter">
+      <div class="wire-header">
+        <div class="logo-area"><div class="falcon-logo" style="width:16px;height:16px;"></div><span class="logo-text">BROOKLYN FALCONS</span></div>
+        <div class="right"><span class="cart">STORE</span><div class="burger"><span></span><span></span><span></span></div></div>
+      </div>
+
+      <!-- Newsletter Header -->
+      <div style="background:linear-gradient(135deg,#333,#1a1a1a);padding:18px 14px;">
+        <div class="label" style="color:#ADB5BD;margin-bottom:4px;">MONTHLY NEWSLETTER</div>
+        <div style="font-size:17px;font-weight:800;color:white;margin-bottom:3px;">The Falcon Report</div>
+        <div style="font-size:10px;color:rgba(255,255,255,0.6);">April 2026 Edition</div>
+      </div>
+
+      <!-- Edition Hero Image -->
+      <div class="placeholder" style="height:100px;border-radius:0;font-size:9px;">[ Edition Cover Photo ]</div>
+
+      <!-- Nav Row -->
+      <div style="padding:10px 14px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--l4);">
+        <div style="font-size:9px;font-weight:700;color:var(--d1);">6 Articles This Month</div>
+        <span style="font-size:8px;color:var(--d3);font-weight:600;text-decoration:underline;">View All Editions &rarr;</span>
+      </div>
+
+      <!-- Article Card Grid -->
+      <div class="section">
+        <div class="label">ARTICLE CARDS</div>
+
+        <!-- Card 1: Game Recap -->
+        <div class="card" style="margin-bottom:8px;overflow:hidden;">
+          <div style="display:flex;">
+            <div class="placeholder" style="width:90px;height:80px;border-radius:0;flex-shrink:0;font-size:7px;">[ Photo ]</div>
+            <div style="padding:8px 10px;flex:1;">
+              <div style="font-size:6px;font-weight:700;color:var(--m2);text-transform:uppercase;letter-spacing:1px;margin-bottom:3px;">GAME RECAP</div>
+              <div style="font-size:10px;font-weight:700;color:var(--d1);line-height:1.3;margin-bottom:3px;">14U Takes Tournament Title in Extra Innings</div>
+              <div style="font-size:8px;color:var(--mid);line-height:1.4;">A walk-off double sealed the championship for the 14U squad...</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2: Player Spotlight -->
+        <div class="card" style="margin-bottom:8px;overflow:hidden;">
+          <div style="display:flex;">
+            <div class="placeholder" style="width:90px;height:80px;border-radius:0;flex-shrink:0;font-size:7px;">[ Photo ]</div>
+            <div style="padding:8px 10px;flex:1;">
+              <div style="font-size:6px;font-weight:700;color:var(--m2);text-transform:uppercase;letter-spacing:1px;margin-bottom:3px;">PLAYER SPOTLIGHT</div>
+              <div style="font-size:10px;font-weight:700;color:var(--d1);line-height:1.3;margin-bottom:3px;">Meet Marcus: From 8U to Varsity Starter</div>
+              <div style="font-size:8px;color:var(--mid);line-height:1.4;">How one Falcon's journey through the program shaped his game...</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3: Alumni Update -->
+        <div class="card" style="margin-bottom:8px;overflow:hidden;">
+          <div style="display:flex;">
+            <div class="placeholder" style="width:90px;height:80px;border-radius:0;flex-shrink:0;font-size:7px;">[ Photo ]</div>
+            <div style="padding:8px 10px;flex:1;">
+              <div style="font-size:6px;font-weight:700;color:var(--m2);text-transform:uppercase;letter-spacing:1px;margin-bottom:3px;">ALUMNI UPDATE</div>
+              <div style="font-size:10px;font-weight:700;color:var(--d1);line-height:1.3;margin-bottom:3px;">Two New College Commitments Announced</div>
+              <div style="font-size:8px;color:var(--mid);line-height:1.4;">Congrats to our newest commits heading to D1 programs...</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 4: Community Highlight -->
+        <div class="card" style="margin-bottom:8px;overflow:hidden;">
+          <div style="display:flex;">
+            <div class="placeholder" style="width:90px;height:80px;border-radius:0;flex-shrink:0;font-size:7px;">[ Photo ]</div>
+            <div style="padding:8px 10px;flex:1;">
+              <div style="font-size:6px;font-weight:700;color:var(--m2);text-transform:uppercase;letter-spacing:1px;margin-bottom:3px;">COMMUNITY</div>
+              <div style="font-size:10px;font-weight:700;color:var(--d1);line-height:1.3;margin-bottom:3px;">Tutoring Program Sees Record Enrollment</div>
+              <div style="font-size:8px;color:var(--mid);line-height:1.4;">40+ student-athletes now receiving academic support...</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 5: Upcoming Events -->
+        <div class="card" style="margin-bottom:8px;overflow:hidden;">
+          <div style="display:flex;">
+            <div class="placeholder" style="width:90px;height:80px;border-radius:0;flex-shrink:0;font-size:7px;">[ Photo ]</div>
+            <div style="padding:8px 10px;flex:1;">
+              <div style="font-size:6px;font-weight:700;color:var(--m2);text-transform:uppercase;letter-spacing:1px;margin-bottom:3px;">UPCOMING EVENTS</div>
+              <div style="font-size:10px;font-weight:700;color:var(--d1);line-height:1.3;margin-bottom:3px;">Spring Clinic Series Starts May 3rd</div>
+              <div style="font-size:8px;color:var(--mid);line-height:1.4;">Open to all ages — register now before spots fill up...</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 6: Photo Gallery -->
+        <div class="card" style="margin-bottom:8px;overflow:hidden;">
+          <div style="display:flex;">
+            <div class="placeholder" style="width:90px;height:80px;border-radius:0;flex-shrink:0;font-size:7px;">[ Photo ]</div>
+            <div style="padding:8px 10px;flex:1;">
+              <div style="font-size:6px;font-weight:700;color:var(--m2);text-transform:uppercase;letter-spacing:1px;margin-bottom:3px;">PHOTO GALLERY</div>
+              <div style="font-size:10px;font-weight:700;color:var(--d1);line-height:1.3;margin-bottom:3px;">April in Pictures: 32 New Photos</div>
+              <div style="font-size:8px;color:var(--mid);line-height:1.4;">Game days, clinics, and community moments from the month...</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sponsor Shoutout -->
+      <div class="section-flush">
+        <div class="label">SPONSOR SHOUTOUT</div>
+        <div style="background:var(--l6);border-radius:8px;padding:10px 14px;display:flex;align-items:center;gap:10px;">
+          <div class="placeholder" style="width:48px;height:36px;border-radius:4px;flex-shrink:0;font-size:7px;">Logo</div>
+          <div>
+            <div style="font-size:8px;font-weight:700;color:var(--d1);">This month sponsored by</div>
+            <div style="font-size:8px;color:var(--mid);">Sponsor Name — supporting Brooklyn youth baseball</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Social Follow CTA -->
+      <div class="section">
+        <div class="label">SOCIAL FOLLOW CTA</div>
+        <div style="background:var(--black);border-radius:10px;padding:18px 16px;text-align:center;">
+          <div style="font-size:13px;font-weight:800;color:white;margin-bottom:4px;">Follow the Falcons</div>
+          <div style="font-size:9px;color:rgba(255,255,255,0.6);margin-bottom:14px;">Get highlights, scores, and stories on social media</div>
+          <div style="display:flex;gap:12px;justify-content:center;">
+            <div style="flex:1;max-width:120px;height:44px;background:linear-gradient(135deg,#833AB4,#E1306C,#F77737);border-radius:8px;display:flex;align-items:center;justify-content:center;gap:6px;">
+              <div style="font-size:14px;font-weight:900;color:white;">IG</div>
+              <div style="font-size:8px;font-weight:600;color:rgba(255,255,255,0.9);line-height:1.2;">Instagram<br><span style="font-size:7px;opacity:0.7;">@bkfalcons</span></div>
+            </div>
+            <div style="flex:1;max-width:120px;height:44px;background:#1877F2;border-radius:8px;display:flex;align-items:center;justify-content:center;gap:6px;">
+              <div style="font-size:14px;font-weight:900;color:white;">FB</div>
+              <div style="font-size:8px;font-weight:600;color:rgba(255,255,255,0.9);line-height:1.2;">Facebook<br><span style="font-size:7px;opacity:0.7;">Brooklyn Falcons</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="wire-footer">
+        <div class="links"><span>Community</span><span>Travel Ball</span><span>Alumni</span><span>News</span><span>About</span></div>
+        <div class="socials"><div class="social-icon">IG</div><div class="social-icon">FB</div></div>
+        <div class="legal">501(c)(3) Nonprofit · Brooklyn, NY · © 2026 Brooklyn Falcons</div>
+      </div>
+    </div>
+
+    <!-- ==================== NEWSLETTER ARCHIVE ==================== -->
+    <div class="page" id="page-archive">
+      <div class="wire-header">
+        <div class="logo-area"><div class="falcon-logo" style="width:16px;height:16px;"></div><span class="logo-text">BROOKLYN FALCONS</span></div>
+        <div class="right"><span class="cart">STORE</span><div class="burger"><span></span><span></span><span></span></div></div>
+      </div>
+
+      <!-- Breadcrumbs -->
+      <div style="padding:7px 14px;background:var(--l5);font-size:8px;color:var(--m2);">
+        <span style="color:var(--d3);text-decoration:underline;">Home</span> &rsaquo; <span style="color:var(--d3);text-decoration:underline;">News &amp; Media</span> &rsaquo; Newsletter Archive
+      </div>
+
+      <div style="background:var(--d2);padding:18px 14px;">
+        <div style="font-size:17px;font-weight:800;color:white;margin-bottom:3px;">Newsletter Archive</div>
+        <div style="font-size:9px;color:rgba(255,255,255,0.7);line-height:1.5;">Every edition of The Falcon Report. Recaps, spotlights, and community updates month by month.</div>
+      </div>
+
+      <!-- Year Filter -->
+      <div style="padding:10px 14px;display:flex;gap:8px;border-bottom:1px solid var(--l4);">
+        <div style="padding:4px 12px;background:var(--d1);border-radius:12px;font-size:9px;font-weight:700;color:white;">2026</div>
+        <div style="padding:4px 12px;background:var(--l5);border-radius:12px;font-size:9px;font-weight:600;color:var(--mid);">2025</div>
+        <div style="padding:4px 12px;background:var(--l5);border-radius:12px;font-size:9px;font-weight:600;color:var(--mid);">2024</div>
+      </div>
+
+      <!-- Edition List -->
+      <div class="section">
+        <div class="label">2026 EDITIONS</div>
+
+        <!-- April 2026 (Current) -->
+        <div class="card" style="margin-bottom:8px;overflow:hidden;border:2px dashed var(--light);">
+          <div style="display:flex;">
+            <div class="placeholder" style="width:80px;height:72px;border-radius:0;flex-shrink:0;font-size:7px;">[ Cover ]</div>
+            <div style="padding:8px 10px;flex:1;">
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:3px;">
+                <div style="font-size:10px;font-weight:700;color:var(--d1);">April 2026</div>
+                <div style="font-size:6px;font-weight:700;color:var(--m2);background:var(--l4);padding:2px 6px;border-radius:8px;">CURRENT</div>
+              </div>
+              <div style="font-size:8px;color:var(--mid);line-height:1.4;margin-bottom:3px;">Tournament title, new commits, tutoring milestone, spring clinic preview</div>
+              <div style="font-size:7px;color:var(--m2);">6 articles</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- March 2026 -->
+        <div class="card" style="margin-bottom:8px;overflow:hidden;">
+          <div style="display:flex;">
+            <div class="placeholder" style="width:80px;height:72px;border-radius:0;flex-shrink:0;font-size:7px;">[ Cover ]</div>
+            <div style="padding:8px 10px;flex:1;">
+              <div style="font-size:10px;font-weight:700;color:var(--d1);margin-bottom:3px;">March 2026</div>
+              <div style="font-size:8px;color:var(--mid);line-height:1.4;margin-bottom:3px;">Season openers, tryout recap, coaching staff spotlight, 8U kickoff</div>
+              <div style="font-size:7px;color:var(--m2);">5 articles</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- February 2026 -->
+        <div class="card" style="margin-bottom:8px;overflow:hidden;">
+          <div style="display:flex;">
+            <div class="placeholder" style="width:80px;height:72px;border-radius:0;flex-shrink:0;font-size:7px;">[ Cover ]</div>
+            <div style="padding:8px 10px;flex:1;">
+              <div style="font-size:10px;font-weight:700;color:var(--d1);margin-bottom:3px;">February 2026</div>
+              <div style="font-size:8px;color:var(--mid);line-height:1.4;margin-bottom:3px;">Preseason preview, registration update, facility improvements, alumni check-in</div>
+              <div style="font-size:7px;color:var(--m2);">4 articles</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- January 2026 -->
+        <div class="card" style="margin-bottom:8px;overflow:hidden;">
+          <div style="display:flex;">
+            <div class="placeholder" style="width:80px;height:72px;border-radius:0;flex-shrink:0;font-size:7px;">[ Cover ]</div>
+            <div style="padding:8px 10px;flex:1;">
+              <div style="font-size:10px;font-weight:700;color:var(--d1);margin-bottom:3px;">January 2026</div>
+              <div style="font-size:8px;color:var(--mid);line-height:1.4;margin-bottom:3px;">Year in review, 2025 highlights, winter camp recap, coaching hires</div>
+              <div style="font-size:7px;color:var(--m2);">5 articles</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Email Signup CTA -->
+      <div class="section-flush">
+        <div class="label">EMAIL SIGNUP CTA</div>
+        <div style="background:var(--black);border-radius:10px;padding:14px;text-align:center;">
+          <div style="font-size:11px;font-weight:700;color:white;margin-bottom:3px;">Get It In Your Inbox</div>
+          <div style="font-size:8px;color:rgba(255,255,255,0.6);margin-bottom:10px;">Subscribe to receive The Falcon Report every month</div>
+          <div style="display:flex;gap:6px;">
+            <div style="flex:1;background:var(--d3);border-radius:5px;padding:8px 10px;font-size:8px;color:#ADB5BD;text-align:left;">Email address</div>
+            <div style="background:white;border-radius:5px;padding:8px 12px;font-size:9px;font-weight:700;color:var(--d1);">Subscribe</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="height:8px;"></div>
+      <div class="wire-footer">
+        <div class="links"><span>Community</span><span>Travel Ball</span><span>Alumni</span><span>News</span><span>About</span></div>
+        <div class="socials"><div class="social-icon">IG</div><div class="social-icon">FB</div></div>
+        <div class="legal">501(c)(3) Nonprofit · Brooklyn, NY · © 2026 Brooklyn Falcons</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="hint">
+  Scroll inside the phone frame to see the full page layout<br>
+  Gray uppercase labels = wireframe annotations for content blocks<br>
+  <span style="margin-top:4px;display:inline-block;">Brooklyn Falcons Website Redesign · February 2026</span>
+</div>
+
+<script>
+  var tabs = document.querySelectorAll('.tab');
+  var pages = document.querySelectorAll('.page');
+  var scroll = document.getElementById('phone-scroll');
+
+  tabs.forEach(function(tab) {
+    tab.addEventListener('click', function() {
+      tabs.forEach(function(t) { t.classList.remove('active'); });
+      tab.classList.add('active');
+      var target = tab.getAttribute('data-page');
+      pages.forEach(function(p) {
+        p.classList.remove('active');
+        if (p.id === 'page-' + target) p.classList.add('active');
+      });
+      scroll.scrollTop = 0;
+    });
+  });
+</script>
+</body>
+</html>

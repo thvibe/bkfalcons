@@ -1,0 +1,1367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brooklyn Falcons — Design System</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  /* ========================================
+     BRAND COLORS — Extracted from brooklynfalcons.com
+     Logo dominant: #4EA0D0 · Primary UI: #A3D3ED (falcon-200)
+     Site bg: Black / Dark
+     Accents: White
+     ======================================== */
+
+  /* PRIMARY — Falcon Blue (Columbia Blue) */
+  --falcon-50:  #EBF5FB;
+  --falcon-100: #D0E9F6;
+  --falcon-200: #A3D3ED;
+  --falcon-300: #74BDE4;
+  --falcon-400: #4EA0D0; /* ← Logo color */
+  --falcon-500: #3A8BBD;
+  --falcon-600: #2E6F97;
+  --falcon-700: #235472;
+  --falcon-800: #193A4E;
+  --falcon-900: #0F212D;
+
+  /* NEUTRAL — Warm slate (not pure gray) */
+  --neutral-0:   #FFFFFF;
+  --neutral-50:  #F8F9FA;
+  --neutral-100: #F1F3F5;
+  --neutral-150: #E9ECEF;
+  --neutral-200: #DEE2E6;
+  --neutral-300: #CED4DA;
+  --neutral-400: #ADB5BD;
+  --neutral-500: #868E96;
+  --neutral-600: #6C757D;
+  --neutral-700: #495057;
+  --neutral-800: #343A40;
+  --neutral-900: #212529;
+  --neutral-950: #141618;
+
+  /* ACCENT — Field Gold (warm contrast to blue) */
+  --gold-50:  #FFF9E6;
+  --gold-100: #FFF0BF;
+  --gold-200: #FFE699;
+  --gold-300: #FFD966;
+  --gold-400: #FFCC33;
+  --gold-500: #E6B800;
+  --gold-600: #B38F00;
+  --gold-700: #806600;
+
+  /* SEMANTIC */
+  --success:  #2B9348;
+  --success-light: #D4EDDA;
+  --warning:  #E6A817;
+  --warning-light: #FFF3CD;
+  --error:    #D32F2F;
+  --error-light: #F8D7DA;
+  --info:     var(--falcon-200);
+  --info-light: var(--falcon-50);
+
+  /* SURFACE SYSTEM */
+  --surface-page:    var(--neutral-0);
+  --surface-raised:  var(--neutral-0);
+  --surface-overlay:  var(--neutral-50);
+  --surface-sunken:  var(--neutral-100);
+  --surface-dark:    var(--neutral-900);
+  --surface-brand:   var(--falcon-200);
+
+  /* TEXT */
+  --text-primary:    var(--neutral-900);
+  --text-secondary:  var(--neutral-600);
+  --text-tertiary:   var(--neutral-400);
+  --text-inverse:    var(--neutral-0);
+  --text-brand:      var(--falcon-600);
+
+  /* BORDER */
+  --border-default:  var(--neutral-200);
+  --border-subtle:   var(--neutral-150);
+  --border-strong:   var(--neutral-300);
+
+  /* TYPOGRAPHY */
+  --font-display: 'Plus Jakarta Sans', sans-serif;
+  --font-body:    'DM Sans', sans-serif;
+  --font-mono:    'JetBrains Mono', monospace;
+
+  /* TYPE SCALE (mobile-first, rem-based) */
+  --text-xs:   0.6875rem;   /* 11px */
+  --text-sm:   0.8125rem;   /* 13px */
+  --text-base: 0.9375rem;   /* 15px */
+  --text-md:   1.0625rem;   /* 17px */
+  --text-lg:   1.25rem;     /* 20px */
+  --text-xl:   1.5rem;      /* 24px */
+  --text-2xl:  1.875rem;    /* 30px */
+  --text-3xl:  2.25rem;     /* 36px */
+
+  /* SPACING (4px base) */
+  --space-1:  0.25rem;   /* 4px */
+  --space-2:  0.5rem;    /* 8px */
+  --space-3:  0.75rem;   /* 12px */
+  --space-4:  1rem;      /* 16px */
+  --space-5:  1.25rem;   /* 20px */
+  --space-6:  1.5rem;    /* 24px */
+  --space-8:  2rem;      /* 32px */
+  --space-10: 2.5rem;    /* 40px */
+  --space-12: 3rem;      /* 48px */
+  --space-16: 4rem;      /* 64px */
+
+  /* RADIUS */
+  --radius-sm:   6px;
+  --radius-md:   10px;
+  --radius-lg:   14px;
+  --radius-xl:   20px;
+  --radius-full: 9999px;
+
+  /* SHADOW */
+  --shadow-sm:  0 1px 2px rgba(0,0,0,0.06);
+  --shadow-md:  0 2px 8px rgba(0,0,0,0.08);
+  --shadow-lg:  0 4px 16px rgba(0,0,0,0.10);
+  --shadow-xl:  0 8px 32px rgba(0,0,0,0.12);
+
+  /* TRANSITION */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --duration-fast: 150ms;
+  --duration-normal: 250ms;
+  --duration-slow: 400ms;
+
+  /* LAYOUT */
+  --container-max: 420px;  /* mobile-first */
+  --gutter: var(--space-4);
+}
+
+/* ========================================
+   RESET & BASE
+   ======================================== */
+*, *::before, *::after {
+  box-sizing: border-box; margin: 0; padding: 0;
+  -webkit-print-color-adjust: exact !important;
+  print-color-adjust: exact !important;
+  color-adjust: exact !important;
+}
+
+@media print {
+  body { background: white !important; }
+  .section-dark, [style*="background:#141618"], [style*="background:#0F212D"],
+  [style*="background:#212529"], [style*="background:var(--neutral-900)"] {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+  .palette-cell, .swatch-block, .color-swatch .swatch-block,
+  .surface-chip, .text-chip, .btn-preview, .component-preview,
+  .dark-hero-preview, .contrast-chip {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+}
+html { font-size: 16px; -webkit-font-smoothing: antialiased; }
+body {
+  font-family: var(--font-body);
+  color: var(--text-primary);
+  background: var(--neutral-50);
+  line-height: 1.5;
+}
+
+/* ========================================
+   DESIGN SYSTEM DOCUMENT STYLES
+   ======================================== */
+.ds-page {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: var(--space-8) var(--space-4);
+}
+
+.ds-hero {
+  background: var(--neutral-900);
+  padding: var(--space-16) var(--space-8);
+  border-radius: var(--radius-xl);
+  margin-bottom: var(--space-12);
+  position: relative;
+  overflow: hidden;
+}
+.ds-hero::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -30%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(78,160,208,0.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+.ds-hero h1 {
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--neutral-0);
+  margin-bottom: var(--space-2);
+  letter-spacing: -0.02em;
+}
+.ds-hero .subtitle {
+  font-size: var(--text-md);
+  color: var(--falcon-300);
+  font-weight: 500;
+}
+.ds-hero .version {
+  display: inline-block;
+  background: var(--falcon-700);
+  color: var(--falcon-200);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  padding: 2px 10px;
+  border-radius: var(--radius-full);
+  margin-top: var(--space-4);
+}
+
+/* Section */
+.ds-section {
+  margin-bottom: var(--space-12);
+}
+.ds-section-title {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: var(--space-1);
+  letter-spacing: -0.01em;
+}
+.ds-section-desc {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  margin-bottom: var(--space-6);
+  line-height: 1.6;
+  max-width: 640px;
+}
+.ds-subsection {
+  margin-bottom: var(--space-8);
+}
+.ds-subsection-title {
+  font-family: var(--font-display);
+  font-size: var(--text-base);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: var(--space-3);
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+.ds-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: var(--space-2);
+}
+
+/* Color Swatches */
+.color-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(88px, 1fr));
+  gap: var(--space-2);
+}
+.color-swatch {
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid var(--border-default);
+  background: white;
+}
+.color-swatch .swatch-block {
+  height: 64px;
+  display: flex;
+  align-items: flex-end;
+  padding: 4px 6px;
+}
+.color-swatch .swatch-info {
+  padding: 6px 8px;
+}
+.color-swatch .swatch-name {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 500;
+  color: var(--text-primary);
+  display: block;
+}
+.color-swatch .swatch-hex {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  color: var(--text-secondary);
+}
+
+/* Large format palettes */
+.palette-row {
+  display: flex;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid var(--border-default);
+  margin-bottom: var(--space-3);
+}
+.palette-cell {
+  flex: 1;
+  height: 48px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.palette-cell span {
+  font-family: var(--font-mono);
+  font-size: 8px;
+  font-weight: 500;
+  opacity: 0.8;
+}
+.palette-cell.featured {
+  flex: 2;
+  height: 56px;
+}
+.palette-cell.featured::after {
+  content: '★ PRIMARY';
+  position: absolute;
+  top: 3px;
+  right: 5px;
+  font-family: var(--font-mono);
+  font-size: 7px;
+  font-weight: 600;
+  background: rgba(0,0,0,0.25);
+  color: white;
+  padding: 1px 5px;
+  border-radius: 3px;
+}
+
+/* Typography Specimens */
+.type-specimen {
+  padding: var(--space-4) 0;
+  border-bottom: 1px solid var(--border-subtle);
+}
+.type-specimen:last-child { border-bottom: none; }
+.type-sample {
+  margin-bottom: var(--space-1);
+}
+.type-meta {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--text-secondary);
+}
+
+/* Component Cards */
+.component-card {
+  background: white;
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  margin-bottom: var(--space-4);
+}
+.component-card .preview {
+  padding: var(--space-6);
+  background: var(--neutral-50);
+  border-bottom: 1px solid var(--border-default);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.component-card .preview.dark {
+  background: var(--neutral-900);
+}
+.component-card .meta {
+  padding: var(--space-4);
+}
+.component-card .meta h4 {
+  font-family: var(--font-display);
+  font-size: var(--text-sm);
+  font-weight: 700;
+  margin-bottom: var(--space-1);
+}
+.component-card .meta p {
+  font-size: var(--text-xs);
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+.component-card .usage-tag {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  background: var(--falcon-50);
+  color: var(--falcon-700);
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+  margin-right: 4px;
+  margin-top: 6px;
+}
+
+/* Component previews — mini wireframe scale */
+.mini { font-family: var(--font-display); }
+.mini-btn {
+  display: inline-block;
+  padding: 8px 20px;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-display);
+  font-size: var(--text-sm);
+  font-weight: 700;
+  text-align: center;
+  cursor: pointer;
+  transition: all var(--duration-fast) var(--ease-out);
+  border: none;
+}
+.mini-btn.primary {
+  background: var(--falcon-200);
+  color: var(--falcon-900);
+}
+.mini-btn.primary:hover { background: var(--falcon-300); }
+.mini-btn.secondary {
+  background: transparent;
+  color: var(--falcon-600);
+  border: 2px solid var(--falcon-200);
+}
+.mini-btn.dark {
+  background: var(--neutral-900);
+  color: white;
+}
+.mini-btn.ghost {
+  background: transparent;
+  color: var(--falcon-600);
+  text-decoration: underline;
+  padding: 8px 4px;
+}
+.mini-btn.gold {
+  background: var(--gold-400);
+  color: var(--neutral-900);
+}
+.mini-btn + .mini-btn { margin-left: 8px; }
+
+/* Mini card component */
+.mini-card {
+  background: white;
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-md);
+  padding: var(--space-3) var(--space-4);
+  width: 260px;
+}
+.mini-card .mini-label {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-secondary);
+  margin-bottom: 2px;
+}
+.mini-card .mini-value {
+  font-family: var(--font-display);
+  font-size: var(--text-base);
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+/* Section label tag */
+.mini-section-label {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--falcon-600);
+  border-bottom: 2px solid var(--falcon-200);
+  padding-bottom: 2px;
+  display: inline-block;
+}
+
+/* Nav bar mini */
+.mini-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: white;
+  padding: 10px 16px;
+  border-radius: var(--radius-md);
+  width: 320px;
+  box-shadow: var(--shadow-sm);
+}
+.mini-nav .brand {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-display);
+  font-size: var(--text-sm);
+  font-weight: 800;
+  color: var(--neutral-900);
+  letter-spacing: -0.01em;
+}
+.mini-nav .brand .logo-dot {
+  width: 22px;
+  height: 22px;
+  background: var(--falcon-200);
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 11px;
+  font-weight: 800;
+  font-style: italic;
+}
+.mini-nav .nav-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: var(--text-xs);
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+.mini-burger { display: flex; flex-direction: column; gap: 3px; }
+.mini-burger span { display: block; width: 18px; height: 2px; background: var(--neutral-800); border-radius: 1px; }
+
+/* CTA Block */
+.mini-cta {
+  background: var(--neutral-900);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5);
+  text-align: center;
+  width: 300px;
+}
+.mini-cta h3 {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: 800;
+  color: white;
+  margin-bottom: 4px;
+}
+.mini-cta p {
+  font-size: var(--text-xs);
+  color: rgba(255,255,255,0.5);
+  margin-bottom: var(--space-3);
+}
+.mini-cta .mini-btn { width: 100%; }
+
+/* Pipeline nudge */
+.mini-nudge {
+  background: var(--falcon-50);
+  border-radius: var(--radius-md);
+  padding: var(--space-3) var(--space-4);
+  border-left: 3px solid var(--falcon-200);
+  width: 300px;
+}
+.mini-nudge h4 {
+  font-family: var(--font-display);
+  font-size: var(--text-sm);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 2px;
+}
+.mini-nudge p {
+  font-size: var(--text-xs);
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin-bottom: 4px;
+}
+.mini-nudge a {
+  font-size: var(--text-xs);
+  color: var(--falcon-600);
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+/* Ticker mini */
+.mini-ticker {
+  background: var(--neutral-900);
+  border-radius: var(--radius-sm);
+  padding: 6px 12px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 320px;
+  overflow: hidden;
+}
+.mini-ticker .game {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+.mini-ticker .game .teams {
+  font-size: 10px;
+  color: rgba(255,255,255,0.7);
+  font-weight: 600;
+}
+.mini-ticker .game .score {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--gold-400);
+}
+.mini-ticker .divider {
+  width: 1px;
+  height: 20px;
+  background: rgba(255,255,255,0.15);
+  flex-shrink: 0;
+}
+
+/* Spacing display */
+.space-demo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-2) 0;
+  border-bottom: 1px solid var(--border-subtle);
+}
+.space-bar {
+  height: 12px;
+  background: var(--falcon-100);
+  border: 1px solid var(--falcon-200);
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+.space-info {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+
+/* Shadow display */
+.shadow-demo {
+  display: flex;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+}
+.shadow-box {
+  width: 100px;
+  height: 80px;
+  background: white;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  color: var(--text-secondary);
+}
+
+/* Radius display */
+.radius-demo {
+  display: flex;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+}
+.radius-box {
+  width: 72px;
+  height: 72px;
+  background: var(--falcon-50);
+  border: 2px solid var(--falcon-200);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  color: var(--falcon-700);
+}
+
+/* Grid for component cards */
+.component-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  gap: var(--space-4);
+}
+
+/* Pattern table */
+.pattern-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--text-sm);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+.pattern-table th {
+  background: var(--neutral-100);
+  text-align: left;
+  padding: var(--space-2) var(--space-3);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-secondary);
+  border-bottom: 1px solid var(--border-default);
+}
+.pattern-table td {
+  padding: var(--space-2) var(--space-3);
+  border-bottom: 1px solid var(--border-subtle);
+  vertical-align: top;
+}
+.pattern-table tr:last-child td { border-bottom: none; }
+.pattern-table code {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  background: var(--neutral-100);
+  padding: 1px 6px;
+  border-radius: 3px;
+  color: var(--falcon-700);
+}
+
+.divider {
+  height: 1px;
+  background: var(--border-default);
+  margin: var(--space-8) 0;
+}
+
+/* Two-column within section */
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-6);
+}
+@media (max-width: 640px) {
+  .two-col { grid-template-columns: 1fr; }
+  .component-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<div class="ds-page">
+
+  <!-- ==================== HERO ==================== -->
+  <div class="ds-hero">
+    <h1>Brooklyn Falcons</h1>
+    <div class="subtitle">Design System & UI Kit</div>
+    <div class="version">v1.0 · Feb 2026 · Mobile-First</div>
+  </div>
+
+  <!-- ==================== OVERVIEW ==================== -->
+  <div class="ds-section">
+    <div class="ds-section-title">Overview</div>
+    <div class="ds-section-desc">
+      This design system defines the visual language for the Brooklyn Falcons website redesign. All tokens, components, and patterns are derived from two sources: the existing brand identity on brooklynfalcons.com and the UX research findings from 22 respondents. The system is mobile-first (420px base) and designed for a Wix-to-modern-platform migration.
+    </div>
+    <div class="two-col">
+      <div>
+        <div class="ds-label">Design Principles</div>
+        <p style="font-size:var(--text-sm);color:var(--text-secondary);line-height:1.7;"><strong>1. Two Journeys, One Brand</strong> — Community programs and travel ball share a visual system but have distinct entry points and tones.<br>
+        <strong>2. Mobile-First, Always</strong> — 100% of parents/players use smartphones. Every decision starts at 420px.<br>
+        <strong>3. Low-Maintenance Freshness</strong> — Components auto-populate from GameChanger, newsletters, and calendars to prevent content staleness.<br>
+        <strong>4. Trust Through Clarity</strong> — Clear navigation, visible costs, and prominent CTAs build confidence for first-time visitors.</p>
+      </div>
+      <div>
+        <div class="ds-label">Brand Voice</div>
+        <p style="font-size:var(--text-sm);color:var(--text-secondary);line-height:1.7;"><strong>Tagline:</strong> "Nothing is Given. Compete and Earn."<br>
+        <strong>Tone:</strong> Confident but welcoming. The site speaks to parents first (practical, trustworthy) and players second (aspirational, energetic).<br>
+        <strong>Key words:</strong> Family, development, exposure, compete, opportunity, commitment.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ==================== 1. COLOR ==================== -->
+  <div class="ds-section">
+    <div class="ds-section-title">1. Color</div>
+    <div class="ds-section-desc">
+      The primary brand color is Falcon Blue — a Columbia Blue extracted directly from the script "F" logo on brooklynfalcons.com (#4EA0D0). The website uses predominantly dark backgrounds (black, charcoal). The palette below extends the brand into a full system with warm neutrals and a gold accent.
+    </div>
+
+    <!-- Falcon Blue -->
+    <div class="ds-subsection">
+      <div class="ds-subsection-title">Primary — Falcon Blue</div>
+      <div class="palette-row">
+        <div class="palette-cell" style="background:#EBF5FB;"><span style="color:#235472;">50</span></div>
+        <div class="palette-cell" style="background:#D0E9F6;"><span style="color:#235472;">100</span></div>
+        <div class="palette-cell featured" style="background:#A3D3ED;"><span style="color:#235472;">200</span></div>
+        <div class="palette-cell" style="background:#74BDE4;"><span style="color:#193A4E;">300</span></div>
+        <div class="palette-cell" style="background:#4EA0D0;"><span style="color:white;">400</span></div>
+        <div class="palette-cell" style="background:#3A8BBD;"><span style="color:white;">500</span></div>
+        <div class="palette-cell" style="background:#2E6F97;"><span style="color:white;">600</span></div>
+        <div class="palette-cell" style="background:#235472;"><span style="color:white;">700</span></div>
+        <div class="palette-cell" style="background:#193A4E;"><span style="color:white;">800</span></div>
+        <div class="palette-cell" style="background:#0F212D;"><span style="color:white;">900</span></div>
+      </div>
+      <div class="color-grid">
+        <div class="color-swatch"><div class="swatch-block" style="background:#EBF5FB;"></div><div class="swatch-info"><span class="swatch-name">falcon-50</span><span class="swatch-hex">#EBF5FB</span></div></div>
+        <div class="color-swatch"><div class="swatch-block" style="background:#D0E9F6;"></div><div class="swatch-info"><span class="swatch-name">falcon-100</span><span class="swatch-hex">#D0E9F6</span></div></div>
+        <div class="color-swatch"><div class="swatch-block" style="background:#A3D3ED;"></div><div class="swatch-info"><span class="swatch-name">falcon-200 ★ PRIMARY</span><span class="swatch-hex">#A3D3ED</span></div></div>
+        <div class="color-swatch"><div class="swatch-block" style="background:#74BDE4;"></div><div class="swatch-info"><span class="swatch-name">falcon-300</span><span class="swatch-hex">#74BDE4</span></div></div>
+        <div class="color-swatch"><div class="swatch-block" style="background:#4EA0D0;"></div><div class="swatch-info"><span class="swatch-name">falcon-400 (logo)</span><span class="swatch-hex">#4EA0D0</span></div></div>
+        <div class="color-swatch"><div class="swatch-block" style="background:#3A8BBD;"></div><div class="swatch-info"><span class="swatch-name">falcon-500</span><span class="swatch-hex">#3A8BBD</span></div></div>
+        <div class="color-swatch"><div class="swatch-block" style="background:#2E6F97;"></div><div class="swatch-info"><span class="swatch-name">falcon-600</span><span class="swatch-hex">#2E6F97</span></div></div>
+        <div class="color-swatch"><div class="swatch-block" style="background:#235472;"></div><div class="swatch-info"><span class="swatch-name">falcon-700</span><span class="swatch-hex">#235472</span></div></div>
+        <div class="color-swatch"><div class="swatch-block" style="background:#193A4E;"></div><div class="swatch-info"><span class="swatch-name">falcon-800</span><span class="swatch-hex">#193A4E</span></div></div>
+        <div class="color-swatch"><div class="swatch-block" style="background:#0F212D;"></div><div class="swatch-info"><span class="swatch-name">falcon-900</span><span class="swatch-hex">#0F212D</span></div></div>
+      </div>
+    </div>
+
+    <!-- Neutral -->
+    <div class="ds-subsection">
+      <div class="ds-subsection-title">Neutral — Warm Slate</div>
+      <div class="palette-row">
+        <div class="palette-cell" style="background:#FFFFFF;border:1px solid #eee;"><span style="color:#333;">0</span></div>
+        <div class="palette-cell" style="background:#F8F9FA;"><span style="color:#333;">50</span></div>
+        <div class="palette-cell" style="background:#F1F3F5;"><span style="color:#333;">100</span></div>
+        <div class="palette-cell" style="background:#DEE2E6;"><span style="color:#333;">200</span></div>
+        <div class="palette-cell" style="background:#CED4DA;"><span style="color:#333;">300</span></div>
+        <div class="palette-cell" style="background:#ADB5BD;"><span style="color:#333;">400</span></div>
+        <div class="palette-cell" style="background:#868E96;"><span style="color:white;">500</span></div>
+        <div class="palette-cell" style="background:#6C757D;"><span style="color:white;">600</span></div>
+        <div class="palette-cell" style="background:#495057;"><span style="color:white;">700</span></div>
+        <div class="palette-cell" style="background:#343A40;"><span style="color:white;">800</span></div>
+        <div class="palette-cell" style="background:#212529;"><span style="color:white;">900</span></div>
+        <div class="palette-cell" style="background:#141618;"><span style="color:white;">950</span></div>
+      </div>
+    </div>
+
+    <!-- Gold Accent -->
+    <div class="ds-subsection">
+      <div class="ds-subsection-title">Accent — Field Gold</div>
+      <div class="ds-label" style="margin-bottom:var(--space-3);">Used sparingly for live scores, badges, highlights, and premium accents</div>
+      <div class="palette-row" style="max-width:500px;">
+        <div class="palette-cell" style="background:#FFF9E6;"><span style="color:#806600;">50</span></div>
+        <div class="palette-cell" style="background:#FFF0BF;"><span style="color:#806600;">100</span></div>
+        <div class="palette-cell" style="background:#FFE699;"><span style="color:#806600;">200</span></div>
+        <div class="palette-cell" style="background:#FFD966;"><span style="color:#806600;">300</span></div>
+        <div class="palette-cell" style="background:#FFCC33;"><span style="color:#806600;">400</span></div>
+        <div class="palette-cell" style="background:#E6B800;"><span style="color:white;">500</span></div>
+        <div class="palette-cell" style="background:#B38F00;"><span style="color:white;">600</span></div>
+      </div>
+    </div>
+
+    <!-- Semantic Colors -->
+    <div class="ds-subsection">
+      <div class="ds-subsection-title">Semantic</div>
+      <div class="color-grid" style="max-width:500px;">
+        <div class="color-swatch"><div class="swatch-block" style="background:#2B9348;"></div><div class="swatch-info"><span class="swatch-name">success</span><span class="swatch-hex">#2B9348</span></div></div>
+        <div class="color-swatch"><div class="swatch-block" style="background:#E6A817;"></div><div class="swatch-info"><span class="swatch-name">warning</span><span class="swatch-hex">#E6A817</span></div></div>
+        <div class="color-swatch"><div class="swatch-block" style="background:#D32F2F;"></div><div class="swatch-info"><span class="swatch-name">error</span><span class="swatch-hex">#D32F2F</span></div></div>
+        <div class="color-swatch"><div class="swatch-block" style="background:#4EA0D0;"></div><div class="swatch-info"><span class="swatch-name">info</span><span class="swatch-hex">#4EA0D0</span></div></div>
+      </div>
+    </div>
+
+    <!-- Usage Rules -->
+    <div class="ds-subsection">
+      <div class="ds-subsection-title">Color Usage Rules</div>
+      <table class="pattern-table">
+        <tr><th>Context</th><th>Foreground</th><th>Background</th><th>Notes</th></tr>
+        <tr><td>Page body</td><td><code>neutral-900</code></td><td><code>neutral-0</code></td><td>Default light surface</td></tr>
+        <tr><td>Dark hero / headers</td><td><code>neutral-0</code></td><td><code>neutral-900</code></td><td>Team photo overlays, page heroes</td></tr>
+        <tr><td>Section labels</td><td><code>falcon-600</code></td><td>—</td><td>Mono, uppercase, tracked</td></tr>
+        <tr><td>Primary CTA</td><td><code>falcon-900</code></td><td><code>falcon-200</code></td><td>Register, Sign Up, Donate — dark text for AA contrast</td></tr>
+        <tr><td>Registration CTA blocks</td><td><code>neutral-0</code></td><td><code>neutral-900</code></td><td>High-contrast dark blocks</td></tr>
+        <tr><td>Score ticker</td><td><code>gold-400</code></td><td><code>neutral-900</code></td><td>Gold for live scores, white for team names</td></tr>
+        <tr><td>Pipeline nudge</td><td><code>text-primary</code></td><td><code>falcon-50</code></td><td>Left border accent in <code>falcon-200</code></td></tr>
+        <tr><td>Cards</td><td><code>text-primary</code></td><td><code>neutral-0</code></td><td>1px border, <code>border-default</code></td></tr>
+        <tr><td>Form fields</td><td><code>text-primary</code></td><td><code>neutral-0</code></td><td>Border strengthens on focus to <code>falcon-200</code></td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ==================== 2. TYPOGRAPHY ==================== -->
+  <div class="ds-section">
+    <div class="ds-section-title">2. Typography</div>
+    <div class="ds-section-desc">
+      Two typeface families: Plus Jakarta Sans for display/headings (geometric, confident, modern sports feel) and DM Sans for body text (clean, highly legible at small sizes on mobile). JetBrains Mono for labels, data, and code.
+    </div>
+
+    <div class="ds-subsection">
+      <div class="ds-subsection-title">Type Scale</div>
+      <div class="type-specimen">
+        <div class="type-sample" style="font-family:var(--font-display);font-size:var(--text-3xl);font-weight:800;letter-spacing:-0.02em;">Brooklyn Falcons Baseball</div>
+        <div class="type-meta">text-3xl · 36px · Plus Jakarta Sans 800 · Page titles, hero headlines</div>
+      </div>
+      <div class="type-specimen">
+        <div class="type-sample" style="font-family:var(--font-display);font-size:var(--text-2xl);font-weight:800;letter-spacing:-0.02em;">Nothing Is Given</div>
+        <div class="type-meta">text-2xl · 30px · Plus Jakarta Sans 800 · Section heroes</div>
+      </div>
+      <div class="type-specimen">
+        <div class="type-sample" style="font-family:var(--font-display);font-size:var(--text-xl);font-weight:800;letter-spacing:-0.01em;">10U Community Programs</div>
+        <div class="type-meta">text-xl · 24px · Plus Jakarta Sans 800 · Page section titles</div>
+      </div>
+      <div class="type-specimen">
+        <div class="type-sample" style="font-family:var(--font-display);font-size:var(--text-lg);font-weight:700;">Register for Spring Season</div>
+        <div class="type-meta">text-lg · 20px · Plus Jakarta Sans 700 · CTA headlines, card titles</div>
+      </div>
+      <div class="type-specimen">
+        <div class="type-sample" style="font-family:var(--font-display);font-size:var(--text-md);font-weight:700;">Coach Kenny Duverge</div>
+        <div class="type-meta">text-md · 17px · Plus Jakarta Sans 700 · Subsection titles, names</div>
+      </div>
+      <div class="type-specimen">
+        <div class="type-sample" style="font-family:var(--font-body);font-size:var(--text-base);font-weight:400;line-height:1.6;color:var(--text-secondary);max-width:480px;">Our 10U program focuses on fundamental skill development in a supportive, team-oriented environment. Players build on basic mechanics while being introduced to competitive game situations.</div>
+        <div class="type-meta">text-base · 15px · DM Sans 400 · Body copy, descriptions</div>
+      </div>
+      <div class="type-specimen">
+        <div class="type-sample" style="font-family:var(--font-body);font-size:var(--text-sm);font-weight:500;color:var(--text-secondary);">Ages 9–10 · Recreational & Developmental Baseball</div>
+        <div class="type-meta">text-sm · 13px · DM Sans 500 · Metadata, supporting text</div>
+      </div>
+      <div class="type-specimen">
+        <div class="type-sample" style="font-family:var(--font-mono);font-size:var(--text-xs);font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:var(--falcon-600);">PROGRAM DETAILS</div>
+        <div class="type-meta">text-xs · 11px · JetBrains Mono 600 · Section labels, badges, data</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ==================== 3. SPACING & LAYOUT ==================== -->
+  <div class="ds-section">
+    <div class="ds-section-title">3. Spacing & Layout</div>
+    <div class="ds-section-desc">
+      All spacing uses a 4px base unit. The mobile-first container is 420px max-width with 16px gutters. Content sections alternate between full-bleed (section-flush) and padded (section) for visual rhythm.
+    </div>
+
+    <div class="ds-subsection">
+      <div class="ds-subsection-title">Spacing Scale</div>
+      <div class="space-demo"><div class="space-bar" style="width:4px;"></div><div class="space-info">space-1 · 4px · Inline element gaps</div></div>
+      <div class="space-demo"><div class="space-bar" style="width:8px;"></div><div class="space-info">space-2 · 8px · Tight padding, icon gaps</div></div>
+      <div class="space-demo"><div class="space-bar" style="width:12px;"></div><div class="space-info">space-3 · 12px · Card padding, list gaps</div></div>
+      <div class="space-demo"><div class="space-bar" style="width:16px;"></div><div class="space-info">space-4 · 16px · Section padding (gutter)</div></div>
+      <div class="space-demo"><div class="space-bar" style="width:20px;"></div><div class="space-info">space-5 · 20px · CTA block padding</div></div>
+      <div class="space-demo"><div class="space-bar" style="width:24px;"></div><div class="space-info">space-6 · 24px · Section vertical spacing</div></div>
+      <div class="space-demo"><div class="space-bar" style="width:32px;"></div><div class="space-info">space-8 · 32px · Major section breaks</div></div>
+      <div class="space-demo"><div class="space-bar" style="width:48px;"></div><div class="space-info">space-12 · 48px · Page-level separation</div></div>
+      <div class="space-demo"><div class="space-bar" style="width:64px;"></div><div class="space-info">space-16 · 64px · Hero padding</div></div>
+    </div>
+
+    <div class="two-col">
+      <div class="ds-subsection">
+        <div class="ds-subsection-title">Border Radius</div>
+        <div class="radius-demo">
+          <div class="radius-box" style="border-radius:6px;">6px<br><span style="font-size:7px;">sm</span></div>
+          <div class="radius-box" style="border-radius:10px;">10px<br><span style="font-size:7px;">md</span></div>
+          <div class="radius-box" style="border-radius:14px;">14px<br><span style="font-size:7px;">lg</span></div>
+          <div class="radius-box" style="border-radius:20px;">20px<br><span style="font-size:7px;">xl</span></div>
+          <div class="radius-box" style="border-radius:9999px;">full</div>
+        </div>
+      </div>
+      <div class="ds-subsection">
+        <div class="ds-subsection-title">Elevation (Shadows)</div>
+        <div class="shadow-demo">
+          <div class="shadow-box" style="box-shadow:var(--shadow-sm);">sm</div>
+          <div class="shadow-box" style="box-shadow:var(--shadow-md);">md</div>
+          <div class="shadow-box" style="box-shadow:var(--shadow-lg);">lg</div>
+          <div class="shadow-box" style="box-shadow:var(--shadow-xl);">xl</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ==================== 4. COMPONENTS ==================== -->
+  <div class="ds-section">
+    <div class="ds-section-title">4. Components</div>
+    <div class="ds-section-desc">
+      Reusable UI components extracted from the 7-page wireframe system. Each component maps to specific persona needs and research findings. Components are mobile-first (420px container).
+    </div>
+
+    <div class="component-grid">
+
+      <!-- Buttons -->
+      <div class="component-card">
+        <div class="preview">
+          <div style="display:flex;flex-direction:column;gap:12px;align-items:flex-start;">
+            <div><button class="mini-btn primary">Register Now</button> <button class="mini-btn secondary">Learn More</button></div>
+            <div><button class="mini-btn dark">Donate</button> <button class="mini-btn gold">Live Scores</button></div>
+            <div><button class="mini-btn ghost">View Full Schedule →</button></div>
+          </div>
+        </div>
+        <div class="meta">
+          <h4>Buttons</h4>
+          <p><strong>Primary</strong> (Falcon Blue) — Registration, primary actions. <strong>Secondary</strong> (outlined) — Learn more, explore. <strong>Dark</strong> — Donate, CTA blocks. <strong>Gold</strong> — Live/score-related. <strong>Ghost</strong> — Inline links, "view all."</p>
+          <span class="usage-tag">All Pages</span>
+        </div>
+      </div>
+
+      <!-- Navigation -->
+      <div class="component-card">
+        <div class="preview">
+          <div style="display:flex;flex-direction:column;gap:8px;">
+            <div class="mini-nav">
+              <div class="brand"><div class="logo-dot">F</div> BROOKLYN FALCONS</div>
+              <div class="nav-right"><span>STORE</span><div class="mini-burger"><span></span><span></span><span></span></div></div>
+            </div>
+            <div style="display:flex;gap:4px;">
+              <div style="background:var(--falcon-200);color:var(--falcon-900);font-size:10px;font-weight:700;padding:5px 12px;border-radius:4px 4px 0 0;font-family:var(--font-display);">Community</div>
+              <div style="background:var(--neutral-200);color:var(--neutral-700);font-size:10px;font-weight:600;padding:5px 12px;border-radius:4px 4px 0 0;font-family:var(--font-display);">Travel Ball</div>
+            </div>
+          </div>
+        </div>
+        <div class="meta">
+          <h4>Sticky Nav + Journey Tabs</h4>
+          <p>Fixed header with logo, store shortcut, and hamburger. Blue journey tabs appear on Homepage only — the research-validated "two-journey fork." Stays visible on scroll per parent feedback.</p>
+          <span class="usage-tag">Global</span><span class="usage-tag">Homepage Tabs</span>
+        </div>
+      </div>
+
+      <!-- Section Label -->
+      <div class="component-card">
+        <div class="preview">
+          <div style="display:flex;flex-direction:column;gap:16px;">
+            <div>
+              <div class="mini-section-label">PROGRAM DETAILS</div>
+            </div>
+            <div>
+              <div class="mini-section-label">SEASON SCHEDULE + CALENDAR SYNC</div>
+              <div style="margin-top:6px;font-family:var(--font-display);font-size:var(--text-base);font-weight:700;">Upcoming Games & Practices</div>
+            </div>
+          </div>
+        </div>
+        <div class="meta">
+          <h4>Section Label</h4>
+          <p>Mono, uppercase, tracked — serves as a scannable wayfinding system. Always paired with a section-title (display font, bold) below it. Creates consistent vertical rhythm across all pages.</p>
+          <span class="usage-tag">All Pages</span><span class="usage-tag">34 Instances</span>
+        </div>
+      </div>
+
+      <!-- Info Card -->
+      <div class="component-card">
+        <div class="preview">
+          <div style="display:flex;gap:8px;">
+            <div class="mini-card">
+              <div class="mini-label">Season</div>
+              <div class="mini-value">Mar – Jun 2026</div>
+            </div>
+            <div class="mini-card">
+              <div class="mini-label">Cost</div>
+              <div class="mini-value">$XXX / season</div>
+            </div>
+          </div>
+        </div>
+        <div class="meta">
+          <h4>Info Card (Key-Value)</h4>
+          <p>Used in 2×2 grids for program details (season, location, schedule, cost). Mono label on top, display-font value below. Always inside a section-flush container for full-width impact.</p>
+          <span class="usage-tag">10U Detail</span><span class="usage-tag">Travel Ball</span><span class="usage-tag">Community</span>
+        </div>
+      </div>
+
+      <!-- CTA Block -->
+      <div class="component-card">
+        <div class="preview">
+          <div class="mini-cta">
+            <h3>Register for 10U</h3>
+            <p>Spots are limited · Registration closes March 1</p>
+            <button class="mini-btn primary" style="width:100%;">Register Now</button>
+          </div>
+        </div>
+        <div class="meta">
+          <h4>CTA Block (Dark)</h4>
+          <p>Full-width dark block with centered headline, supporting text, and button. Used for registration, donations, and newsletter signup. Urgency copy drives conversions (research: parents need clear deadlines).</p>
+          <span class="usage-tag">Homepage</span><span class="usage-tag">10U Detail</span><span class="usage-tag">Community</span><span class="usage-tag">Travel Ball</span>
+        </div>
+      </div>
+
+      <!-- Pipeline Nudge -->
+      <div class="component-card">
+        <div class="preview">
+          <div class="mini-nudge">
+            <h4>Ready for the next level?</h4>
+            <p>Players who excel in community programs may be invited to try out for our competitive travel ball teams.</p>
+            <a href="#">Learn About Travel Ball →</a>
+          </div>
+        </div>
+        <div class="meta">
+          <h4>Pipeline Nudge</h4>
+          <p>Left-bordered callout card that cross-links between Community → Travel Ball journeys. Validates Research §3.3 pipeline discovery. Uses falcon-50 background with falcon-200 left border accent.</p>
+          <span class="usage-tag">Community</span><span class="usage-tag">10U Detail</span>
+        </div>
+      </div>
+
+      <!-- Score Ticker -->
+      <div class="component-card">
+        <div class="preview dark">
+          <div class="mini-ticker">
+            <div class="game">
+              <div class="teams">BK vs PSP</div>
+              <div class="score">8–3</div>
+            </div>
+            <div class="divider"></div>
+            <div class="game">
+              <div class="teams">BK vs FF</div>
+              <div class="score">5–2</div>
+            </div>
+            <div class="divider"></div>
+            <div class="game">
+              <div class="teams" style="color:var(--gold-300);">LIVE ●</div>
+              <div class="score">3–1</div>
+            </div>
+          </div>
+        </div>
+        <div class="meta">
+          <h4>GameChanger Score Ticker</h4>
+          <p>ESPN-style horizontal scroll bar, auto-populated from GameChanger API. Gold scores on dark background. Live indicator uses animated pulse. Zero-maintenance once configured at organization level.</p>
+          <span class="usage-tag">Homepage</span><span class="usage-tag">Auto-populated</span>
+        </div>
+      </div>
+
+      <!-- Calendar Event Card -->
+      <div class="component-card">
+        <div class="preview">
+          <div style="width:280px;">
+            <div class="mini-card" style="width:100%;display:flex;justify-content:space-between;align-items:center;">
+              <div>
+                <div style="display:flex;align-items:center;gap:5px;margin-bottom:2px;">
+                  <div style="width:6px;height:6px;border-radius:3px;background:var(--falcon-200);"></div>
+                  <span style="font-family:var(--font-display);font-size:var(--text-xs);font-weight:700;">vs. Park Slope Panthers</span>
+                </div>
+                <div style="font-size:10px;color:var(--text-secondary);">Sat, Mar 14 · 10:00 AM</div>
+              </div>
+              <div style="background:var(--neutral-100);border-radius:4px;padding:4px 8px;font-size:9px;font-weight:700;color:var(--text-secondary);">📅 ADD</div>
+            </div>
+          </div>
+        </div>
+        <div class="meta">
+          <h4>Schedule Event + Calendar Sync</h4>
+          <p>Individual event cards with opponent, date/time, venue, and one-tap calendar export (iCal/Google Cal). Games use colored dots (falcon-200), practices use neutral dots. "SYNC ALL" button at section level exports full season.</p>
+          <span class="usage-tag">10U Detail</span><span class="usage-tag">#1 Requested Feature</span>
+        </div>
+      </div>
+
+      <!-- Newsletter Card -->
+      <div class="component-card">
+        <div class="preview">
+          <div style="width:160px;background:white;border:1px solid var(--border-default);border-radius:var(--radius-md);overflow:hidden;">
+            <div style="height:80px;background:var(--neutral-200);display:flex;align-items:center;justify-content:center;font-size:9px;color:var(--text-tertiary);">[ Cover ]</div>
+            <div style="padding:8px;">
+              <div style="font-family:var(--font-display);font-size:10px;font-weight:700;margin-bottom:2px;">Spring Preview</div>
+              <div style="font-size:9px;color:var(--text-secondary);line-height:1.4;">What's new for the 2026 season and roster updates...</div>
+              <div style="margin-top:4px;font-size:8px;color:var(--text-tertiary);">Mar 2026</div>
+            </div>
+          </div>
+        </div>
+        <div class="meta">
+          <h4>Newsletter Article Card</h4>
+          <p>Image-topped card for newsletter grid. Consistent cover image + headline + excerpt + date pattern. Links to individual article pages. Creates shareable social URLs for content distribution.</p>
+          <span class="usage-tag">Newsletter</span><span class="usage-tag">Newsletter Archive</span><span class="usage-tag">Homepage</span>
+        </div>
+      </div>
+
+      <!-- Photo Gallery Placeholder -->
+      <div class="component-card">
+        <div class="preview">
+          <div style="display:flex;gap:4px;">
+            <div style="width:100px;height:80px;background:var(--neutral-200);border-radius:var(--radius-sm);display:flex;align-items:center;justify-content:center;font-size:8px;color:var(--text-tertiary);">[ Photo ]</div>
+            <div style="display:flex;flex-direction:column;gap:4px;">
+              <div style="width:60px;height:38px;background:var(--neutral-200);border-radius:var(--radius-sm);"></div>
+              <div style="width:60px;height:38px;background:var(--neutral-200);border-radius:var(--radius-sm);position:relative;">
+                <div style="position:absolute;inset:0;background:rgba(0,0,0,0.4);border-radius:var(--radius-sm);display:flex;align-items:center;justify-content:center;color:white;font-size:10px;font-weight:700;">+12</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="meta">
+          <h4>Photo Gallery Grid</h4>
+          <p>Masonry-style thumbnail grid with a "+N more" overlay on the last visible image. Tapping opens a lightbox. 4/13 parents requested photo galleries; Jaylen's primary engagement driver.</p>
+          <span class="usage-tag">10U Detail</span><span class="usage-tag">Alumni</span><span class="usage-tag">Newsletter</span>
+        </div>
+      </div>
+
+      <!-- Video Highlight -->
+      <div class="component-card">
+        <div class="preview dark">
+          <div style="width:240px;background:var(--neutral-800);border-radius:var(--radius-md);overflow:hidden;">
+            <div style="height:80px;background:var(--neutral-700);display:flex;align-items:center;justify-content:center;position:relative;">
+              <div style="width:28px;height:28px;border-radius:14px;background:rgba(255,255,255,0.85);display:flex;align-items:center;justify-content:center;">
+                <div style="width:0;height:0;border-top:6px solid transparent;border-bottom:6px solid transparent;border-left:10px solid var(--neutral-900);margin-left:2px;"></div>
+              </div>
+            </div>
+            <div style="padding:8px 10px;">
+              <div style="font-family:var(--font-display);font-size:10px;font-weight:700;color:white;">Season Opener Highlights</div>
+              <div style="font-size:8px;color:rgba(255,255,255,0.5);">Mar 14, 2026 · vs. Park Slope Panthers</div>
+            </div>
+          </div>
+        </div>
+        <div class="meta">
+          <h4>Video Highlight Card</h4>
+          <p>Dark-themed embedded video card with play button overlay, title, and date. Featured video is large; additional clips shown as 3-across thumbnail row with duration stamps. Links to YouTube channel.</p>
+          <span class="usage-tag">10U Detail</span><span class="usage-tag">Players' #1 Ask</span>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <div class="component-card">
+        <div class="preview dark">
+          <div style="text-align:center;padding:8px;">
+            <div style="display:flex;gap:12px;justify-content:center;font-size:10px;color:rgba(255,255,255,0.6);font-weight:500;margin-bottom:8px;">
+              <span>Community</span><span>Travel Ball</span><span>Alumni</span><span>News</span><span>About</span>
+            </div>
+            <div style="display:flex;gap:6px;justify-content:center;margin-bottom:6px;">
+              <div style="width:22px;height:22px;border-radius:11px;background:rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;font-size:7px;color:rgba(255,255,255,0.5);font-weight:700;">IG</div>
+              <div style="width:22px;height:22px;border-radius:11px;background:rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;font-size:7px;color:rgba(255,255,255,0.5);font-weight:700;">FB</div>
+              <div style="width:22px;height:22px;border-radius:11px;background:rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;font-size:7px;color:rgba(255,255,255,0.5);font-weight:700;">YT</div>
+            </div>
+            <div style="font-size:8px;color:rgba(255,255,255,0.3);">501(c)(3) Nonprofit · Brooklyn, NY · © 2026</div>
+          </div>
+        </div>
+        <div class="meta">
+          <h4>Footer</h4>
+          <p>Dark footer with quick nav links, social icons, and nonprofit/legal line. Consistent across all 7 pages. Social links match current Instagram, Facebook, YouTube, X presence.</p>
+          <span class="usage-tag">Global</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ==================== 5. LAYOUT PATTERNS ==================== -->
+  <div class="ds-section">
+    <div class="ds-section-title">5. Layout Patterns</div>
+    <div class="ds-section-desc">
+      Repeatable page structures that create consistent rhythm across the site. These patterns emerged from wireframing 7 pages and map directly to how users scan content on mobile.
+    </div>
+
+    <table class="pattern-table">
+      <tr><th>Pattern</th><th>Structure</th><th>Used On</th><th>Purpose</th></tr>
+      <tr>
+        <td><strong>section</strong></td>
+        <td><code>padding: 16px</code>, white bg, label + title + content</td>
+        <td>All pages</td>
+        <td>Standard content block with side padding. Creates breathing room.</td>
+      </tr>
+      <tr>
+        <td><strong>section-flush</strong></td>
+        <td>Full-width, no horizontal padding, content inset individually</td>
+        <td>All pages</td>
+        <td>Card grids, info grids, photo galleries. Edge-to-edge visual weight.</td>
+      </tr>
+      <tr>
+        <td><strong>Dark hero</strong></td>
+        <td>Full-width dark bg, large title, subtitle, optional photo overlay</td>
+        <td>Homepage, Travel, Alumni, Newsletter</td>
+        <td>Page-level identity block. Sets tone immediately on landing.</td>
+      </tr>
+      <tr>
+        <td><strong>2×2 info grid</strong></td>
+        <td><code>grid-template-columns: 1fr 1fr</code>, info cards</td>
+        <td>10U Detail, Travel Detail</td>
+        <td>At-a-glance program metadata (season, cost, location, schedule).</td>
+      </tr>
+      <tr>
+        <td><strong>Horizontal scroll</strong></td>
+        <td><code>overflow-x: auto</code>, flex row, snap points</td>
+        <td>Homepage (ticker, age groups, testimonials)</td>
+        <td>Mobile-native browsing for sequential content. Avoids long vertical lists.</td>
+      </tr>
+      <tr>
+        <td><strong>Card grid</strong></td>
+        <td>2-col or 3-col responsive grid of uniform cards</td>
+        <td>Newsletter archive, Alumni, Community programs</td>
+        <td>Browsable collections (articles, stories, programs).</td>
+      </tr>
+      <tr>
+        <td><strong>Stat row</strong></td>
+        <td>3-across centered numbers with labels below</td>
+        <td>Alumni, Travel Ball</td>
+        <td>Impact metrics (college commitments, years, players developed).</td>
+      </tr>
+      <tr>
+        <td><strong>Pipeline nudge</strong></td>
+        <td>Left-bordered callout card, light bg, link arrow</td>
+        <td>Community → Travel, Travel → Alumni</td>
+        <td>Cross-journey discovery. Research found parents don't know pipeline exists.</td>
+      </tr>
+      <tr>
+        <td><strong>Breadcrumb bar</strong></td>
+        <td>Light gray bg strip, <code>Home > Section > Page</code></td>
+        <td>10U Detail, individual articles</td>
+        <td>Wayfinding for deep pages. Supports back-navigation on mobile.</td>
+      </tr>
+      <tr>
+        <td><strong>Newsletter promo strip</strong></td>
+        <td>Full-width dark bg, title + description + email input</td>
+        <td>Homepage, Newsletter, Community, Travel</td>
+        <td>Appears before footer on content pages. Drives email list growth.</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ==================== 6. SECTION RHYTHM ==================== -->
+  <div class="ds-section">
+    <div class="ds-section-title">6. Page Section Rhythm</div>
+    <div class="ds-section-desc">
+      Every page follows a consistent vertical rhythm pattern. Alternating <code>section</code> and <code>section-flush</code> blocks creates visual cadence and prevents wall-of-text monotony — critical for mobile scroll depth.
+    </div>
+
+    <table class="pattern-table">
+      <tr><th>Order</th><th>Type</th><th>Content</th></tr>
+      <tr><td>1</td><td><code>header</code></td><td>Sticky nav + score ticker</td></tr>
+      <tr><td>2</td><td><code>dark hero</code></td><td>Page title + subtitle + optional photo</td></tr>
+      <tr><td>3</td><td><code>section</code></td><td>Overview / intro paragraph</td></tr>
+      <tr><td>4</td><td><code>section-flush</code></td><td>Info grid or card collection</td></tr>
+      <tr><td>5</td><td><code>section</code></td><td>Detailed content (curriculum, description)</td></tr>
+      <tr><td>6</td><td><code>section-flush</code></td><td>Media (photos, video) or people (coaches)</td></tr>
+      <tr><td>7</td><td><code>section</code></td><td>Schedule / calendar</td></tr>
+      <tr><td>8</td><td><code>section</code></td><td>CTA block (registration / donation)</td></tr>
+      <tr><td>9</td><td><code>section-flush</code></td><td>Pipeline nudge or related content</td></tr>
+      <tr><td>10</td><td><code>dark strip</code></td><td>Newsletter signup</td></tr>
+      <tr><td>11</td><td><code>footer</code></td><td>Nav links, social, legal</td></tr>
+    </table>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ==================== 7. ACCESSIBILITY ==================== -->
+  <div class="ds-section">
+    <div class="ds-section-title">7. Accessibility & Contrast</div>
+    <div class="ds-section-desc">
+      All color combinations meet WCAG 2.1 AA standards. Key contrast ratios validated below.
+    </div>
+
+    <table class="pattern-table">
+      <tr><th>Combination</th><th>Ratio</th><th>Passes</th></tr>
+      <tr><td>neutral-900 on neutral-0 (body text)</td><td>~16:1</td><td>✅ AAA</td></tr>
+      <tr><td>neutral-0 on neutral-900 (dark hero text)</td><td>~16:1</td><td>✅ AAA</td></tr>
+      <tr><td>falcon-600 on neutral-0 (section labels)</td><td>~5.2:1</td><td>✅ AA</td></tr>
+      <tr><td>falcon-900 on falcon-200 (primary button)</td><td>~9.6:1</td><td>✅ AAA</td></tr>
+      <tr><td>neutral-600 on neutral-0 (secondary text)</td><td>~5.7:1</td><td>✅ AA</td></tr>
+      <tr><td>gold-400 on neutral-900 (ticker scores)</td><td>~9.8:1</td><td>✅ AAA</td></tr>
+      <tr><td>neutral-0 on falcon-600 (dark button)</td><td>~5.9:1</td><td>✅ AA</td></tr>
+    </table>
+
+    <div style="margin-top:var(--space-4);font-size:var(--text-sm);color:var(--text-secondary);line-height:1.6;">
+      <strong>Note:</strong> falcon-200 (#A3D3ED) is the primary UI accent. It uses dark text (falcon-900) for buttons, achieving 9.6:1 AAA contrast. falcon-200 on white is only 1.6:1, so it works for decorative borders and backgrounds only — never for text. For text on light backgrounds, use falcon-600 (#2E6F97) minimum at 5.5:1 AA.
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ==================== 8. CSS VARIABLES ==================== -->
+  <div class="ds-section">
+    <div class="ds-section-title">8. Implementation Notes</div>
+    <div class="ds-section-desc">
+      All design tokens are defined as CSS custom properties in a single <code>:root</code> block. Copy the variables from this document's source code into any project stylesheet. The full variable set includes colors, typography, spacing, radius, shadows, and transitions.
+    </div>
+
+    <table class="pattern-table">
+      <tr><th>Token Category</th><th>Prefix</th><th>Count</th><th>Example</th></tr>
+      <tr><td>Falcon Blue</td><td><code>--falcon-</code></td><td>10</td><td><code>var(--falcon-200)</code></td></tr>
+      <tr><td>Neutral</td><td><code>--neutral-</code></td><td>12</td><td><code>var(--neutral-900)</code></td></tr>
+      <tr><td>Gold Accent</td><td><code>--gold-</code></td><td>7</td><td><code>var(--gold-400)</code></td></tr>
+      <tr><td>Semantic</td><td><code>--success, --warning, --error, --info</code></td><td>8</td><td><code>var(--success)</code></td></tr>
+      <tr><td>Surface</td><td><code>--surface-</code></td><td>6</td><td><code>var(--surface-dark)</code></td></tr>
+      <tr><td>Text</td><td><code>--text-</code></td><td>5</td><td><code>var(--text-secondary)</code></td></tr>
+      <tr><td>Typography</td><td><code>--font-, --text-</code></td><td>11</td><td><code>var(--text-lg)</code></td></tr>
+      <tr><td>Spacing</td><td><code>--space-</code></td><td>10</td><td><code>var(--space-4)</code></td></tr>
+      <tr><td>Radius</td><td><code>--radius-</code></td><td>5</td><td><code>var(--radius-md)</code></td></tr>
+      <tr><td>Shadow</td><td><code>--shadow-</code></td><td>4</td><td><code>var(--shadow-lg)</code></td></tr>
+      <tr><td>Transition</td><td><code>--ease-, --duration-</code></td><td>4</td><td><code>var(--duration-normal)</code></td></tr>
+    </table>
+
+    <div style="margin-top:var(--space-6);">
+      <div class="ds-label">Google Fonts Import</div>
+      <div style="background:var(--neutral-900);border-radius:var(--radius-md);padding:var(--space-3) var(--space-4);margin-top:var(--space-2);">
+        <code style="font-family:var(--font-mono);font-size:11px;color:var(--falcon-300);line-height:1.8;word-break:break-all;">@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');</code>
+      </div>
+    </div>
+  </div>
+
+  <div style="text-align:center;padding:var(--space-12) 0 var(--space-8);color:var(--text-tertiary);font-size:var(--text-xs);">
+    Brooklyn Falcons Design System v1.0 · Created Feb 2026 · UX Redesign Project
+  </div>
+
+</div>
+</body>
+</html>

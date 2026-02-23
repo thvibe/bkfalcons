@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Store — Brooklyn Falcons</title>
+<meta name="description" content="Official Brooklyn Falcons merchandise. Apparel, headwear, gear, and accessories for players and fans.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="site-wrapper">
+
+<!-- ============================================
+     STICKY HEADER
+     ============================================ -->
+<header class="site-header">
+  <div class="header-inner">
+    <a href="index.html" class="logo-area">
+      <img src="../design/assets/falcons_logo1.avif" alt="Brooklyn Falcons" class="logo-mark">
+      <span class="logo-text">BROOKLYN FALCONS</span>
+    </a>
+    <nav class="desktop-nav">
+      <ul class="desktop-nav-links">
+        <li><a href="community.html">Community</a></li>
+        <li><a href="travel.html">Travel Ball</a></li>
+        <li><a href="alumni.html">Alumni</a></li>
+        <li><a href="newsletter.html">News</a></li>
+        <li class="has-dropdown">
+          <a href="about.html">About</a>
+          <ul class="dropdown-menu">
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="coaches.html">Coaches &amp; Staff</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+    <div class="header-right">
+      <a href="store.html" class="store-link">STORE</a>
+      <a href="store.html" class="cart-link" id="cart-link" aria-label="Shopping cart">
+        <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+        <span class="cart-count" id="cart-count">0</span>
+      </a>
+      <button class="hamburger" aria-label="Open menu" id="menu-open">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ============================================
+     SEASONAL BANNER
+     ============================================ -->
+<div class="seasonal-banner" id="seasonal-banner">
+  <div class="seasonal-banner-inner">
+    <span class="seasonal-banner-text">Tryouts Open — <a href="#">Register Now</a></span>
+    <button class="seasonal-banner-close" id="banner-close" aria-label="Close banner">&times;</button>
+  </div>
+</div>
+
+<!-- ============================================
+     BREADCRUMBS
+     ============================================ -->
+<nav class="breadcrumbs">
+  <div class="breadcrumbs-inner">
+    <a href="index.html">Home</a> &rsaquo; Store
+  </div>
+</nav>
+
+<!-- ============================================
+     PAGE HERO
+     ============================================ -->
+<section class="page-hero">
+  <div class="page-hero-inner">
+    <h1 class="page-hero-title">Falcons Store</h1>
+    <p class="page-hero-desc">Official Brooklyn Falcons merchandise for players &amp; fans.</p>
+  </div>
+</section>
+
+<!-- ============================================
+     CATEGORY FILTERS
+     ============================================ -->
+<section class="section">
+  <span class="section-label">Shop</span>
+  <h2 class="section-title">Merchandise</h2>
+
+  <div class="store-filter-bar" id="store-filters">
+    <button class="store-filter-btn is-active" data-filter="all">All</button>
+    <button class="store-filter-btn" data-filter="apparel">Apparel</button>
+    <button class="store-filter-btn" data-filter="headwear">Headwear</button>
+    <button class="store-filter-btn" data-filter="gear">Gear &amp; Accessories</button>
+    <button class="store-filter-btn" data-filter="uniform">Uniforms</button>
+  </div>
+
+  <!-- ============================================
+       PRODUCT GRID
+       ============================================ -->
+  <div class="store-grid" id="store-grid">
+
+    <!-- ——— APPAREL ——— -->
+
+    <div class="product-card" data-category="apparel" data-slug="sport-tek-dri-fit-performance-t-shirts-ftb-falcons-black" data-product-id="2bc22c58-8439-2b32-5ba1-8066f2996630">
+      <a href="/product-page/sport-tek-dri-fit-performance-t-shirts-ftb-falcons-black" class="product-card-link">
+        <div class="product-card-img">
+          <img src="https://static.wixstatic.com/media/14b401_9efe5d87040c4511a2f5a08d54001e0e~mv2.jpg/v1/fill/w_400,h_400,al_c,q_80/file.jpg" alt="Sport-Tek Dri-Fit Tee — Black" loading="lazy">
+        </div>
+        <div class="product-card-body">
+          <div class="product-card-name">Sport-Tek Dri-Fit Tee — Black</div>
+          <div class="product-card-meta">Performance T-Shirt</div>
+          <div class="product-card-price">$30</div>
+        </div>
+      </a>
+      <div class="product-card-actions">
+        <button class="product-cart-btn" data-action="add-to-cart">Add to Cart</button>
+      </div>
+    </div>
+
+    <div class="product-card" data-category="apparel" data-slug="sport-tek-dri-fit-performance-t-shirts-ftb-falcons-white" data-product-id="412ec3d2-72b2-b40b-b99a-2603934b8c75">
+      <a href="/product-page/sport-tek-dri-fit-performance-t-shirts-ftb-falcons-white" class="product-card-link">
+        <div class="product-card-img">
+          <img src="https://static.wixstatic.com/media/14b401_a42f471578874e09abd0fbb829e6ad5a~mv2.jpg/v1/fill/w_400,h_400,al_c,q_80/file.jpg" alt="Sport-Tek Dri-Fit Tee — White" loading="lazy">
+        </div>
+        <div class="product-card-body">
+          <div class="product-card-name">Sport-Tek Dri-Fit Tee — White</div>
+          <div class="product-card-meta">Performance T-Shirt</div>
+          <div class="product-card-price">$30</div>
+        </div>
+      </a>
+      <div class="product-card-actions">
+        <button class="product-cart-btn" data-action="add-to-cart">Add to Cart</button>
+      </div>
+    </div>
+
+    <div class="product-card" data-category="apparel" data-slug="sport-tek-hoodie-black" data-product-id="49c4f5e1-7957-4f64-df75-713c73bc5b88">
+      <a href="/product-page/sport-tek-hoodie-black" class="product-card-link">
+        <div class="product-card-img">
+          <img src="https://static.wixstatic.com/media/14b401_64ca4c7ea2814f4e9648e8842748be60~mv2.jpg/v1/fill/w_400,h_400,al_c,q_80/file.jpg" alt="Sport-Tek Hoodie — Black" loading="lazy">
+        </div>
+        <div class="product-card-body">
+          <div class="product-card-name">Sport-Tek Hoodie — Black</div>
+          <div class="product-card-meta">Pullover Hoodie</div>
+          <div class="product-card-price">$45</div>
+        </div>
+      </a>
+      <div class="product-card-actions">
+        <button class="product-cart-btn" data-action="add-to-cart">Add to Cart</button>
+      </div>
+    </div>
+
+    <div class="product-card" data-category="apparel" data-slug="sport-tek-hoodie-white" data-product-id="eeb85016-8863-3cc4-da21-ace896f9ae7b">
+      <a href="/product-page/sport-tek-hoodie-white" class="product-card-link">
+        <div class="product-card-img">
+          <img src="https://static.wixstatic.com/media/14b401_17ee7b8449f445438a9e772181bd9682~mv2.jpg/v1/fill/w_400,h_400,al_c,q_80/file.jpg" alt="Sport-Tek Hoodie — White" loading="lazy">
+        </div>
+        <div class="product-card-body">
+          <div class="product-card-name">Sport-Tek Hoodie — White</div>
+          <div class="product-card-meta">Pullover Hoodie</div>
+          <div class="product-card-price">$45</div>
+        </div>
+      </a>
+      <div class="product-card-actions">
+        <button class="product-cart-btn" data-action="add-to-cart">Add to Cart</button>
+      </div>
+    </div>
+
+    <div class="product-card" data-category="apparel" data-slug="evoshield-men-s-sleeveless-pregame-training-hoodie" data-product-id="0b87a15e-41ab-4b3e-15e1-12fcbca997e9">
+      <a href="/product-page/evoshield-men-s-sleeveless-pregame-training-hoodie" class="product-card-link">
+        <div class="product-card-img">
+          <img src="https://static.wixstatic.com/media/14b401_1a96beb6fe8b4035ab30177f87ade141~mv2.jpg/v1/fill/w_400,h_400,al_c,q_80/file.jpg" alt="Evoshield Sleeveless Pregame Hoodie" loading="lazy">
+        </div>
+        <div class="product-card-body">
+          <div class="product-card-name">Evoshield Sleeveless Pregame Hoodie</div>
+          <div class="product-card-meta">Training Hoodie</div>
+          <div class="product-card-price">$45</div>
+        </div>
+      </a>
+      <div class="product-card-actions">
+        <button class="product-cart-btn" data-action="add-to-cart">Add to Cart</button>
+      </div>
+    </div>
+
+    <div class="product-card" data-category="apparel" data-slug="evoshield-men-s-lightweight-sleeveless-training-hoodie" data-product-id="f212d072-1bf5-be61-533b-184942f25c1f">
+      <a href="/product-page/evoshield-men-s-lightweight-sleeveless-training-hoodie" class="product-card-link">
+        <div class="product-card-img">
+          <img src="https://static.wixstatic.com/media/14b401_ee84b295efc745028ebb25c7c91af806~mv2.jpeg/v1/fill/w_400,h_400,al_c,q_80/file.jpeg" alt="Evoshield Lightweight Sleeveless Hoodie" loading="lazy">
+        </div>
+        <div class="product-card-body">
+          <div class="product-card-name">Evoshield Lightweight Sleeveless Hoodie</div>
+          <div class="product-card-meta">Training Hoodie</div>
+          <div class="product-card-price">$40</div>
+        </div>
+      </a>
+      <div class="product-card-actions">
+        <button class="product-cart-btn" data-action="add-to-cart">Add to Cart</button>
+      </div>
+    </div>
+
+    <div class="product-card" data-category="apparel" data-slug="badger-practice-shorts" data-product-id="9f50cb6b-8ee4-2952-5419-5435e6cbe4fa">
+      <a href="/product-page/badger-practice-shorts" class="product-card-link">
+        <div class="product-card-img">
+          <img src="https://static.wixstatic.com/media/14b401_eebdd3006f3f4a6d9cfa66072f64c378~mv2.png/v1/fill/w_400,h_400,al_c,q_80/file.png" alt="Badger Practice Shorts" loading="lazy">
+        </div>
+        <div class="product-card-body">
+          <div class="product-card-name">Badger Practice Shorts</div>
+          <div class="product-card-meta">Pocketless &middot; 2 colors</div>
+          <div class="product-card-price">$12</div>
+        </div>
+      </a>
+      <div class="product-card-actions">
+        <button class="product-cart-btn" data-action="add-to-cart">Add to Cart</button>
+      </div>
+    </div>
+
+    <div class="product-card" data-category="apparel" data-slug="a4-performance-dri-fit-performance-t-shirts" data-product-id="89708dc6-4ef4-734c-3172-2075cd6462a1">
+      <a href="/product-page/a4-performance-dri-fit-performance-t-shirts" class="product-card-link">
+        <div class="product-card-img">
+          <img src="https://static.wixstatic.com/media/14b401_e9b6db4f4a1f41cc8ccb08b40af203a6~mv2.png/v1/fill/w_400,h_400,al_c,q_80/file.png" alt="A4 Dri-Fit Tee" loading="lazy">
+        </div>
+        <div class="product-card-body">
+          <span class="product-card-badge product-card-badge--sale">Sale</span>
+          <div class="product-card-name">A4 Dri-Fit Tee</div>
+          <div class="product-card-meta">Performance T-Shirt &middot; Seams</div>
+          <div class="product-card-price"><del>$20</del> $14</div>
+        </div>
+      </a>
+      <div class="product-card-actions">
+        <button class="product-cart-btn" data-action="add-to-cart">Add to Cart</button>
+      </div>
+    </div>
+
+    <div class="product-card" data-category="apparel" data-slug="16u-falcons-tbd1-summer-2019-full-payment" data-product-id="443de765-dff7-5470-dbe3-a3ae81521854">
+      <a href="/product-page/16u-falcons-tbd1-summer-2019-full-payment" class="product-card-link">
+        <div class="product-card-img">
+          <img src="https://static.wixstatic.com/media/14b401_cc471edbd26f40a29aa5146724b4b033~mv2.png/v1/fill/w_400,h_400,al_c,q_80/file.png" alt="A4 Dri-Fit Practice Tee" loading="lazy">
+        </div>
+        <div class="product-card-body">
+          <div class="product-card-name">A4 Dri-Fit Practice Tee</div>
+          <div class="product-card-meta">2 colors available</div>
+          <div class="product-card-price">$18</div>
+        </div>
+      </a>
+      <div class="product-card-actions">
+        <button class="product-cart-btn" data-action="add-to-cart">Add to Cart</button>
+      </div>
+    </div>
+
+    <div class="product-card" data-category="apparel" data-slug="2021-falcons-luis-summer-2019-payment-plan" data-product-id="74baea10-42a4-b7b9-aa62-fcd54303d5d9">
+      <a href="/product-page/2021-falcons-luis-summer-2019-payment-plan" class="product-card-link">
+        <div class="product-card-img">
+          <img src="https://static.wixstatic.com/media/14b401_7310a35c019543458bf916ae6c2d7322~mv2.png/v1/fill/w_400,h_400,al_c,q_80/file.png" alt="Mizuno Batting Jacket" loading="lazy">
+        </div>
+        <div class="product-card-body">
+          <span class="product-card-badge product-card-badge--sale">Sale</span>
+          <div class="product-card-name">Mizuno Batting Jacket</div>
+          <div class="product-card-meta">Comp Batting Jacket</div>
+          <div class="product-card-price"><del>$40</del> $30</div>
+        </div>
+      </a>
+      <div class="product-card-actions">
+        <button class="product-cart-btn" data-action="add-to-cart">Add to Cart</button>
+      </div>
+    </div>
+
+    <div class="product-card" data-category="apparel" data-slug="youth-majestic-long-sleeve-shirt-pullover" data-product-id="874f2649-fab3-bff1-1084-700bd0fa444a">
+      <a href="/product-page/youth-majestic-long-sleeve-shirt-pullover" class="product-card-link">
+        <div class="product-card-img">
+          <img src="https://static.wixstatic.com/media/14b401_c9dd4893b1e241e4834625de274fff5e~mv2.png/v1/fill/w_400,h_400,al_c,q_80/file.png" alt="Youth Majestic Pullover" loading="lazy">
+        </div>
+        <div class="product-card-body">
+          <div class="product-card-name">Youth Majestic Pullover</div>
+          <div class="product-card-meta">Long Sleeve Shirt</div>
+          <div class="product-card-price">$25</div>
+        </div>
+      </a>
+      <div class="product-card-actions">
+        <button class="product-cart-btn" data-action="add-to-cart">Add to Cart</button>
+      </div>
+    </div>
+
+    <div class="product-card" data-category="apparel" data-slug="10u-falcons-2020-carlos-spring-summer-2019-full-payment" data-product-id="0986bf95-6b52-957b-24d6-40ec34faf7bc">
+      <a href="/product-page/10u-falcons-2020-carlos-spring-summer-2019-full-payment" class="product-card-link">
+        <div class="product-card-img">
+          <img src="https://static.wixstatic.com/media/14b401_6bd53b71d21a4cdd80c6c39630dc0ec2~mv2.png/v1/fill/w_400,h_400,al_c,q_80/file.png" alt="Rawlings Fleece Pullover" loading="lazy">
+        </div>
+        <div class="product-card-body">
+          <div class="product-card-name">Rawlings Fleece Pullover</div>
+          <div class="product-card-meta">Long Sleeve &middot; 100% Polyester</div>
+          <div class="product-card-price">$40</div>
+        </div>
+      </a>
+      <div class="product-card-actions">
+        <button class="product-cart-btn" data-action="add-to-cart">Add to Cart</button>
+      </div>
+    </div>
+
+    <div class="product-card" data-category="apparel" data-slug="13u-falcons-tbd-spring-summer-2019-payment-plan" data-product-id="b8fe1a29-a19f-8814-7ae8-d9fa3649a826">
+      <a href="/product-page/13u-falcons-tbd-spring-summer-2019-payment-plan" class="product-card-link">
+        <div class="product-card-img">
+          <img src="https://static.wixstatic.com/media/14b401_0583b9325b3e449a815cc1d93103c9fe~mv2.jpg/v1/fill/w_400,h_400,al_c,q_80/file.jpg" alt="Champion Block Hoodie" loading="lazy">
+        </div>
+        <div class="product-card-body">
+          <span class="product-card-badge product-card-badge--sale">Sale</span>
+          <div class="product-card-name">Champion Block Hoodie</div>
+          <div class="product-card-meta">Brooklyn Falcons</div>
+          <div class="product-card-price"><del>$40</del> $24</div>
+        </div>
+      </a>
+      <div class="product-card-actions">
+        <button class="product-cart-btn" data-action="add-to-cart">Add to Cart</button>
+      </div>
+    </div>
+
+    <!-- ——— HEADWEAR ——— -->
+
+    <div class="product-card" data-category="headwear" data-slug="richardson-pts30-charcoal-hats" data-product-id="f9832678-cffc-1bc8-c30a-2d67b51bd34f">
+      <a href="/product-page/richardson-pts30-charcoal-hats" class="product-card-link">
+        <div class="product-card-img">
+          <img src="https://static.wixstatic.com/media/14b401_947bfd4e0dfe4862b1d99e28f9102884~mv2.png/v1/fill/w_400,h_400,al_c,q_80/file.png" alt="Richardson PTS30 Cap — Charcoal" loading="lazy">
+        </div>
+        <div class="product-card-body">
+          <div class="product-card-name">Richardson PTS30 Cap — Charcoal</div>
+          <div class="product-card-meta">Fitted Hat</div>
+          <div class="product-card-price">$25</div>
+        </div>
+      </a>
+      <div class="product-card-actions">
+        <button class="product-cart-btn" data-action="add-to-cart">Add to Cart</button>
+      </div>
+    </div>
+
+    <div class="product-card" data-category="headwear" data-slug="richardson-pts-30-custom-white-columbia-cap" data-product-id="002e90c1-1dab-a08d-7929-f1285bc4d79b">
+      <a href="/product-page/richardson-pts-30-custom-white-columbia-cap" class="product-card-link">
+        <div class="product-card-img">
+          <img src="https://static.wixstatic.com/media/14b401_fe7fb5738a934c86b3e7ac579ae4a967~mv2.jpg/v1/fill/w_400,h_400,al_c,q_80/file.jpg" alt="Richardson PTS30 Cap — White/Columbia" loading="lazy">
+        </div>
+        <div class="product-card-body">
+          <div class="product-card-name">Richardson PTS30 Cap — White/Columbia</div>
+          <div class="product-card-meta">Fitted Hat</div>
+          <div class="product-card-price">$30</div>
+        </div>
+      </a>
+      <div class="product-card-actions">
+        <button class="product-cart-btn" data-action="add-to-cart">Add to Cart</button>
+      </div>
+    </div>
+
+    <div class="product-card" data-category="headwear" data-slug="falcon-beanie-hat" data-product-id="ecf78565-16cf-f162-6318-07f9b50cdf32">
+      <a href="/product-page/falcon-beanie-hat" class="product-card-link">
+        <div class="product-card-img">
+          <img src="https://static.wixstatic.com/media/14b401_303324e6140840cd8ea7b7034b968833~mv2.jpeg/v1/fill/w_400,h_400,al_c,q_80/file.jpeg" alt="Falcon Rawlings Beanie" loading="lazy">
+        </div>
+        <div class="product-card-body">
+          <div class="product-card-name">Falcon Rawlings Beanie</div>
+          <div class="product-card-meta">Knit Beanie</div>
+          <div class="product-card-price">$20</div>
+        </div>
+      </a>
+      <div class="product-card-actions">
+        <button class="product-cart-btn" data-action="add-to-cart">Add to Cart</button>
+      </div>
+    </div>
+
+    <div class="product-card" data-category="headwear" data-slug="falcons-junk-custom-headband" data-product-id="3f5bcdc1-731b-ebbd-02d6-4c361678b812">
+      <a href="/product-page/falcons-junk-custom-headband" class="product-card-link">
+        <div class="product-card-img">
+          <img src="https://static.wixstatic.com/media/14b401_c1a23990270148b694df15ebc9f65374~mv2.jpg/v1/fill/w_400,h_400,al_c,q_80/file.jpg" alt="Falcons Custom Headband" loading="lazy">
+        </div>
+        <div class="product-card-body">
+          <div class="product-card-name">Falcons Custom Headband</div>
+          <div class="product-card-meta">Junk Brand &middot; Falcon Logo</div>
+          <div class="product-card-price">$26</div>
+        </div>
+      </a>
+      <div class="product-card-actions">
+        <button class="product-cart-btn" data-action="add-to-cart">Add to Cart</button>
+      </div>
+    </div>
+
+    <div class="product-card" data-category="headwear" data-slug="richardson-pts30-white-navy-columbia-2022-showcase-team-cap" data-product-id="0b0a8bdb-d868-aa92-dcd0-93f9fc8ca9d3">
+      <a href="/product-page/richardson-pts30-white-navy-columbia-2022-showcase-team-cap" class="product-card-link">
+        <div class="product-card-img">
+          <img src="https://static.wixstatic.com/media/14b401_b195870471b6459a8bc9821e27708d43~mv2.jpg/v1/fill/w_400,h_400,al_c,q_80/file.jpg" alt="Richardson PTS30 Cap — White/Navy/Columbia" loading="lazy">
+        </div>
+        <div class="product-card-body">
+          <div class="product-card-name">Richardson PTS30 Cap — White/Navy/Columbia</div>
+          <div class="product-card-meta">Showcase Team Cap</div>
+          <div class="product-card-price">$25</div>
+        </div>
+      </a>
+      <div class="product-card-actions">
+        <button class="product-cart-btn" data-action="add-to-cart">Add to Cart</button>
+      </div>
+    </div>
+
+    <div class="product-card" data-category="headwear" data-slug="13u-falcons-tbd-spring-summer-2019-full-payment" data-product-id="c4aa3864-49e1-ea35-496c-1995af3f56ed">
+      <a href="/product-page/13u-falcons-tbd-spring-summer-2019-full-payment" class="product-card-link">
+        <div class="product-card-img">
+          <img src="https://static.wixstatic.com/media/14b401_63de33f3fa0c4eadb9aebbba7a7e0b5d~mv2.png/v1/fill/w_400,h_400,al_c,q_80/file.png" alt="Richardson PTS30C Lite R-Flex" loading="lazy">
+        </div>
+        <div class="product-card-body">
+          <span class="product-card-badge product-card-badge--clearance">Clearance</span>
+          <div class="product-card-name">Richardson PTS30C Lite R-Flex</div>
+          <div class="product-card-meta">White/Navy/Columbia Visor</div>
+          <div class="product-card-price"><del>$30</del> $20</div>
+        </div>
+      </a>
+      <div class="product-card-actions">
+        <button class="product-cart-btn" data-action="add-to-cart">Add to Cart</button>
+      </div>
+    </div>
+
+    <!-- ——— GEAR & ACCESSORIES ——— -->
+
+    <div class="product-card" data-category="gear" data-slug="falcons-batting-glove" data-product-id="c018c906-a626-cd91-768a-2428258b028b">
+      <a href="/product-page/falcons-batting-glove" class="product-card-link">
+        <div class="product-card-img">
+          <img src="https://static.wixstatic.com/media/14b401_33eb93803eba452e8254483f9cd162d0~mv2.jpg/v1/fill/w_400,h_400,al_c,q_80/file.jpg" alt="Falcons Batting Gloves" loading="lazy">
+        </div>
+        <div class="product-card-body">
+          <div class="product-card-name">Falcons Batting Gloves</div>
+          <div class="product-card-meta">Custom Design</div>
+          <div class="product-card-price">$40</div>
+        </div>
+      </a>
+      <div class="product-card-actions">
+        <button class="product-cart-btn" data-action="add-to-cart">Add to Cart</button>
+      </div>
+    </div>
+
+    <div class="product-card" data-category="gear" data-slug="falcons-helmet-decal" data-product-id="d4e5dd6a-0c30-3815-6753-37c9b91292be">
+      <a href="/product-page/falcons-helmet-decal" class="product-card-link">
+        <div class="product-card-img">
+          <img src="https://static.wixstatic.com/media/14b401_d85c11cce657420293423cc8ba55589e~mv2.jpg/v1/fill/w_400,h_400,al_c,q_80/file.jpg" alt="Falcons Helmet Decal" loading="lazy">
+        </div>
+        <div class="product-card-body">
+          <div class="product-card-name">Falcons Helmet Decal</div>
+          <div class="product-card-meta">Decal only &middot; Helmet not included</div>
+          <div class="product-card-price">$12</div>
+        </div>
+      </a>
+      <div class="product-card-actions">
+        <button class="product-cart-btn" data-action="add-to-cart">Add to Cart</button>
+      </div>
+    </div>
+
+    <div class="product-card" data-category="gear" data-slug="brooklyn-falcons-pin" data-product-id="83e1e062-683c-8058-31fd-1a54f7bb0afa">
+      <a href="/product-page/brooklyn-falcons-pin" class="product-card-link">
+        <div class="product-card-img">
+          <img src="https://static.wixstatic.com/media/14b401_1a5fe70aa24b41019d2fec18bea90a2e~mv2.jpg/v1/fill/w_400,h_400,al_c,q_80/file.jpg" alt="Brooklyn Falcons Pin" loading="lazy">
+        </div>
+        <div class="product-card-body">
+          <div class="product-card-name">Brooklyn Falcons Pin</div>
+          <div class="product-card-meta">Collectible Enamel Pin</div>
+          <div class="product-card-price">$2.25</div>
+        </div>
+      </a>
+      <div class="product-card-actions">
+        <button class="product-cart-btn" data-action="add-to-cart">Add to Cart</button>
+      </div>
+    </div>
+
+    <div class="product-card" data-category="gear" data-slug="11u-falcons-charles-spring-summer-2019-full-payment" data-product-id="754b4f2d-3d9a-1101-1b63-6b8f5186f015">
+      <a href="/product-page/11u-falcons-charles-spring-summer-2019-full-payment" class="product-card-link">
+        <div class="product-card-img">
+          <img src="https://static.wixstatic.com/media/14b401_ed3ebc88d01f46cd983cc5765afdd751~mv2.jpg/v1/fill/w_400,h_400,al_c,q_80/file.jpg" alt="Falcons Wristbands" loading="lazy">
+        </div>
+        <div class="product-card-body">
+          <span class="product-card-badge product-card-badge--sale">Sale</span>
+          <div class="product-card-name">Falcons Wristbands</div>
+          <div class="product-card-meta">Grey &amp; Columbia Blue</div>
+          <div class="product-card-price"><del>$5</del> $3</div>
+        </div>
+      </a>
+      <div class="product-card-actions">
+        <button class="product-cart-btn" data-action="add-to-cart">Add to Cart</button>
+      </div>
+    </div>
+
+    <!-- ——— UNIFORMS ——— -->
+
+    <div class="product-card" data-category="uniform" data-slug="2026-spring-summer-12u-uniform-package" data-product-id="ef4ee2f5-35ea-a9b4-d5fa-521dd21cd242">
+      <a href="/product-page/2026-spring-summer-12u-uniform-package" class="product-card-link">
+        <div class="product-card-img">
+          <img src="https://static.wixstatic.com/media/14b401_d3dc51b773ed46378e07daebb11ca230~mv2.jpg/v1/fill/w_400,h_400,al_c,q_80/file.jpg" alt="12U Uniform Package" loading="lazy">
+        </div>
+        <div class="product-card-body">
+          <span class="product-card-badge product-card-badge--new">2026</span>
+          <div class="product-card-name">12U Uniform Package</div>
+          <div class="product-card-meta">Spring / Summer 2026</div>
+          <div class="product-card-price">$375</div>
+        </div>
+      </a>
+      <div class="product-card-actions">
+        <a href="/product-page/2026-spring-summer-12u-uniform-package" class="product-cart-btn">View Details</a>
+      </div>
+    </div>
+
+  </div><!-- /.store-grid -->
+</section>
+
+<!-- ============================================
+     TEAM ORDERS CTA
+     ============================================ -->
+<section class="section-flush">
+  <div class="cta-block">
+    <h2 class="cta-block-title">Team &amp; Bulk Orders</h2>
+    <p class="cta-block-desc">Need uniforms or gear for your whole team? Contact us for group pricing.</p>
+    <a href="mailto:info@brooklynfalcons.com" class="btn btn-white">Contact Us</a>
+  </div>
+</section>
+
+<!-- ============================================
+     FOOTER
+     ============================================ -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <img src="../design/assets/circle logo.avif" alt="Brooklyn Falcons" class="footer-logo">
+    <nav class="footer-links">
+      <a href="community.html" class="footer-link">Community</a>
+      <a href="travel.html" class="footer-link">Travel Ball</a>
+      <a href="alumni.html" class="footer-link">Alumni</a>
+      <a href="newsletter.html" class="footer-link">News</a>
+      <a href="about.html" class="footer-link">About</a>
+    </nav>
+    <div class="footer-socials">
+      <a href="https://instagram.com/bkfalcons" class="footer-social-icon" aria-label="Instagram">IG</a>
+      <a href="https://facebook.com/Bkfalcons" class="footer-social-icon" aria-label="Facebook">FB</a>
+    </div>
+    <div class="footer-legal">501(c)(3) Nonprofit &middot; Brooklyn, NY &middot; &copy; 2026 Brooklyn Falcons</div>
+  </div>
+</footer>
+
+</div><!-- /.site-wrapper -->
+
+<!-- ============================================
+     MOBILE NAV OVERLAY
+     ============================================ -->
+<nav class="mobile-nav" id="mobile-nav">
+  <div class="mobile-nav-panel">
+    <button class="mobile-nav-close" id="menu-close" aria-label="Close menu">&times;</button>
+    <ul class="mobile-nav-links">
+      <li><a href="community.html">Community Programs</a></li>
+      <li><a href="travel.html">Travel Ball</a></li>
+      <li><a href="alumni.html">Alumni &amp; Success</a></li>
+      <li><a href="newsletter.html">News</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="coaches.html">Coaches &amp; Staff</a></li>
+      <li><a href="store.html">Store</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ============================================
+     SCRIPTS
+     ============================================ -->
+<script>
+// Mobile nav toggle
+const menuOpen = document.getElementById('menu-open');
+const menuClose = document.getElementById('menu-close');
+const mobileNav = document.getElementById('mobile-nav');
+
+menuOpen.addEventListener('click', () => mobileNav.classList.add('is-open'));
+menuClose.addEventListener('click', () => mobileNav.classList.remove('is-open'));
+mobileNav.addEventListener('click', (e) => {
+  if (e.target === mobileNav) mobileNav.classList.remove('is-open');
+});
+
+// Seasonal banner dismiss
+const bannerClose = document.getElementById('banner-close');
+const banner = document.getElementById('seasonal-banner');
+bannerClose.addEventListener('click', () => banner.style.display = 'none');
+
+// Store category filter
+const filterBtns = document.querySelectorAll('.store-filter-btn');
+const productCards = document.querySelectorAll('.product-card');
+
+filterBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    const filter = btn.dataset.filter;
+
+    // Update active button
+    filterBtns.forEach(b => b.classList.remove('is-active'));
+    btn.classList.add('is-active');
+
+    // Show/hide products
+    productCards.forEach(card => {
+      if (filter === 'all' || card.dataset.category === filter) {
+        card.style.display = '';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  });
+});
+
+// ============================================
+// Cart badge — read count from localStorage
+// ============================================
+function updateCartBadge() {
+  const count = parseInt(localStorage.getItem('falcons-cart-count') || '0', 10);
+  const badge = document.getElementById('cart-count');
+  if (!badge) return;
+  badge.textContent = count;
+  if (count > 0) {
+    badge.classList.add('is-visible');
+  } else {
+    badge.classList.remove('is-visible');
+  }
+}
+updateCartBadge();
+
+// ============================================
+// Add to Cart — fallback for static HTML preview
+// On Wix, this is replaced by Velo page code (see store.velo.js)
+// ============================================
+document.querySelectorAll('[data-action="add-to-cart"]').forEach(btn => {
+  btn.addEventListener('click', (e) => {
+    e.preventDefault();
+    const card = btn.closest('.product-card');
+    const slug = card.dataset.slug;
+    const name = card.querySelector('.product-card-name').textContent;
+
+    // Update cart count
+    const current = parseInt(localStorage.getItem('falcons-cart-count') || '0', 10);
+    localStorage.setItem('falcons-cart-count', current + 1);
+    updateCartBadge();
+
+    // Visual feedback
+    const original = btn.textContent;
+    btn.textContent = 'Added!';
+    btn.classList.add('is-added');
+    setTimeout(() => {
+      btn.textContent = original;
+      btn.classList.remove('is-added');
+    }, 1500);
+
+    console.log(`[Store] Add to cart: ${name} (${slug})`);
+  });
+});
+</script>
+
+</body>
+</html>
