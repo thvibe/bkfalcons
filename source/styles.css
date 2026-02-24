@@ -733,7 +733,7 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
    ============================================ */
 .commit-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: var(--space-3);
 }
 
@@ -2130,7 +2130,7 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
 
   .btn-primary--full { max-width: 320px; margin-left: auto; margin-right: auto; display: block; }
 
-  .commit-grid { grid-template-columns: repeat(3, 1fr); gap: var(--space-4); }
+  .commit-grid { grid-template-columns: repeat(2, 1fr); gap: var(--space-4); }
   .detail-grid { gap: var(--space-3); }
 
   .form-row { grid-template-columns: 1fr 1fr; }
@@ -2152,4 +2152,5 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
   }
 
   .store-grid { grid-template-columns: repeat(4, 1fr); }
+  .commit-grid { grid-template-columns: repeat(3, 1fr); }
 }
