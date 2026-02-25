@@ -380,10 +380,16 @@ mobileNav.addEventListener('click', (e) => {
   if (e.target === mobileNav) mobileNav.classList.remove('is-open');
 });
 
-// Seasonal banner dismiss
+// Seasonal banner dismiss — persists across pages within the same session
 const bannerClose = document.getElementById('banner-close');
 const banner = document.getElementById('seasonal-banner');
-bannerClose.addEventListener('click', () => banner.style.display = 'none');
+if (sessionStorage.getItem('banner-dismissed')) {
+  banner.style.display = 'none';
+}
+bannerClose.addEventListener('click', () => {
+  banner.style.display = 'none';
+  sessionStorage.setItem('banner-dismissed', '1');
+});
 
 // Cart badge — read count from localStorage
 (function() {
