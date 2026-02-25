@@ -1188,6 +1188,38 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
   color: var(--falcon-400);
 }
 
+/* Mobile nav — grouped sub-links */
+.mobile-nav-links .mobile-nav-group > span {
+  display: block;
+  padding: var(--space-4) 0;
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: 700;
+  color: var(--neutral-400);
+  letter-spacing: 0.01em;
+}
+
+.mobile-nav-links .mobile-nav-sub {
+  list-style: none;
+  padding-left: var(--space-5);
+  padding-bottom: var(--space-2);
+}
+
+.mobile-nav-links .mobile-nav-sub li {
+  border-bottom: none;
+}
+
+.mobile-nav-links .mobile-nav-sub a {
+  font-size: var(--text-base);
+  font-weight: 600;
+  padding: var(--space-2) 0;
+  color: var(--neutral-300);
+}
+
+.mobile-nav-links .mobile-nav-sub a:hover {
+  color: var(--falcon-400);
+}
+
 /* ============================================
    DESKTOP NAV
    ============================================ */
@@ -1309,13 +1341,18 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
   <div class="mobile-nav-panel">
     <button class="mobile-nav-close" id="menu-close" aria-label="Close menu">&times;</button>
     <ul class="mobile-nav-links">
-      <li><a href="community.html">Community Programs</a></li>
+      <li><a href="community.html">Community</a></li>
       <li><a href="travel.html">Travel Ball</a></li>
-      <li><a href="alumni.html">Alumni &amp; Success</a></li>
+      <li><a href="alumni.html">Alumni</a></li>
       <li><a href="newsletter.html">News</a></li>
-      <li><a href="about.html">About Us</a></li>
-      <li><a href="coaches.html">Coaches &amp; Staff</a></li>
-      <li><a href="testimonials.html">Testimonials</a></li>
+      <li class="mobile-nav-group">
+        <span>About</span>
+        <ul class="mobile-nav-sub">
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="coaches.html">Coaches &amp; Staff</a></li>
+          <li><a href="testimonials.html">Testimonials</a></li>
+        </ul>
+      </li>
       <li><a href="store.html">Store</a></li>
     </ul>
   </div>
