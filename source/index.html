@@ -1037,8 +1037,55 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
   font-family: var(--font-body);
   font-size: var(--text-sm);
   color: var(--neutral-600);
+}
+
+/* ============================================
+   DONATE CTA
+   ============================================ */
+.donate-cta {
+  background: linear-gradient(135deg, var(--falcon-900) 0%, var(--falcon-700) 100%);
+  border-radius: var(--radius-md);
+  padding: var(--space-8) var(--space-4);
+  text-align: center;
+}
+
+.donate-cta-title {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: 800;
+  color: var(--text-inverse);
+  margin-bottom: var(--space-2);
+  letter-spacing: -0.01em;
+}
+
+.donate-cta-text {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  color: var(--falcon-200);
   line-height: 1.6;
-  margin-bottom: var(--space-4);
+  max-width: 480px;
+  margin: 0 auto var(--space-5);
+}
+
+.btn-donate {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--text-sm);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  text-align: center;
+  letter-spacing: 0.03em;
+  background: var(--gold-500);
+  color: var(--falcon-950);
+  padding: var(--space-3) var(--space-8);
+  border: 2px solid var(--gold-400);
+  transition: background var(--duration-fast) var(--ease-out), transform var(--duration-fast) var(--ease-out);
+}
+
+.btn-donate:hover {
+  background: var(--gold-400);
+  transform: translateY(-2px);
 }
 
 /* ============================================
@@ -1231,7 +1278,8 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
   list-style: none;
   display: flex;
   align-items: center;
-  gap: var(--space-6);
+  gap: var(--space-4);
+  flex-wrap: nowrap;
 }
 
 .desktop-nav-links a {
@@ -1317,6 +1365,7 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
             <li><a href="testimonials.html">Testimonials</a></li>
           </ul>
         </li>
+        <li><a href="https://go.teamsnap.com/forms/220588" target="_blank" rel="noopener">Donate</a></li>
       </ul>
     </nav>
     <div class="header-right">
@@ -1354,6 +1403,7 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
         </ul>
       </li>
       <li><a href="store.html">Store</a></li>
+      <li><a href="https://go.teamsnap.com/forms/220588" target="_blank" rel="noopener">Donate</a></li>
     </ul>
   </div>
 </nav>
@@ -1585,6 +1635,17 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
       <p class="sponsors-cta-text">Support youth baseball in Brooklyn. Your sponsorship covers fees, equipment, and field time for kids who need it most.</p>
       <a href="#" class="btn btn-secondary">Sponsor Inquiry →</a>
     </div>
+  </div>
+</section>
+
+<!-- ============================================
+     BLOCK 9: DONATE CTA
+     ============================================ -->
+<section class="section">
+  <div class="donate-cta">
+    <div class="donate-cta-title">Support the Falcons</div>
+    <p class="donate-cta-text">Your donation helps cover league fees, equipment, field time, and travel costs for Brooklyn's youth baseball players. Every dollar makes a difference.</p>
+    <a href="https://go.teamsnap.com/forms/220588" class="btn-donate" target="_blank" rel="noopener">Donate Now</a>
   </div>
 </section>
 
