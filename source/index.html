@@ -1438,23 +1438,7 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
 <section class="section">
   <span class="section-label">Alumni Spotlight</span>
   <h2 class="section-title">Where Falcons Land</h2>
-  <div class="alumni-grid">
-    <div class="card alumni-card">
-      <div class="alumni-avatar"></div>
-      <div class="alumni-name">Player Name</div>
-      <div class="alumni-school">University</div>
-    </div>
-    <div class="card alumni-card">
-      <div class="alumni-avatar"></div>
-      <div class="alumni-name">Player Name</div>
-      <div class="alumni-school">University</div>
-    </div>
-    <div class="card alumni-card">
-      <div class="alumni-avatar"></div>
-      <div class="alumni-name">Player Name</div>
-      <div class="alumni-school">University</div>
-    </div>
-  </div>
+  <div class="commit-grid" id="spotlight-grid"></div>
   <div style="text-align:center;margin-top:var(--space-4);">
     <a href="alumni.html" class="btn-ghost">See All Alumni →</a>
   </div>
@@ -1623,6 +1607,53 @@ bannerClose.addEventListener('click', () => {
   if (!badge) return;
   badge.textContent = count;
   if (count > 0) badge.classList.add('is-visible');
+})();
+
+// Alumni Spotlight — show 3 random commits on each page load
+(function() {
+  const alumni = [
+    { name: 'Abel Ortiz', school: 'Coppin State University', hs: 'Richmond Hill HS', img: 'abel ortiz.jpg' },
+    { name: 'Alexis Sierra', school: 'Southern Union State', hs: 'Lakeland Senior HS', img: 'Alexis Sierra.jpg' },
+    { name: 'Bryan German', school: 'Utica College', hs: 'Woodbridge HS', img: 'Bryan German.jpg' },
+    { name: 'Bryan Rivera', school: 'Seminole State', hs: 'Lakeland Senior HS', img: 'Bryan Rivera.jpg' },
+    { name: 'Carter Finnell', school: 'Polk State', hs: 'Lake Wales HS', img: 'carter finnell.jpg' },
+    { name: 'Christopher Conde', school: 'St. Petersburg College', hs: 'Lakeland Senior HS', img: 'Christopher Conde.jpg' },
+    { name: 'Daniel Kaminsky', school: 'Holy Family University', hs: 'Roslyn HS', img: 'Daniel Kaminsky.jpg' },
+    { name: 'Eric Hernandez', school: 'Monroe University', hs: 'Cardozo HS', img: 'Eric Hernandez.jpg' },
+    { name: 'Ernesto Ortiz', school: 'Monroe University', hs: 'Grand St Campus', img: 'Ernesto Ortiz.jpg' },
+    { name: 'Hersy Felix', school: 'Monroe University', hs: 'Grand St Campus', img: 'Hersy Felix.jpg' },
+    { name: 'Jacob Severino', school: 'CCBC Essex', hs: "St. Mary\u2019s HS", img: 'Jacob Severino.jpg' },
+    { name: 'Jayden Torres', school: 'Alabama State University', hs: 'Grand St Campus', img: 'jayden torres.jpg' },
+    { name: 'Jose Garcia', school: 'Seminole State', hs: 'Lakeland Senior HS', img: 'Jose Garcia.jpg' },
+    { name: 'Joseph Banks', school: 'Iona University', hs: 'Suffield Academy', img: 'joseph banks.jpg' },
+    { name: 'Joshmar Carbonell', school: 'Marymount University', hs: 'Bishop Kenny HS', img: 'Joshmar Carbonell.jpg' },
+    { name: 'Lowell Golub', school: 'Colby College', hs: 'Berkshire School', img: 'lowell golub.jpg' },
+    { name: 'Malachi Butler', school: 'Utica College', hs: 'Richmond Hill HS', img: 'Malachi Butler.jpg' },
+    { name: 'Miguel Reich', school: 'Dickinson College', hs: 'Fordham Prep', img: 'Miguel Reich.jpg' },
+    { name: 'Toby Harris', school: 'Lehigh University', hs: 'Berkeley Carroll', img: 'Toby Harris.jpg' }
+  ];
+
+  // Fisher-Yates shuffle and pick first 3
+  for (let i = alumni.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [alumni[i], alumni[j]] = [alumni[j], alumni[i]];
+  }
+  const picks = alumni.slice(0, 3);
+
+  const grid = document.getElementById('spotlight-grid');
+  if (!grid) return;
+  grid.innerHTML = picks.map(function(a) {
+    return '<div class="card commit-card">' +
+      '<div class="commit-photo commit-photo--tall">' +
+        '<img src="../design/assets/commits/' + a.img + '" alt="' + a.name + '" loading="lazy">' +
+      '</div>' +
+      '<div class="commit-info">' +
+        '<div class="commit-name">' + a.name + '</div>' +
+        '<div class="commit-school">' + a.school + '</div>' +
+        '<div class="commit-meta">' + a.hs + '</div>' +
+      '</div>' +
+    '</div>';
+  }).join('');
 })();
 </script>
 
