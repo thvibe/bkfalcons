@@ -1000,20 +1000,26 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
 
 .sponsors-logos {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--space-5);
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-4);
   justify-items: center;
+  align-items: center;
   padding: var(--space-4) 0;
   margin-bottom: var(--space-5);
 }
 
 .sponsor-logo {
-  height: 180px;
+  height: 60px;
   width: auto;
   max-width: 100%;
   object-fit: contain;
   opacity: 0.7;
   transition: opacity var(--duration-fast) var(--ease-out);
+}
+
+.sponsor-logo--wide {
+  grid-column: 1 / -1;
+  height: 36px;
 }
 
 .sponsor-logo:hover {
@@ -1320,7 +1326,9 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
 
   .store-banner { height: 240px; }
 
-  .sponsors-logos { grid-template-columns: repeat(3, auto); gap: var(--space-6); }
+  .sponsors-logos { grid-template-columns: repeat(3, 1fr); gap: var(--space-6); }
+  .sponsor-logo { height: 70px; }
+  .sponsor-logo--wide { height: 40px; }
 }
 
 /* ============================================
@@ -1334,7 +1342,9 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
 
   .hero { min-height: 520px; }
 
-  .sponsors-logos { grid-template-columns: repeat(4, auto); gap: var(--space-8); }
+  .sponsors-logos { grid-template-columns: repeat(4, 1fr); gap: var(--space-8); }
+  .sponsor-logo { height: 80px; }
+  .sponsor-logo--wide { height: 44px; }
 }
 </style>
 </head>
@@ -1628,7 +1638,7 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
       <img src="../design/assets/northwell.avif" alt="Northwell Health" class="sponsor-logo">
       <img src="../design/assets/mtsinai.avif" alt="Mount Sinai" class="sponsor-logo">
       <img src="../design/assets/aaa.avif" alt="AAA" class="sponsor-logo">
-      <img src="../design/assets/healthfirst.avif" alt="Healthfirst" class="sponsor-logo">
+      <img src="../design/assets/healthfirst.avif" alt="Healthfirst" class="sponsor-logo sponsor-logo--wide">
     </div>
     <div class="sponsors-divider">
       <div class="sponsors-cta-title">Become a Sponsor</div>
