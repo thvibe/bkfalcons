@@ -9,6 +9,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
+<link rel="preconnect" href="https://cdn.snipcart.com">
+<link rel="stylesheet" href="https://cdn.snipcart.com/themes/v3.7.1/default/snipcart.css" />
 </head>
 <body>
 
@@ -42,10 +44,10 @@
     </nav>
     <div class="header-right">
       <a href="store.html" class="store-link">STORE</a>
-      <a href="store.html" class="cart-link" id="cart-link" aria-label="Shopping cart">
+      <button class="cart-link snipcart-checkout" id="cart-link" aria-label="Shopping cart">
         <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
-        <span class="cart-count" id="cart-count">0</span>
-      </a>
+        <span class="cart-count snipcart-items-count" id="cart-count">0</span>
+      </button>
       <button class="hamburger" aria-label="Open menu" id="menu-open">
         <span></span>
         <span></span>
@@ -614,50 +616,63 @@ filterBtns.forEach(btn => {
 });
 
 // ============================================
-// Cart badge — read count from localStorage
-// ============================================
-function updateCartBadge() {
-  const count = parseInt(localStorage.getItem('falcons-cart-count') || '0', 10);
-  const badge = document.getElementById('cart-count');
-  if (!badge) return;
-  badge.textContent = count;
-  if (count > 0) {
-    badge.classList.add('is-visible');
-  } else {
-    badge.classList.remove('is-visible');
-  }
-}
-updateCartBadge();
-
-// ============================================
-// Add to Cart — fallback for static HTML preview
-// On Wix, this is replaced by Velo page code (see store.velo.js)
+// Snipcart integration — convert product cards to buy buttons
 // ============================================
 document.querySelectorAll('[data-action="add-to-cart"]').forEach(btn => {
-  btn.addEventListener('click', (e) => {
-    e.preventDefault();
-    const card = btn.closest('.product-card');
-    const slug = card.dataset.slug;
-    const name = card.querySelector('.product-card-name').textContent;
+  const card = btn.closest('.product-card');
+  if (!card) return;
 
-    // Update cart count
-    const current = parseInt(localStorage.getItem('falcons-cart-count') || '0', 10);
-    localStorage.setItem('falcons-cart-count', current + 1);
-    updateCartBadge();
+  const slug = card.dataset.slug;
+  const category = card.dataset.category;
+  const name = card.querySelector('.product-card-name').textContent.trim();
+  const img = card.querySelector('.product-card-img img');
+  const imgUrl = img ? img.src : '';
 
-    // Visual feedback
-    const original = btn.textContent;
-    btn.textContent = 'Added!';
-    btn.classList.add('is-added');
-    setTimeout(() => {
-      btn.textContent = original;
-      btn.classList.remove('is-added');
-    }, 1500);
+  // Parse price — handle sale prices like "<del>$20</del> $14"
+  const priceEl = card.querySelector('.product-card-price');
+  const priceText = priceEl.textContent.trim();
+  const priceMatch = priceText.match(/\$(\d+(?:\.\d+)?)\s*$/);
+  const price = priceMatch ? parseFloat(priceMatch[1]) : 0;
 
-    console.log(`[Store] Add to cart: ${name} (${slug})`);
+  // Add Snipcart attributes
+  btn.classList.add('snipcart-add-item');
+  btn.dataset.itemId = slug;
+  btn.dataset.itemName = name;
+  btn.dataset.itemPrice = price.toFixed(2);
+  btn.dataset.itemUrl = '/store.html';
+  btn.dataset.itemImage = imgUrl;
+
+  // Add size variant for apparel and uniforms
+  if (category === 'apparel' || category === 'uniform') {
+    btn.dataset.itemCustom1Name = 'Size';
+    btn.dataset.itemCustom1Options = 'YS|YM|YL|S|M|L|XL|XXL';
+    btn.dataset.itemCustom1Required = 'true';
+  }
+
+  // Add size variant for headwear (fitted hats)
+  if (category === 'headwear') {
+    btn.dataset.itemCustom1Name = 'Size';
+    btn.dataset.itemCustom1Options = 'S/M|L/XL|One Size';
+    btn.dataset.itemCustom1Required = 'true';
+  }
+});
+
+// Cart badge — Snipcart updates .snipcart-items-count automatically,
+// but we also toggle the is-visible class for our styling
+document.addEventListener('snipcart.ready', () => {
+  const badge = document.getElementById('cart-count');
+  if (!badge) return;
+
+  Snipcart.store.subscribe(() => {
+    const count = Snipcart.store.getState().cart.items.count;
+    badge.classList.toggle('is-visible', count > 0);
   });
 });
 </script>
+
+<!-- Snipcart container -->
+<div hidden id="snipcart" data-api-key="NjU2ZDMyMmItZDVlMS00MzgzLTlhOTUtMmU0M2E1ODQwOTZjNjM5MTAzMDgxNzkyNDY0MTEy" data-config-modal-style="side" data-currency="usd"></div>
+<script async src="https://cdn.snipcart.com/themes/v3.7.1/default/snipcart.js"></script>
 
 </body>
 </html>
