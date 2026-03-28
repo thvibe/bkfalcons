@@ -567,6 +567,34 @@
 </nav>
 
 <!-- ============================================
+     PRODUCT DETAIL MODAL
+     ============================================ -->
+<div class="pdp-modal" id="pdp-modal">
+  <div class="pdp-panel">
+    <div class="pdp-header">
+      <span class="pdp-header-title">Product Details</span>
+      <button class="pdp-close" id="pdp-close" aria-label="Close">&times;</button>
+    </div>
+    <div class="pdp-gallery">
+      <div class="pdp-gallery-track" id="pdp-gallery-track"></div>
+      <button class="pdp-gallery-nav pdp-gallery-prev" id="pdp-prev" aria-label="Previous image" hidden>&#8249;</button>
+      <button class="pdp-gallery-nav pdp-gallery-next" id="pdp-next" aria-label="Next image" hidden>&#8250;</button>
+    </div>
+    <div class="pdp-gallery-dots" id="pdp-dots"></div>
+    <div class="pdp-body">
+      <h2 class="pdp-name" id="pdp-name"></h2>
+      <div class="pdp-price" id="pdp-price"></div>
+      <p class="pdp-desc" id="pdp-desc"></p>
+      <div id="pdp-options"></div>
+    </div>
+    <div class="pdp-actions">
+      <button class="btn btn-primary pdp-add-btn" id="pdp-add-btn">Add to Cart</button>
+      <div class="pdp-stock" id="pdp-stock"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================
      SCRIPTS
      ============================================ -->
 <script>
@@ -656,6 +684,243 @@ document.querySelectorAll('[data-action="add-to-cart"]').forEach(btn => {
     btn.dataset.itemCustom1Required = 'true';
   }
 });
+
+// ============================================
+// Product detail modal — multi-image gallery + add to cart
+// ============================================
+const productExtraData = {
+  'falcon-beanie-hat': {
+    images: [
+      'https://static.wixstatic.com/media/14b401_303324e6140840cd8ea7b7034b968833~mv2.jpeg/v1/fit/w_800,h_800,q_90/file.jpg',
+      'https://static.wixstatic.com/media/14b401_72b0b3c49ddf441fb155de324b39d72e~mv2.jpeg/v1/fit/w_800,h_800,q_90/file.jpg'
+    ],
+    description: 'Falcons Beanie Hat',
+    stock: 7
+  },
+  '2026-spring-summer-12u-uniform-package': {
+    images: [
+      'https://static.wixstatic.com/media/14b401_d3dc51b773ed46378e07daebb11ca230~mv2.jpg/v1/fit/w_800,h_800,q_90/file.jpg',
+      'https://static.wixstatic.com/media/14b401_345c400aaa9e4c169572c55181004629~mv2.jpg/v1/fit/w_800,h_800,q_90/file.jpg',
+      'https://static.wixstatic.com/media/14b401_40e20b5632f345f39a027ceee4ed0adb~mv2.jpg/v1/fit/w_800,h_800,q_90/file.jpg',
+      'https://static.wixstatic.com/media/14b401_1125cbf87bf94512963c895a4aacfa87~mv2.jpg/v1/fit/w_800,h_800,q_90/file.jpg',
+      'https://static.wixstatic.com/media/14b401_eca7e5d4d794473e9e88c21a1240649c~mv2.jpg/v1/fit/w_800,h_800,q_90/file.jpg'
+    ],
+    description: 'Package consist of: (3) Jerseys, (2) Pants, (2) Pairs Socks, (1) Hat, (1) Helmet Decal. Also includes (1) T-Shirt and (1) pair shorts. NOTE: Uniform designs are subject to changes.',
+    stock: null,
+    options: [
+      { name: 'Pants Size', choices: ['YS','YM','YL','YXL','AS','AM','AL','AXL'] },
+      { name: 'Jersey Size', choices: ['YS','YM','YL','YXL','AS','AM','AL','AXL'] },
+      { name: 'Hat Size', choices: ['XS-S','S-M','L-XL'] },
+      { name: 'T-Shirt Size', choices: ['YS','YM','YL','YXL','AS','AM','AL','AXL'] },
+      { name: 'Short Size', choices: ['YS','YM','YL','AM','AS','AL','AXL'] }
+    ]
+  },
+  '2026-spring-summer-14u-16u-uniform-package': {
+    images: [
+      'https://static.wixstatic.com/media/14b401_4c86a493f72647d9b603ce90ba7b7e7f~mv2.jpg/v1/fit/w_800,h_800,q_90/file.jpg',
+      'https://static.wixstatic.com/media/14b401_88c16fe6ef2c48bca11e4c477a4794d0~mv2.jpg/v1/fit/w_800,h_800,q_90/file.jpg',
+      'https://static.wixstatic.com/media/14b401_fef8d56034f3475185aa7af3f4d88e18~mv2.jpg/v1/fit/w_800,h_800,q_90/file.jpg',
+      'https://static.wixstatic.com/media/14b401_36c0d340c8484de8903d11a2d341c54a~mv2.jpg/v1/fit/w_800,h_800,q_90/file.jpg'
+    ],
+    description: 'Package consist of: (2) Jerseys, (1) Pants, (2) Hats, (1) Helmet Decal, (1) Wrist Band. Also includes (2) T-Shirts and (1) pair shorts. NOTE: Uniform designs are subject to changes.',
+    stock: null,
+    options: [
+      { name: 'Pants Size', choices: ['YS','YM','YL','YXL','AS','AM','AL','AXL'] },
+      { name: 'Jersey Size', choices: ['YS','YM','YL','YXL','AS','AM','AL','AXL'] },
+      { name: 'Hat Size', choices: ['XS-S','S-M','L-XL'] },
+      { name: 'T-Shirt Size', choices: ['YS','YM','YL','YXL','AS','AM','AL','AXL'] },
+      { name: 'Short Size', choices: ['YS','YM','YL','AM','AS','AL','AXL'] },
+      { name: 'Pant Style', choices: ['Knickers','Long'] }
+    ]
+  }
+};
+
+(function initPDP() {
+  const modal = document.getElementById('pdp-modal');
+  const track = document.getElementById('pdp-gallery-track');
+  const dots = document.getElementById('pdp-dots');
+  const prevBtn = document.getElementById('pdp-prev');
+  const nextBtn = document.getElementById('pdp-next');
+  const nameEl = document.getElementById('pdp-name');
+  const priceEl = document.getElementById('pdp-price');
+  const descEl = document.getElementById('pdp-desc');
+  const optionsEl = document.getElementById('pdp-options');
+  const addBtn = document.getElementById('pdp-add-btn');
+  const stockEl = document.getElementById('pdp-stock');
+  let currentSlide = 0;
+  let totalSlides = 0;
+  let currentProduct = {};
+
+  function goToSlide(i) {
+    currentSlide = Math.max(0, Math.min(i, totalSlides - 1));
+    track.style.transform = `translateX(-${currentSlide * 100}%)`;
+    dots.querySelectorAll('.pdp-gallery-dot').forEach((d, idx) =>
+      d.classList.toggle('is-active', idx === currentSlide));
+    prevBtn.hidden = currentSlide === 0;
+    nextBtn.hidden = currentSlide >= totalSlides - 1;
+  }
+
+  // Swipe support
+  let touchStartX = 0;
+  track.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
+  track.addEventListener('touchend', e => {
+    const diff = touchStartX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 40) goToSlide(currentSlide + (diff > 0 ? 1 : -1));
+  });
+
+  prevBtn.addEventListener('click', () => goToSlide(currentSlide - 1));
+  nextBtn.addEventListener('click', () => goToSlide(currentSlide + 1));
+
+  function openPDP(card) {
+    const slug = card.dataset.slug;
+    const category = card.dataset.category;
+    const name = card.querySelector('.product-card-name').textContent.trim();
+    const meta = card.querySelector('.product-card-meta')?.textContent.trim() || '';
+    const img = card.querySelector('.product-card-img img');
+    const priceText = card.querySelector('.product-card-price').innerHTML;
+    const priceMatch = card.querySelector('.product-card-price').textContent.match(/\$(\d+(?:\.\d+)?)\s*$/);
+    const price = priceMatch ? parseFloat(priceMatch[1]) : 0;
+
+    const extra = productExtraData[slug];
+    const images = extra?.images || (img ? [img.src.replace(/w_\d+,h_\d+/, 'w_800,h_800')] : []);
+    const desc = extra?.description || meta;
+    const stock = extra?.stock;
+
+    currentProduct = { slug, name, price, images, category };
+
+    // Gallery
+    track.innerHTML = images.map(url =>
+      `<div class="pdp-gallery-slide"><img src="${url}" alt="${name}" loading="lazy"></div>`
+    ).join('');
+    totalSlides = images.length;
+    dots.innerHTML = images.length > 1
+      ? images.map((_, i) => `<button class="pdp-gallery-dot${i === 0 ? ' is-active' : ''}" data-i="${i}"></button>`).join('')
+      : '';
+    dots.style.display = images.length > 1 ? '' : 'none';
+    dots.querySelectorAll('.pdp-gallery-dot').forEach(d =>
+      d.addEventListener('click', () => goToSlide(parseInt(d.dataset.i))));
+    goToSlide(0);
+
+    // Info
+    nameEl.textContent = name;
+    priceEl.innerHTML = priceText;
+    descEl.textContent = desc;
+    descEl.style.display = desc ? '' : 'none';
+
+    // Options
+    optionsEl.innerHTML = '';
+    const options = extra?.options || getDefaultOptions(category);
+    if (options) {
+      options.forEach((opt, oi) => {
+        const group = document.createElement('div');
+        group.className = 'pdp-option-group';
+        group.innerHTML = `<div class="pdp-option-label">${opt.name}</div>
+          <div class="pdp-option-chips">${opt.choices.map(c => {
+            const oos = c.inStock === false;
+            return `<button class="pdp-chip${oos ? ' is-oos' : ''}" data-opt="${oi}" data-val="${typeof c === 'string' ? c : c.value}" ${oos ? 'disabled' : ''}>${typeof c === 'string' ? c : c.value}</button>`;
+          }).join('')}</div>`;
+        optionsEl.appendChild(group);
+      });
+
+      optionsEl.querySelectorAll('.pdp-chip').forEach(chip => {
+        chip.addEventListener('click', () => {
+          const siblings = chip.closest('.pdp-option-chips').querySelectorAll('.pdp-chip');
+          siblings.forEach(s => s.classList.remove('is-selected'));
+          chip.classList.add('is-selected');
+        });
+      });
+    }
+
+    // Stock
+    if (stock !== null && stock !== undefined) {
+      stockEl.textContent = stock <= 5 ? `Only ${stock} left in stock` : `${stock} in stock`;
+      stockEl.className = 'pdp-stock' + (stock <= 5 ? ' low' : '');
+      stockEl.style.display = '';
+    } else {
+      stockEl.style.display = 'none';
+    }
+
+    // Show modal
+    modal.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function getDefaultOptions(category) {
+    if (category === 'apparel' || category === 'uniform') {
+      return [{ name: 'Size', choices: ['YS','YM','YL','S','M','L','XL','XXL'] }];
+    }
+    if (category === 'headwear') {
+      return [{ name: 'Size', choices: ['S/M','L/XL','One Size'] }];
+    }
+    return null;
+  }
+
+  function closePDP() {
+    modal.classList.remove('is-open');
+    document.body.style.overflow = '';
+  }
+
+  document.getElementById('pdp-close').addEventListener('click', closePDP);
+  modal.addEventListener('click', e => { if (e.target === modal) closePDP(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closePDP(); });
+
+  // Wire up product card clicks — remove old Wix hrefs, open modal instead
+  document.querySelectorAll('.product-card-link').forEach(link => {
+    link.removeAttribute('href');
+    link.style.cursor = 'pointer';
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      openPDP(link.closest('.product-card'));
+    });
+  });
+
+  // Wire up PDP add-to-cart button with Snipcart
+  addBtn.addEventListener('click', () => {
+    const p = currentProduct;
+    if (!p.slug) return;
+
+    // Collect selected options
+    const selections = {};
+    optionsEl.querySelectorAll('.pdp-chip.is-selected').forEach(chip => {
+      const optIdx = chip.dataset.opt;
+      const label = chip.closest('.pdp-option-group').querySelector('.pdp-option-label').textContent;
+      selections[optIdx] = { name: label, value: chip.dataset.val };
+    });
+
+    // Build Snipcart item config
+    const itemConfig = {
+      id: p.slug,
+      name: p.name,
+      price: p.price,
+      url: '/store.html',
+      image: p.images[0] || ''
+    };
+
+    // Add custom fields for selected options
+    let ci = 1;
+    Object.values(selections).forEach(sel => {
+      itemConfig[`customField${ci}Name`] = sel.name;
+      itemConfig[`customField${ci}Value`] = sel.value;
+      ci++;
+    });
+
+    // Check if required options are selected
+    const optionGroups = optionsEl.querySelectorAll('.pdp-option-group');
+    if (optionGroups.length > 0 && Object.keys(selections).length < optionGroups.length) {
+      addBtn.textContent = 'Please select all options';
+      addBtn.style.opacity = '0.6';
+      setTimeout(() => { addBtn.textContent = 'Add to Cart'; addBtn.style.opacity = ''; }, 2000);
+      return;
+    }
+
+    if (typeof Snipcart !== 'undefined') {
+      Snipcart.api.cart.items.add(itemConfig);
+    }
+
+    addBtn.textContent = 'Added!';
+    setTimeout(() => { addBtn.textContent = 'Add to Cart'; }, 1500);
+  });
+})();
 
 // Cart badge — Snipcart updates .snipcart-items-count automatically,
 // but we also toggle the is-visible class for our styling
