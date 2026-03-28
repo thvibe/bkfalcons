@@ -581,6 +581,17 @@
 </nav>
 
 <!-- ============================================
+     FULLSCREEN IMAGE VIEWER
+     ============================================ -->
+<div class="pdp-fullscreen" id="pdp-fullscreen">
+  <button class="pdp-fullscreen-close" id="fs-close" aria-label="Close">&times;</button>
+  <button class="pdp-fullscreen-nav pdp-fullscreen-prev" id="fs-prev" aria-label="Previous" hidden>&#8249;</button>
+  <button class="pdp-fullscreen-nav pdp-fullscreen-next" id="fs-next" aria-label="Next" hidden>&#8250;</button>
+  <img id="fs-img" src="" alt="">
+  <div class="pdp-fullscreen-counter" id="fs-counter"></div>
+</div>
+
+<!-- ============================================
      PRODUCT DETAIL MODAL
      ============================================ -->
 <div class="pdp-modal" id="pdp-modal">
@@ -933,6 +944,71 @@ const productExtraData = {
 
     addBtn.textContent = 'Added!';
     setTimeout(() => { addBtn.textContent = 'Add to Cart'; }, 1500);
+  });
+})();
+
+// ============================================
+// Fullscreen image viewer — tap any gallery image to zoom
+// ============================================
+(function initFullscreen() {
+  const fs = document.getElementById('pdp-fullscreen');
+  const fsImg = document.getElementById('fs-img');
+  const fsClose = document.getElementById('fs-close');
+  const fsPrev = document.getElementById('fs-prev');
+  const fsNext = document.getElementById('fs-next');
+  const fsCounter = document.getElementById('fs-counter');
+  let fsImages = [];
+  let fsIndex = 0;
+
+  function showFS(i) {
+    fsIndex = Math.max(0, Math.min(i, fsImages.length - 1));
+    fsImg.src = fsImages[fsIndex];
+    fsCounter.textContent = fsImages.length > 1 ? `${fsIndex + 1} / ${fsImages.length}` : '';
+    fsPrev.hidden = fsIndex === 0;
+    fsNext.hidden = fsIndex >= fsImages.length - 1;
+  }
+
+  function openFS(images, startIndex) {
+    fsImages = images;
+    showFS(startIndex || 0);
+    fs.classList.add('is-open');
+  }
+
+  function closeFS() {
+    fs.classList.remove('is-open');
+  }
+
+  fsClose.addEventListener('click', closeFS);
+  fs.addEventListener('click', e => { if (e.target === fs) closeFS(); });
+  fsPrev.addEventListener('click', e => { e.stopPropagation(); showFS(fsIndex - 1); });
+  fsNext.addEventListener('click', e => { e.stopPropagation(); showFS(fsIndex + 1); });
+  document.addEventListener('keydown', e => {
+    if (!fs.classList.contains('is-open')) return;
+    if (e.key === 'Escape') closeFS();
+    if (e.key === 'ArrowLeft') showFS(fsIndex - 1);
+    if (e.key === 'ArrowRight') showFS(fsIndex + 1);
+  });
+
+  // Swipe support in fullscreen
+  let fsTouchX = 0;
+  fsImg.addEventListener('touchstart', e => { fsTouchX = e.touches[0].clientX; }, { passive: true });
+  fsImg.addEventListener('touchend', e => {
+    const diff = fsTouchX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 40) showFS(fsIndex + (diff > 0 ? 1 : -1));
+  });
+
+  // Expose for PDP gallery slides to call
+  window._openFullscreen = openFS;
+
+  // Wire up gallery slide clicks
+  const track = document.getElementById('pdp-gallery-track');
+  track.addEventListener('click', e => {
+    const slide = e.target.closest('.pdp-gallery-slide');
+    if (!slide) return;
+    const slides = track.querySelectorAll('.pdp-gallery-slide img');
+    const images = Array.from(slides).map(img => img.src.replace(/w_\d+,h_\d+/, 'w_2000,h_2000'));
+    const idx = Array.from(slide.parentElement.children).indexOf(slide);
+    openFS(images, idx);
   });
 })();
 
