@@ -2301,7 +2301,8 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
 
 .pdp-gallery-slide {
   min-width: 100%;
-  aspect-ratio: 1;
+  height: 40vh;
+  max-height: 320px;
 }
 
 .pdp-gallery-slide img {
