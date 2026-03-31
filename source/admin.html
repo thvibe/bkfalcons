@@ -752,38 +752,77 @@ function addImageRow(path) {
   list.appendChild(row);
 }
 
+// Upload image to Vercel Blob via /api/upload
+async function uploadImage(file, filename) {
+  const res = await fetch('/api/upload', {
+    method: 'POST',
+    headers: {
+      'Content-Type': file.type || 'image/jpeg',
+      'X-Filename': filename,
+    },
+    body: file,
+  });
+  if (!res.ok) throw new Error('Upload failed');
+  const data = await res.json();
+  return data.url;
+}
+
 // Main image file upload
-document.getElementById('f-image-file').addEventListener('change', function(e) {
+document.getElementById('f-image-file').addEventListener('change', async function(e) {
   const file = e.target.files[0];
   if (!file) return;
   const slug = document.getElementById('f-name').value.trim().toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '') || 'product';
-  const path = `assets/products/${slug}.jpg`;
-  document.getElementById('f-image').value = path;
+  const ext = file.name.split('.').pop() || 'jpg';
+  const filename = `${slug}.${ext}`;
+
+  // Show preview immediately
   const thumb = document.getElementById('main-image-thumb');
   thumb.src = URL.createObjectURL(file);
-  document.getElementById('main-image-filename').textContent = path.split('/').pop();
+  document.getElementById('main-image-filename').textContent = 'Uploading...';
   document.getElementById('main-image-preview').style.display = 'flex';
-  // Store file for later download reminder
-  window._pendingMainImage = { file, path };
+
+  try {
+    const url = await uploadImage(file, filename);
+    document.getElementById('f-image').value = url;
+    document.getElementById('main-image-filename').textContent = filename;
+    toast('Image uploaded');
+  } catch (err) {
+    document.getElementById('main-image-filename').textContent = 'Upload failed — try again';
+    toast('Upload failed: ' + err.message);
+  }
 });
 
 // Extra images file upload
-document.getElementById('f-extra-image-file').addEventListener('change', function(e) {
+document.getElementById('f-extra-image-file').addEventListener('change', async function(e) {
   const files = Array.from(e.target.files);
   const slug = document.getElementById('f-name').value.trim().toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '') || 'product';
   const existing = document.querySelectorAll('#f-images-list .image-row').length;
-  files.forEach((file, i) => {
+
+  for (let i = 0; i < files.length; i++) {
+    const file = files[i];
     const num = existing + i + 2;
-    const path = `assets/products/${slug}-${num}.jpg`;
-    addImageRow(path);
-    // Update the preview with the uploaded file blob
+    const ext = file.name.split('.').pop() || 'jpg';
+    const filename = `${slug}-${num}.${ext}`;
+
+    // Add row with loading state
+    addImageRow('');
     const rows = document.querySelectorAll('#f-images-list .image-row');
     const lastRow = rows[rows.length - 1];
     const img = lastRow.querySelector('.image-preview');
     if (img) img.src = URL.createObjectURL(file);
-    lastRow.dataset.path = path;
-  });
+    const span = lastRow.querySelector('span');
+    if (span) span.textContent = 'Uploading...';
+
+    try {
+      const url = await uploadImage(file, filename);
+      lastRow.dataset.path = url;
+      if (span) span.textContent = filename;
+    } catch (err) {
+      if (span) span.textContent = 'Upload failed';
+    }
+  }
   e.target.value = '';
+  toast(`${files.length} image(s) uploaded`);
 });
 
 // Option blocks
