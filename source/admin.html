@@ -734,6 +734,55 @@
         </div>
       </div>
 
+      <!-- Game Recap Template -->
+      <div id="recap-template" style="display:none;background:var(--neutral-100,#F4F5FB);border-radius:12px;padding:1.25rem;margin-bottom:1rem;">
+        <div style="font-family:var(--font-display);font-weight:700;font-size:0.875rem;color:var(--falcon-blue,#1B2A72);margin-bottom:1rem;">Game Recap Quick Fill</div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Age Group</label>
+            <select class="form-select" id="rc-age">
+              <option value="8U">8U</option>
+              <option value="10U">10U</option>
+              <option value="12U">12U</option>
+              <option value="14U" selected>14U</option>
+              <option value="16U">16U</option>
+              <option value="18U">18U</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Opponent</label>
+            <input class="form-input" id="rc-opponent" placeholder="e.g. Bay Ridge Eagles">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Falcons Score</label>
+            <input class="form-input" id="rc-score-us" type="number" min="0" placeholder="0">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Opponent Score</label>
+            <input class="form-input" id="rc-score-them" type="number" min="0" placeholder="0">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Innings</label>
+            <input class="form-input" id="rc-innings" type="number" min="1" value="6" placeholder="6">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Key Plays / Highlights</label>
+          <textarea class="form-textarea" id="rc-highlights" placeholder="e.g. Walk-off double by Marcus in the 8th. Jordan pitched 5 shutout innings."></textarea>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Standout Players</label>
+          <input class="form-input" id="rc-standouts" placeholder="e.g. Marcus (3-for-4, 2 RBI), Jordan (5 IP, 8 K)">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Tournament / League</label>
+          <input class="form-input" id="rc-event" placeholder="e.g. Brooklyn Spring Classic (optional)">
+        </div>
+        <button type="button" class="btn btn-primary btn-sm" id="rc-generate" style="margin-top:0.5rem;">Generate Recap</button>
+      </div>
+
       <div class="form-group">
         <label class="form-label">Excerpt</label>
         <textarea class="form-textarea" id="pf-excerpt" placeholder="Short summary shown on the news page" required></textarea>
@@ -1264,8 +1313,75 @@ function openPostEditor(index) {
     preview.style.display = 'none';
   }
 
+  // Show/hide recap template based on tag
+  toggleRecapTemplate(p.tag || 'Game Recap');
+  // Clear recap fields for new posts
+  if (isNew) clearRecapFields();
+
   postEditorOverlay.classList.add('is-open');
 }
+
+// Recap template toggle
+function toggleRecapTemplate(tag) {
+  document.getElementById('recap-template').style.display = tag === 'Game Recap' ? '' : 'none';
+}
+
+function clearRecapFields() {
+  ['rc-opponent','rc-score-us','rc-score-them','rc-highlights','rc-standouts','rc-event'].forEach(id => {
+    document.getElementById(id).value = '';
+  });
+  document.getElementById('rc-age').value = '14U';
+  document.getElementById('rc-innings').value = '6';
+}
+
+document.getElementById('pf-tag').addEventListener('change', function() {
+  toggleRecapTemplate(this.value);
+});
+
+// Generate recap from template fields
+document.getElementById('rc-generate').addEventListener('click', () => {
+  const age = document.getElementById('rc-age').value;
+  const opponent = document.getElementById('rc-opponent').value.trim();
+  const scoreUs = document.getElementById('rc-score-us').value;
+  const scoreThem = document.getElementById('rc-score-them').value;
+  const innings = document.getElementById('rc-innings').value;
+  const highlights = document.getElementById('rc-highlights').value.trim();
+  const standouts = document.getElementById('rc-standouts').value.trim();
+  const event = document.getElementById('rc-event').value.trim();
+
+  if (!opponent || scoreUs === '' || scoreThem === '') {
+    toast('Fill in opponent and scores to generate recap.');
+    return;
+  }
+
+  const us = parseInt(scoreUs);
+  const them = parseInt(scoreThem);
+  const won = us > them;
+  const result = won ? 'defeated' : (us === them ? 'tied' : 'fell to');
+  const extraInnings = parseInt(innings) > 6 ? ` in ${innings} innings` : '';
+  const eventStr = event ? ` at the ${event}` : '';
+
+  // Auto-fill title if empty
+  const titleEl = document.getElementById('pf-title');
+  if (!titleEl.value.trim()) {
+    const titleVerb = won ? 'Takes Down' : (us === them ? 'Ties' : 'Falls to');
+    titleEl.value = `${age} ${titleVerb} ${opponent}${eventStr}`;
+  }
+
+  // Generate excerpt
+  const excerpt = `The Falcons ${age} squad ${result} ${opponent} ${us}–${them}${extraInnings}${eventStr}.${highlights ? ' ' + highlights.split('.')[0] + '.' : ''}`;
+  document.getElementById('pf-excerpt').value = excerpt;
+
+  // Generate full article body
+  let body = `**${age} Falcons ${us}, ${opponent} ${them}**${extraInnings}\n`;
+  if (event) body += `*${event}*\n`;
+  body += `\nThe Falcons ${age} ${result} ${opponent} by a final score of ${us}–${them}${extraInnings}.\n`;
+  if (highlights) body += `\n**Highlights:**\n${highlights}\n`;
+  if (standouts) body += `\n**Standout Players:**\n${standouts}\n`;
+
+  document.getElementById('pf-body').value = body;
+  toast('Recap generated — review and edit as needed.');
+});
 
 function closePostEditor() {
   postEditorOverlay.classList.remove('is-open');
