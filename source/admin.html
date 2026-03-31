@@ -82,27 +82,51 @@
     display: none;
   }
 
-  /* Button styles */
+  /* Button styles — matches main site design system */
   .btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 0.75rem 1.5rem;
-    border: none;
-    border-radius: 8px;
-    font-family: var(--font-body);
-    font-size: 0.9375rem;
-    font-weight: 700;
+    font-family: var(--font-display);
+    font-weight: 800;
+    border-radius: 100px;
+    transition: all 0.2s ease;
+    min-height: 48px;
     cursor: pointer;
-    transition: background 0.15s;
+    text-align: center;
+    letter-spacing: 0.03em;
+    padding: 0.75rem 2rem;
+    font-size: 0.875rem;
+    border: 2px solid transparent;
   }
-  .btn-primary { background: var(--falcon-600); color: #fff; }
-  .btn-primary:hover { background: var(--falcon-700); }
-  .btn-secondary { background: var(--neutral-150); color: var(--neutral-900); }
-  .btn-secondary:hover { background: var(--neutral-200); }
-  .btn-danger { background: var(--error); color: #fff; }
-  .btn-danger:hover { opacity: 0.9; }
-  .btn-sm { padding: 0.5rem 1rem; font-size: 0.8125rem; }
+  .btn-primary {
+    background: linear-gradient(135deg, #A3D3ED, #76C4E8);
+    color: #0A1572;
+    border: 2px solid #142D80;
+  }
+  .btn-primary:hover {
+    background: linear-gradient(135deg, #D0E9F6, #A3D3ED);
+    border-color: #0A1572;
+    transform: translateY(-2px);
+  }
+  .btn-primary:active { transform: translateY(0); }
+  .btn-secondary {
+    border: 2px solid #1A3B8E;
+    color: #1A3B8E;
+    background: transparent;
+  }
+  .btn-secondary:hover {
+    background: #1A3B8E;
+    color: #fff;
+    transform: translateY(-2px);
+  }
+  .btn-danger {
+    background: var(--error);
+    color: #fff;
+    border-color: var(--error);
+  }
+  .btn-danger:hover { opacity: 0.9; transform: translateY(-2px); }
+  .btn-sm { padding: 0.5rem 1.25rem; font-size: 0.8125rem; min-height: 36px; }
   .btn-block { width: 100%; }
 
   /* Admin layout */
