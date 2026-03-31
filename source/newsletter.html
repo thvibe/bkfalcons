@@ -115,88 +115,14 @@
      ARTICLES NAV ROW
      ============================================ -->
 <div class="articles-nav">
-  <span class="articles-nav-count">6 Articles This Month</span>
+  <span class="articles-nav-count" id="articles-count"></span>
   <a href="archive.html" class="btn-ghost">View All Editions &rarr;</a>
 </div>
 
 <!-- ============================================
-     ARTICLE CARDS
+     ARTICLE CARDS — rendered from posts.json
      ============================================ -->
-<section class="section">
-
-  <!-- Article 1: Game Recap -->
-  <div class="article-card card">
-    <div class="article-card-inner">
-      <div class="article-thumb">Photo</div>
-      <div class="article-body">
-        <div class="article-tag">Game Recap</div>
-        <h3 class="article-title">14U Takes Tournament Title in Extra Innings</h3>
-        <p class="article-excerpt">A dramatic walk-off double in the eighth inning sealed the championship for the Falcons 14U squad at the Brooklyn Spring Classic.</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- Article 2: Player Spotlight -->
-  <div class="article-card card">
-    <div class="article-card-inner">
-      <div class="article-thumb">Photo</div>
-      <div class="article-body">
-        <div class="article-tag">Player Spotlight</div>
-        <h3 class="article-title">Meet Marcus: From 8U to Varsity Starter</h3>
-        <p class="article-excerpt">Marcus joined the Falcons at age seven. Now a varsity starter at Lincoln HS, he credits the program for shaping his work ethic and love of the game.</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- Article 3: Alumni Update -->
-  <div class="article-card card">
-    <div class="article-card-inner">
-      <div class="article-thumb">Photo</div>
-      <div class="article-body">
-        <div class="article-tag">Alumni Update</div>
-        <h3 class="article-title">Two New College Commitments Announced</h3>
-        <p class="article-excerpt">Congratulations to Devon R. and Jamal T., who have committed to play Division II baseball this fall. Both are Falcons alumni from the 2023 class.</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- Article 4: Community -->
-  <div class="article-card card">
-    <div class="article-card-inner">
-      <div class="article-thumb">Photo</div>
-      <div class="article-body">
-        <div class="article-tag">Community</div>
-        <h3 class="article-title">Tutoring Program Sees Record Enrollment</h3>
-        <p class="article-excerpt">Our after-school tutoring program hit a new high this semester with 42 student-athletes enrolled across all age groups, up 30% from last spring.</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- Article 5: Upcoming Events -->
-  <div class="article-card card">
-    <div class="article-card-inner">
-      <div class="article-thumb">Photo</div>
-      <div class="article-body">
-        <div class="article-tag">Upcoming Events</div>
-        <h3 class="article-title">Spring Clinic Series Starts May 3rd</h3>
-        <p class="article-excerpt">Open to all skill levels ages 6-14. Four Saturday sessions covering hitting, fielding, pitching fundamentals, and base running. Free for Falcons members.</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- Article 6: Photo Gallery -->
-  <div class="article-card card">
-    <div class="article-card-inner">
-      <div class="article-thumb">Photo</div>
-      <div class="article-body">
-        <div class="article-tag">Photo Gallery</div>
-        <h3 class="article-title">April in Pictures: 32 New Photos</h3>
-        <p class="article-excerpt">Game day highlights, practice candids, team celebrations, and community events from an action-packed month of Falcons baseball.</p>
-      </div>
-    </div>
-  </div>
-
-</section>
+<section class="section" id="articles-section"></section>
 
 <!-- ============================================
      SPONSOR SHOUTOUT
@@ -304,6 +230,33 @@ bannerClose.addEventListener('click', () => {
   banner.style.display = 'none';
   sessionStorage.setItem('banner-dismissed', '1');
 });
+
+// Load and render posts from JSON
+fetch('posts.json')
+  .then(r => r.json())
+  .then(posts => {
+    // Sort by date descending
+    posts.sort((a, b) => new Date(b.date) - new Date(a.date));
+    document.getElementById('articles-count').textContent = `${posts.length} Articles`;
+    const section = document.getElementById('articles-section');
+    section.innerHTML = posts.map(p => {
+      const thumbHtml = p.image
+        ? `<img src="${p.image}" alt="" style="width:100%;height:100%;object-fit:cover;border-radius:inherit;">`
+        : 'Photo';
+      const dateStr = new Date(p.date + 'T00:00:00').toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+      return `<div class="article-card card">
+        <div class="article-card-inner">
+          <div class="article-thumb">${thumbHtml}</div>
+          <div class="article-body">
+            <div class="article-tag">${p.tag}</div>
+            <h3 class="article-title">${p.title}</h3>
+            <p class="article-excerpt">${p.excerpt}</p>
+            <div style="font-family:var(--font-mono);font-size:0.6875rem;color:var(--neutral-400);margin-top:0.5rem;">${dateStr}</div>
+          </div>
+        </div>
+      </div>`;
+    }).join('');
+  });
 
 // Cart badge — read count from localStorage
 (function() {

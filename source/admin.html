@@ -466,6 +466,41 @@
     resize: vertical;
   }
   .export-actions { display: flex; gap: 0.75rem; margin-top: 1rem; }
+
+  /* Admin tabs */
+  .admin-tabs {
+    display: flex;
+    gap: 0;
+    border-bottom: 2px solid var(--neutral-150);
+    margin-bottom: 1.5rem;
+  }
+  .admin-tab {
+    padding: 0.75rem 1.5rem;
+    font-family: var(--font-display);
+    font-size: 0.9375rem;
+    font-weight: 700;
+    color: var(--neutral-400);
+    background: none;
+    border: none;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -2px;
+    transition: color 0.15s;
+  }
+  .admin-tab:hover { color: var(--neutral-600); }
+  .admin-tab.is-active {
+    color: var(--falcon-600);
+    border-bottom-color: var(--falcon-600);
+  }
+  .admin-panel { display: none; }
+  .admin-panel.is-active { display: block; }
+
+  /* Post body textarea */
+  .form-textarea-lg {
+    min-height: 200px;
+    font-size: 0.9375rem;
+    line-height: 1.7;
+  }
 </style>
 </head>
 <body>
@@ -474,7 +509,7 @@
 <div class="login-screen" id="login-screen">
   <div class="login-box">
     <h1>Falcons Admin</h1>
-    <p>Enter the admin password to manage store products.</p>
+    <p>Enter the admin password to manage the site.</p>
     <div class="login-error" id="login-error">Incorrect password</div>
     <input type="password" id="login-password" placeholder="Password" autofocus>
     <button class="btn btn-primary btn-block" id="login-btn">Sign In</button>
@@ -484,7 +519,7 @@
 <!-- ADMIN -->
 <div class="admin-wrap" id="admin-wrap">
   <header class="admin-header">
-    <h1>Falcons Store Admin</h1>
+    <h1>Falcons Admin</h1>
     <div class="admin-header-actions">
       <button class="btn btn-sm btn-secondary" id="export-btn">Export JSON</button>
       <button class="btn btn-sm btn-secondary" id="logout-btn">Log Out</button>
@@ -492,11 +527,28 @@
   </header>
 
   <div class="admin-body">
-    <div class="toolbar">
-      <span class="toolbar-count" id="product-count"></span>
-      <button class="btn btn-primary btn-sm" id="add-product-btn">+ Add Product</button>
+    <div class="admin-tabs">
+      <button class="admin-tab is-active" data-panel="products-panel">Products</button>
+      <button class="admin-tab" data-panel="news-panel">News</button>
     </div>
-    <div class="product-list" id="product-list"></div>
+
+    <!-- Products panel -->
+    <div class="admin-panel is-active" id="products-panel">
+      <div class="toolbar">
+        <span class="toolbar-count" id="product-count"></span>
+        <button class="btn btn-primary btn-sm" id="add-product-btn">+ Add Product</button>
+      </div>
+      <div class="product-list" id="product-list"></div>
+    </div>
+
+    <!-- News panel -->
+    <div class="admin-panel" id="news-panel">
+      <div class="toolbar">
+        <span class="toolbar-count" id="post-count"></span>
+        <button class="btn btn-primary btn-sm" id="add-post-btn">+ Add Post</button>
+      </div>
+      <div class="product-list" id="post-list"></div>
+    </div>
   </div>
 </div>
 
@@ -645,6 +697,76 @@
       <button class="btn btn-danger btn-sm" id="delete-product-btn" style="display:none;">Delete</button>
       <button class="btn btn-secondary" id="editor-cancel">Cancel</button>
       <button class="btn btn-primary" id="editor-save">Save Product</button>
+    </div>
+  </div>
+</div>
+
+<!-- POST EDITOR MODAL -->
+<div class="editor-overlay" id="post-editor-overlay">
+  <div class="editor-panel">
+    <div class="editor-header">
+      <h2 id="post-editor-title">Add Post</h2>
+      <button class="editor-close" id="post-editor-close">&times;</button>
+    </div>
+
+    <form id="post-form">
+      <div class="form-group">
+        <label class="form-label">Title</label>
+        <input class="form-input" id="pf-title" required placeholder="e.g. 14U Takes Tournament Title">
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Tag</label>
+          <select class="form-select" id="pf-tag">
+            <option value="Game Recap">Game Recap</option>
+            <option value="Player Spotlight">Player Spotlight</option>
+            <option value="Alumni Update">Alumni Update</option>
+            <option value="Community">Community</option>
+            <option value="Upcoming Events">Upcoming Events</option>
+            <option value="Photo Gallery">Photo Gallery</option>
+            <option value="Announcement">Announcement</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Date</label>
+          <input class="form-input" id="pf-date" type="date" required>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Excerpt</label>
+        <textarea class="form-textarea" id="pf-excerpt" placeholder="Short summary shown on the news page" required></textarea>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Full Article</label>
+        <textarea class="form-textarea form-textarea-lg" id="pf-body" placeholder="Full post content (optional — for future article pages)"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Image</label>
+        <div class="image-upload-area" id="post-image-upload">
+          <input type="file" id="pf-image-file" accept="image/*">
+          <div class="upload-text"><strong>Choose file</strong> or drag image here</div>
+        </div>
+        <div class="main-image-preview" id="post-image-preview" style="display:none;">
+          <img id="post-image-thumb" src="" alt="">
+          <span class="filename" id="post-image-filename"></span>
+        </div>
+        <input type="hidden" id="pf-image" value="">
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Author</label>
+        <input class="form-input" id="pf-author" value="Coach Staff" placeholder="Author name">
+      </div>
+    </form>
+
+    <div class="editor-footer">
+      <button class="btn btn-danger btn-sm" id="delete-post-btn" style="display:none;">Delete</button>
+      <button class="btn btn-secondary" id="post-editor-cancel">Cancel</button>
+      <button class="btn btn-primary" id="post-editor-save">Save Post</button>
     </div>
   </div>
 </div>
@@ -1033,10 +1155,6 @@ deleteBtn.addEventListener('click', () => {
 
 // ── Export ──
 const exportOverlay = document.getElementById('export-overlay');
-document.getElementById('export-btn').addEventListener('click', () => {
-  document.getElementById('export-json').value = JSON.stringify(products, null, 2);
-  exportOverlay.classList.add('is-open');
-});
 document.getElementById('export-close').addEventListener('click', () => {
   exportOverlay.classList.remove('is-open');
 });
@@ -1047,6 +1165,202 @@ document.getElementById('export-copy').addEventListener('click', () => {
   const ta = document.getElementById('export-json');
   ta.select();
   navigator.clipboard.writeText(ta.value).then(() => toast('Copied to clipboard'));
+});
+
+// ── Tabs ──
+document.querySelectorAll('.admin-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.admin-tab').forEach(t => t.classList.remove('is-active'));
+    document.querySelectorAll('.admin-panel').forEach(p => p.classList.remove('is-active'));
+    tab.classList.add('is-active');
+    document.getElementById(tab.dataset.panel).classList.add('is-active');
+  });
+});
+
+// ══════════════════════════════════════
+// NEWS / POSTS
+// ══════════════════════════════════════
+let posts = [];
+let editingPostIndex = -1;
+
+function loadPosts() {
+  const saved = localStorage.getItem('falcons-admin-posts');
+  if (saved) {
+    posts = JSON.parse(saved);
+    renderPostList();
+    return;
+  }
+  fetch('posts.json')
+    .then(r => r.json())
+    .then(data => {
+      posts = data;
+      localStorage.setItem('falcons-admin-posts', JSON.stringify(posts));
+      renderPostList();
+    });
+}
+loadPosts();
+
+function savePosts() {
+  localStorage.setItem('falcons-admin-posts', JSON.stringify(posts));
+}
+
+function renderPostList() {
+  const list = document.getElementById('post-list');
+  document.getElementById('post-count').textContent = `${posts.length} posts`;
+
+  // Sort by date desc for display
+  const sorted = [...posts].sort((a, b) => new Date(b.date) - new Date(a.date));
+
+  list.innerHTML = sorted.map((p, i) => {
+    const realIdx = posts.indexOf(p);
+    const dateStr = new Date(p.date + 'T00:00:00').toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+    const thumb = p.image
+      ? `<img class="product-row-img" src="${p.image}" alt="" onerror="this.style.display='none'">`
+      : `<div class="product-row-img" style="display:flex;align-items:center;justify-content:center;font-size:0.625rem;color:var(--neutral-400);">${p.tag.substring(0,2).toUpperCase()}</div>`;
+    return `<div class="product-row" data-post-index="${realIdx}">
+      ${thumb}
+      <div class="product-row-info">
+        <div class="product-row-name">${p.title}</div>
+        <div class="product-row-meta">${p.tag} · ${dateStr}</div>
+      </div>
+      <span class="product-row-badge">${p.tag}</span>
+    </div>`;
+  }).join('');
+
+  list.querySelectorAll('.product-row').forEach(row => {
+    row.addEventListener('click', () => openPostEditor(parseInt(row.dataset.postIndex)));
+  });
+}
+
+// Post editor
+const postEditorOverlay = document.getElementById('post-editor-overlay');
+const postEditorTitle = document.getElementById('post-editor-title');
+const deletePostBtn = document.getElementById('delete-post-btn');
+
+function openPostEditor(index) {
+  editingPostIndex = index;
+  const isNew = index === -1;
+  postEditorTitle.textContent = isNew ? 'Add Post' : 'Edit Post';
+  deletePostBtn.style.display = isNew ? 'none' : '';
+
+  const p = isNew ? { date: new Date().toISOString().split('T')[0], author: 'Coach Staff' } : posts[index];
+  document.getElementById('pf-title').value = p.title || '';
+  document.getElementById('pf-tag').value = p.tag || 'Game Recap';
+  document.getElementById('pf-date').value = p.date || '';
+  document.getElementById('pf-excerpt').value = p.excerpt || '';
+  document.getElementById('pf-body').value = p.body || '';
+  document.getElementById('pf-author').value = p.author || 'Coach Staff';
+
+  // Image
+  document.getElementById('pf-image').value = p.image || '';
+  const preview = document.getElementById('post-image-preview');
+  const thumb = document.getElementById('post-image-thumb');
+  const fname = document.getElementById('post-image-filename');
+  if (p.image) {
+    thumb.src = p.image;
+    fname.textContent = p.image.split('/').pop();
+    preview.style.display = 'flex';
+  } else {
+    preview.style.display = 'none';
+  }
+
+  postEditorOverlay.classList.add('is-open');
+}
+
+function closePostEditor() {
+  postEditorOverlay.classList.remove('is-open');
+  editingPostIndex = -1;
+}
+
+document.getElementById('post-editor-close').addEventListener('click', closePostEditor);
+document.getElementById('post-editor-cancel').addEventListener('click', closePostEditor);
+postEditorOverlay.addEventListener('click', e => { if (e.target === postEditorOverlay) closePostEditor(); });
+document.getElementById('add-post-btn').addEventListener('click', () => openPostEditor(-1));
+
+// Post image upload
+document.getElementById('pf-image-file').addEventListener('change', async function(e) {
+  const file = e.target.files[0];
+  if (!file) return;
+  const title = document.getElementById('pf-title').value.trim();
+  const slug = title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '') || 'post';
+  const ext = file.name.split('.').pop() || 'jpg';
+  const filename = `post-${slug}.${ext}`;
+
+  const thumb = document.getElementById('post-image-thumb');
+  thumb.src = URL.createObjectURL(file);
+  document.getElementById('post-image-filename').textContent = 'Uploading...';
+  document.getElementById('post-image-preview').style.display = 'flex';
+
+  try {
+    const url = await uploadImage(file, filename);
+    document.getElementById('pf-image').value = url;
+    document.getElementById('post-image-filename').textContent = filename;
+    toast('Image uploaded');
+  } catch (err) {
+    document.getElementById('post-image-filename').textContent = 'Upload failed';
+    toast('Upload failed: ' + err.message);
+  }
+});
+
+// Save post
+document.getElementById('post-editor-save').addEventListener('click', () => {
+  const title = document.getElementById('pf-title').value.trim();
+  const date = document.getElementById('pf-date').value;
+  const excerpt = document.getElementById('pf-excerpt').value.trim();
+
+  if (!title || !date || !excerpt) {
+    toast('Please fill in title, date, and excerpt.');
+    return;
+  }
+
+  const id = editingPostIndex >= 0 ? posts[editingPostIndex].id : title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+
+  const post = {
+    id,
+    tag: document.getElementById('pf-tag').value,
+    title,
+    excerpt,
+    body: document.getElementById('pf-body').value.trim(),
+    image: document.getElementById('pf-image').value.trim(),
+    date,
+    author: document.getElementById('pf-author').value.trim() || 'Coach Staff'
+  };
+
+  if (editingPostIndex >= 0) {
+    posts[editingPostIndex] = post;
+  } else {
+    posts.push(post);
+  }
+
+  savePosts();
+  renderPostList();
+  closePostEditor();
+  toast(editingPostIndex >= 0 ? 'Post updated' : 'Post added');
+});
+
+// Delete post
+deletePostBtn.addEventListener('click', () => {
+  if (editingPostIndex < 0) return;
+  const title = posts[editingPostIndex].title;
+  if (confirm(`Delete "${title}"?`)) {
+    posts.splice(editingPostIndex, 1);
+    savePosts();
+    renderPostList();
+    closePostEditor();
+    toast('Post deleted');
+  }
+});
+
+// Update export to include both products and posts
+document.getElementById('export-btn').addEventListener('click', function exportHandler() {
+  // Determine which tab is active
+  const activeTab = document.querySelector('.admin-tab.is-active');
+  const isNews = activeTab && activeTab.dataset.panel === 'news-panel';
+  const data = isNews ? posts : products;
+  const label = isNews ? 'posts.json' : 'products.json';
+  document.querySelector('#export-overlay h2').textContent = `Export ${label}`;
+  document.getElementById('export-json').value = JSON.stringify(data, null, 2);
+  exportOverlay.classList.add('is-open');
 });
 
 // ── Toast ──
