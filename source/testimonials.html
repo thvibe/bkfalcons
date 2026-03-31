@@ -83,12 +83,16 @@
   <h2 class="section-title">Player Testimonials</h2>
 
   <div class="testimonial">
-    <p class="testimonial-text">&ldquo;Choosing to play baseball with the Falcons was one of the best decisions I ever made. The motto of the Falcons is &lsquo;Compete and Earn, Nothing is Given,&rsquo; which tells you everything you need to know about the club. We all need to try out for each new season and you have to earn your spot in the lineup by working hard. Coach tells us that the lessons we learn on the playing field are about more than baseball. This fall I organized a service event with the Parks Department where we raked up 80 bags of leaves. As a Falcon, that&rsquo;s also what it means to put in the work. Over the years our team has become mostly Black and Latino, with lots of mixed kids like me. Interacting with kids from different backgrounds has taught me that not everyone has the same opportunities in life.&rdquo;</p>
+    <p class="testimonial-text">&ldquo;Choosing to play baseball with the Falcons was one of the best decisions I ever made. The motto of the Falcons is &lsquo;Compete and Earn, Nothing is Given,&rsquo; which tells you everything you need to know about the club.&rdquo;</p>
+    <p class="testimonial-text testimonial-full">&ldquo;We all need to try out for each new season and you have to earn your spot in the lineup by working hard. Coach tells us that the lessons we learn on the playing field are about more than baseball. This fall I organized a service event with the Parks Department where we raked up 80 bags of leaves. As a Falcon, that&rsquo;s also what it means to put in the work. Over the years our team has become mostly Black and Latino, with lots of mixed kids like me. Interacting with kids from different backgrounds has taught me that not everyone has the same opportunities in life.&rdquo;</p>
+    <button class="testimonial-toggle">Read more</button>
     <div class="testimonial-author">&mdash; Lowell Golub Ting, Player</div>
   </div>
 
   <div class="testimonial" style="margin-top:var(--space-5);">
-    <p class="testimonial-text">&ldquo;I started to play baseball at 8 years old. Many of my peers started much younger. I worked hard and decided to play and become a catcher. When I first joined the Falcons, I would rarely play a game; most of the time I wouldn&rsquo;t even start. The Falcons would make sure that I would earn a spot and they would show me how I have to &lsquo;Compete and Earn&rsquo; everything. I was not just going to be handed a starting spot. My time with the Falcons has helped me grow, not only as a ball player, but as a person. They have helped me develop my skills to what they are now. They would provide coaches to help me with all aspects of the game. From catching, pitching, hitting, fielding to strength and conditioning. My time with the Falcons has been a great experience; they make sure to always try to get great competition and go to the best tournaments. They also sign us up for showcases to display our talents to high schools and colleges. Because of this exposure that the Falcons provided, I was able to be recruited into a great boarding school in The Peddie School.&rdquo;</p>
+    <p class="testimonial-text">&ldquo;When I first joined the Falcons, I would rarely play a game; most of the time I wouldn&rsquo;t even start. The Falcons would make sure that I would earn a spot and they would show me how I have to &lsquo;Compete and Earn&rsquo; everything.&rdquo;</p>
+    <p class="testimonial-text testimonial-full">&ldquo;I was not just going to be handed a starting spot. My time with the Falcons has helped me grow, not only as a ball player, but as a person. They have helped me develop my skills to what they are now. They would provide coaches to help me with all aspects of the game. From catching, pitching, hitting, fielding to strength and conditioning. My time with the Falcons has been a great experience; they make sure to always try to get great competition and go to the best tournaments. They also sign us up for showcases to display our talents to high schools and colleges. Because of this exposure that the Falcons provided, I was able to be recruited into a great boarding school in The Peddie School.&rdquo;</p>
+    <button class="testimonial-toggle">Read more</button>
     <div class="testimonial-author">&mdash; Eduard Fernandez, Player</div>
   </div>
 </section>
@@ -98,7 +102,9 @@
   <h2 class="section-title">Parent Testimonials</h2>
 
   <div class="testimonial">
-    <p class="testimonial-text">&ldquo;When my son first started playing baseball with the Falcons, he would rarely start. But the Falcons were trying to teach him a life lesson, compete for what you want. Even though he didn&rsquo;t play much, they would always train to get better so he could compete for a spot on the team. The Falcons would always try to do what&rsquo;s best for my son and for all the kids in the organization. They have knowledgeable coaches for every aspect of the game. The Falcons would host showcases to try to get kids into the best schools. They were able to help my son get accepted into a private boarding school. Not only did they help my son, but other kids in the organization. This organization won&rsquo;t only help your son grow as a baseball player, but also as a better person.&rdquo;</p>
+    <p class="testimonial-text">&ldquo;When my son first started playing baseball with the Falcons, he would rarely start. But the Falcons were trying to teach him a life lesson, compete for what you want.&rdquo;</p>
+    <p class="testimonial-text testimonial-full">&ldquo;Even though he didn&rsquo;t play much, they would always train to get better so he could compete for a spot on the team. The Falcons would always try to do what&rsquo;s best for my son and for all the kids in the organization. They have knowledgeable coaches for every aspect of the game. The Falcons would host showcases to try to get kids into the best schools. They were able to help my son get accepted into a private boarding school. Not only did they help my son, but other kids in the organization. This organization won&rsquo;t only help your son grow as a baseball player, but also as a better person.&rdquo;</p>
+    <button class="testimonial-toggle">Read more</button>
     <div class="testimonial-author">&mdash; Eduardo Fernandez, Parent of Eduard Fernandez</div>
   </div>
 </section>
@@ -185,6 +191,15 @@ if (sessionStorage.getItem('banner-dismissed')) {
 bannerClose.addEventListener('click', () => {
   banner.style.display = 'none';
   sessionStorage.setItem('banner-dismissed', '1');
+});
+
+// Testimonial read-more toggles
+document.querySelectorAll('.testimonial-toggle').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const card = btn.closest('.testimonial');
+    const expanded = card.classList.toggle('is-expanded');
+    btn.textContent = expanded ? 'Read less' : 'Read more';
+  });
 });
 
 // Cart badge — read count from localStorage

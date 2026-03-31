@@ -1,0 +1,412 @@
+[
+  {
+    "slug": "sport-tek-dri-fit-performance-t-shirts-ftb-falcons-black",
+    "productId": "2bc22c58-8439-2b32-5ba1-8066f2996630",
+    "name": "Sport-Tek Dri-Fit Tee — Black",
+    "category": "apparel",
+    "meta": "Performance T-Shirt",
+    "price": 30,
+    "originalPrice": null,
+    "badge": null,
+    "image": "https://static.wixstatic.com/media/14b401_9efe5d87040c4511a2f5a08d54001e0e~mv2.jpg/v1/fill/w_400,h_400,al_c,q_80/file.jpg",
+    "images": [],
+    "description": "SportTek Dri-Fit T-Shirts Black",
+    "stock": 6,
+    "options": [
+      { "name": "Size", "choices": ["L", "XL", "XXL"] }
+    ]
+  },
+  {
+    "slug": "sport-tek-dri-fit-performance-t-shirts-ftb-falcons-white",
+    "productId": "412ec3d2-72b2-b40b-b99a-2603934b8c75",
+    "name": "Sport-Tek Dri-Fit Tee — White",
+    "category": "apparel",
+    "meta": "Performance T-Shirt",
+    "price": 30,
+    "originalPrice": null,
+    "badge": null,
+    "image": "https://static.wixstatic.com/media/14b401_a42f471578874e09abd0fbb829e6ad5a~mv2.jpg/v1/fill/w_400,h_400,al_c,q_80/file.jpg",
+    "images": [],
+    "description": "SportTek Dri-Fit T-Shirts (FTB Falcons Baseball) WHITE",
+    "stock": 21,
+    "options": [
+      { "name": "Size", "choices": ["YXS", "YS", "YL", "YXL", "S", "L", "XXL"] }
+    ]
+  },
+  {
+    "slug": "sport-tek-hoodie-black",
+    "productId": "49c4f5e1-7957-4f64-df75-713c73bc5b88",
+    "name": "Sport-Tek Hoodie — Black",
+    "category": "apparel",
+    "meta": "Pullover Hoodie",
+    "price": 45,
+    "originalPrice": null,
+    "badge": null,
+    "image": "https://static.wixstatic.com/media/14b401_64ca4c7ea2814f4e9648e8842748be60~mv2.jpg/v1/fill/w_400,h_400,al_c,q_80/file.jpg",
+    "images": [],
+    "description": "",
+    "stock": null,
+    "options": [
+      { "name": "Size", "choices": ["YS", "YM", "YL", "S", "M", "L", "XL", "XXL"] }
+    ]
+  },
+  {
+    "slug": "sport-tek-hoodie-white",
+    "productId": "eeb85016-8863-3cc4-da21-ace896f9ae7b",
+    "name": "Sport-Tek Hoodie — White",
+    "category": "apparel",
+    "meta": "Pullover Hoodie",
+    "price": 45,
+    "originalPrice": null,
+    "badge": null,
+    "image": "https://static.wixstatic.com/media/14b401_17ee7b8449f445438a9e772181bd9682~mv2.jpg/v1/fill/w_400,h_400,al_c,q_80/file.jpg",
+    "images": [],
+    "description": "",
+    "stock": null,
+    "options": [
+      { "name": "Size", "choices": ["YS", "YM", "YL", "S", "M", "L", "XL", "XXL"] }
+    ]
+  },
+  {
+    "slug": "evoshield-men-s-sleeveless-pregame-training-hoodie",
+    "productId": "0b87a15e-41ab-4b3e-15e1-12fcbca997e9",
+    "name": "Evoshield Sleeveless Pregame Hoodie",
+    "category": "apparel",
+    "meta": "Training Hoodie",
+    "price": 45,
+    "originalPrice": null,
+    "badge": null,
+    "image": "https://static.wixstatic.com/media/14b401_1a96beb6fe8b4035ab30177f87ade141~mv2.jpg/v1/fill/w_400,h_400,al_c,q_80/file.jpg",
+    "images": [],
+    "description": "",
+    "stock": null,
+    "options": [
+      { "name": "Size", "choices": ["YS", "YM", "YL", "S", "M", "L", "XL", "XXL"] }
+    ]
+  },
+  {
+    "slug": "evoshield-men-s-lightweight-sleeveless-training-hoodie",
+    "productId": "f212d072-1bf5-be61-533b-184942f25c1f",
+    "name": "Evoshield Lightweight Sleeveless Hoodie",
+    "category": "apparel",
+    "meta": "Training Hoodie",
+    "price": 40,
+    "originalPrice": null,
+    "badge": null,
+    "image": "https://static.wixstatic.com/media/14b401_ee84b295efc745028ebb25c7c91af806~mv2.jpeg/v1/fill/w_400,h_400,al_c,q_80/file.jpeg",
+    "images": [],
+    "description": "",
+    "stock": null,
+    "options": [
+      { "name": "Size", "choices": ["YS", "YM", "YL", "S", "M", "L", "XL", "XXL"] }
+    ]
+  },
+  {
+    "slug": "badger-practice-shorts",
+    "productId": "9f50cb6b-8ee4-2952-5419-5435e6cbe4fa",
+    "name": "Badger Practice Shorts",
+    "category": "apparel",
+    "meta": "Pocketless · 2 colors",
+    "price": 12,
+    "originalPrice": null,
+    "badge": null,
+    "image": "https://static.wixstatic.com/media/14b401_eebdd3006f3f4a6d9cfa66072f64c378~mv2.png/v1/fill/w_400,h_400,al_c,q_80/file.png",
+    "images": [],
+    "description": "",
+    "stock": null,
+    "options": [
+      { "name": "Size", "choices": ["YS", "YM", "YL", "S", "M", "L", "XL", "XXL"] }
+    ]
+  },
+  {
+    "slug": "a4-performance-dri-fit-performance-t-shirts",
+    "productId": "89708dc6-4ef4-734c-3172-2075cd6462a1",
+    "name": "A4 Dri-Fit Tee",
+    "category": "apparel",
+    "meta": "Performance T-Shirt · Seams",
+    "price": 14,
+    "originalPrice": 20,
+    "badge": "sale",
+    "image": "https://static.wixstatic.com/media/14b401_e9b6db4f4a1f41cc8ccb08b40af203a6~mv2.png/v1/fill/w_400,h_400,al_c,q_80/file.png",
+    "images": [],
+    "description": "",
+    "stock": null,
+    "options": [
+      { "name": "Size", "choices": ["YS", "YM", "YL", "S", "M", "L", "XL", "XXL"] }
+    ]
+  },
+  {
+    "slug": "16u-falcons-tbd1-summer-2019-full-payment",
+    "productId": "443de765-dff7-5470-dbe3-a3ae81521854",
+    "name": "A4 Dri-Fit Practice Tee",
+    "category": "apparel",
+    "meta": "2 colors available",
+    "price": 18,
+    "originalPrice": null,
+    "badge": null,
+    "image": "https://static.wixstatic.com/media/14b401_cc471edbd26f40a29aa5146724b4b033~mv2.png/v1/fill/w_400,h_400,al_c,q_80/file.png",
+    "images": [],
+    "description": "",
+    "stock": null,
+    "options": [
+      { "name": "Size", "choices": ["YS", "YM", "YL", "S", "M", "L", "XL", "XXL"] }
+    ]
+  },
+  {
+    "slug": "2021-falcons-luis-summer-2019-payment-plan",
+    "productId": "74baea10-42a4-b7b9-aa62-fcd54303d5d9",
+    "name": "Mizuno Batting Jacket",
+    "category": "apparel",
+    "meta": "Comp Batting Jacket",
+    "price": 30,
+    "originalPrice": 40,
+    "badge": "sale",
+    "image": "https://static.wixstatic.com/media/14b401_7310a35c019543458bf916ae6c2d7322~mv2.png/v1/fill/w_400,h_400,al_c,q_80/file.png",
+    "images": [],
+    "description": "",
+    "stock": null,
+    "options": [
+      { "name": "Size", "choices": ["YS", "YM", "YL", "S", "M", "L", "XL", "XXL"] }
+    ]
+  },
+  {
+    "slug": "youth-majestic-long-sleeve-shirt-pullover",
+    "productId": "874f2649-fab3-bff1-1084-700bd0fa444a",
+    "name": "Youth Majestic Pullover",
+    "category": "apparel",
+    "meta": "Long Sleeve Shirt",
+    "price": 25,
+    "originalPrice": null,
+    "badge": null,
+    "image": "https://static.wixstatic.com/media/14b401_c9dd4893b1e241e4834625de274fff5e~mv2.png/v1/fill/w_400,h_400,al_c,q_80/file.png",
+    "images": [],
+    "description": "",
+    "stock": null,
+    "options": [
+      { "name": "Size", "choices": ["YS", "YM", "YL", "S", "M", "L", "XL", "XXL"] }
+    ]
+  },
+  {
+    "slug": "10u-falcons-2020-carlos-spring-summer-2019-full-payment",
+    "productId": "0986bf95-6b52-957b-24d6-40ec34faf7bc",
+    "name": "Rawlings Fleece Pullover",
+    "category": "apparel",
+    "meta": "Long Sleeve · 100% Polyester",
+    "price": 40,
+    "originalPrice": null,
+    "badge": null,
+    "image": "https://static.wixstatic.com/media/14b401_6bd53b71d21a4cdd80c6c39630dc0ec2~mv2.png/v1/fill/w_400,h_400,al_c,q_80/file.png",
+    "images": [],
+    "description": "",
+    "stock": null,
+    "options": [
+      { "name": "Size", "choices": ["YS", "YM", "YL", "S", "M", "L", "XL", "XXL"] }
+    ]
+  },
+  {
+    "slug": "13u-falcons-tbd-spring-summer-2019-payment-plan",
+    "productId": "b8fe1a29-a19f-8814-7ae8-d9fa3649a826",
+    "name": "Champion Block Hoodie",
+    "category": "apparel",
+    "meta": "Brooklyn Falcons",
+    "price": 24,
+    "originalPrice": 40,
+    "badge": "sale",
+    "image": "https://static.wixstatic.com/media/14b401_0583b9325b3e449a815cc1d93103c9fe~mv2.jpg/v1/fill/w_400,h_400,al_c,q_80/file.jpg",
+    "images": [],
+    "description": "",
+    "stock": null,
+    "options": [
+      { "name": "Size", "choices": ["YS", "YM", "YL", "S", "M", "L", "XL", "XXL"] }
+    ]
+  },
+  {
+    "slug": "richardson-pts30-charcoal-hats",
+    "productId": "f9832678-cffc-1bc8-c30a-2d67b51bd34f",
+    "name": "Richardson PTS30 Cap — Charcoal",
+    "category": "headwear",
+    "meta": "Fitted Hat",
+    "price": 25,
+    "originalPrice": null,
+    "badge": null,
+    "image": "https://static.wixstatic.com/media/14b401_947bfd4e0dfe4862b1d99e28f9102884~mv2.png/v1/fill/w_400,h_400,al_c,q_80/file.png",
+    "images": [],
+    "description": "",
+    "stock": null,
+    "options": [
+      { "name": "Size", "choices": ["S/M", "L/XL", "One Size"] }
+    ]
+  },
+  {
+    "slug": "richardson-pts-30-custom-white-columbia-cap",
+    "productId": "002e90c1-1dab-a08d-7929-f1285bc4d79b",
+    "name": "Richardson PTS30 Cap — White/Columbia",
+    "category": "headwear",
+    "meta": "Fitted Hat",
+    "price": 30,
+    "originalPrice": null,
+    "badge": null,
+    "image": "https://static.wixstatic.com/media/14b401_fe7fb5738a934c86b3e7ac579ae4a967~mv2.jpg/v1/fill/w_400,h_400,al_c,q_80/file.jpg",
+    "images": [],
+    "description": "",
+    "stock": null,
+    "options": [
+      { "name": "Size", "choices": ["S/M", "L/XL", "One Size"] }
+    ]
+  },
+  {
+    "slug": "falcon-beanie-hat",
+    "productId": "ecf78565-16cf-f162-6318-07f9b50cdf32",
+    "name": "Falcon Rawlings Beanie",
+    "category": "headwear",
+    "meta": "Knit Beanie",
+    "price": 20,
+    "originalPrice": null,
+    "badge": null,
+    "image": "https://static.wixstatic.com/media/14b401_303324e6140840cd8ea7b7034b968833~mv2.jpeg/v1/fill/w_400,h_400,al_c,q_80/file.jpeg",
+    "images": [
+      "https://static.wixstatic.com/media/14b401_303324e6140840cd8ea7b7034b968833~mv2.jpeg/v1/fit/w_800,h_800,q_90/file.jpg",
+      "https://static.wixstatic.com/media/14b401_72b0b3c49ddf441fb155de324b39d72e~mv2.jpeg/v1/fit/w_800,h_800,q_90/file.jpg"
+    ],
+    "description": "Falcons Beanie Hat",
+    "stock": 7,
+    "options": []
+  },
+  {
+    "slug": "falcons-junk-custom-headband",
+    "productId": "3f5bcdc1-731b-ebbd-02d6-4c361678b812",
+    "name": "Falcons Custom Headband",
+    "category": "headwear",
+    "meta": "Junk Brand · Falcon Logo",
+    "price": 26,
+    "originalPrice": null,
+    "badge": null,
+    "image": "https://static.wixstatic.com/media/14b401_c1a23990270148b694df15ebc9f65374~mv2.jpg/v1/fill/w_400,h_400,al_c,q_80/file.jpg",
+    "images": [],
+    "description": "",
+    "stock": null,
+    "options": []
+  },
+  {
+    "slug": "richardson-pts30-white-navy-columbia-2022-showcase-team-cap",
+    "productId": "0b0a8bdb-d868-aa92-dcd0-93f9fc8ca9d3",
+    "name": "Richardson PTS30 Cap — White/Navy/Columbia",
+    "category": "headwear",
+    "meta": "Showcase Team Cap",
+    "price": 25,
+    "originalPrice": null,
+    "badge": null,
+    "image": "https://static.wixstatic.com/media/14b401_b195870471b6459a8bc9821e27708d43~mv2.jpg/v1/fill/w_400,h_400,al_c,q_80/file.jpg",
+    "images": [],
+    "description": "",
+    "stock": null,
+    "options": [
+      { "name": "Size", "choices": ["S/M", "L/XL", "One Size"] }
+    ]
+  },
+  {
+    "slug": "13u-falcons-tbd-spring-summer-2019-full-payment",
+    "productId": "c4aa3864-49e1-ea35-496c-1995af3f56ed",
+    "name": "Richardson PTS30C Lite R-Flex",
+    "category": "headwear",
+    "meta": "White/Navy/Columbia Visor",
+    "price": 20,
+    "originalPrice": 30,
+    "badge": "clearance",
+    "image": "https://static.wixstatic.com/media/14b401_63de33f3fa0c4eadb9aebbba7a7e0b5d~mv2.png/v1/fill/w_400,h_400,al_c,q_80/file.png",
+    "images": [],
+    "description": "",
+    "stock": null,
+    "options": [
+      { "name": "Size", "choices": ["S/M", "L/XL", "One Size"] }
+    ]
+  },
+  {
+    "slug": "falcons-batting-glove",
+    "productId": "c018c906-a626-cd91-768a-2428258b028b",
+    "name": "Falcons Batting Gloves",
+    "category": "gear",
+    "meta": "Custom Design",
+    "price": 40,
+    "originalPrice": null,
+    "badge": null,
+    "image": "https://static.wixstatic.com/media/14b401_33eb93803eba452e8254483f9cd162d0~mv2.jpg/v1/fill/w_400,h_400,al_c,q_80/file.jpg",
+    "images": [],
+    "description": "",
+    "stock": null,
+    "options": []
+  },
+  {
+    "slug": "falcons-helmet-decal",
+    "productId": "d4e5dd6a-0c30-3815-6753-37c9b91292be",
+    "name": "Falcons Helmet Decal",
+    "category": "gear",
+    "meta": "Decal only · Helmet not included",
+    "price": 12,
+    "originalPrice": null,
+    "badge": null,
+    "image": "https://static.wixstatic.com/media/14b401_d85c11cce657420293423cc8ba55589e~mv2.jpg/v1/fill/w_400,h_400,al_c,q_80/file.jpg",
+    "images": [],
+    "description": "",
+    "stock": null,
+    "options": []
+  },
+  {
+    "slug": "brooklyn-falcons-pin",
+    "productId": "83e1e062-683c-8058-31fd-1a54f7bb0afa",
+    "name": "Brooklyn Falcons Pin",
+    "category": "gear",
+    "meta": "Collectible Enamel Pin",
+    "price": 2.25,
+    "originalPrice": null,
+    "badge": null,
+    "image": "https://static.wixstatic.com/media/14b401_1a5fe70aa24b41019d2fec18bea90a2e~mv2.jpg/v1/fill/w_400,h_400,al_c,q_80/file.jpg",
+    "images": [],
+    "description": "",
+    "stock": null,
+    "options": []
+  },
+  {
+    "slug": "11u-falcons-charles-spring-summer-2019-full-payment",
+    "productId": "754b4f2d-3d9a-1101-1b63-6b8f5186f015",
+    "name": "Falcons Wristbands",
+    "category": "gear",
+    "meta": "Grey & Columbia Blue",
+    "price": 3,
+    "originalPrice": 5,
+    "badge": "sale",
+    "image": "https://static.wixstatic.com/media/14b401_ed3ebc88d01f46cd983cc5765afdd751~mv2.jpg/v1/fill/w_400,h_400,al_c,q_80/file.jpg",
+    "images": [],
+    "description": "",
+    "stock": null,
+    "options": []
+  },
+  {
+    "slug": "2026-spring-summer-12u-uniform-package",
+    "productId": "ef4ee2f5-35ea-a9b4-d5fa-521dd21cd242",
+    "name": "12U Uniform Package",
+    "category": "uniform",
+    "meta": "Spring / Summer 2026",
+    "price": 375,
+    "originalPrice": null,
+    "badge": "new",
+    "badgeText": "2026",
+    "image": "https://static.wixstatic.com/media/14b401_d3dc51b773ed46378e07daebb11ca230~mv2.jpg/v1/fill/w_400,h_400,al_c,q_80/file.jpg",
+    "images": [
+      "https://static.wixstatic.com/media/14b401_d3dc51b773ed46378e07daebb11ca230~mv2.jpg/v1/fit/w_800,h_800,q_90/file.jpg",
+      "https://static.wixstatic.com/media/14b401_345c400aaa9e4c169572c55181004629~mv2.jpg/v1/fit/w_800,h_800,q_90/file.jpg",
+      "https://static.wixstatic.com/media/14b401_40e20b5632f345f39a027ceee4ed0adb~mv2.jpg/v1/fit/w_800,h_800,q_90/file.jpg",
+      "https://static.wixstatic.com/media/14b401_1125cbf87bf94512963c895a4aacfa87~mv2.jpg/v1/fit/w_800,h_800,q_90/file.jpg",
+      "https://static.wixstatic.com/media/14b401_eca7e5d4d794473e9e88c21a1240649c~mv2.jpg/v1/fit/w_800,h_800,q_90/file.jpg"
+    ],
+    "description": "Package consist of: (3) Jerseys, (2) Pants, (2) Pairs Socks, (1) Hat, (1) Helmet Decal. Also includes (1) T-Shirt and (1) pair shorts. NOTE: Uniform designs are subject to changes.",
+    "stock": null,
+    "options": [
+      { "name": "Pants Size", "choices": ["YS", "YM", "YL", "YXL", "AS", "AM", "AL", "AXL"] },
+      { "name": "Jersey Size", "choices": ["YS", "YM", "YL", "YXL", "AS", "AM", "AL", "AXL"] },
+      { "name": "Hat Size", "choices": ["XS-S", "S-M", "L-XL"] },
+      { "name": "T-Shirt Size", "choices": ["YS", "YM", "YL", "YXL", "AS", "AM", "AL", "AXL"] },
+      { "name": "Short Size", "choices": ["YS", "YM", "YL", "AM", "AS", "AL", "AXL"] }
+    ]
+  }
+]

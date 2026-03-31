@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin — Brooklyn Falcons Store</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --falcon-500: #2C78B8;
+    --falcon-600: #2258A2;
+    --falcon-700: #1A3B8E;
+    --neutral-0: #FFFFFF;
+    --neutral-50: #F6F6FA;
+    --neutral-100: #EDEEF4;
+    --neutral-150: #E3E5EE;
+    --neutral-200: #D5D7E5;
+    --neutral-400: #9499B8;
+    --neutral-500: #6E769E;
+    --neutral-600: #4E5890;
+    --neutral-900: #0A1572;
+    --error: #D32F2F;
+    --success: #2B9348;
+    --font-display: 'Plus Jakarta Sans', sans-serif;
+    --font-body: 'DM Sans', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+  }
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--neutral-900);
+    background: var(--neutral-50);
+    line-height: 1.6;
+  }
+
+  /* Login screen */
+  .login-screen {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 2rem;
+  }
+  .login-box {
+    background: var(--neutral-0);
+    border-radius: 12px;
+    padding: 2.5rem;
+    width: 100%;
+    max-width: 380px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+    text-align: center;
+  }
+  .login-box h1 {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+  }
+  .login-box p {
+    color: var(--neutral-500);
+    font-size: 0.875rem;
+    margin-bottom: 1.5rem;
+  }
+  .login-box input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 2px solid var(--neutral-200);
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: var(--font-body);
+    margin-bottom: 1rem;
+  }
+  .login-box input:focus { outline: none; border-color: var(--falcon-500); }
+  .login-box .login-error {
+    color: var(--error);
+    font-size: 0.875rem;
+    margin-bottom: 0.5rem;
+    display: none;
+  }
+
+  /* Button styles */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    font-family: var(--font-body);
+    font-size: 0.9375rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+  .btn-primary { background: var(--falcon-600); color: #fff; }
+  .btn-primary:hover { background: var(--falcon-700); }
+  .btn-secondary { background: var(--neutral-150); color: var(--neutral-900); }
+  .btn-secondary:hover { background: var(--neutral-200); }
+  .btn-danger { background: var(--error); color: #fff; }
+  .btn-danger:hover { opacity: 0.9; }
+  .btn-sm { padding: 0.5rem 1rem; font-size: 0.8125rem; }
+  .btn-block { width: 100%; }
+
+  /* Admin layout */
+  .admin-wrap { display: none; }
+  .admin-wrap.is-active { display: block; }
+  .admin-header {
+    background: var(--neutral-900);
+    color: #fff;
+    padding: 1rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .admin-header h1 {
+    font-family: var(--font-display);
+    font-size: 1.125rem;
+    font-weight: 800;
+  }
+  .admin-header-actions { display: flex; gap: 0.5rem; align-items: center; }
+
+  .admin-body { max-width: 960px; margin: 0 auto; padding: 1.5rem; }
+
+  /* Toolbar */
+  .toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+  .toolbar-count {
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    color: var(--neutral-500);
+  }
+
+  /* Product list */
+  .product-list { display: flex; flex-direction: column; gap: 0.5rem; }
+  .product-row {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.75rem 1rem;
+    background: var(--neutral-0);
+    border-radius: 10px;
+    border: 1px solid var(--neutral-150);
+    cursor: pointer;
+    transition: border-color 0.15s;
+  }
+  .product-row:hover { border-color: var(--falcon-500); }
+  .product-row-img {
+    width: 56px;
+    height: 56px;
+    border-radius: 8px;
+    object-fit: cover;
+    background: var(--neutral-100);
+    flex-shrink: 0;
+  }
+  .product-row-info { flex: 1; min-width: 0; }
+  .product-row-name {
+    font-weight: 700;
+    font-size: 0.9375rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .product-row-meta {
+    font-size: 0.8125rem;
+    color: var(--neutral-500);
+  }
+  .product-row-price {
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: 0.9375rem;
+    white-space: nowrap;
+  }
+  .product-row-badge {
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    border-radius: 100px;
+    background: var(--neutral-100);
+    color: var(--neutral-600);
+    white-space: nowrap;
+  }
+
+  /* Editor panel */
+  .editor-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(10,21,114,0.4);
+    z-index: 1000;
+    display: none;
+    align-items: flex-end;
+    justify-content: center;
+  }
+  .editor-overlay.is-open { display: flex; }
+  .editor-panel {
+    background: var(--neutral-0);
+    border-radius: 16px 16px 0 0;
+    width: 100%;
+    max-width: 640px;
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 1.5rem;
+  }
+  @media (min-width: 768px) {
+    .editor-overlay { align-items: center; }
+    .editor-panel { border-radius: 16px; max-height: 85vh; }
+  }
+  .editor-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+  }
+  .editor-header h2 {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-weight: 800;
+  }
+  .editor-close {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: none;
+    background: var(--neutral-100);
+    font-size: 1.25rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Form */
+  .form-group { margin-bottom: 1.25rem; }
+  .form-label {
+    display: block;
+    font-weight: 700;
+    font-size: 0.8125rem;
+    margin-bottom: 0.375rem;
+    color: var(--neutral-600);
+  }
+  .form-input, .form-select, .form-textarea {
+    width: 100%;
+    padding: 0.625rem 0.75rem;
+    border: 2px solid var(--neutral-200);
+    border-radius: 8px;
+    font-family: var(--font-body);
+    font-size: 0.9375rem;
+    font-weight: 500;
+    background: var(--neutral-0);
+  }
+  .form-input:focus, .form-select:focus, .form-textarea:focus {
+    outline: none;
+    border-color: var(--falcon-500);
+  }
+  .form-textarea { resize: vertical; min-height: 80px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .form-hint {
+    font-size: 0.75rem;
+    color: var(--neutral-400);
+    margin-top: 0.25rem;
+  }
+
+  /* Options editor */
+  .option-block {
+    background: var(--neutral-50);
+    border-radius: 8px;
+    padding: 0.75rem;
+    margin-bottom: 0.5rem;
+  }
+  .option-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+  .option-header input { flex: 1; }
+  .option-remove {
+    background: none;
+    border: none;
+    color: var(--error);
+    cursor: pointer;
+    font-size: 1.25rem;
+    padding: 0 0.25rem;
+  }
+
+  /* Images list */
+  .image-list { display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 0.5rem; }
+  .image-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .image-row input { flex: 1; }
+  .image-row-remove {
+    background: none;
+    border: none;
+    color: var(--error);
+    cursor: pointer;
+    font-size: 1.25rem;
+  }
+  .image-preview {
+    width: 40px;
+    height: 40px;
+    border-radius: 6px;
+    object-fit: cover;
+    background: var(--neutral-100);
+    flex-shrink: 0;
+  }
+
+  /* Footer actions */
+  .editor-footer {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--neutral-150);
+  }
+  .editor-footer .btn { flex: 1; }
+
+  /* Toast */
+  .toast {
+    position: fixed;
+    bottom: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    background: var(--neutral-900);
+    color: #fff;
+    padding: 0.75rem 1.5rem;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 0.875rem;
+    z-index: 2000;
+    transition: transform 0.3s ease;
+    pointer-events: none;
+  }
+  .toast.is-visible { transform: translateX(-50%) translateY(0); }
+
+  /* Export modal */
+  .export-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(10,21,114,0.4);
+    z-index: 1000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+  }
+  .export-overlay.is-open { display: flex; }
+  .export-panel {
+    background: var(--neutral-0);
+    border-radius: 16px;
+    width: 100%;
+    max-width: 640px;
+    max-height: 85vh;
+    overflow-y: auto;
+    padding: 1.5rem;
+  }
+  .export-panel h2 {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+  }
+  .export-panel textarea {
+    width: 100%;
+    height: 300px;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    padding: 0.75rem;
+    border: 2px solid var(--neutral-200);
+    border-radius: 8px;
+    resize: vertical;
+  }
+  .export-actions { display: flex; gap: 0.75rem; margin-top: 1rem; }
+</style>
+</head>
+<body>
+
+<!-- LOGIN -->
+<div class="login-screen" id="login-screen">
+  <div class="login-box">
+    <h1>Falcons Admin</h1>
+    <p>Enter the admin password to manage store products.</p>
+    <div class="login-error" id="login-error">Incorrect password</div>
+    <input type="password" id="login-password" placeholder="Password" autofocus>
+    <button class="btn btn-primary btn-block" id="login-btn">Sign In</button>
+  </div>
+</div>
+
+<!-- ADMIN -->
+<div class="admin-wrap" id="admin-wrap">
+  <header class="admin-header">
+    <h1>Falcons Store Admin</h1>
+    <div class="admin-header-actions">
+      <button class="btn btn-sm btn-secondary" id="export-btn">Export JSON</button>
+      <button class="btn btn-sm btn-secondary" id="logout-btn">Log Out</button>
+    </div>
+  </header>
+
+  <div class="admin-body">
+    <div class="toolbar">
+      <span class="toolbar-count" id="product-count"></span>
+      <button class="btn btn-primary btn-sm" id="add-product-btn">+ Add Product</button>
+    </div>
+    <div class="product-list" id="product-list"></div>
+  </div>
+</div>
+
+<!-- EDITOR MODAL -->
+<div class="editor-overlay" id="editor-overlay">
+  <div class="editor-panel">
+    <div class="editor-header">
+      <h2 id="editor-title">Add Product</h2>
+      <button class="editor-close" id="editor-close">&times;</button>
+    </div>
+
+    <form id="product-form">
+      <div class="form-group">
+        <label class="form-label">Product Name</label>
+        <input class="form-input" id="f-name" required placeholder="e.g. Sport-Tek Dri-Fit Tee — Black">
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Category</label>
+          <select class="form-select" id="f-category">
+            <option value="apparel">Apparel</option>
+            <option value="headwear">Headwear</option>
+            <option value="gear">Gear & Accessories</option>
+            <option value="uniform">Uniforms</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Subtitle</label>
+          <input class="form-input" id="f-meta" placeholder="e.g. Performance T-Shirt">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Price ($)</label>
+          <input class="form-input" id="f-price" type="number" step="0.01" min="0" required placeholder="30">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Original Price ($)</label>
+          <input class="form-input" id="f-original-price" type="number" step="0.01" min="0" placeholder="Leave blank if no sale">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Badge</label>
+          <select class="form-select" id="f-badge">
+            <option value="">None</option>
+            <option value="sale">Sale</option>
+            <option value="new">New</option>
+            <option value="clearance">Clearance</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Badge Text (optional)</label>
+          <input class="form-input" id="f-badge-text" placeholder="e.g. 2026">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Stock</label>
+          <input class="form-input" id="f-stock" type="number" min="0" placeholder="Leave blank for unlimited">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Product ID</label>
+          <input class="form-input" id="f-product-id" placeholder="Auto-generated if blank">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Description</label>
+        <textarea class="form-textarea" id="f-description" placeholder="Product description (optional)"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Main Image URL</label>
+        <input class="form-input" id="f-image" placeholder="https://..." required>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Additional Images</label>
+        <div class="image-list" id="f-images-list"></div>
+        <button type="button" class="btn btn-secondary btn-sm" id="add-image-btn">+ Add Image</button>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Size / Options</label>
+        <div id="f-options-list"></div>
+        <button type="button" class="btn btn-secondary btn-sm" id="add-option-btn">+ Add Option Group</button>
+        <div class="form-hint">e.g. Name: "Size", Choices: "YS, YM, YL, S, M, L, XL, XXL"</div>
+      </div>
+    </form>
+
+    <div class="editor-footer">
+      <button class="btn btn-danger btn-sm" id="delete-product-btn" style="display:none;">Delete</button>
+      <button class="btn btn-secondary" id="editor-cancel">Cancel</button>
+      <button class="btn btn-primary" id="editor-save">Save Product</button>
+    </div>
+  </div>
+</div>
+
+<!-- EXPORT MODAL -->
+<div class="export-overlay" id="export-overlay">
+  <div class="export-panel">
+    <h2>Export products.json</h2>
+    <p style="font-size:0.875rem;color:#6E769E;margin-bottom:1rem;">Copy this JSON and replace the contents of <code>source/products.json</code> in your repo. Push to GitHub and Vercel will auto-deploy.</p>
+    <textarea id="export-json" readonly></textarea>
+    <div class="export-actions">
+      <button class="btn btn-secondary" id="export-close">Close</button>
+      <button class="btn btn-primary" id="export-copy">Copy to Clipboard</button>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<script>
+const ADMIN_PASSWORD = 'falcons2026';
+let products = [];
+let editingIndex = -1;
+
+// ── Auth ──
+const loginScreen = document.getElementById('login-screen');
+const adminWrap = document.getElementById('admin-wrap');
+const loginBtn = document.getElementById('login-btn');
+const loginPw = document.getElementById('login-password');
+const loginErr = document.getElementById('login-error');
+
+if (sessionStorage.getItem('falcons-admin-auth') === '1') {
+  showAdmin();
+}
+
+loginBtn.addEventListener('click', tryLogin);
+loginPw.addEventListener('keydown', e => { if (e.key === 'Enter') tryLogin(); });
+
+function tryLogin() {
+  if (loginPw.value === ADMIN_PASSWORD) {
+    sessionStorage.setItem('falcons-admin-auth', '1');
+    showAdmin();
+  } else {
+    loginErr.style.display = 'block';
+    loginPw.value = '';
+    loginPw.focus();
+  }
+}
+
+function showAdmin() {
+  loginScreen.style.display = 'none';
+  adminWrap.classList.add('is-active');
+  loadProducts();
+}
+
+document.getElementById('logout-btn').addEventListener('click', () => {
+  sessionStorage.removeItem('falcons-admin-auth');
+  location.reload();
+});
+
+// ── Load products ──
+function loadProducts() {
+  const saved = localStorage.getItem('falcons-admin-products');
+  if (saved) {
+    products = JSON.parse(saved);
+    renderList();
+    return;
+  }
+  fetch('products.json')
+    .then(r => r.json())
+    .then(data => {
+      products = data;
+      localStorage.setItem('falcons-admin-products', JSON.stringify(products));
+      renderList();
+    });
+}
+
+function saveProducts() {
+  localStorage.setItem('falcons-admin-products', JSON.stringify(products));
+}
+
+// ── Render product list ──
+function renderList() {
+  const list = document.getElementById('product-list');
+  document.getElementById('product-count').textContent = `${products.length} products`;
+
+  list.innerHTML = products.map((p, i) => {
+    const priceStr = p.originalPrice
+      ? `<del style="color:#9499B8;margin-right:0.25em;">$${p.originalPrice}</del>$${p.price}`
+      : `$${p.price % 1 === 0 ? p.price : p.price.toFixed(2)}`;
+    const badge = p.badge
+      ? `<span class="product-row-badge">${p.badgeText || p.badge}</span>`
+      : '';
+    return `<div class="product-row" data-index="${i}">
+      <img class="product-row-img" src="${p.image}" alt="" onerror="this.style.display='none'">
+      <div class="product-row-info">
+        <div class="product-row-name">${p.name}</div>
+        <div class="product-row-meta">${p.category} ${p.meta ? '· ' + p.meta : ''}</div>
+      </div>
+      ${badge}
+      <div class="product-row-price">${priceStr}</div>
+    </div>`;
+  }).join('');
+
+  list.querySelectorAll('.product-row').forEach(row => {
+    row.addEventListener('click', () => openEditor(parseInt(row.dataset.index)));
+  });
+}
+
+// ── Editor ──
+const editorOverlay = document.getElementById('editor-overlay');
+const editorTitle = document.getElementById('editor-title');
+const deleteBtn = document.getElementById('delete-product-btn');
+
+function openEditor(index) {
+  editingIndex = index;
+  const isNew = index === -1;
+  editorTitle.textContent = isNew ? 'Add Product' : 'Edit Product';
+  deleteBtn.style.display = isNew ? 'none' : '';
+
+  const p = isNew ? {} : products[index];
+  document.getElementById('f-name').value = p.name || '';
+  document.getElementById('f-category').value = p.category || 'apparel';
+  document.getElementById('f-meta').value = p.meta || '';
+  document.getElementById('f-price').value = p.price || '';
+  document.getElementById('f-original-price').value = p.originalPrice || '';
+  document.getElementById('f-badge').value = p.badge || '';
+  document.getElementById('f-badge-text').value = p.badgeText || '';
+  document.getElementById('f-stock').value = (p.stock !== null && p.stock !== undefined) ? p.stock : '';
+  document.getElementById('f-product-id').value = p.productId || '';
+  document.getElementById('f-description').value = p.description || '';
+  document.getElementById('f-image').value = p.image || '';
+
+  // Images
+  const imagesList = document.getElementById('f-images-list');
+  imagesList.innerHTML = '';
+  if (p.images && p.images.length > 0) {
+    p.images.forEach(url => addImageRow(url));
+  }
+
+  // Options
+  const optsList = document.getElementById('f-options-list');
+  optsList.innerHTML = '';
+  if (p.options && p.options.length > 0) {
+    p.options.forEach(opt => addOptionBlock(opt.name, opt.choices.join(', ')));
+  }
+
+  editorOverlay.classList.add('is-open');
+}
+
+function closeEditor() {
+  editorOverlay.classList.remove('is-open');
+  editingIndex = -1;
+}
+
+document.getElementById('editor-close').addEventListener('click', closeEditor);
+document.getElementById('editor-cancel').addEventListener('click', closeEditor);
+editorOverlay.addEventListener('click', e => { if (e.target === editorOverlay) closeEditor(); });
+document.getElementById('add-product-btn').addEventListener('click', () => openEditor(-1));
+
+// Image rows
+function addImageRow(url) {
+  const list = document.getElementById('f-images-list');
+  const row = document.createElement('div');
+  row.className = 'image-row';
+  row.innerHTML = `<input class="form-input" value="${url || ''}" placeholder="https://...">
+    <button type="button" class="image-row-remove">&times;</button>`;
+  row.querySelector('.image-row-remove').addEventListener('click', () => row.remove());
+  list.appendChild(row);
+}
+document.getElementById('add-image-btn').addEventListener('click', () => addImageRow(''));
+
+// Option blocks
+function addOptionBlock(name, choices) {
+  const list = document.getElementById('f-options-list');
+  const block = document.createElement('div');
+  block.className = 'option-block';
+  block.innerHTML = `<div class="option-header">
+      <input class="form-input" value="${name || ''}" placeholder="Option name (e.g. Size)">
+      <button type="button" class="option-remove">&times;</button>
+    </div>
+    <input class="form-input" value="${choices || ''}" placeholder="Choices separated by commas (e.g. S, M, L, XL)">`;
+  block.querySelector('.option-remove').addEventListener('click', () => block.remove());
+  list.appendChild(block);
+}
+document.getElementById('add-option-btn').addEventListener('click', () => addOptionBlock('', ''));
+
+// Save
+document.getElementById('editor-save').addEventListener('click', () => {
+  const name = document.getElementById('f-name').value.trim();
+  const price = parseFloat(document.getElementById('f-price').value);
+  const image = document.getElementById('f-image').value.trim();
+
+  if (!name || isNaN(price) || !image) {
+    toast('Please fill in name, price, and image.');
+    return;
+  }
+
+  const origPrice = document.getElementById('f-original-price').value.trim();
+  const stockVal = document.getElementById('f-stock').value.trim();
+  const slug = editingIndex >= 0 ? products[editingIndex].slug : name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+  const productId = document.getElementById('f-product-id').value.trim() || crypto.randomUUID();
+
+  // Collect images
+  const images = [];
+  document.querySelectorAll('#f-images-list .image-row input').forEach(inp => {
+    const v = inp.value.trim();
+    if (v) images.push(v);
+  });
+
+  // Collect options
+  const options = [];
+  document.querySelectorAll('#f-options-list .option-block').forEach(block => {
+    const inputs = block.querySelectorAll('input');
+    const optName = inputs[0].value.trim();
+    const optChoices = inputs[1].value.split(',').map(c => c.trim()).filter(Boolean);
+    if (optName && optChoices.length > 0) {
+      options.push({ name: optName, choices: optChoices });
+    }
+  });
+
+  const product = {
+    slug,
+    productId,
+    name,
+    category: document.getElementById('f-category').value,
+    meta: document.getElementById('f-meta').value.trim(),
+    price,
+    originalPrice: origPrice ? parseFloat(origPrice) : null,
+    badge: document.getElementById('f-badge').value || null,
+    badgeText: document.getElementById('f-badge-text').value.trim() || undefined,
+    image,
+    images,
+    description: document.getElementById('f-description').value.trim(),
+    stock: stockVal !== '' ? parseInt(stockVal) : null,
+    options
+  };
+
+  // Clean undefined
+  if (!product.badgeText) delete product.badgeText;
+
+  if (editingIndex >= 0) {
+    products[editingIndex] = product;
+  } else {
+    products.push(product);
+  }
+
+  saveProducts();
+  renderList();
+  closeEditor();
+  toast(editingIndex >= 0 ? 'Product updated' : 'Product added');
+});
+
+// Delete
+deleteBtn.addEventListener('click', () => {
+  if (editingIndex < 0) return;
+  const name = products[editingIndex].name;
+  if (confirm(`Delete "${name}"? This cannot be undone.`)) {
+    products.splice(editingIndex, 1);
+    saveProducts();
+    renderList();
+    closeEditor();
+    toast('Product deleted');
+  }
+});
+
+// ── Export ──
+const exportOverlay = document.getElementById('export-overlay');
+document.getElementById('export-btn').addEventListener('click', () => {
+  document.getElementById('export-json').value = JSON.stringify(products, null, 2);
+  exportOverlay.classList.add('is-open');
+});
+document.getElementById('export-close').addEventListener('click', () => {
+  exportOverlay.classList.remove('is-open');
+});
+exportOverlay.addEventListener('click', e => {
+  if (e.target === exportOverlay) exportOverlay.classList.remove('is-open');
+});
+document.getElementById('export-copy').addEventListener('click', () => {
+  const ta = document.getElementById('export-json');
+  ta.select();
+  navigator.clipboard.writeText(ta.value).then(() => toast('Copied to clipboard'));
+});
+
+// ── Toast ──
+function toast(msg) {
+  const el = document.getElementById('toast');
+  el.textContent = msg;
+  el.classList.add('is-visible');
+  setTimeout(() => el.classList.remove('is-visible'), 2500);
+}
+</script>
+
+</body>
+</html>
