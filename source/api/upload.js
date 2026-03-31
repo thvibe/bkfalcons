@@ -14,7 +14,7 @@ export default async function handler(req, res) {
 
   try {
     const blob = await put(`products/${filename}`, req, {
-      access: 'public',
+      access: 'private',
       contentType: req.headers['content-type'] || 'image/jpeg',
     });
 
