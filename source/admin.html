@@ -301,7 +301,7 @@
     align-items: center;
     gap: 0.5rem;
   }
-  .image-row input { flex: 1; }
+  .image-row .form-input { flex: 1; }
   .image-row-remove {
     background: none;
     border: none;
@@ -310,12 +310,54 @@
     font-size: 1.25rem;
   }
   .image-preview {
-    width: 40px;
-    height: 40px;
+    width: 56px;
+    height: 56px;
     border-radius: 6px;
     object-fit: cover;
     background: var(--neutral-100);
     flex-shrink: 0;
+  }
+  .image-upload-area {
+    border: 2px dashed var(--neutral-200);
+    border-radius: 8px;
+    padding: 1.25rem;
+    text-align: center;
+    cursor: pointer;
+    transition: border-color 0.15s;
+    position: relative;
+  }
+  .image-upload-area:hover { border-color: var(--falcon-500); }
+  .image-upload-area input[type="file"] {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    cursor: pointer;
+  }
+  .image-upload-area .upload-text {
+    font-size: 0.875rem;
+    color: var(--neutral-500);
+  }
+  .image-upload-area .upload-text strong {
+    color: var(--falcon-600);
+  }
+  .main-image-preview {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-top: 0.5rem;
+  }
+  .main-image-preview img {
+    width: 80px;
+    height: 80px;
+    border-radius: 8px;
+    object-fit: cover;
+    background: var(--neutral-100);
+  }
+  .main-image-preview .filename {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--neutral-500);
+    word-break: break-all;
   }
 
   /* Footer actions */
@@ -492,14 +534,25 @@
       </div>
 
       <div class="form-group">
-        <label class="form-label">Main Image URL</label>
-        <input class="form-input" id="f-image" placeholder="https://..." required>
+        <label class="form-label">Main Image</label>
+        <div class="image-upload-area" id="main-image-upload">
+          <input type="file" id="f-image-file" accept="image/*">
+          <div class="upload-text"><strong>Choose file</strong> or drag image here</div>
+        </div>
+        <div class="main-image-preview" id="main-image-preview" style="display:none;">
+          <img id="main-image-thumb" src="" alt="">
+          <span class="filename" id="main-image-filename"></span>
+        </div>
+        <input type="hidden" id="f-image" value="">
       </div>
 
       <div class="form-group">
         <label class="form-label">Additional Images</label>
         <div class="image-list" id="f-images-list"></div>
-        <button type="button" class="btn btn-secondary btn-sm" id="add-image-btn">+ Add Image</button>
+        <div class="image-upload-area" id="extra-image-upload">
+          <input type="file" id="f-extra-image-file" accept="image/*" multiple>
+          <div class="upload-text"><strong>+ Add images</strong></div>
+        </div>
       </div>
 
       <div class="form-group">
@@ -522,7 +575,7 @@
 <div class="export-overlay" id="export-overlay">
   <div class="export-panel">
     <h2>Export products.json</h2>
-    <p style="font-size:0.875rem;color:#6E769E;margin-bottom:1rem;">Copy this JSON and replace the contents of <code>source/products.json</code> in your repo. Push to GitHub and Vercel will auto-deploy.</p>
+    <p style="font-size:0.875rem;color:#6E769E;margin-bottom:1rem;">Copy this JSON and replace the contents of <code>source/products.json</code> in your repo. Make sure any new product images are added to <code>source/assets/products/</code>. Push to GitHub and Vercel will auto-deploy.</p>
     <textarea id="export-json" readonly></textarea>
     <div class="export-actions">
       <button class="btn btn-secondary" id="export-close">Close</button>
@@ -646,13 +699,23 @@ function openEditor(index) {
   document.getElementById('f-stock').value = (p.stock !== null && p.stock !== undefined) ? p.stock : '';
   document.getElementById('f-product-id').value = p.productId || '';
   document.getElementById('f-description').value = p.description || '';
-  document.getElementById('f-image').value = p.image || '';
+  // Main image preview
+  const preview = document.getElementById('main-image-preview');
+  const thumb = document.getElementById('main-image-thumb');
+  const fname = document.getElementById('main-image-filename');
+  if (p.image) {
+    thumb.src = p.image;
+    fname.textContent = p.image.split('/').pop();
+    preview.style.display = 'flex';
+  } else {
+    preview.style.display = 'none';
+  }
 
-  // Images
+  // Additional images
   const imagesList = document.getElementById('f-images-list');
   imagesList.innerHTML = '';
   if (p.images && p.images.length > 0) {
-    p.images.forEach(url => addImageRow(url));
+    p.images.forEach(path => addImageRow(path));
   }
 
   // Options
@@ -676,16 +739,52 @@ editorOverlay.addEventListener('click', e => { if (e.target === editorOverlay) c
 document.getElementById('add-product-btn').addEventListener('click', () => openEditor(-1));
 
 // Image rows
-function addImageRow(url) {
+function addImageRow(path) {
   const list = document.getElementById('f-images-list');
   const row = document.createElement('div');
   row.className = 'image-row';
-  row.innerHTML = `<input class="form-input" value="${url || ''}" placeholder="https://...">
+  const imgSrc = path || '';
+  row.innerHTML = `${imgSrc ? `<img class="image-preview" src="${imgSrc}" alt="">` : ''}
+    <span class="form-input" style="font-family:var(--font-mono);font-size:0.75rem;color:var(--neutral-500);display:flex;align-items:center;">${imgSrc ? imgSrc.split('/').pop() : 'No file'}</span>
     <button type="button" class="image-row-remove">&times;</button>`;
+  row.dataset.path = imgSrc;
   row.querySelector('.image-row-remove').addEventListener('click', () => row.remove());
   list.appendChild(row);
 }
-document.getElementById('add-image-btn').addEventListener('click', () => addImageRow(''));
+
+// Main image file upload
+document.getElementById('f-image-file').addEventListener('change', function(e) {
+  const file = e.target.files[0];
+  if (!file) return;
+  const slug = document.getElementById('f-name').value.trim().toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '') || 'product';
+  const path = `assets/products/${slug}.jpg`;
+  document.getElementById('f-image').value = path;
+  const thumb = document.getElementById('main-image-thumb');
+  thumb.src = URL.createObjectURL(file);
+  document.getElementById('main-image-filename').textContent = path.split('/').pop();
+  document.getElementById('main-image-preview').style.display = 'flex';
+  // Store file for later download reminder
+  window._pendingMainImage = { file, path };
+});
+
+// Extra images file upload
+document.getElementById('f-extra-image-file').addEventListener('change', function(e) {
+  const files = Array.from(e.target.files);
+  const slug = document.getElementById('f-name').value.trim().toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '') || 'product';
+  const existing = document.querySelectorAll('#f-images-list .image-row').length;
+  files.forEach((file, i) => {
+    const num = existing + i + 2;
+    const path = `assets/products/${slug}-${num}.jpg`;
+    addImageRow(path);
+    // Update the preview with the uploaded file blob
+    const rows = document.querySelectorAll('#f-images-list .image-row');
+    const lastRow = rows[rows.length - 1];
+    const img = lastRow.querySelector('.image-preview');
+    if (img) img.src = URL.createObjectURL(file);
+    lastRow.dataset.path = path;
+  });
+  e.target.value = '';
+});
 
 // Option blocks
 function addOptionBlock(name, choices) {
@@ -708,8 +807,8 @@ document.getElementById('editor-save').addEventListener('click', () => {
   const price = parseFloat(document.getElementById('f-price').value);
   const image = document.getElementById('f-image').value.trim();
 
-  if (!name || isNaN(price) || !image) {
-    toast('Please fill in name, price, and image.');
+  if (!name || isNaN(price)) {
+    toast('Please fill in name and price.');
     return;
   }
 
@@ -720,8 +819,8 @@ document.getElementById('editor-save').addEventListener('click', () => {
 
   // Collect images
   const images = [];
-  document.querySelectorAll('#f-images-list .image-row input').forEach(inp => {
-    const v = inp.value.trim();
+  document.querySelectorAll('#f-images-list .image-row').forEach(row => {
+    const v = row.dataset.path;
     if (v) images.push(v);
   });
 

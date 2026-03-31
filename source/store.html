@@ -372,7 +372,7 @@ function initPDP() {
     const p = allProducts.find(x => x.slug === slug);
     if (!p) return;
 
-    const images = (p.images && p.images.length > 0) ? p.images : [p.image.replace(/w_\d+,h_\d+/, 'w_800,h_800')];
+    const images = (p.images && p.images.length > 0) ? p.images : [p.image];
     const priceHtml = p.originalPrice
       ? `<del>$${p.originalPrice}</del> $${p.price}`
       : `$${p.price % 1 === 0 ? p.price : p.price.toFixed(2)}`;
@@ -554,7 +554,7 @@ function initPDP() {
     const slide = e.target.closest('.pdp-gallery-slide');
     if (!slide) return;
     const slides = track.querySelectorAll('.pdp-gallery-slide img');
-    const images = Array.from(slides).map(img => img.src.replace(/w_\d+,h_\d+/, 'w_2000,h_2000'));
+    const images = Array.from(slides).map(img => img.src);
     const idx = Array.from(slide.parentElement.children).indexOf(slide);
     openFS(images, idx);
   });
