@@ -7,6 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.snow.css" rel="stylesheet">
 <style>
   :root {
     --falcon-500: #2C78B8;
@@ -519,11 +520,46 @@
   .admin-panel { display: none; }
   .admin-panel.is-active { display: block; }
 
-  /* Post body textarea */
+  /* Post body textarea (fallback) */
   .form-textarea-lg {
     min-height: 200px;
     font-size: 0.9375rem;
     line-height: 1.7;
+  }
+
+  /* WYSIWYG editor */
+  .wysiwyg-wrap {
+    border: 2px solid var(--neutral-200);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .wysiwyg-wrap:focus-within {
+    border-color: var(--falcon-500);
+  }
+  .wysiwyg-wrap .ql-toolbar {
+    border: none;
+    border-bottom: 1px solid var(--neutral-150);
+    background: var(--neutral-50);
+    font-family: var(--font-body);
+  }
+  .wysiwyg-wrap .ql-container {
+    border: none;
+    font-family: var(--font-body);
+    font-size: 0.9375rem;
+    min-height: 200px;
+  }
+  .wysiwyg-wrap .ql-editor {
+    min-height: 200px;
+    line-height: 1.7;
+    padding: 0.75rem;
+  }
+  .wysiwyg-wrap .ql-editor p { margin-bottom: 0.5em; }
+  .wysiwyg-wrap .ql-editor h3 { font-family: var(--font-display); font-weight: 800; margin: 1em 0 0.5em; }
+  .wysiwyg-wrap .ql-editor blockquote {
+    border-left: 4px solid var(--falcon-500);
+    padding-left: 1rem;
+    color: var(--neutral-600);
+    font-style: italic;
   }
 
   /* Post preview */
@@ -875,7 +911,10 @@
 
       <div class="form-group">
         <label class="form-label">Full Article</label>
-        <textarea class="form-textarea form-textarea-lg" id="pf-body" placeholder="Full article content — displayed on the post detail page"></textarea>
+        <div class="wysiwyg-wrap">
+          <div id="pf-body-editor"></div>
+        </div>
+        <div class="form-hint">Use the toolbar to format text. Bold questions for Coach's Corner Q&amp;A style.</div>
       </div>
 
       <div class="form-group">
@@ -933,6 +972,8 @@
 <!-- TOAST -->
 <div class="toast" id="toast"></div>
 
+<script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dompurify@3.2.4/dist/purify.min.js"></script>
 <script>
 const ADMIN_PASSWORD = 'falcons2026';
 let products = [];
@@ -1319,6 +1360,58 @@ document.querySelectorAll('.admin-tab').forEach(tab => {
 // ══════════════════════════════════════
 // NEWS / POSTS
 // ══════════════════════════════════════
+
+// Initialize Quill WYSIWYG editor
+const quill = new Quill('#pf-body-editor', {
+  theme: 'snow',
+  placeholder: 'Write your article here...',
+  modules: {
+    toolbar: [
+      [{ 'header': [3, false] }],
+      ['bold', 'italic', 'underline'],
+      [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+      ['blockquote'],
+      ['link'],
+      ['clean']
+    ]
+  }
+});
+
+// Sanitize HTML — strip scripts, event handlers, and dangerous tags
+function sanitizeHtml(html) {
+  return DOMPurify.sanitize(html, {
+    ALLOWED_TAGS: ['p', 'br', 'strong', 'b', 'em', 'i', 'u', 'h3', 'ol', 'ul', 'li', 'blockquote', 'a', 'span'],
+    ALLOWED_ATTR: ['href', 'target', 'rel', 'class'],
+    ALLOW_DATA_ATTR: false
+  });
+}
+
+// Get sanitized body HTML from Quill
+function getBodyHtml() {
+  const html = quill.root.innerHTML.trim();
+  if (html === '<p><br></p>' || html === '') return '';
+  return sanitizeHtml(html);
+}
+
+// Set body content in Quill — handles both HTML and plain text legacy content
+function setBodyContent(body, bodyFormat) {
+  if (!body) {
+    quill.setContents([]);
+    return;
+  }
+  if (bodyFormat === 'html') {
+    quill.root.innerHTML = sanitizeHtml(body);
+  } else {
+    // Legacy plain text — convert to HTML paragraphs
+    const html = body
+      .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+      .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+      .replace(/\*(.+?)\*/g, '<em>$1</em>')
+      .split(/\n{2,}/).map(para => `<p>${para.replace(/\n/g, '<br>')}</p>`).join('');
+    quill.root.innerHTML = html;
+  }
+}
+
 let posts = [];
 let editingPostIndex = -1;
 
@@ -1380,7 +1473,7 @@ function openPostEditor(index) {
   document.getElementById('pf-tag').value = p.tag || 'Game Recap';
   document.getElementById('pf-date').value = p.date || '';
   document.getElementById('pf-excerpt').value = p.excerpt || '';
-  document.getElementById('pf-body').value = p.body || '';
+  setBodyContent(p.body || '', p.bodyFormat || '');
   document.getElementById('pf-author').value = p.author || 'Coach Staff';
 
   // Image
@@ -1455,14 +1548,14 @@ document.getElementById('rc-generate').addEventListener('click', () => {
   const excerpt = `The Falcons ${age} squad ${result} ${opponent} ${us}–${them}${extraInnings}${eventStr}.${highlights ? ' ' + highlights.split('.')[0] + '.' : ''}`;
   document.getElementById('pf-excerpt').value = excerpt;
 
-  // Generate full article body
-  let body = `**${age} Falcons ${us}, ${opponent} ${them}**${extraInnings}\n`;
-  if (event) body += `*${event}*\n`;
-  body += `\nThe Falcons ${age} ${result} ${opponent} by a final score of ${us}–${them}${extraInnings}.\n`;
-  if (highlights) body += `\n**Highlights:**\n${highlights}\n`;
-  if (standouts) body += `\n**Standout Players:**\n${standouts}\n`;
+  // Generate full article body as HTML for Quill
+  let bodyHtml = `<p><strong>${age} Falcons ${us}, ${opponent} ${them}</strong>${extraInnings}</p>`;
+  if (event) bodyHtml += `<p><em>${event}</em></p>`;
+  bodyHtml += `<p>The Falcons ${age} ${result} ${opponent} by a final score of ${us}–${them}${extraInnings}.</p>`;
+  if (highlights) bodyHtml += `<p><strong>Highlights:</strong><br>${highlights.replace(/\n/g, '<br>')}</p>`;
+  if (standouts) bodyHtml += `<p><strong>Standout Players:</strong><br>${standouts.replace(/\n/g, '<br>')}</p>`;
 
-  document.getElementById('pf-body').value = body;
+  quill.root.innerHTML = bodyHtml;
   toast('Recap generated — review and edit as needed.');
 });
 
@@ -1519,7 +1612,8 @@ document.getElementById('post-editor-save').addEventListener('click', () => {
     tag: document.getElementById('pf-tag').value,
     title,
     excerpt,
-    body: document.getElementById('pf-body').value.trim(),
+    body: getBodyHtml(),
+    bodyFormat: 'html',
     image: document.getElementById('pf-image').value.trim(),
     date,
     author: document.getElementById('pf-author').value.trim() || 'Coach Staff'
@@ -1557,7 +1651,7 @@ document.getElementById('post-preview-btn').addEventListener('click', () => {
   const tag = document.getElementById('pf-tag').value;
   const date = document.getElementById('pf-date').value;
   const excerpt = document.getElementById('pf-excerpt').value.trim();
-  const body = document.getElementById('pf-body').value.trim();
+  const body = getBodyHtml();
   const image = document.getElementById('pf-image').value.trim();
   const author = document.getElementById('pf-author').value.trim() || 'Coach Staff';
 
@@ -1570,22 +1664,10 @@ document.getElementById('post-preview-btn').addEventListener('click', () => {
     : '';
 
   let bodyHtml;
-  const content = body || excerpt;
-  if (content) {
-    bodyHtml = content
-      .replace(/&/g, '&amp;').replace(/</g, '&lt;')
-      .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
-      .replace(/\*(.+?)\*/g, '<em>$1</em>')
-      .split(/\n/).map(line => {
-        if (line.trim().endsWith('?')) {
-          return `<p class="post-question">${line}</p>`;
-        }
-        return line;
-      }).join('\n')
-      .split(/\n{2,}/).map(para => {
-        if (para.includes('class="post-question"')) return para;
-        return `<p>${para.replace(/\n/g, '<br>')}</p>`;
-      }).join('');
+  if (body) {
+    bodyHtml = sanitizeHtml(body);
+  } else if (excerpt) {
+    bodyHtml = `<p>${excerpt.replace(/&/g, '&amp;').replace(/</g, '&lt;')}</p>`;
   } else {
     bodyHtml = '<p style="color:var(--neutral-400);font-style:italic;">No content yet.</p>';
   }

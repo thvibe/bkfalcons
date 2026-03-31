@@ -8,6 +8,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
+<script src="https://cdn.jsdelivr.net/npm/dompurify@3.2.4/dist/purify.min.js"></script>
 <style>
 /* Post page styles */
 .post-breadcrumb {
@@ -29,18 +30,15 @@
 
 .post-hero-image {
   width: 100%;
-  max-height: 420px;
+  max-height: 480px;
   overflow: hidden;
   background: var(--neutral-150);
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 .post-hero-image img {
   width: 100%;
-  height: 100%;
+  max-height: 480px;
   object-fit: cover;
-  object-position: center;
+  object-position: center 20%;
   display: block;
 }
 
@@ -130,7 +128,8 @@
 
 @media (min-width: 768px) {
   .post-title { font-size: 2.5rem; }
-  .post-hero-image { max-height: 480px; }
+  .post-hero-image { max-height: 520px; }
+  .post-hero-image img { max-height: 520px; }
 }
 </style>
 </head>
@@ -304,24 +303,33 @@ if (!postId) {
         ? `<div class="post-hero-image"><img src="${post.image}" alt="${post.title}"></div>`
         : '';
 
-      // Build body content
+      // Build body content — supports both HTML (WYSIWYG) and plain text (legacy)
       let bodyHtml;
       if (post.body) {
-        bodyHtml = post.body
-          .replace(/&/g, '&amp;').replace(/</g, '&lt;')
-          .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
-          .replace(/\*(.+?)\*/g, '<em>$1</em>')
-          .split(/\n/).map(line => {
-            // Bold lines that end with ? (interview questions)
-            if (line.trim().endsWith('?')) {
-              return `<p class="post-question">${line}</p>`;
-            }
-            return line;
-          }).join('\n')
-          .split(/\n{2,}/).map(para => {
-            if (para.includes('class="post-question"')) return para;
-            return `<p>${para.replace(/\n/g, '<br>')}</p>`;
-          }).join('');
+        if (post.bodyFormat === 'html') {
+          // WYSIWYG HTML content — sanitize to prevent XSS
+          bodyHtml = DOMPurify.sanitize(post.body, {
+            ALLOWED_TAGS: ['p', 'br', 'strong', 'b', 'em', 'i', 'u', 'h3', 'ol', 'ul', 'li', 'blockquote', 'a', 'span'],
+            ALLOWED_ATTR: ['href', 'target', 'rel', 'class'],
+            ALLOW_DATA_ATTR: false
+          });
+        } else {
+          // Legacy plain text with markdown-like formatting
+          bodyHtml = post.body
+            .replace(/&/g, '&amp;').replace(/</g, '&lt;')
+            .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+            .replace(/\*(.+?)\*/g, '<em>$1</em>')
+            .split(/\n/).map(line => {
+              if (line.trim().endsWith('?')) {
+                return `<p class="post-question">${line}</p>`;
+              }
+              return line;
+            }).join('\n')
+            .split(/\n{2,}/).map(para => {
+              if (para.includes('class="post-question"')) return para;
+              return `<p>${para.replace(/\n/g, '<br>')}</p>`;
+            }).join('');
+        }
       } else {
         bodyHtml = `<p>${post.excerpt}</p>`;
       }
