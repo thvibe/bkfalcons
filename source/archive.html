@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Newsletter Archive — Brooklyn Falcons</title>
-<meta name="description" content="Browse every edition of The Falcon Report. Recaps, spotlights, and community updates month by month.">
+<title>News Archive — Brooklyn Falcons</title>
+<meta name="description" content="Browse the Brooklyn Falcons news archive. Game recaps, coach interviews, player spotlights, and community updates by year.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -95,7 +95,7 @@
      ============================================ -->
 <div class="breadcrumbs">
   <div class="breadcrumbs-inner">
-    <a href="index.html">Home</a> &rsaquo; <a href="newsletter.html">News &amp; Media</a> &rsaquo; Newsletter Archive
+    <a href="index.html">Home</a> &rsaquo; <a href="newsletter.html">News</a> &rsaquo; Archive
   </div>
 </div>
 
@@ -104,83 +104,20 @@
      ============================================ -->
 <section class="page-hero">
   <div class="page-hero-inner">
-    <h1 class="page-hero-title">Newsletter Archive</h1>
-    <p class="page-hero-desc">Every edition of The Falcon Report. Recaps, spotlights, and community updates month by month.</p>
+    <h1 class="page-hero-title">News Archive</h1>
+    <p class="page-hero-desc">Browse all Falcons news by year — game recaps, coach interviews, player spotlights, and more.</p>
   </div>
 </section>
 
 <!-- ============================================
-     YEAR FILTER PILLS
+     YEAR FILTER PILLS — rendered dynamically
      ============================================ -->
-<div class="year-filter">
-  <button class="year-pill year-pill--active" data-year="2026">2026</button>
-  <button class="year-pill year-pill--inactive" data-year="2025">2025</button>
-  <button class="year-pill year-pill--inactive" data-year="2024">2024</button>
-</div>
+<div class="year-filter" id="year-filter"></div>
 
 <!-- ============================================
-     EDITION LIST — 2026 Editions
+     EDITION LIST — rendered from posts.json
      ============================================ -->
-<section class="section">
-  <span class="section-label">2026 Editions</span>
-
-  <!-- April 2026 — CURRENT -->
-  <div class="edition-card card edition-card--current" style="margin-top: var(--space-4);">
-    <div class="edition-card-inner">
-      <div class="edition-cover">Cover</div>
-      <div class="edition-body">
-        <div class="edition-header">
-          <span class="edition-title">April 2026</span>
-          <span class="edition-badge">CURRENT</span>
-        </div>
-        <p class="edition-desc">Tournament title, new commits, tutoring milestone, spring clinic preview</p>
-        <span class="edition-meta">6 articles</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- March 2026 -->
-  <div class="edition-card card">
-    <div class="edition-card-inner">
-      <div class="edition-cover">Cover</div>
-      <div class="edition-body">
-        <div class="edition-header">
-          <span class="edition-title">March 2026</span>
-        </div>
-        <p class="edition-desc">Season openers, tryout recap, coaching staff spotlight, 8U kickoff</p>
-        <span class="edition-meta">5 articles</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- February 2026 -->
-  <div class="edition-card card">
-    <div class="edition-card-inner">
-      <div class="edition-cover">Cover</div>
-      <div class="edition-body">
-        <div class="edition-header">
-          <span class="edition-title">February 2026</span>
-        </div>
-        <p class="edition-desc">Preseason preview, registration update, facility improvements, alumni check-in</p>
-        <span class="edition-meta">4 articles</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- January 2026 -->
-  <div class="edition-card card">
-    <div class="edition-card-inner">
-      <div class="edition-cover">Cover</div>
-      <div class="edition-body">
-        <div class="edition-header">
-          <span class="edition-title">January 2026</span>
-        </div>
-        <p class="edition-desc">Year in review, 2025 highlights, winter camp recap, coaching hires</p>
-        <span class="edition-meta">5 articles</span>
-      </div>
-    </div>
-  </div>
-</section>
+<section class="section" id="archive-section"></section>
 
 <!-- ============================================
      EMAIL SIGNUP CTA
@@ -245,18 +182,83 @@ bannerClose.addEventListener('click', () => {
   sessionStorage.setItem('banner-dismissed', '1');
 });
 
-// Year filter pill toggle
-const yearPills = document.querySelectorAll('.year-pill');
-yearPills.forEach(pill => {
-  pill.addEventListener('click', () => {
-    yearPills.forEach(p => {
-      p.classList.remove('year-pill--active');
-      p.classList.add('year-pill--inactive');
+// Load posts and build archive
+fetch('posts.json')
+  .then(r => r.json())
+  .then(posts => {
+    posts.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+    // Group posts by year
+    const byYear = {};
+    posts.forEach(p => {
+      const y = p.date.split('-')[0];
+      if (!byYear[y]) byYear[y] = [];
+      byYear[y].push(p);
     });
-    pill.classList.remove('year-pill--inactive');
-    pill.classList.add('year-pill--active');
+
+    const years = Object.keys(byYear).sort((a, b) => b - a);
+    let activeYear = years[0];
+
+    // Render year pills
+    const filterEl = document.getElementById('year-filter');
+    filterEl.innerHTML = years.map(y =>
+      `<button class="year-pill ${y === activeYear ? 'year-pill--active' : 'year-pill--inactive'}" data-year="${y}">${y}</button>`
+    ).join('');
+
+    function renderYear(year) {
+      const yearPosts = byYear[year];
+      // Group by month
+      const byMonth = {};
+      yearPosts.forEach(p => {
+        const m = p.date.substring(0, 7); // YYYY-MM
+        if (!byMonth[m]) byMonth[m] = [];
+        byMonth[m].push(p);
+      });
+
+      const months = Object.keys(byMonth).sort((a, b) => b.localeCompare(a));
+      const section = document.getElementById('archive-section');
+
+      section.innerHTML = `<span class="section-label">${year} Posts</span>` +
+        months.map(m => {
+          const monthPosts = byMonth[m];
+          const monthName = new Date(m + '-01T00:00:00').toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
+          const firstImage = monthPosts.find(p => p.image);
+          const coverHtml = firstImage
+            ? `<img src="${firstImage.image}" alt="" style="width:100%;height:100%;object-fit:cover;border-radius:inherit;">`
+            : 'Cover';
+          const tags = [...new Set(monthPosts.map(p => p.tag))].slice(0, 3).join(', ');
+
+          return `<a href="newsletter.html" class="edition-card card" style="text-decoration:none;display:block;margin-top:var(--space-3);cursor:pointer;">
+            <div class="edition-card-inner">
+              <div class="edition-cover">${coverHtml}</div>
+              <div class="edition-body">
+                <div class="edition-header">
+                  <span class="edition-title">${monthName}</span>
+                </div>
+                <p class="edition-desc">${tags}</p>
+                <span class="edition-meta">${monthPosts.length} article${monthPosts.length !== 1 ? 's' : ''}</span>
+              </div>
+            </div>
+          </a>`;
+        }).join('');
+    }
+
+    renderYear(activeYear);
+
+    // Year pill clicks
+    filterEl.addEventListener('click', e => {
+      const pill = e.target.closest('.year-pill');
+      if (!pill) return;
+      filterEl.querySelectorAll('.year-pill').forEach(p => {
+        p.classList.remove('year-pill--active');
+        p.classList.add('year-pill--inactive');
+      });
+      pill.classList.remove('year-pill--inactive');
+      pill.classList.add('year-pill--active');
+      activeYear = pill.dataset.year;
+      renderYear(activeYear);
+    });
   });
-});
 
 // Cart badge — read count from localStorage
 (function() {

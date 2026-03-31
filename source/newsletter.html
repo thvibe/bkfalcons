@@ -3,25 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Falcon Report — April 2026 | Brooklyn Falcons</title>
-<meta name="description" content="Read the April 2026 edition of The Falcon Report — Brooklyn Falcons monthly newsletter featuring game recaps, player spotlights, alumni updates, and community news.">
+<title>The Falcon Report — News &amp; Updates | Brooklyn Falcons</title>
+<meta name="description" content="The Falcon Report — Brooklyn Falcons news featuring game recaps, player spotlights, coach interviews, alumni updates, and community stories.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 <style>
 /* Newsletter-specific styles */
-.edition-cover-hero {
-  background: var(--neutral-150);
-  height: 150px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font-body);
-  font-size: var(--text-sm);
-  color: var(--neutral-400);
-}
-
 .articles-nav {
   display: flex;
   justify-content: space-between;
@@ -38,6 +27,70 @@
   font-weight: 700;
   color: var(--neutral-700);
 }
+
+.article-card { cursor: pointer; transition: box-shadow 0.2s ease; }
+.article-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.1); }
+
+/* Category Filter Tabs */
+.news-filters {
+  display: flex;
+  gap: 0.5rem;
+  padding: var(--space-4) var(--gutter);
+  max-width: var(--site-max);
+  margin: 0 auto;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.news-filters::-webkit-scrollbar { display: none; }
+
+.news-filter-btn {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 0.5rem 1rem;
+  border-radius: 100px;
+  white-space: nowrap;
+  background: var(--neutral-100);
+  color: var(--neutral-500);
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.news-filter-btn:hover { background: var(--neutral-200); color: var(--neutral-700); }
+.news-filter-btn.is-active {
+  background: #1B2A72;
+  color: #fff;
+}
+
+.year-select select {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  color: var(--neutral-700);
+  background: var(--neutral-100);
+  border: 1px solid var(--border-subtle);
+  border-radius: 100px;
+  padding: 0.4rem 0.75rem;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23666'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.6rem center;
+  padding-right: 1.75rem;
+}
+
+.no-results {
+  text-align: center;
+  padding: var(--space-6) var(--space-4);
+  font-family: var(--font-body);
+  color: var(--neutral-400);
+  font-size: var(--text-sm);
+}
+
 </style>
 </head>
 <body>
@@ -100,23 +153,34 @@
      ============================================ -->
 <section class="page-hero">
   <div class="page-hero-inner">
-    <span style="font-family:var(--font-mono);font-size:var(--text-xs);font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:rgba(255,255,255,0.5);display:inline-block;margin-bottom:var(--space-2);">Monthly Newsletter</span>
+    <span style="font-family:var(--font-mono);font-size:var(--text-xs);font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:rgba(255,255,255,0.5);display:inline-block;margin-bottom:var(--space-2);">Latest Falcons News</span>
     <h1 class="page-hero-title">The Falcon Report</h1>
-    <p class="page-hero-desc">April 2026 Edition</p>
+    <p class="page-hero-desc">Stories, recaps &amp; updates from the field</p>
   </div>
 </section>
-
-<!-- ============================================
-     EDITION COVER PHOTO PLACEHOLDER
-     ============================================ -->
-<div class="edition-cover-hero">[ Edition Cover Photo ]</div>
 
 <!-- ============================================
      ARTICLES NAV ROW
      ============================================ -->
 <div class="articles-nav">
   <span class="articles-nav-count" id="articles-count"></span>
-  <a href="archive.html" class="btn-ghost">View All Editions &rarr;</a>
+  <div class="year-select" id="year-select"></div>
+</div>
+
+<!-- ============================================
+     CATEGORY FILTERS
+     ============================================ -->
+<div class="news-filters" id="news-filters">
+  <button class="news-filter-btn is-active" data-filter="all">All</button>
+  <button class="news-filter-btn" data-filter="Game Recap">Game Recaps</button>
+  <button class="news-filter-btn" data-filter="Coach's Corner">Coach's Corner</button>
+  <button class="news-filter-btn" data-filter="Player Spotlight">Player Spotlight</button>
+  <button class="news-filter-btn" data-filter="Newsletter">Newsletters</button>
+  <button class="news-filter-btn" data-filter="Community">Community</button>
+  <button class="news-filter-btn" data-filter="Announcement">Announcements</button>
+  <button class="news-filter-btn" data-filter="Upcoming Events">Events</button>
+  <button class="news-filter-btn" data-filter="Alumni Update">Alumni</button>
+  <button class="news-filter-btn" data-filter="Photo Gallery">Photos</button>
 </div>
 
 <!-- ============================================
@@ -232,31 +296,84 @@ bannerClose.addEventListener('click', () => {
 });
 
 // Load and render posts from JSON
+let allPosts = [];
+let activeFilter = 'all';
+let activeYear = 'all';
+
 fetch('posts.json')
   .then(r => r.json())
   .then(posts => {
-    // Sort by date descending
     posts.sort((a, b) => new Date(b.date) - new Date(a.date));
-    document.getElementById('articles-count').textContent = `${posts.length} Articles`;
-    const section = document.getElementById('articles-section');
-    section.innerHTML = posts.map(p => {
-      const thumbHtml = p.image
-        ? `<img src="${p.image}" alt="" style="width:100%;height:100%;object-fit:cover;border-radius:inherit;">`
-        : 'Photo';
-      const dateStr = new Date(p.date + 'T00:00:00').toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
-      return `<div class="article-card card">
-        <div class="article-card-inner">
-          <div class="article-thumb">${thumbHtml}</div>
-          <div class="article-body">
-            <div class="article-tag">${p.tag}</div>
-            <h3 class="article-title">${p.title}</h3>
-            <p class="article-excerpt">${p.excerpt}</p>
-            <div style="font-family:var(--font-mono);font-size:0.6875rem;color:var(--neutral-400);margin-top:0.5rem;">${dateStr}</div>
-          </div>
-        </div>
-      </div>`;
-    }).join('');
+    allPosts = posts;
+
+    // Build year dropdown
+    const years = [...new Set(posts.map(p => p.date.split('-')[0]))].sort((a, b) => b - a);
+    const yearSelect = document.getElementById('year-select');
+    yearSelect.innerHTML = `<select id="year-dropdown">
+      <option value="all">All Years</option>
+      ${years.map(y => `<option value="${y}">${y}</option>`).join('')}
+    </select>`;
+
+    document.getElementById('year-dropdown').addEventListener('change', function() {
+      activeYear = this.value;
+      applyFilters();
+    });
+
+    applyFilters();
   });
+
+function renderPosts(posts) {
+  document.getElementById('articles-count').textContent = `${posts.length} Article${posts.length !== 1 ? 's' : ''}`;
+  const section = document.getElementById('articles-section');
+
+  if (posts.length === 0) {
+    section.innerHTML = '<div class="no-results">No articles in this category yet.</div>';
+    return;
+  }
+
+  section.innerHTML = posts.map(p => {
+    const thumbHtml = p.image
+      ? `<img src="${p.image}" alt="" style="width:100%;height:100%;object-fit:cover;border-radius:inherit;">`
+      : 'Photo';
+    const dateStr = new Date(p.date + 'T00:00:00').toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+    return `<div class="article-card card" data-post-id="${p.id}" data-tag="${p.tag}" role="button" tabindex="0">
+      <div class="article-card-inner">
+        <div class="article-thumb">${thumbHtml}</div>
+        <div class="article-body">
+          <div class="article-tag">${p.tag}</div>
+          <h3 class="article-title">${p.title}</h3>
+          <p class="article-excerpt">${p.excerpt}</p>
+          <div style="font-family:var(--font-mono);font-size:0.6875rem;color:var(--neutral-400);margin-top:0.5rem;">${dateStr}</div>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+
+  // Make cards clickable — navigate to post page
+  section.querySelectorAll('.article-card').forEach(card => {
+    card.addEventListener('click', () => {
+      window.location.href = `post.html#${card.dataset.postId}`;
+    });
+  });
+}
+
+// Shared filter function — combines category + year
+function applyFilters() {
+  let filtered = allPosts;
+  if (activeFilter !== 'all') filtered = filtered.filter(p => p.tag === activeFilter);
+  if (activeYear !== 'all') filtered = filtered.filter(p => p.date.startsWith(activeYear));
+  renderPosts(filtered);
+}
+
+// Filter tabs
+document.getElementById('news-filters').addEventListener('click', e => {
+  const btn = e.target.closest('.news-filter-btn');
+  if (!btn) return;
+  document.querySelectorAll('.news-filter-btn').forEach(b => b.classList.remove('is-active'));
+  btn.classList.add('is-active');
+  activeFilter = btn.dataset.filter;
+  applyFilters();
+});
 
 // Cart badge — read count from localStorage
 (function() {

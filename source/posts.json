@@ -1,62 +1,812 @@
 [
   {
-    "id": "14u-tournament-title",
-    "tag": "Game Recap",
-    "title": "14U Takes Tournament Title in Extra Innings",
-    "excerpt": "A dramatic walk-off double in the eighth inning sealed the championship for the Falcons 14U squad at the Brooklyn Spring Classic.",
-    "body": "",
-    "image": "",
-    "date": "2026-04-28",
-    "author": "Coach Staff"
-  },
-  {
-    "id": "meet-marcus",
-    "tag": "Player Spotlight",
-    "title": "Meet Marcus: From 8U to Varsity Starter",
-    "excerpt": "Marcus joined the Falcons at age seven. Now a varsity starter at Lincoln HS, he credits the program for shaping his work ethic and love of the game.",
-    "body": "",
-    "image": "",
-    "date": "2026-04-25",
-    "author": "Coach Staff"
-  },
-  {
-    "id": "college-commitments",
-    "tag": "Alumni Update",
-    "title": "Two New College Commitments Announced",
-    "excerpt": "Congratulations to Devon R. and Jamal T., who have committed to play Division II baseball this fall. Both are Falcons alumni from the 2023 class.",
-    "body": "",
-    "image": "",
-    "date": "2026-04-20",
-    "author": "Coach Staff"
-  },
-  {
-    "id": "tutoring-record",
-    "tag": "Community",
-    "title": "Tutoring Program Sees Record Enrollment",
-    "excerpt": "Our after-school tutoring program hit a new high this semester with 42 student-athletes enrolled across all age groups, up 30% from last spring.",
-    "body": "",
-    "image": "",
-    "date": "2026-04-15",
-    "author": "Coach Staff"
-  },
-  {
-    "id": "spring-clinic",
+    "id": "unleash-your-potential-at-the-ftb-falcons-pbr-scout-day-in-brooklyn-this-july-14th",
     "tag": "Upcoming Events",
-    "title": "Spring Clinic Series Starts May 3rd",
-    "excerpt": "Open to all skill levels ages 6-14. Four Saturday sessions covering hitting, fielding, pitching fundamentals, and base running. Free for Falcons members.",
-    "body": "",
-    "image": "",
-    "date": "2026-04-10",
-    "author": "Coach Staff"
+    "title": "Unleash Your Potential at the FTB Falcons PBR Scout Day in Brooklyn This July 14th!",
+    "excerpt": "Are you ready to elevate your baseball skills? Mark your calendars for Monday, July 14th!",
+    "body": "Are you ready to elevate your baseball skills? Mark your calendars for Monday, July 14th! The FTB Falcons are hosting an exhilarating PBR showcase in Brooklyn, NY. This event is a must-attend for young athletes looking to impress college coaches and enhance their skills.",
+    "image": "https://static.wixstatic.com/media/14b401_2e70bd2180564b698ae7170a0b901e9e~mv2.png/v1/fill/w_1000,h_571,al_c,q_90,usm_0.66_1.00_0.01/14b401_2e70bd2180564b698ae7170a0b901e9e~mv2.png",
+    "date": "2025-05-29",
+    "author": "Brooklyn Falcons"
   },
   {
-    "id": "april-photos",
-    "tag": "Photo Gallery",
-    "title": "April in Pictures: 32 New Photos",
-    "excerpt": "Game day highlights, practice candids, team celebrations, and community events from an action-packed month of Falcons baseball.",
-    "body": "",
+    "id": "falcons-december-newsletter",
+    "tag": "Newsletter",
+    "title": "FALCONS DECEMBER NEWSLETTER",
+    "excerpt": "Our December Newsletter is now available.",
+    "body": "Our December Newsletter is now available.",
+    "image": "https://static.wixstatic.com/media/14b401_126c2fc462bb4c9da8b0fbea6b0ce2c6~mv2.jpg/v1/fill/w_567,h_1000,al_c,q_85,usm_0.66_1.00_0.01/14b401_126c2fc462bb4c9da8b0fbea6b0ce2c6~mv2.jpg",
+    "date": "2021-12-13",
+    "author": "Brooklyn Falcons"
+  },
+  {
+    "id": "players-corner-ft-luca-donohue",
+    "tag": "Player Spotlight",
+    "title": "Players Corner ft. Luca Donohue",
+    "excerpt": "As we continue with our segment, \"Players Corner\", we have interviewed one of our U12 players and rare pitcher/catcher combo Luca Donohue.",
+    "body": "As we continue with our segment, \"Players Corner\", we have interviewed one of our U12 players and rare pitcher/catcher combo Luca Donohue. He had a promising fall we hope he continues.\n\n1) \"Who do you look up to as your heroes in sports?\"\n\nDerek Jeter, because of the way he handled himself on and off the field. He treats everyone with respect. He created a great model for leadership as the Yankee captain and I try to follow it. His work with his foundation is inspiring as well as his second baseman.",
+    "image": "https://static.wixstatic.com/media/14b401_04ee5f457c9d4b0690a1ab6bf4e4eabf~mv2.jpeg/v1/fill/w_758,h_1000,al_c,q_85,usm_0.66_1.00_0.01/14b401_04ee5f457c9d4b0690a1ab6bf4e4eabf~mv2.jpeg",
+    "date": "2021-12-09",
+    "author": "Brooklyn Falcons"
+  },
+  {
+    "id": "letter-from-the-falcons-5",
+    "tag": "Newsletter",
+    "title": "LETTER FROM THE FALCONS",
+    "excerpt": "As Winter arrives, how will you spend your time preparing for the Spring season? The Winter is here!",
+    "body": "As Winter arrives, how will you spend your time preparing for the Spring season? The Winter is here! For many of us and our children this means other sports such as basketball or hockey. However for most of us involved in youth travel baseball, Winter is also a time of focused, baseball training.",
+    "image": "https://static.wixstatic.com/media/14b401_c3cf814e390345a4824686de1ff609f9~mv2.png/v1/fill/w_1000,h_1000,al_c,q_90,usm_0.66_1.00_0.01/14b401_c3cf814e390345a4824686de1ff609f9~mv2.png",
+    "date": "2021-12-09",
+    "author": "Brooklyn Falcons"
+  },
+  {
+    "id": "players-corner-ft-carlos-lalane",
+    "tag": "Player Spotlight",
+    "title": "PLAYERS CORNER ft. CARLOS LALANE",
+    "excerpt": "Carlos Lalane shares who he looks up to as his hero in sports and what his friends think of his athletic success.",
+    "body": "1) \"Who do you look up to as your heroes in sports?\"\n\nI look to Roberto Clemente as my hero in sports.\n\n2) What do your friends think of your athletic success? How do you handle missing out on activities with friends because of your athletic schedule?\n\nMy friends find me playing sports kind of cool. But there have been multiple times where they invited me to hang out but I couldn't. I just have to remember that I practice playing to the best of my ability and sacrifices have to be made to do that.\n\n3) What is one thing that you wish people knew about your sport?\n\nOne thing I wish people knew about baseball is that it's not just a summer sport. You can play year-round in different leagues and tournaments.\n\n4) How has being part of the Brooklyn Falcons organization impacted your life?\n\nBeing part of the Brooklyn Falcons has impacted my life in many ways. It has given me the opportunity to play with some very talented players and coaches that push me to be better every single day. It's also helped me become more disciplined and responsible.\n\n5) What are your future aspirations?\n\nMy future aspirations are to play college baseball and hopefully make it to the professional level.",
+    "image": "https://static.wixstatic.com/media/14b401_094c9306679b445092ecd11e668841f8~mv2.jpeg/v1/fill/w_469,h_1000,al_c,q_85,usm_0.66_1.00_0.01/14b401_094c9306679b445092ecd11e668841f8~mv2.jpeg",
+    "date": "2021-11-03",
+    "author": "Brooklyn Falcons"
+  },
+  {
+    "id": "november-newsletter-1",
+    "tag": "Newsletter",
+    "title": "NOVEMBER NEWSLETTER",
+    "excerpt": "Click on the LINK to view our November newsletter.",
+    "body": "Click on the LINK to view our November newsletter.",
+    "image": "https://static.wixstatic.com/media/14b401_4aa8b63a3ca2470c96eb43b2b92cba18~mv2.jpeg/v1/fill/w_746,h_1000,al_c,q_85,usm_0.66_1.00_0.01/14b401_4aa8b63a3ca2470c96eb43b2b92cba18~mv2.jpeg",
+    "date": "2021-11-03",
+    "author": "Brooklyn Falcons"
+  },
+  {
+    "id": "a-look-back-at-october",
+    "tag": "Game Recap",
+    "title": "A LOOK BACK AT OCTOBER",
+    "excerpt": "Here is a look back into our Fall teams. Our 14U team spent their fall traveling to North Carolina visiting college campuses such as Duke University and NC State.",
+    "body": "Here is a look back into our Fall teams\n\n14U\n\nOur 14U team is not in the showcase baseball mode. They spent their fall traveling to North Carolina where they visited college campuses such as Duke University and NC State. There they received some encouraging words from the head coach of NC state. They also played on the UCONN campus field and worked out with some of the UCONN coaches. They also won a championship this past fall. Our 14U Showcase is now focused on showcasing their skills to college coaches.",
+    "image": "https://static.wixstatic.com/media/14b401_d0c993a690f945439df791b337564c6e~mv2.jpg/v1/fill/w_1000,h_1000,al_c,q_85,usm_0.66_1.00_0.01/14b401_d0c993a690f945439df791b337564c6e~mv2.jpg",
+    "date": "2021-11-01",
+    "author": "Brooklyn Falcons"
+  },
+  {
+    "id": "letter-from-the-falcons-4",
+    "tag": "Newsletter",
+    "title": "LETTER FROM THE FALCONS",
+    "excerpt": "Thank you to all the athletes, parents, families, administrators, trainers, and volunteers that helped make this season special.",
+    "body": "Thank you to all the athletes, parents, families, administrators, trainers, and volunteers that helped make this season special. Thank you to the dedicated coaching staff who share their time and enthusiasm for teaching baseball and coaching young men. Congratulations to the athletes who made this year an outstanding, special season. The standard of excellence for the Brooklyn Falcons is at a new height.\n\nWhile the teams in the program had great win-loss records and they enjoyed their share of big wins, what made this season special was the way in which our young men represented themselves on and off the field. The character, discipline, and work ethic displayed by these athletes set a new standard for the program.",
+    "image": "https://static.wixstatic.com/media/14b401_c3cf814e390345a4824686de1ff609f9~mv2.png/v1/fill/w_1000,h_1000,al_c,q_90,usm_0.66_1.00_0.01/14b401_c3cf814e390345a4824686de1ff609f9~mv2.png",
+    "date": "2021-10-15",
+    "author": "Brooklyn Falcons"
+  },
+  {
+    "id": "fall-tryouts-1",
+    "tag": "Announcement",
+    "title": "BROOKLYN FALCONS FALL TRYOUTS",
+    "excerpt": "Come join the Falcon Family. Info is above.",
+    "body": "Come join the Falcon Family. Info is above. Please click on the link below to register.",
+    "image": "https://static.wixstatic.com/media/14b401_ce299b1fc0f741e1903fe0f30c5c3b39~mv2.jpg/v1/fill/w_800,h_1000,al_c,q_85,usm_0.66_1.00_0.01/14b401_ce299b1fc0f741e1903fe0f30c5c3b39~mv2.jpg",
+    "date": "2021-08-01",
+    "author": "Brooklyn Falcons"
+  },
+  {
+    "id": "june-newsletter",
+    "tag": "Newsletter",
+    "title": "June Newsletter",
+    "excerpt": "Our June Newsletter is now available.",
+    "body": "Our June Newsletter is now available.",
+    "image": "https://static.wixstatic.com/media/14b401_23a5aea0bf6445b1825deeca9d2c4534~mv2.jpg/v1/fill/w_759,h_1000,al_c,q_85,usm_0.66_1.00_0.01/14b401_23a5aea0bf6445b1825deeca9d2c4534~mv2.jpg",
+    "date": "2021-06-09",
+    "author": "Brooklyn Falcons"
+  },
+  {
+    "id": "a-look-back-at-may",
+    "tag": "Game Recap",
+    "title": "A LOOK BACK AT MAY",
+    "excerpt": "Our 13U Columbia team has recorded a 13-3-1 tournament record thus far, with a loss in the Perfect Game Championship.",
+    "body": "HERE IS A LOOK BACK INTO MAY\n\n13U COLUMBIA\n\nOur 13U Columbia team has recorded a 13-3-1 tournament record thus far, with a loss in the Perfect Game Championship. They only tie came against a very strong and nationally ranked Body Armour Titans.\n\n13U NAVY\n\nOur Navy team has performed well in league play as well as Perfect Game Tournament that they attended. They went 2-0 beating rivals such as the NY Angels and Los Magos. To reach the playoffs.\n\n12U\n\nOur 12U team has picked up the pace in May. Reaching the playoffs.",
+    "image": "https://static.wixstatic.com/media/14b401_eab26835a8424c63aa8dcdd6c5a365e5~mv2.jpg/v1/fill/w_1000,h_577,al_c,q_85,usm_0.66_1.00_0.01/14b401_eab26835a8424c63aa8dcdd6c5a365e5~mv2.jpg",
+    "date": "2021-06-04",
+    "author": "Brooklyn Falcons"
+  },
+  {
+    "id": "make-a-difference",
+    "tag": "Community",
+    "title": "MAKE A DIFFERENCE",
+    "excerpt": "Want to help make a difference while you shop in the Amazon app, at no extra cost to you? Simply follow the instructions to select \"Bk Falcons\" as your charity.",
+    "body": "Want to help make a difference while you shop in the Amazon app, at no extra cost to you? Simply follow the instructions below to select \"Bk Falcons\" as your charity and activate AmazonSmile in the app. They'll donate a portion of your eligible mobile app purchases to us.\n\nHow it works:\n\n1. Open the Amazon app on your phone\n2. Select the main menu (=) & tap on \"AmazonSmile\" within Programs & Features\n3. Select \"Bk Falcons\" as your charity\n4. Follow the on-screen instructions to activate AmazonSmile in the app.",
+    "image": "https://static.wixstatic.com/media/14b401_875e9164264b4426982fb9d3d7b53aeb~mv2.png/v1/fill/w_720,h_360,al_c,lg_1,q_85/14b401_875e9164264b4426982fb9d3d7b53aeb~mv2.png",
+    "date": "2021-06-01",
+    "author": "Brooklyn Falcons"
+  },
+  {
+    "id": "player-s-corner",
+    "tag": "Player Spotlight",
+    "title": "PLAYER'S CORNER",
+    "excerpt": "Ulysses Pichardo of our U12 Team shares who he looks up to as a hero in sports and what inspires him on and off the field.",
+    "body": "Ulysses Pichardo of our U12 Team\n\n1) Who do you look up to as your hero in sports?\n\nI look up to Jackie Robinson as a hero in sports because he broke the color barrier in the MLB and allowed minorities to play baseball. Jackie Robinson was mentally tough because he had to deal with racist fans and political issues. That did not stop him from being a great baseball player.\n\n2) What do your friends think of your athletic success? How do you handle missing out on activities with friends because of your baseball schedule?\n\nMy friends think it's cool that I play baseball. I handle missing out on activities with my friends because I know that baseball is very important to me and my future. I believe that the sacrifices I make now will help me later in life.\n\n3) How has baseball impacted your life?\n\nBaseball has impacted my life in many ways. It has taught me discipline, hard work, and dedication. It has also taught me how to be a good teammate and how to work together with others to achieve a common goal.",
+    "image": "https://static.wixstatic.com/media/14b401_f1cb52889b1147b694661e3299387c09~mv2.jpg/v1/fill/w_975,h_1000,al_c,q_85,usm_0.66_1.00_0.01/14b401_f1cb52889b1147b694661e3299387c09~mv2.jpg",
+    "date": "2021-05-30",
+    "author": "Brooklyn Falcons"
+  },
+  {
+    "id": "may-newsletter",
+    "tag": "Newsletter",
+    "title": "MAY NEWSLETTER",
+    "excerpt": "Our May Newsletter is now available.",
+    "body": "KEEP UP TO DATE WITH OUR MAY NEWSLETTER. Our May Newsletter is now available.",
+    "image": "https://static.wixstatic.com/media/14b401_c447288d9d254c9eb407dcee61f64d5c~mv2.jpg/v1/fill/w_571,h_1000,al_c,q_85,usm_0.66_1.00_0.01/14b401_c447288d9d254c9eb407dcee61f64d5c~mv2.jpg",
+    "date": "2021-05-05",
+    "author": "Brooklyn Falcons"
+  },
+  {
+    "id": "looking-back",
+    "tag": "Game Recap",
+    "title": "LOOKING BACK",
+    "excerpt": "Our 13U Columbia team has recorded a 11-2 record thus far, winning the championship and beating the nationally ranked Tri-State Arsenal team 12-7.",
+    "body": "HERE IS A LOOK BACK INTO APRIL\n\n13U COLUMBIA\nOur 13U Columbia team has recorded a 11-2 record thus far. In their only two tournaments of the year, they have lost in the championship and won the championship beating the nationally ranked Tri-State Arsenal team 12-7. We are looking forward to what we think will be an extraordinary year for this group.\n\n13U NAVY\n13U Navy has come together and had a great start to their season. They reached the semi-finals in their last tournament of the month beating another team in pool play.",
+    "image": "https://static.wixstatic.com/media/14b401_eab26835a8424c63aa8dcdd6c5a365e5~mv2.jpg/v1/fill/w_1000,h_577,al_c,q_85,usm_0.66_1.00_0.01/14b401_eab26835a8424c63aa8dcdd6c5a365e5~mv2.jpg",
+    "date": "2021-05-05",
+    "author": "Brooklyn Falcons"
+  },
+  {
+    "id": "new-players-corner",
+    "tag": "Player Spotlight",
+    "title": "NEW PLAYERS CORNER",
+    "excerpt": "Getting to know Enzo Landi — who he looks up to as his heroes in sports and how he balances athletics with life.",
+    "body": "GETTING TO KNOW ENZO LANDI\n\n1) Who do you look up to as your heroes in sports?\n* Jose Altuve\n* Derrick Rose\n* Mookie Betts\n* Michael Jordan\n\n2) What do your friends think of your athletic success? How do you handle missing out on activities with friends because of your athletic schedule?\nIts hard at times but my parents really try hard to let me hang out with my friends when not in practice or playing to be with my friends. Most of my friends also play sports so they understand. It's funny when we do get together because we all talk about sports.",
+    "image": "https://static.wixstatic.com/media/14b401_f36de39257f8417eb33b98ac543fd17e~mv2.jpg/v1/fill/w_1000,h_667,al_c,q_85,usm_0.66_1.00_0.01/14b401_f36de39257f8417eb33b98ac543fd17e~mv2.jpg",
+    "date": "2021-05-01",
+    "author": "Brooklyn Falcons"
+  },
+  {
+    "id": "april-newsletter",
+    "tag": "Newsletter",
+    "title": "APRIL NEWSLETTER",
+    "excerpt": "Go check out our April Newsletter.",
+    "body": "April Newsletter is now available.",
+    "image": "https://static.wixstatic.com/media/14b401_4817c8e805984e12b0db5ef0fe581bd4~mv2.jpg/v1/fill/w_728,h_1000,al_c,q_85,usm_0.66_1.00_0.01/14b401_4817c8e805984e12b0db5ef0fe581bd4~mv2.jpg",
+    "date": "2021-04-12",
+    "author": "Brooklyn Falcons"
+  },
+  {
+    "id": "get-your-custom-socks",
+    "tag": "Announcement",
+    "title": "GET YOUR CUSTOM SOCKS",
+    "excerpt": "Get your custom socks. Visit our team store.",
+    "body": "Get your custom socks. Visit our team store.",
+    "image": "https://static.wixstatic.com/media/14b401_0e30da611ecb4c29a8d500b4f835308c~mv2.jpeg/v1/fill/w_1000,h_1000,al_c,q_85,usm_0.66_1.00_0.01/14b401_0e30da611ecb4c29a8d500b4f835308c~mv2.jpeg",
+    "date": "2021-03-26",
+    "author": "Brooklyn Falcons"
+  },
+  {
+    "id": "brooklyn-falcons-march-newsletter",
+    "tag": "Newsletter",
+    "title": "BROOKLYN FALCONS MARCH NEWSLETTER",
+    "excerpt": "Our March Newsletter is now available. To view our Newsletter click on the link below.",
+    "body": "Our March Newsletter is now available. To view our Newsletter click on the link below.",
+    "image": "https://static.wixstatic.com/media/14b401_5c6389bcf6844612a28ce1686786b89f~mv2.jpg/v1/fill/w_814,h_1000,al_c,q_85,usm_0.66_1.00_0.01/14b401_5c6389bcf6844612a28ce1686786b89f~mv2.jpg",
+    "date": "2021-03-01",
+    "author": "Brooklyn Falcons"
+  },
+  {
+    "id": "letter-from-the-falcons-3",
+    "tag": "Newsletter",
+    "title": "LETTER FROM THE FALCONS",
+    "excerpt": "The Brooklyn Falcons are committed to providing professional instruction to dedicated athletes across the socio-economic spectrum.",
+    "body": "Opening Season Letter\n\nThe Brooklyn Falcons are a youth baseball organization committed to providing professional instruction to dedicated athletes across the socio-economic spectrum. We believe that baseball is more than just a game; it is an opportunity to break racial and economic barriers. Our goal is to build confident, hard-working athletes by putting them in a position to compete, thus gaining confidence through success and learning from failure.\n\nOur mission for the Falcons program is to provide opportunities for youth to develop as baseball players and as people. We strive to create an environment where young athletes can thrive both on and off the field, developing leadership skills, discipline, and character that will serve them throughout their lives.",
+    "image": "https://static.wixstatic.com/media/14b401_c3cf814e390345a4824686de1ff609f9~mv2.png/v1/fill/w_1000,h_1000,al_c,q_90,usm_0.66_1.00_0.01/14b401_c3cf814e390345a4824686de1ff609f9~mv2.png",
+    "date": "2021-02-28",
+    "author": "Brooklyn Falcons"
+  },
+  {
+    "id": "president-s-week-camp",
+    "tag": "Upcoming Events",
+    "title": "President's Week Camp",
+    "excerpt": "Come out and get your live at bats against Nelson Figueroa. To register click on the link.",
+    "body": "Get your live at bats against Nelson Figueroa. Registration is available through the link referenced in the post.",
+    "image": "https://static.wixstatic.com/media/14b401_3f90ca877588482998210ebdde3dbea5~mv2.jpeg/v1/fill/w_800,h_1000,al_c,q_85,usm_0.66_1.00_0.01/14b401_3f90ca877588482998210ebdde3dbea5~mv2.jpeg",
+    "date": "2021-02-01",
+    "author": "Brooklyn Falcons"
+  },
+  {
+    "id": "february-newsletter",
+    "tag": "Newsletter",
+    "title": "February Newsletter",
+    "excerpt": "Please check out our February Newsletter. It is now available.",
+    "body": "Please check out our February Newsletter. It is now available.",
+    "image": "https://static.wixstatic.com/media/14b401_4a98c91cef1f4460b93ea36a34937c3d~mv2.jpg/v1/fill/w_755,h_1000,al_c,q_85,usm_0.66_1.00_0.01/14b401_4a98c91cef1f4460b93ea36a34937c3d~mv2.jpg",
+    "date": "2021-02-01",
+    "author": "Brooklyn Falcons"
+  },
+  {
+    "id": "january-newsletter",
+    "tag": "Newsletter",
+    "title": "JANUARY NEWSLETTER",
+    "excerpt": "Our January Newsletter is now available.",
+    "body": "January Newsletter is now available.",
+    "image": "https://static.wixstatic.com/media/14b401_5b595cf83f4c46fc99c8247cccdfc818~mv2.jpg/v1/fill/w_909,h_1000,al_c,q_85,usm_0.66_1.00_0.01/14b401_5b595cf83f4c46fc99c8247cccdfc818~mv2.jpg",
+    "date": "2021-01-04",
+    "author": "Brooklyn Falcons"
+  },
+  {
+    "id": "take-care-of-your-armmake-your-arm-stronger-introducing-velo-lab",
+    "tag": "Announcement",
+    "title": "Take Care of Your Arm! Introducing Velo Lab",
+    "excerpt": "Taking care of your arm is important for all players at all positions. Check out our new Velo Lab program ran by our coaches Michael Gonzalez and Kenny Duverge.",
+    "body": "Taking care of your arm is important for all players at all positions. Check out our new Velo Lab program ran by our coaches Michael Gonzalez and Kenny Duverge.",
+    "image": "https://static.wixstatic.com/media/14b401_b027f005e3eb45dfb1f30a84221872b6~mv2.jpg/v1/fill/w_563,h_1000,al_c,q_85,usm_0.66_1.00_0.01/14b401_b027f005e3eb45dfb1f30a84221872b6~mv2.jpg",
+    "date": "2021-01-04",
+    "author": "Brooklyn Falcons"
+  },
+  {
+    "id": "catchers-corner",
+    "tag": "Coach's Corner",
+    "title": "CATCHERS CORNER",
+    "excerpt": "Your team is only as good as your catcher. Step your game up with our new catching program ran by one of our coaches Courtney Trembone.",
+    "body": "Your team is only as good as your catcher. Catchers, it is time to step your game up with our new catching program, Catchers corner, ran by one of our coaches Courtney Trembone.",
+    "image": "https://static.wixstatic.com/media/14b401_e46e4f6beeae441fb1dab3fd0e94074a~mv2.jpg/v1/fill/w_1000,h_1000,al_c,q_85,usm_0.66_1.00_0.01/14b401_e46e4f6beeae441fb1dab3fd0e94074a~mv2.jpg",
+    "date": "2021-01-04",
+    "author": "Brooklyn Falcons"
+  },
+  {
+    "id": "time-to-get-that-work-in-with-some-off-season-clinics",
+    "tag": "Upcoming Events",
+    "title": "Time to Get That Work In With Some Off-Season Clinics",
+    "excerpt": "See the flyer and click the button below for further details.",
+    "body": "See the flyer and click the button below for further details.",
+    "image": "https://static.wixstatic.com/media/14b401_5cf16500145d43a4a0ff47974c0e3368~mv2.png/v1/fill/w_1000,h_1000,al_c,q_90,usm_0.66_1.00_0.01/14b401_5cf16500145d43a4a0ff47974c0e3368~mv2.png",
+    "date": "2021-01-04",
+    "author": "Brooklyn Falcons"
+  },
+  {
+    "id": "players-needed-for-our-8u-11u-13u-teams",
+    "tag": "Announcement",
+    "title": "Players Needed for Our 8U, 11U, 13U Teams",
+    "excerpt": "We are looking for players to finalize our rosters. Reach out if you know anyone interested.",
+    "body": "The Brooklyn Falcons organization is actively recruiting new players to complete their roster across multiple age groups. The team is seeking talented athletes interested in joining their 8U, 11U, and 13U squads.\n\nThe organization encourages anyone with knowledge of prospective players to reach out with referrals. This recruitment effort is designed to finalize team compositions before the upcoming season.\n\nInterested families and potential players are welcome to contact the Brooklyn Falcons directly to inquire about tryout opportunities and team placement options.",
+    "image": "https://static.wixstatic.com/media/14b401_514df4faa76d44e7a438130724dd29d2~mv2.png/v1/fill/w_1000,h_1000,al_c,q_90,usm_0.66_1.00_0.01/14b401_514df4faa76d44e7a438130724dd29d2~mv2.png",
+    "date": "2021-01-04",
+    "author": "Brooklyn Falcons"
+  },
+  {
+    "id": "december-newsletter",
+    "tag": "Newsletter",
+    "title": "DECEMBER NEWSLETTER",
+    "excerpt": "Our December newsletter is now available.",
+    "body": "December Newsletter is now available.",
+    "image": "https://static.wixstatic.com/media/14b401_08d839a6c2c34462877b104a70e0f2b0~mv2.jpg/v1/fill/w_672,h_1000,al_c,q_85,usm_0.66_1.00_0.01/14b401_08d839a6c2c34462877b104a70e0f2b0~mv2.jpg",
+    "date": "2020-12-02",
+    "author": "Brooklyn Falcons"
+  },
+  {
+    "id": "letter-from-the-falcons-2",
+    "tag": "Newsletter",
+    "title": "LETTER FROM THE FALCONS",
+    "excerpt": "As Winter arrives, how will you spend your time preparing for the Spring season? The Winter is here!",
+    "body": "Letter discussing winter baseball training preparations.",
+    "image": "https://static.wixstatic.com/media/ab8980_32a38af8379f4c8eac15b19f58cae528~mv2.jpg/v1/fill/w_692,h_1000,al_c,q_85,usm_0.66_1.00_0.01/ab8980_32a38af8379f4c8eac15b19f58cae528~mv2.jpg",
+    "date": "2020-12-01",
+    "author": "Brooklyn Falcons"
+  },
+  {
+    "id": "november-newsletter",
+    "tag": "Newsletter",
+    "title": "NOVEMBER NEWSLETTER",
+    "excerpt": "Our November newsletter is now available.",
+    "body": "Our November newsletter is now available.",
+    "image": "https://static.wixstatic.com/media/14b401_a8677e82b5dc4b3e8e2786c99370b981~mv2.jpg/v1/fill/w_704,h_1000,al_c,q_85,usm_0.66_1.00_0.01/14b401_a8677e82b5dc4b3e8e2786c99370b981~mv2.jpg",
+    "date": "2020-11-04",
+    "author": "Brooklyn Falcons"
+  },
+  {
+    "id": "come-join-the-falcon-family",
+    "tag": "Announcement",
+    "title": "Come Join the Falcon Family",
+    "excerpt": "Come be a part of the Falcon family. Register using the link below.",
+    "body": "Come be apart of the Falcon family. Register using the link below.",
+    "image": "https://static.wixstatic.com/media/ab8980_56e47046d4614100b1c775797b43d029~mv2.jpg/v1/fill/w_800,h_1000,al_c,q_85,usm_0.66_1.00_0.01/ab8980_56e47046d4614100b1c775797b43d029~mv2.jpg",
+    "date": "2020-11-04",
+    "author": "Brooklyn Falcons"
+  },
+  {
+    "id": "falcon-team-and-tournament-recaps-november-2020",
+    "tag": "Game Recap",
+    "title": "Falcon Team and Tournament Recaps — November 2020",
+    "excerpt": "The continued development of our young 10U players has been a great joy. These Falcons are showing great potential and a lot of heart.",
+    "body": "10U\n\nThe continued development of these young players has been a great joy. These Falcons are showing great potential and a lot of heart. We will continue to get stronger during the winter months. Can't wait to see what the Spring Season will bring for this special group of kids.\n\n12U\n\nOur season has come to an end but as we look back we can see how much we have grown and learned over the fall. We learned how to face adversity and how to stick together and overcome any obstacle placed in front of us.",
+    "image": "https://static.wixstatic.com/media/14b401_85554bc60bdd4ca0a27b8e85b12517ed~mv2.jpeg/v1/fill/w_720,h_720,al_c,q_85/14b401_85554bc60bdd4ca0a27b8e85b12517ed~mv2.jpeg",
+    "date": "2020-11-03",
+    "author": "Brooklyn Falcons"
+  },
+  {
+    "id": "letter-from-the-falcons-1",
+    "tag": "Newsletter",
+    "title": "LETTER FROM THE FALCONS",
+    "excerpt": "Thank you to all the athletes, parents, families, administrators, trainers, and volunteers that helped make this season special.",
+    "body": "Thank you to all the athletes, parents, families, administrators, trainers, and volunteers that helped make this season special. Thank you to the dedicated coaching staff who share their time and enthusiasm for teaching baseball and coaching young men. Congratulations to the athletes who made this year an outstanding, special season. The standard of excellence for the Brooklyn Falcons is at a new height.",
+    "image": "https://static.wixstatic.com/media/ab8980_32a38af8379f4c8eac15b19f58cae528~mv2.jpg/v1/fill/w_692,h_1000,al_c,q_85,usm_0.66_1.00_0.01/ab8980_32a38af8379f4c8eac15b19f58cae528~mv2.jpg",
+    "date": "2020-10-31",
+    "author": "Brooklyn Falcons"
+  },
+  {
+    "id": "coach-s-corner-interview-with-andrew-castano",
+    "tag": "Coach's Corner",
+    "title": "Coach's Corner Interview with Andrew Castano",
+    "excerpt": "How did you end up becoming a part of our Falcons program? I heard about this wonderful organization from a former teammate of mine, Coach Frank.",
+    "body": "COACH'S CORNER INTERVIEW WITH ANDREW CASTANO\n\nHow did you end up becoming a part of our Falcons program?\n\nI heard about this wonderful organization from a former teammate of mine, Coach Frank. We go way back to college days and playing summer baseball in West Palm Beach, Florida. I saw him post about tryouts on his Instagram and I messaged him that I was interested in coaching!\n\nWhere did you grow up and what sports did you play growing up?\n\nI was originally born in Queens, NY, but I moved to Valley Stream, Long Island when I was about 3 years old. I grew up playing multiple sports. I played football and basketball but my true passion was always baseball. I started playing baseball around the age of 5 and never stopped. Baseball has always been my first love.\n\nWhat is your coaching philosophy?\n\nMy coaching philosophy is to lead by example. I believe that hard work and dedication will get you to where you want to be. I also believe in having fun while competing. Life is too short not to enjoy the game you love. I want my players to leave the field knowing that they gave it their all and had fun doing it.\n\nWhat are some of your coaching accomplishments?\n\nSome of my accomplishments include coaching multiple all-stars and all-tournament players. I've also had the privilege of coaching players that have gone on to play college baseball. Seeing my players succeed at the next level is one of the greatest accomplishments as a coach.\n\nWhat do you enjoy most about coaching with the Falcons?\n\nWhat I enjoy most about coaching with the Falcons is the family atmosphere. Everyone here genuinely cares about each other and wants to see one another succeed. The organization is very supportive and they allow coaches to do what we do best, which is coach and develop players. It's a pleasure being part of such a great organization.",
+    "image": "https://static.wixstatic.com/media/ab8980_6a59b7a576604074bb0398286a646df5~mv2.jpeg/v1/fill/w_828,h_600,al_c,q_85/ab8980_6a59b7a576604074bb0398286a646df5~mv2.jpeg",
+    "date": "2020-10-31",
+    "author": "Brooklyn Falcons"
+  },
+  {
+    "id": "letter-from-the-falcons",
+    "tag": "Newsletter",
+    "title": "Letter from the Falcons",
+    "excerpt": "We hope everyone is safe and healthy, and you all are enjoying your fall season. There are plenty of new faces on each team and we'd like to extend a warm welcome.",
+    "body": "Falcons Family,\n\nWe hope everyone is safe and healthy, and you all are enjoying your fall season. There are plenty of new faces on each team and we'd like to extend a warm welcome and hope that you get the most out of the Falcons experience.\n\nNot so long ago, we worried there would be no season, but luckily, we are now winding down on five months of playing before we go into our rest period.\n\nWe have had a good fall thus far with most of our teams making it deep into tournament playoffs. It has been great to see the hard work and dedication that our players have put in both on and off the field. We would like to thank all our coaches for their commitment and leadership throughout the season.\n\nAs we approach the end of this season, we want to remind everyone of the importance of the Falcons community. Whether you are a player, parent, coach, or supporter, you are part of this family. We encourage everyone to continue supporting one another and celebrating the achievements of all our teams.\n\nThank you for your continued support of the Brooklyn Falcons organization.",
+    "image": "https://static.wixstatic.com/media/14b401_c3cf814e390345a4824686de1ff609f9~mv2.png/v1/fill/w_1000,h_1000,al_c,q_90,usm_0.66_1.00_0.01/14b401_c3cf814e390345a4824686de1ff609f9~mv2.png",
+    "date": "2020-10-02",
+    "author": "Brooklyn Falcons"
+  },
+  {
+    "id": "coach-s-corner-interview-with-michael-gonzalez",
+    "tag": "Coach's Corner",
+    "title": "Coach's Corner Interview with Michael Gonzalez",
+    "excerpt": "How did you end up becoming a part of our Falcons program? My good friend Coach Kenny asked me if I was interested in coaching with the Falcons.",
+    "body": "How did you end up becoming a part of our Falcons program?\nMy good friend Coach Kenny asked me if I was interested in coaching with the Falcons.\n\nWhere did you grow up and what sports did you play growing up?\nI was born in the Dominican Republic and came to Brooklyn when I was four years old and been living in Brooklyn ever since. Growing up I played anything that would keep me outside for a bit longer. If the boys were playing football I'd play football, if they were playing basketball, I'd play basketball, baseball, whatever kept me in the streets.\n\nWhat position did you play?\nI played running back in football and I was a point guard in basketball.\n\nWho was your favorite player growing up?\nMy favorite player was Michael Jordan. I looked up to him because of his competitiveness and his will to win.\n\nWhat are some of your coaching philosophies?\nMy coaching philosophy is to teach these young men to be resilient, to push through adversity, and to understand that hard work pays off. I also want them to understand that being part of a team means being accountable to one another.\n\nWhat has been your favorite moment coaching with the Falcons?\nMy favorite moment has been seeing these young men grow not just as athletes but as people. Watching them overcome obstacles and seeing them believe in themselves has been rewarding.\n\nWhat advice would you give to young athletes?\nMy advice would be to stay humble, work hard, and never give up on your dreams. Surround yourself with people who believe in you and push you to be better every single day.",
+    "image": "https://static.wixstatic.com/media/ab8980_cb9308be48a244d699da2bc6d1f72a5a~mv2.jpg/v1/fill/w_1000,h_667,al_c,q_85,usm_0.66_1.00_0.01/ab8980_cb9308be48a244d699da2bc6d1f72a5a~mv2.jpg",
+    "date": "2020-10-01",
+    "author": "Brooklyn Falcons"
+  },
+  {
+    "id": "falcon-team-and-tournament-recaps-october-2020",
+    "tag": "Game Recap",
+    "title": "Falcon Team and Tournament Recaps — October 2020",
+    "excerpt": "The Fall season for our 10U Falcons led by Coach Ed Jimenez started with very positive results. They are currently playing in a local league with a record of 3-1.",
+    "body": "10u\n\nThe Fall season for our 10U Falcons led by Coach Ed Jimenez started with very positive results. They are currently playing in a local league and have a record of 3-1. The big plan is developing these young players to reach their potential through coaching and teaching the game the proper way—giving them the tools to become successful and learn what it takes to go from good to great as baseball players.\n\n12u\n\nThe 12U Falcons have shown a tremendous amount of improvement, winning 10 out of the last 11 games in their local league. The team has demonstrated solid fundamentals and strong execution on both sides of the ball. Coach Juan Muniz has implemented a strong work ethic and championship mentality with this group. They continue to develop their skills and compete at a high level.\n\n14u\n\nThe 14U Falcons competed in several tournaments over the month of October. They displayed excellent pitching and solid defensive play throughout. The team continues to work on consistency at the plate and has made significant strides in team chemistry and communication.",
+    "image": "https://static.wixstatic.com/media/14b401_c3cf814e390345a4824686de1ff609f9~mv2.png/v1/fill/w_1000,h_1000,al_c,q_90,usm_0.66_1.00_0.01/14b401_c3cf814e390345a4824686de1ff609f9~mv2.png",
+    "date": "2020-10-01",
+    "author": "Brooklyn Falcons"
+  },
+  {
+    "id": "september-newsletter",
+    "tag": "Newsletter",
+    "title": "SEPTEMBER NEWSLETTER",
+    "excerpt": "September Newsletter now available.",
+    "body": "September Newsletter now available.",
+    "image": "https://static.wixstatic.com/media/14b401_3079a63f43ba449c84ce8685920077da~mv2.jpg/v1/fill/w_596,h_1000,al_c,q_85,usm_0.66_1.00_0.01/14b401_3079a63f43ba449c84ce8685920077da~mv2.jpg",
+    "date": "2020-09-02",
+    "author": "Brooklyn Falcons"
+  },
+  {
+    "id": "falcons-team-and-tournament-recap-end-of-summer-edition",
+    "tag": "Game Recap",
+    "title": "Falcons Team and Tournament Recap — End of Summer Edition",
+    "excerpt": "The 2023 Falcons had a season to remember. It was hard work and nothing came easy.",
+    "body": "2023 Falcons season recap highlighting their challenges and teamwork. 2024 Falcons August tournament performance featuring strong pitching by Jude Van Ooyen, Jack Roventini, and Zach Weinschel. Notable plays including an inside the park home run by Phil Albergo. A Borough Cup Championship game appearance achieved through a mercy win.",
+    "image": "https://static.wixstatic.com/media/14b401_85554bc60bdd4ca0a27b8e85b12517ed~mv2.jpeg/v1/fill/w_720,h_720,al_c,q_85/14b401_85554bc60bdd4ca0a27b8e85b12517ed~mv2.jpeg",
+    "date": "2020-09-02",
+    "author": "Brooklyn Falcons"
+  },
+  {
+    "id": "coach-s-corner-interview-with-franklyn-coste",
+    "tag": "Coach's Corner",
+    "title": "Coach's Corner Interview with Franklyn Coste",
+    "excerpt": "How did you end up becoming a part of our Falcons program? Me and another coach and former teammate, Andrew Medina, were interested in coaching once our playing careers finished.",
+    "body": "How did you end up becoming a part of our Falcons program?\n\nMe and another Brooklyn Falcons coach and former teammate, Andrew Medina, were interested in coaching once our playing careers finished, and it just so happened, that one day when Coach Drew was working out, he ran into a Falcons coach. Drew then recommended me, and that is how I got here.\n\nWhere did you grow up and what sports did you play growing up?\n\nI grew up in Corona, Queens, and baseball was the only sport I took serious and played.",
+    "image": "https://static.wixstatic.com/media/14b401_9aa650d54ee94358a68836e5ff8b8be6~mv2.jpg/v1/fill/w_1000,h_1000,al_c,q_85,usm_0.66_1.00_0.01/14b401_9aa650d54ee94358a68836e5ff8b8be6~mv2.jpg",
+    "date": "2020-09-01",
+    "author": "Brooklyn Falcons"
+  },
+  {
+    "id": "letter-from-the-brooklyn-falcons",
+    "tag": "Newsletter",
+    "title": "LETTER FROM THE BROOKLYN FALCONS",
+    "excerpt": "Dear Falcons Family, the season has come to an end. Just a short time ago we thought that there would be no season at all.",
+    "body": "Dear Falcons Family,\n\nThe Season has come to an end. Just a short time ago we thought that there would be no season at all. With hard work, dedication and caution, we made it through. Our teams gathered a total of five championships and several finalist awards. But as summer winds down, now is when the real work begins.\n\nFall ball is just around the corner!!! For most it's the end of the season, for champions, it's the start. Fall ball is pivotal to the growth of all baseball players. It is the time when the fundamentals are sharpened and players develop a winning mentality.\n\nWe are asking all of our families to embrace this opportunity. Sign your sons up for fall ball. Allow them to compete at the highest level and prepare themselves for the next season.\n\nWe are excited about the direction of this organization and look forward to another successful year.\n\nSee you soon,\n\nBrooklyn Falcons Organization",
+    "image": "https://static.wixstatic.com/media/14b401_c3cf814e390345a4824686de1ff609f9~mv2.png/v1/fill/w_1000,h_1000,al_c,q_90,usm_0.66_1.00_0.01/14b401_c3cf814e390345a4824686de1ff609f9~mv2.png",
+    "date": "2020-09-01",
+    "author": "Brooklyn Falcons"
+  },
+  {
+    "id": "fall-tryouts",
+    "tag": "Announcement",
+    "title": "FALL TRYOUTS",
+    "excerpt": "Come be a part of the Falcon Family Tues. Aug 18th at Randall's Island. Current and new players must attend.",
+    "body": "FALL SEASON TRYOUTS\n\nCome be apart of the Falcon Family\n\nTues. Aug 18th\nRandall's Island\n\nCurrent and New players must attend.\n\nPlease register using the link below.",
+    "image": "https://static.wixstatic.com/media/14b401_c511ef94d1b04799a177061a08092fbe~mv2.jpg/v1/fill/w_800,h_1000,al_c,q_85,usm_0.66_1.00_0.01/14b401_c511ef94d1b04799a177061a08092fbe~mv2.jpg",
+    "date": "2020-08-12",
+    "author": "Brooklyn Falcons"
+  },
+  {
+    "id": "august-newsletter-now-available",
+    "tag": "Newsletter",
+    "title": "AUGUST NEWSLETTER NOW AVAILABLE",
+    "excerpt": "Our August Newsletter is now available.",
+    "body": "Our August Newsletter is now available.",
+    "image": "https://static.wixstatic.com/media/14b401_fb66a24e3baf40138cac865d1df0e163~mv2.jpg/v1/fill/w_891,h_1000,al_c,q_85,usm_0.66_1.00_0.01/14b401_fb66a24e3baf40138cac865d1df0e163~mv2.jpg",
+    "date": "2020-07-31",
+    "author": "Brooklyn Falcons"
+  },
+  {
+    "id": "letter-from-charles",
+    "tag": "Newsletter",
+    "title": "LETTER FROM CHARLES",
+    "excerpt": "We hope everyone is staying safe and healthy. We have reached the mid-point of the season and we are proud that all of our teams are getting better from week to week.",
+    "body": "Good morning Falcon Family,\n\nWe hope everyone is staying safe and healthy. We have reached the mid-point of the season and we are proud that all of our teams are getting better from week to week. Each team has been competitive and our players are learning so much along the way. As we all know our 9U and 11U teams were shut down because of covid-19. Both teams are now back in action. All of our players, parents and staff have tested negative and they have completed their quarantine period. It is important that we continue to follow all the guidelines that have been set by the city and state. We look forward to having these teams compete for the remainder of the season.",
+    "image": "https://static.wixstatic.com/media/14b401_c3cf814e390345a4824686de1ff609f9~mv2.png/v1/fill/w_1000,h_1000,al_c,q_90,usm_0.66_1.00_0.01/14b401_c3cf814e390345a4824686de1ff609f9~mv2.png",
+    "date": "2020-07-31",
+    "author": "Brooklyn Falcons"
+  },
+  {
+    "id": "coach-s-corner-interview-with-wendy-gomez-head-of-our-9u-falcons",
+    "tag": "Coach's Corner",
+    "title": "Coach's Corner Interview with Wendy Gomez",
+    "excerpt": "I became a Falcon in 2005, my senior year of high school, after playing for the Bonnies with Charles Lalane for several years.",
+    "body": "Coach's Corner Interview with Wendy Gomez, head of our 9U Falcons\n\nHow did you end up becoming a part of our Falcons program?\nI became a Falcon in 2005, my senior year of high school, after playing for the Bonnies with Charles Lalane for several years. So when his brother Carlos Lalane founded the current Falcons program, I came on board.\n\nWhere did you grow up and what sports did you play growing up?\nI grew up in Bushwick and moved to East New York in my teenage years. I've played organized baseball...",
+    "image": "https://static.wixstatic.com/media/ab8980_81361865b38147ecbeb5dc09cd64b6f6~mv2.jpeg/v1/fill/w_667,h_1000,al_c,q_85,usm_0.66_1.00_0.01/ab8980_81361865b38147ecbeb5dc09cd64b6f6~mv2.jpeg",
+    "date": "2020-07-29",
+    "author": "Brooklyn Falcons"
+  },
+  {
+    "id": "falcons-team-and-tournament-report-july-2020",
+    "tag": "Game Recap",
+    "title": "Falcons Team and Tournament Report — July 2020",
+    "excerpt": "The 2023 Falcon season is going well. There's definitely areas of improvement for us, but the good news is that our guys are pulling for each other.",
+    "body": "2023 showcase The 2023 Falcon season is going well. There's definitely areas of improvement for us, but the good news is that our guys are pulling for each other. We've had a couple tough games where we've lost on situational defense, and a couple tough games where we lost when the opposing pitching was really good, but overall our season has been really solid. Our guys like each other, and we are measuring up to the competition well. Hopefully, come August, we will take another step forward and finish strong.",
+    "image": "https://static.wixstatic.com/media/14b401_82d8d089f84f40e7b6a957b16dfaaefa~mv2.jpg/v1/fill/w_1000,h_704,al_c,q_85,usm_0.66_1.00_0.01/14b401_82d8d089f84f40e7b6a957b16dfaaefa~mv2.jpg",
+    "date": "2020-07-29",
+    "author": "Brooklyn Falcons"
+  },
+  {
+    "id": "brooklyn-falcons-july-newsletter",
+    "tag": "Newsletter",
+    "title": "Brooklyn Falcons July Newsletter",
+    "excerpt": "Our July Newsletter is now available.",
+    "body": "Brooklyn Falcons July Newsletter is now available.",
+    "image": "https://static.wixstatic.com/media/14b401_4180d90bcb554a57a97d6a3372093826~mv2.jpg/v1/fill/w_806,h_1000,al_c,q_85,usm_0.66_1.00_0.01/14b401_4180d90bcb554a57a97d6a3372093826~mv2.jpg",
+    "date": "2020-07-03",
+    "author": "Brooklyn Falcons"
+  },
+  {
+    "id": "falcons-team-and-tournament-report",
+    "tag": "Game Recap",
+    "title": "FALCONS TEAM AND TOURNAMENT REPORT",
+    "excerpt": "Despite our first rescheduled tournament being cancelled, the 2023 team is really practicing and scrimmaging well.",
+    "body": "FALCONS TEAM AND TOURNAMENT REPORT\n\n2023 showcase\n\nDespite our first, rescheduled tournament being cancelled, the 2023 team is really practicing and scrimmaging well. The boys have been through it with the time off, but each evening practice brings us back a little more and a little closer to our potential. We have a lot of baseball coming up in July which we'll keep you posted on! Go Falcons!\n\n2024 showcase\n\nThe 2024s kicked off their season with a BSE tournament in Pennsylvania. We shook off some rust early on but came together nicely as the tournament progressed. Great energy and competitiveness amongst the group. Excited to see what the rest of the season has in store!",
+    "image": "https://static.wixstatic.com/media/14b401_82d8d089f84f40e7b6a957b16dfaaefa~mv2.jpg/v1/fill/w_1000,h_704,al_c,q_85,usm_0.66_1.00_0.01/14b401_82d8d089f84f40e7b6a957b16dfaaefa~mv2.jpg",
+    "date": "2020-07-02",
+    "author": "Brooklyn Falcons"
+  },
+  {
+    "id": "letter-from-luis",
+    "tag": "Newsletter",
+    "title": "LETTER FROM LUIS",
+    "excerpt": "It sure felt great to be back out on the field this past weekend. The sounds of gloves popping, bats swinging, and kids cheering brought about a sense of normalcy.",
+    "body": "Hello Falcons Family,\n\nIt sure felt great to be back out on the field this past weekend. The sounds of gloves popping, bats swinging, and kids cheering, sure brought about a sense of normalcy as we finally begin our season. The excitement and smiles on every face on the field and in the dugout created a sense of relief after months of lockdown. I think it's safe to say that wins and losses really didn't mean much this weekend. It was more of a celebration. Watching our players put on their uniforms and take the field was truly special.",
+    "image": "https://static.wixstatic.com/media/14b401_c3cf814e390345a4824686de1ff609f9~mv2.png/v1/fill/w_1000,h_1000,al_c,q_90,usm_0.66_1.00_0.01/14b401_c3cf814e390345a4824686de1ff609f9~mv2.png",
+    "date": "2020-07-01",
+    "author": "Brooklyn Falcons"
+  },
+  {
+    "id": "coach-s-corner-interview-with-sal-taormina",
+    "tag": "Coach's Corner",
+    "title": "Coach's Corner Interview with Sal Taormina",
+    "excerpt": "Luis was my coach for 16u and 17u. We developed a really strong relationship through those years and when I finally graduated he asked if I wanted to coach.",
+    "body": "COACH'S CORNER INTERVIEW WITH SAL TAORMINA\n\nHow did you end up becoming a part of our Falcons program?\n\nLuis was my coach for 16u and 17u. We developed a really strong relationship through those years and when I finally graduated he asked if I wanted to coach. And the rest is history…\n\nWhere did you grow up and where did you play baseball growing up?\n\nBorn and raised in Brooklyn. I played on three teams from seven to eighteen. Our Lady of Grace, Bergen Beach, and Youth Service in that order. YSL from 11 to 18 was where I spent most of my baseball career. We were a very competitive organization and that's where I developed a passion for the game.\n\nWhat was your best baseball memory?\n\nWinning the 14u AAU National Championship with YSL in 2009. We beat a very tough team from Florida. That was a special group of guys and coaches.\n\nIf you could give advice to the young players, what would it be?\n\nWork hard, stay humble, and always be a good teammate. Baseball is a team sport and individual stats don't matter if your team isn't winning. Also, enjoy the process and have fun playing the game you love.\n\nWhat do you enjoy most about coaching?\n\nSeeing kids develop not just as players but as people. Teaching them life lessons through baseball. Building relationships with families in the organization. And of course, winning championships!",
+    "image": "https://static.wixstatic.com/media/ab8980_04730ee406014e208a08101dbd7e4e58~mv2.jpg/v1/fill/w_640,h_973,al_c,q_85/ab8980_04730ee406014e208a08101dbd7e4e58~mv2.jpg",
+    "date": "2020-06-30",
+    "author": "Brooklyn Falcons"
+  },
+  {
+    "id": "pre-order-your-summer-gear",
+    "tag": "Announcement",
+    "title": "PRE-ORDER YOUR SUMMER GEAR",
+    "excerpt": "Get out the new Summer gear. Limited time offer.",
+    "body": "Get out the new Summer gear. Limited time offer.",
+    "image": "https://static.wixstatic.com/media/14b401_27fb8c0fc056452284de45e1190ef302~mv2.jpg/v1/fill/w_1000,h_593,al_c,q_85,usm_0.66_1.00_0.01/14b401_27fb8c0fc056452284de45e1190ef302~mv2.jpg",
+    "date": "2020-06-18",
+    "author": "Brooklyn Falcons"
+  },
+  {
+    "id": "june-brooklyn-falcon-newsletter",
+    "tag": "Newsletter",
+    "title": "JUNE BROOKLYN FALCON NEWSLETTER",
+    "excerpt": "The June newsletter is here. Click above to have access to our monthly newsletter.",
+    "body": "June Brooklyn Falcon Newsletter is now available.",
+    "image": "https://static.wixstatic.com/media/14b401_69aa688748794fc7844c9c4d186f7202~mv2.jpg/v1/fill/w_727,h_1000,al_c,q_85,usm_0.66_1.00_0.01/14b401_69aa688748794fc7844c9c4d186f7202~mv2.jpg",
+    "date": "2020-06-02",
+    "author": "Brooklyn Falcons"
+  },
+  {
+    "id": "letter-from-luis-and-charles-2",
+    "tag": "Newsletter",
+    "title": "LETTER FROM LUIS AND CHARLES",
+    "excerpt": "The coronavirus threat and the ultimate impact on society and the sports community is still unknown at this time.",
+    "body": "The coronavirus threat and the ultimate impact on society and the sports community is still unknown at this time. The situation is fluid with new information being released almost hourly regarding the progression of the COVID-19 outbreak.",
+    "image": "https://static.wixstatic.com/media/14b401_c3cf814e390345a4824686de1ff609f9~mv2.png/v1/fill/w_1000,h_1000,al_c,q_90,usm_0.66_1.00_0.01/14b401_c3cf814e390345a4824686de1ff609f9~mv2.png",
+    "date": "2020-06-02",
+    "author": "Brooklyn Falcons"
+  },
+  {
+    "id": "baseball-movies-hall-of-fame-must-watches",
+    "tag": "Community",
+    "title": "Baseball Movies, Hall of Fame, Must Watches",
+    "excerpt": "Check out these baseball movie must-watches. Parents of younger Falcons, check the ratings on some of these!",
+    "body": "Baseball movies, Hall of Fame, must watches:\n\n*NB: Parents of younger Falcons, check the ratings on some of these...\n\n1) 42\n2) The Sandlot\n3) The Natural\n4) A League of Their Own\n5) Bad News Bears\n6) Field of Dreams\n7) Bull Durham\n8) Major League\n9) Mr. 3000\n10) Angels in the Outfield",
+    "image": "https://static.wixstatic.com/media/ab8980_2d754255ced54944ae1a711695487ad1~mv2.png/v1/fill/w_1000,h_563,al_c,q_90,usm_0.66_1.00_0.01/ab8980_2d754255ced54944ae1a711695487ad1~mv2.png",
+    "date": "2020-05-26",
+    "author": "Brooklyn Falcons"
+  },
+  {
+    "id": "coach-s-corner-interview-with-kenny-duverge",
+    "tag": "Coach's Corner",
+    "title": "Coach's Corner Interview with Kenny Duverge",
+    "excerpt": "Before I became a Falcon, I was an assistant coach for the Brooklyn Bulldogs with Coach Charles working with their 12u Fall team.",
+    "body": "How did you end up becoming a part of our Falcons program?\n\nBefore I became a Falcon, I was an assistant coach for the Brooklyn Bulldogs with Coach Charles working with their 12u Fall team. Charles approached me after my High School season was over and asked if I wanted to coach again the following Fall and I didn't hesitate. Things clicked with Coach Charles and me right away and I ended up joining him again in the summer but this time with the Bulldogs 11u travel team. During that time in the summer, we started building the Falcons program and Charles asked me to be a part of it and I said yes immediately.",
+    "image": "https://static.wixstatic.com/media/14b401_be1906d32579441a86d8fef8b9c35288~mv2.jpg/v1/fill/w_924,h_924,al_c,q_85/14b401_be1906d32579441a86d8fef8b9c35288~mv2.jpg",
+    "date": "2020-05-26",
+    "author": "Brooklyn Falcons"
+  },
+  {
+    "id": "brooklyn-falcons-may-newsletter",
+    "tag": "Newsletter",
+    "title": "BROOKLYN FALCONS MAY NEWSLETTER",
+    "excerpt": "View our May newsletter to stay in tune with all the latest updates.",
+    "body": "View our May newsletter to stay in tune with all the latest updates. Click Logo Above",
+    "image": "https://static.wixstatic.com/media/14b401_c3cf814e390345a4824686de1ff609f9~mv2.png/v1/fill/w_1000,h_1000,al_c,q_90,usm_0.66_1.00_0.01/14b401_c3cf814e390345a4824686de1ff609f9~mv2.png",
+    "date": "2020-05-10",
+    "author": "Brooklyn Falcons"
+  },
+  {
+    "id": "support-our-teams-through-amazon-smile",
+    "tag": "Community",
+    "title": "Support Our Teams Through Amazon Smile",
+    "excerpt": "Balls, bats, bases and more — we have a charity wish list posted at Amazon. This is a super easy way to donate.",
+    "body": "Balls, bats, bases and more...we have a charity wish list posted at Amazon. This is a super easy way to donate, just follow the link below. Also, if you shop on Amazon (and we know you do), sign in and assign \"Bk Falcons\" as your designated charity and a small percentage of your purchases will come our way. Thank you! (Now go do it...)",
+    "image": "https://static.wixstatic.com/media/14b401_558c8117b16a474a8c1079e009c9181a~mv2.png/v1/fill/w_1000,h_323,al_c,q_85,usm_0.66_1.00_0.01/14b401_558c8117b16a474a8c1079e009c9181a~mv2.png",
+    "date": "2020-05-03",
+    "author": "Brooklyn Falcons"
+  },
+  {
+    "id": "letter-from-luis-and-charles-1",
+    "tag": "Newsletter",
+    "title": "Letter from Luis and Charles",
+    "excerpt": "Our primary focus is on the safety and well-being of all of our members. We will continue to monitor the progression of COVID-19.",
+    "body": "Dear Falcons Family,\n\nWe understand that many parents and players want to get back to the field, and so do we, but our primary focus is on the safety and well-being of all of our members. The Brooklyn Falcons will continue to monitor the progression of the Coronavirus Disease (COVID-19) to determine when it is safe to return to activities after May 15. Just because we can't participate in outdoor activities, doesn't mean we can't get better. We have uploaded the drill of the week to the blog on our website for all of our players to work on while we are apart.\n\nOur organization is committed to supporting our community during these challenging times. We look forward to reuniting with our Falcons Family soon and continuing our mission to develop young athletes both on and off the field.",
+    "image": "https://static.wixstatic.com/media/14b401_c3cf814e390345a4824686de1ff609f9~mv2.png/v1/fill/w_1000,h_1000,al_c,q_90,usm_0.66_1.00_0.01/14b401_c3cf814e390345a4824686de1ff609f9~mv2.png",
+    "date": "2020-05-01",
+    "author": "Brooklyn Falcons"
+  },
+  {
+    "id": "coach-s-corner-interview-with-carlos-lalane",
+    "tag": "Coach's Corner",
+    "title": "Coach's Corner Interview with Carlos Lalane",
+    "excerpt": "Managed the Men's Brooklyn Falcons Baseball team from 2004 to 2011 and from 2013 to 2016. Then coached 8U through 10U Falcons.",
+    "body": "A little background on Carlos…Managed the Men's Brooklyn Falcons Baseball team from 2004 to 2011 and from 2013 to 2016. Then coached 8U through 10U Falcons. Attended Canarsie HS where I played baseball, football and volleyball. I stopped playing high school baseball my junior year, let's say I lost interest. Started playing football and volleyball. I was offered an opportunity to play college football at a Division III school but I chose to keep my bones intact and I accepted an academic scholarship.",
+    "image": "https://static.wixstatic.com/media/ab8980_23091dee2fb846008600059bcc6da2b8~mv2.jpg/v1/fill/w_698,h_694,al_c,lg_1,q_85/ab8980_23091dee2fb846008600059bcc6da2b8~mv2.jpg",
+    "date": "2020-04-29",
+    "author": "Brooklyn Falcons"
+  },
+  {
+    "id": "bored-with-social-media-try-these-top-baseball-follows",
+    "tag": "Community",
+    "title": "Bored with Social Media? Try These Top Baseball Follows",
+    "excerpt": "Follow these Instagram accounts for tons of baseball knowledge, with different insights and angles.",
+    "body": "Follow the following Instagram studs. Tons of baseball knowledge, with different insights and angles.\n\n1. @coachferber\n2. @outfronthitting\n3. @troskybaseball\n4. @pitchingninja\n5. @insidergcr\n6. @el_monell\n7. @wil_ortiz12",
     "image": "",
-    "date": "2026-04-05",
-    "author": "Coach Staff"
+    "date": "2020-04-28",
+    "author": "Brooklyn Falcons"
+  },
+  {
+    "id": "drill-of-the-week-2",
+    "tag": "Coach's Corner",
+    "title": "Drill of the Week",
+    "excerpt": "Hope everyone is healthy and safe. As we all know, our season has been on hold due to the Covid-19 situation.",
+    "body": "Good afternoon Falcon Family,\n\nHope everyone is healthy and safe. As we all know, our season has been on hold due to the Covid-19 situation. But that doesn't mean that we can't try to stay as ready as possible. Every week we will release a drill of the week. This is to help us try to stay as ready as possible for the baseball season. Stay safe and stay healthy.",
+    "image": "",
+    "date": "2020-04-28",
+    "author": "Brooklyn Falcons"
+  },
+  {
+    "id": "drill-of-the-week-1",
+    "tag": "Coach's Corner",
+    "title": "Drill of the Week",
+    "excerpt": "Hope everyone is healthy and safe. As we all know, our season has been on hold due to the Covid-19 situation.",
+    "body": "Good afternoon Falcon Family,\n\nHope everyone is healthy and safe. As we all know, our season has been on hold due to the Covid-19 situation. But that doesn't mean that we can't try to stay as ready as possible. Every week we will release a drill of the week. This is to help us try to stay as ready as possible for the baseball season. Stay safe and stay healthy.",
+    "image": "",
+    "date": "2020-04-20",
+    "author": "Brooklyn Falcons"
+  },
+  {
+    "id": "arm-care",
+    "tag": "Coach's Corner",
+    "title": "Arm Care",
+    "excerpt": "Hope everyone is healthy and safe. As we all know, our season has been on hold due to the Covid-19 situation.",
+    "body": "Hope everyone is healthy and safe. As we all know, our season has been on hold due to the Covid-19 situation. But that doesn't mean that we can't try to stay as ready as possible. During these troubling times, we must do our best to keep our arms conditioned. Especially if we hit the field on a fly. Below are arm care videos that will help keep our arms baseball ready. Stay healthy and stay safe.",
+    "image": "",
+    "date": "2020-04-13",
+    "author": "Brooklyn Falcons"
+  },
+  {
+    "id": "drill-of-the-week",
+    "tag": "Coach's Corner",
+    "title": "Drill of the Week",
+    "excerpt": "Hope everyone is healthy and safe. As we all know, our season has been on hold due to the Covid-19 situation.",
+    "body": "Good afternoon Falcon Family,\n\nHope everyone is healthy and safe. As we all know, our season has been on hold due to the Covid-19 situation. But that doesn't mean that we can't try to stay as ready as possible. Every week we will release a drill of the week. This is to help us try to stay as ready as possible for the baseball season. Stay safe and stay healthy.",
+    "image": "",
+    "date": "2020-04-12",
+    "author": "Brooklyn Falcons"
+  },
+  {
+    "id": "letter-from-luis-and-charles",
+    "tag": "Newsletter",
+    "title": "Letter From Luis and Charles",
+    "excerpt": "One of the most important attributes of an athlete is their response to adversity.",
+    "body": "Hello Falcons Family,\n\nOne of the most important attributes of an athlete is their response to adversity. Can a pitcher stay composed with the tying run on second and no-one out? Are you in a relaxed state of mind when the go-ahead run is on third and you're up at-bat? Are you confident enough to give your body for your team in an attempt to make a diving catch in a big moment? Now we as athletes, coaches and parents are faced with a different kind of challenge. One that has no face and will not disappear overnight.",
+    "image": "https://static.wixstatic.com/media/14b401_c3cf814e390345a4824686de1ff609f9~mv2.png/v1/fill/w_1000,h_1000,al_c,q_90,usm_0.66_1.00_0.01/14b401_c3cf814e390345a4824686de1ff609f9~mv2.png",
+    "date": "2020-03-31",
+    "author": "Brooklyn Falcons"
+  },
+  {
+    "id": "coach-s-corner",
+    "tag": "Coach's Corner",
+    "title": "Coach's Corner",
+    "excerpt": "What have you been doing to keep busy these past few weeks? Creating lessons for remote learning and brushing up on Madden, NBA 2K and MLB 2020 skills.",
+    "body": "What have you been doing to keep busy these past few weeks?\n\nI have been creating lessons for my new journey (remote learning) and brushing up on my Madden, NBA 2K and MLB 2020 skills so I can challenge any and all of our Falcons players, and of course win. Any takers?\n\nTell us about your favorite moment playing or coaching baseball.\n\nAfter playing high school baseball at a top level and facing future hall of famers in college, I believed for a while that I have failed at baseball because I didn't make it to the major leagues. It wasn't until I started coaching that I realized my purpose wasn't to play professionally, but to positively impact the lives of young athletes and help them achieve their dreams. That realization changed my perspective on success and failure.",
+    "image": "https://static.wixstatic.com/media/ab8980_ea3aebb37b20492e9281acee36359392~mv2.jpg/v1/fill/w_715,h_710,al_c,lg_1,q_85/ab8980_ea3aebb37b20492e9281acee36359392~mv2.jpg",
+    "date": "2020-03-30",
+    "author": "Brooklyn Falcons"
+  },
+  {
+    "id": "season-opening-letter-from-luis-and-charles",
+    "tag": "Newsletter",
+    "title": "Season Opening Letter from Luis and Charles",
+    "excerpt": "The Brooklyn Falcons Baseball Club is committed to providing professional instruction to dedicated athletes across the socio-economic spectrum.",
+    "body": "The Brooklyn Falcons Baseball Club is a youth baseball organization committed to providing professional instruction to dedicated athletes across the socio-economic spectrum.",
+    "image": "https://static.wixstatic.com/media/14b401_c3cf814e390345a4824686de1ff609f9~mv2.png/v1/fill/w_1000,h_1000,al_c,q_90,usm_0.66_1.00_0.01/14b401_c3cf814e390345a4824686de1ff609f9~mv2.png",
+    "date": "2020-02-28",
+    "author": "Brooklyn Falcons"
+  },
+  {
+    "id": "coaches-corner",
+    "tag": "Coach's Corner",
+    "title": "Coach's Corner",
+    "excerpt": "Luis Monell is the president of the Brooklyn Falcons. Luis grew up in East New York and was a four year letterman at Samuel J. Tilden High School.",
+    "body": "Luis Monell, the president of the Brooklyn Falcons, is a four-year letterman at Samuel J. Tilden High School and Division I pitcher at St. John's University.",
+    "image": "https://static.wixstatic.com/media/ab8980_2541a52095b64f478a607be7e3104119~mv2.jpg/v1/fill/w_710,h_710,al_c,lg_1,q_85/ab8980_2541a52095b64f478a607be7e3104119~mv2.jpg",
+    "date": "2020-02-27",
+    "author": "Brooklyn Falcons"
+  },
+  {
+    "id": "our-team-store-is-here-1",
+    "tag": "Announcement",
+    "title": "Our Team Store is Here",
+    "excerpt": "Support the Brooklyn Falcons and purchase some of our new team gear.",
+    "body": "Support the Brooklyn Falcons and purchase some of our new team gear.",
+    "image": "https://static.wixstatic.com/media/14b401_2f52ab235b3a420f987dafd88817a6b7~mv2.jpg/v1/fill/w_563,h_1000,al_c,q_85,usm_0.66_1.00_0.01/14b401_2f52ab235b3a420f987dafd88817a6b7~mv2.jpg",
+    "date": "2020-01-09",
+    "author": "Brooklyn Falcons"
+  },
+  {
+    "id": "falcons-players-talk-baseball-with-ex-big-league-pitcher-pedro-beato",
+    "tag": "Community",
+    "title": "Falcons Players Talk Baseball with ex-Big League Pitcher Pedro Beato",
+    "excerpt": "Three Falcons 12U players sat down with former Mets starter Pedro Beato this past Martin Luther King Day to find out what it's like to play in the Big Leagues.",
+    "body": "What's it like to play in the Big Leagues? Three Falcons 12U players sat down with former Mets starter Pedro Beato this past Martin Luther King Day to find out.\n\nBeato, a 6'6\" Dominican pitcher who spent his childhood in Ridgewood, Queens, played for Youth Services League, where he got to know Falcon's leadership Luis Monell and Charles Lalane.\n\nAfter his debut with the Mets, Beato played with the Red Sox, Braves and Phillies. Currently a free agent, the big righty racked up 60 strikeouts in four weeks during his professional career.",
+    "image": "https://static.wixstatic.com/media/14b401_f1585e635dc04838aef58ec30a62a859~mv2.jpeg/v1/fill/w_1000,h_750,al_c,q_85,usm_0.66_1.00_0.01/14b401_f1585e635dc04838aef58ec30a62a859~mv2.jpeg",
+    "date": "2020-01-31",
+    "author": "Brooklyn Falcons"
+  },
+  {
+    "id": "martin-luther-king-day-baseball-clinic",
+    "tag": "Upcoming Events",
+    "title": "Martin Luther King Day Baseball Clinic",
+    "excerpt": "Come join us at the Martin Luther King Day Clinic with featured guest, former MLB pitcher Pedro Beato.",
+    "body": "Come Join us at the Martin Luther King Day Clinic with featured guest, former MLB pitcher Pedro Beato. Monday Jan. 20th from 10am-2pm. Falcons players receive 20% OFF.",
+    "image": "https://static.wixstatic.com/media/14b401_285dd3c1445c47bd90a5dc8966157479~mv2.jpg/v1/fill/w_800,h_1000,al_c,q_85,usm_0.66_1.00_0.01/14b401_285dd3c1445c47bd90a5dc8966157479~mv2.jpg",
+    "date": "2020-01-09",
+    "author": "Brooklyn Falcons"
+  },
+  {
+    "id": "spring-summer-2020-tryouts-1",
+    "tag": "Announcement",
+    "title": "Spring/Summer 2020 Tryouts",
+    "excerpt": "Tryouts for our travel and showcase teams will be held on Nov. 9th and Nov. 16th.",
+    "body": "Tryouts for our travel and showcase teams will be held on Nov. 9th and Nov. 16th. Come be apart of our Falcon Family!!!",
+    "image": "https://static.wixstatic.com/media/14b401_16087f8e0b89408cb7f91e520999f2a0~mv2.jpg/v1/fill/w_1000,h_1000,al_c,q_85,usm_0.66_1.00_0.01/14b401_16087f8e0b89408cb7f91e520999f2a0~mv2.jpg",
+    "date": "2020-01-02",
+    "author": "Brooklyn Falcons"
+  },
+  {
+    "id": "spring-summer-2020-tryouts",
+    "tag": "Announcement",
+    "title": "Spring/Summer 2020 Tryouts",
+    "excerpt": "Click on Flyer to Register.",
+    "body": "Click on Flyer to Register",
+    "image": "https://static.wixstatic.com/media/14b401_b3e7b3ca2b004fd0884964223f811aa2~mv2_d_3300_4593_s_4_2.jpg/v1/fill/w_718,h_1000,al_c,q_85,usm_0.66_1.00_0.01/14b401_b3e7b3ca2b004fd0884964223f811aa2~mv2_d_3300_4593_s_4_2.jpg",
+    "date": "2019-10-18",
+    "author": "Brooklyn Falcons"
+  },
+  {
+    "id": "fall-showcase-tryouts",
+    "tag": "Announcement",
+    "title": "FALL SHOWCASE TRYOUTS",
+    "excerpt": "NEW PLAYER TRYOUTS for our showcase teams will be held on August 17th. See you there!",
+    "body": "NEW PLAYER TRYOUTS for our showcase teams will be held on August 17th. See you there!!!",
+    "image": "https://static.wixstatic.com/media/14b401_0c4f2b6391694513986a4d2be7eddeeb~mv2_d_2048_2048_s_2.jpg/v1/fill/w_1000,h_1000,al_c,q_85,usm_0.66_1.00_0.01/14b401_0c4f2b6391694513986a4d2be7eddeeb~mv2_d_2048_2048_s_2.jpg",
+    "date": "2019-07-16",
+    "author": "Brooklyn Falcons"
+  },
+  {
+    "id": "still-looking-for-players",
+    "tag": "Announcement",
+    "title": "Still Looking for Players!",
+    "excerpt": "We still have a few spots left on our 13U, 15U and 16/17U teams.",
+    "body": "We still have a few spots left on our 13U, 15U and 16/17U teams. Tryouts for 13U are Friday's 6 - 8pm and Sunday 1 - 3pm; 14U - 17U tryouts are Saturday's 4-6pm. All workouts are at Premier Batting Cage: 8630 103rd Ave, Ozone Park, NY",
+    "image": "https://static.wixstatic.com/media/335932_36ca9535f3944c65aa9b7891c516ef8e~mv2.jpg/v1/fill/w_768,h_960,al_c,q_85/335932_36ca9535f3944c65aa9b7891c516ef8e~mv2.jpg",
+    "date": "2019-02-22",
+    "author": "Brooklyn Falcons"
+  },
+  {
+    "id": "our-team-store-is-here",
+    "tag": "Announcement",
+    "title": "Our Team Store is Here!",
+    "excerpt": "Be the first to get your hands on our latest team gear. Visit our Team Store to purchase the latest Falcon Gear.",
+    "body": "Be the first to get your hands on our latest team gear. Click the Team Store link in the navigation above.\n\nVisit our Team Store to purchase the latest Falcon Gear and to see the full selection of items available. Store will be closing on Feb 20th. Shipping will take 3 weeks after that date.",
+    "image": "https://static.wixstatic.com/media/335932_16815210677c43e583eca362562f64e6~mv2.png/v1/fill/w_414,h_370,al_c,lg_1,q_85/335932_16815210677c43e583eca362562f64e6~mv2.png",
+    "date": "2019-01-19",
+    "author": "Brooklyn Falcons"
+  },
+  {
+    "id": "practices-and-workouts-on-this-weekend",
+    "tag": "Announcement",
+    "title": "Practices and Workouts on This Weekend!",
+    "excerpt": "All Falcons practices and workouts are on for Saturday and Monday. See you there!",
+    "body": "All Falcons practices and workouts are on for Saturday and Monday. See you there!",
+    "image": "",
+    "date": "2019-01-16",
+    "author": "Brooklyn Falcons"
+  },
+  {
+    "id": "back-to-work",
+    "tag": "Announcement",
+    "title": "Back to Work!",
+    "excerpt": "Reminder all practices and workouts have resumed. Please go to your practice at your normal time.",
+    "body": "Reminder all practices and workouts have resumed. Please go to your practice at your normal time. Time to work!",
+    "image": "",
+    "date": "2019-01-05",
+    "author": "Brooklyn Falcons"
+  },
+  {
+    "id": "holiday-training-break",
+    "tag": "Announcement",
+    "title": "Holiday Training Break",
+    "excerpt": "We will be taking a break from training activity on December 22-25 and December 29-January 1. Enjoy the holidays!",
+    "body": "We will be taking a break from training activity (practices and workouts) on the following days:\n\nDecember 22 - 25\n\nAnd\n\nDecember 29 - January 1\n\nEnjoy the holidays!",
+    "image": "",
+    "date": "2018-12-15",
+    "author": "Brooklyn Falcons"
+  },
+  {
+    "id": "great-turnout-at-tryouts",
+    "tag": "Announcement",
+    "title": "Great Turnout at Tryouts!",
+    "excerpt": "Thank you and good luck to the 90+ ballplayers who came to tryouts this weekend for our 10U-16U teams. We feel honored and blessed.",
+    "body": "Thank you and good luck to the 90+ballplayers who came to tryouts this weekend for our 10U-16U teams. We feel honored and blessed to have so many players interested in our program in its first official year. A special thanks to New York Premier Baseball Performance Center for their support and for making Premier the official home of the Falcons. 2019 is going to be a special year!!!",
+    "image": "https://static.wixstatic.com/media/335932_2450651882ae497d80ce4b0676dc7e39~mv2.jpg/v1/fill/w_1000,h_750,al_c,q_85,usm_0.66_1.00_0.01/335932_2450651882ae497d80ce4b0676dc7e39~mv2.jpg",
+    "date": "2018-12-03",
+    "author": "Brooklyn Falcons"
+  },
+  {
+    "id": "partnership-with-premier-baseball-center",
+    "tag": "Community",
+    "title": "Partnership with Premier Baseball Center",
+    "excerpt": "We're proud to announce our partnership with Premier Baseball Center, NYC's top baseball training facility.",
+    "body": "We're proud to announce our partnership with Premier Baseball Center, NYC's top baseball training facility. We're excited to begin our winter training this off-season.",
+    "image": "https://static.wixstatic.com/media/335932_b3c1da9bca854aebbd1a6350c5c9205e~mv2.jpg/v1/fill/w_750,h_1000,al_c,q_85,usm_0.66_1.00_0.01/335932_b3c1da9bca854aebbd1a6350c5c9205e~mv2.jpg",
+    "date": "2018-11-07",
+    "author": "Brooklyn Falcons"
   }
 ]
