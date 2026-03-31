@@ -501,6 +501,65 @@
     font-size: 0.9375rem;
     line-height: 1.7;
   }
+
+  /* Post preview */
+  .preview-hero-img {
+    width: 100%;
+    max-height: 320px;
+    overflow: hidden;
+    border-radius: 8px;
+    margin-bottom: 1.25rem;
+    background: var(--neutral-100);
+  }
+  .preview-hero-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .preview-tag {
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    font-weight: 700;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    background: #1B2A72;
+    padding: 0.25rem 0.75rem;
+    border-radius: 100px;
+    display: inline-block;
+    margin-bottom: 0.75rem;
+  }
+  .preview-title {
+    font-family: var(--font-display);
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: var(--neutral-900);
+    line-height: 1.2;
+    margin-bottom: 0.75rem;
+  }
+  .preview-meta {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--neutral-400);
+    margin-bottom: 1.25rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--neutral-150);
+  }
+  .preview-body {
+    font-family: var(--font-body);
+    font-size: 0.9375rem;
+    color: var(--neutral-600);
+    line-height: 1.8;
+  }
+  .preview-body p { margin-bottom: 1em; }
+  .preview-body strong { color: var(--neutral-900); font-weight: 600; }
+  .preview-body .post-question {
+    font-weight: 700;
+    color: var(--neutral-900);
+    margin-top: 1.25em;
+    margin-bottom: 0.375em;
+  }
 </style>
 </head>
 <body>
@@ -720,7 +779,9 @@
           <label class="form-label">Tag</label>
           <select class="form-select" id="pf-tag">
             <option value="Game Recap">Game Recap</option>
+            <option value="Coach's Corner">Coach's Corner</option>
             <option value="Player Spotlight">Player Spotlight</option>
+            <option value="Newsletter">Newsletter</option>
             <option value="Alumni Update">Alumni Update</option>
             <option value="Community">Community</option>
             <option value="Upcoming Events">Upcoming Events</option>
@@ -790,7 +851,7 @@
 
       <div class="form-group">
         <label class="form-label">Full Article</label>
-        <textarea class="form-textarea form-textarea-lg" id="pf-body" placeholder="Full post content (optional — for future article pages)"></textarea>
+        <textarea class="form-textarea form-textarea-lg" id="pf-body" placeholder="Full article content — displayed on the post detail page"></textarea>
       </div>
 
       <div class="form-group">
@@ -815,6 +876,7 @@
     <div class="editor-footer">
       <button class="btn btn-danger btn-sm" id="delete-post-btn" style="display:none;">Delete</button>
       <button class="btn btn-secondary" id="post-editor-cancel">Cancel</button>
+      <button class="btn btn-secondary" id="post-preview-btn" style="gap:0.375rem;">&#9654; Preview</button>
       <button class="btn btn-primary" id="post-editor-save">Save Post</button>
     </div>
   </div>
@@ -823,13 +885,24 @@
 <!-- EXPORT MODAL -->
 <div class="export-overlay" id="export-overlay">
   <div class="export-panel">
-    <h2>Export products.json</h2>
-    <p style="font-size:0.875rem;color:#6E769E;margin-bottom:1rem;">Copy this JSON and replace the contents of <code>source/products.json</code> in your repo. Make sure any new product images are added to <code>source/assets/products/</code>. Push to GitHub and Vercel will auto-deploy.</p>
+    <h2 id="export-title">Export</h2>
+    <p id="export-desc" style="font-size:0.875rem;color:#6E769E;margin-bottom:1rem;"></p>
     <textarea id="export-json" readonly></textarea>
     <div class="export-actions">
       <button class="btn btn-secondary" id="export-close">Close</button>
       <button class="btn btn-primary" id="export-copy">Copy to Clipboard</button>
     </div>
+  </div>
+</div>
+
+<!-- POST PREVIEW MODAL -->
+<div class="editor-overlay" id="post-preview-overlay">
+  <div class="editor-panel" style="max-width:720px;max-height:90vh;overflow-y:auto;">
+    <div class="editor-header">
+      <h2>Post Preview</h2>
+      <button class="editor-close" id="post-preview-close">&times;</button>
+    </div>
+    <div id="post-preview-content"></div>
   </div>
 </div>
 
@@ -879,23 +952,16 @@ document.getElementById('logout-btn').addEventListener('click', () => {
 
 // ── Load products ──
 function loadProducts() {
-  const saved = localStorage.getItem('falcons-admin-products');
-  if (saved) {
-    products = JSON.parse(saved);
-    renderList();
-    return;
-  }
   fetch('products.json')
     .then(r => r.json())
     .then(data => {
       products = data;
-      localStorage.setItem('falcons-admin-products', JSON.stringify(products));
       renderList();
     });
 }
 
 function saveProducts() {
-  localStorage.setItem('falcons-admin-products', JSON.stringify(products));
+  // Products are kept in memory — use Export JSON to save to products.json
 }
 
 // ── Render product list ──
@@ -1233,24 +1299,17 @@ let posts = [];
 let editingPostIndex = -1;
 
 function loadPosts() {
-  const saved = localStorage.getItem('falcons-admin-posts');
-  if (saved) {
-    posts = JSON.parse(saved);
-    renderPostList();
-    return;
-  }
   fetch('posts.json')
     .then(r => r.json())
     .then(data => {
       posts = data;
-      localStorage.setItem('falcons-admin-posts', JSON.stringify(posts));
       renderPostList();
     });
 }
 loadPosts();
 
 function savePosts() {
-  localStorage.setItem('falcons-admin-posts', JSON.stringify(posts));
+  // Posts are kept in memory — use Export JSON to save to posts.json
 }
 
 function renderPostList() {
@@ -1467,6 +1526,59 @@ deletePostBtn.addEventListener('click', () => {
   }
 });
 
+// Preview post
+const previewOverlay = document.getElementById('post-preview-overlay');
+document.getElementById('post-preview-btn').addEventListener('click', () => {
+  const title = document.getElementById('pf-title').value.trim() || 'Untitled Post';
+  const tag = document.getElementById('pf-tag').value;
+  const date = document.getElementById('pf-date').value;
+  const excerpt = document.getElementById('pf-excerpt').value.trim();
+  const body = document.getElementById('pf-body').value.trim();
+  const image = document.getElementById('pf-image').value.trim();
+  const author = document.getElementById('pf-author').value.trim() || 'Coach Staff';
+
+  const dateStr = date
+    ? new Date(date + 'T00:00:00').toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })
+    : 'No date';
+
+  const heroHtml = image
+    ? `<div class="preview-hero-img"><img src="${image}" alt=""></div>`
+    : '';
+
+  let bodyHtml;
+  const content = body || excerpt;
+  if (content) {
+    bodyHtml = content
+      .replace(/&/g, '&amp;').replace(/</g, '&lt;')
+      .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+      .replace(/\*(.+?)\*/g, '<em>$1</em>')
+      .split(/\n/).map(line => {
+        if (line.trim().endsWith('?')) {
+          return `<p class="post-question">${line}</p>`;
+        }
+        return line;
+      }).join('\n')
+      .split(/\n{2,}/).map(para => {
+        if (para.includes('class="post-question"')) return para;
+        return `<p>${para.replace(/\n/g, '<br>')}</p>`;
+      }).join('');
+  } else {
+    bodyHtml = '<p style="color:var(--neutral-400);font-style:italic;">No content yet.</p>';
+  }
+
+  document.getElementById('post-preview-content').innerHTML = `
+    ${heroHtml}
+    <span class="preview-tag">${tag}</span>
+    <h1 class="preview-title">${title}</h1>
+    <div class="preview-meta">${dateStr} &middot; ${author}</div>
+    <div class="preview-body">${bodyHtml}</div>`;
+
+  previewOverlay.classList.add('is-open');
+});
+
+document.getElementById('post-preview-close').addEventListener('click', () => previewOverlay.classList.remove('is-open'));
+previewOverlay.addEventListener('click', e => { if (e.target === previewOverlay) previewOverlay.classList.remove('is-open'); });
+
 // Update export to include both products and posts
 document.getElementById('export-btn').addEventListener('click', function exportHandler() {
   // Determine which tab is active
@@ -1474,7 +1586,10 @@ document.getElementById('export-btn').addEventListener('click', function exportH
   const isNews = activeTab && activeTab.dataset.panel === 'news-panel';
   const data = isNews ? posts : products;
   const label = isNews ? 'posts.json' : 'products.json';
-  document.querySelector('#export-overlay h2').textContent = `Export ${label}`;
+  document.getElementById('export-title').textContent = `Export ${label}`;
+  document.getElementById('export-desc').textContent = isNews
+    ? `Copy this JSON and replace the contents of source/posts.json in your repo. Push to GitHub and Vercel will auto-deploy.`
+    : `Copy this JSON and replace the contents of source/products.json in your repo. Make sure any new product images are added to source/assets/products/. Push to GitHub and Vercel will auto-deploy.`;
   document.getElementById('export-json').value = JSON.stringify(data, null, 2);
   exportOverlay.classList.add('is-open');
 });
