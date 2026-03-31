@@ -271,20 +271,60 @@
     margin-top: 0.25rem;
   }
 
-  /* Options editor */
-  .option-block {
+  /* Size checkboxes */
+  .size-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.375rem;
+  }
+  .size-check {
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+    background: var(--neutral-50);
+    border: 2px solid var(--neutral-200);
+    border-radius: 8px;
+    padding: 0.375rem 0.75rem;
+    cursor: pointer;
+    transition: border-color 0.15s, background 0.15s;
+    user-select: none;
+  }
+  .size-check:hover { border-color: var(--falcon-500); }
+  .size-check input { display: none; }
+  .size-check.is-checked {
+    background: var(--falcon-500);
+    border-color: var(--falcon-500);
+    color: #fff;
+  }
+  .size-check span {
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    font-weight: 700;
+  }
+  .size-section {
+    margin-bottom: 1rem;
+  }
+  .size-section-label {
+    font-weight: 700;
+    font-size: 0.8125rem;
+    color: var(--neutral-600);
+    margin-bottom: 0.375rem;
+  }
+  /* Custom options */
+  .custom-option-block {
     background: var(--neutral-50);
     border-radius: 8px;
     padding: 0.75rem;
     margin-bottom: 0.5rem;
   }
-  .option-header {
+  .custom-option-header {
     display: flex;
     align-items: center;
     gap: 0.5rem;
     margin-bottom: 0.5rem;
   }
-  .option-header input { flex: 1; }
+  .custom-option-header input { flex: 1; }
   .option-remove {
     background: none;
     border: none;
@@ -556,10 +596,48 @@
       </div>
 
       <div class="form-group">
-        <label class="form-label">Size / Options</label>
+        <label class="form-label">Sizes</label>
+
+        <div class="size-section">
+          <div class="size-section-label">Youth</div>
+          <div class="size-grid" id="sizes-youth">
+            <label class="size-check"><input type="checkbox" value="YXS"><span>YXS</span></label>
+            <label class="size-check"><input type="checkbox" value="YS"><span>YS</span></label>
+            <label class="size-check"><input type="checkbox" value="YM"><span>YM</span></label>
+            <label class="size-check"><input type="checkbox" value="YL"><span>YL</span></label>
+            <label class="size-check"><input type="checkbox" value="YXL"><span>YXL</span></label>
+          </div>
+        </div>
+
+        <div class="size-section">
+          <div class="size-section-label">Adult</div>
+          <div class="size-grid" id="sizes-adult">
+            <label class="size-check"><input type="checkbox" value="S"><span>S</span></label>
+            <label class="size-check"><input type="checkbox" value="M"><span>M</span></label>
+            <label class="size-check"><input type="checkbox" value="L"><span>L</span></label>
+            <label class="size-check"><input type="checkbox" value="XL"><span>XL</span></label>
+            <label class="size-check"><input type="checkbox" value="XXL"><span>XXL</span></label>
+          </div>
+        </div>
+
+        <div class="size-section">
+          <div class="size-section-label">Hat</div>
+          <div class="size-grid" id="sizes-hat">
+            <label class="size-check"><input type="checkbox" value="XS-S"><span>XS-S</span></label>
+            <label class="size-check"><input type="checkbox" value="S/M"><span>S/M</span></label>
+            <label class="size-check"><input type="checkbox" value="S-M"><span>S-M</span></label>
+            <label class="size-check"><input type="checkbox" value="L/XL"><span>L/XL</span></label>
+            <label class="size-check"><input type="checkbox" value="L-XL"><span>L-XL</span></label>
+            <label class="size-check"><input type="checkbox" value="One Size"><span>One Size</span></label>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Other Options</label>
         <div id="f-options-list"></div>
-        <button type="button" class="btn btn-secondary btn-sm" id="add-option-btn">+ Add Option Group</button>
-        <div class="form-hint">e.g. Name: "Size", Choices: "YS, YM, YL, S, M, L, XL, XXL"</div>
+        <button type="button" class="btn btn-secondary btn-sm" id="add-option-btn">+ Add Custom Option</button>
+        <div class="form-hint">For non-size options like "Pant Style: Knickers, Long"</div>
       </div>
     </form>
 
@@ -718,12 +796,27 @@ function openEditor(index) {
     p.images.forEach(path => addImageRow(path));
   }
 
-  // Options
+  // Size checkboxes — reset all, then check matching ones
+  document.querySelectorAll('.size-check').forEach(label => {
+    label.classList.remove('is-checked');
+    label.querySelector('input').checked = false;
+  });
+  const sizeOpt = (p.options || []).find(o => o.name === 'Size' || o.name === 'Hat Size');
+  if (sizeOpt) {
+    sizeOpt.choices.forEach(val => {
+      const cb = document.querySelector(`.size-check input[value="${val}"]`);
+      if (cb) {
+        cb.checked = true;
+        cb.closest('.size-check').classList.add('is-checked');
+      }
+    });
+  }
+
+  // Custom options (non-size)
   const optsList = document.getElementById('f-options-list');
   optsList.innerHTML = '';
-  if (p.options && p.options.length > 0) {
-    p.options.forEach(opt => addOptionBlock(opt.name, opt.choices.join(', ')));
-  }
+  const customOpts = (p.options || []).filter(o => o.name !== 'Size' && o.name !== 'Hat Size');
+  customOpts.forEach(opt => addCustomOption(opt.name, opt.choices.join(', ')));
 
   editorOverlay.classList.add('is-open');
 }
@@ -825,20 +918,30 @@ document.getElementById('f-extra-image-file').addEventListener('change', async f
   toast(`${files.length} image(s) uploaded`);
 });
 
-// Option blocks
-function addOptionBlock(name, choices) {
+// Size checkbox toggle
+document.querySelectorAll('.size-check').forEach(label => {
+  label.addEventListener('click', e => {
+    e.preventDefault();
+    const cb = label.querySelector('input');
+    cb.checked = !cb.checked;
+    label.classList.toggle('is-checked', cb.checked);
+  });
+});
+
+// Custom option blocks (for non-size options like Pant Style)
+function addCustomOption(name, choices) {
   const list = document.getElementById('f-options-list');
   const block = document.createElement('div');
-  block.className = 'option-block';
-  block.innerHTML = `<div class="option-header">
-      <input class="form-input" value="${name || ''}" placeholder="Option name (e.g. Size)">
+  block.className = 'custom-option-block';
+  block.innerHTML = `<div class="custom-option-header">
+      <input class="form-input" value="${name || ''}" placeholder="Option name (e.g. Pant Style)">
       <button type="button" class="option-remove">&times;</button>
     </div>
-    <input class="form-input" value="${choices || ''}" placeholder="Choices separated by commas (e.g. S, M, L, XL)">`;
+    <input class="form-input" value="${choices || ''}" placeholder="Choices separated by commas (e.g. Knickers, Long)">`;
   block.querySelector('.option-remove').addEventListener('click', () => block.remove());
   list.appendChild(block);
 }
-document.getElementById('add-option-btn').addEventListener('click', () => addOptionBlock('', ''));
+document.getElementById('add-option-btn').addEventListener('click', () => addCustomOption('', ''));
 
 // Save
 document.getElementById('editor-save').addEventListener('click', () => {
@@ -863,9 +966,18 @@ document.getElementById('editor-save').addEventListener('click', () => {
     if (v) images.push(v);
   });
 
-  // Collect options
+  // Collect sizes from checkboxes
   const options = [];
-  document.querySelectorAll('#f-options-list .option-block').forEach(block => {
+  const checkedSizes = [];
+  document.querySelectorAll('.size-check input:checked').forEach(cb => {
+    checkedSizes.push(cb.value);
+  });
+  if (checkedSizes.length > 0) {
+    options.push({ name: 'Size', choices: checkedSizes });
+  }
+
+  // Collect custom options
+  document.querySelectorAll('#f-options-list .custom-option-block').forEach(block => {
     const inputs = block.querySelectorAll('input');
     const optName = inputs[0].value.trim();
     const optChoices = inputs[1].value.split(',').map(c => c.trim()).filter(Boolean);
